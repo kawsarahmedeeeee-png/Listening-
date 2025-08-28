@@ -73,12 +73,33 @@
     .section-divider { height: 1px; background-color: #ddd; margin: 25px 0; }
 
     .map-container { display: flex; margin: 20px 0; gap: 20px; }
-    .map-image { flex: 1; background-color: #eaf2f8; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+    .map-image { flex: 1; background-color: #eaf2f8; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; min-height: 300px; position: relative; }
     .map-questions { flex: 1; }
     .map-question { margin-bottom: 15px; }
 
     .attitude-container { display: flex; gap: 20px; margin: 20px 0; }
     .attitude-box { flex: 1; }
+    
+    /* Added styles for the map image */
+    .map-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    /* Map labels */
+    .map-label {
+      position: absolute;
+      font-weight: bold;
+      color: #000;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
@@ -195,10 +216,16 @@
 
       <div class="map-container">
         <div class="map-image">
-[Map Image Would Appear Here]
-          <div style="text-align:center;color:#666;font-size:14px;">
-            <div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div><div>G</div><div>H</div><div>I</div>
-          </div>
+          <img src="https://github.com/kawsarahmedeeeee-png/Listening-/blob/96aef5ed3de4ef37940aab621f74637cbe019b11/Test-4-Q15-20.jpg?raw=true" alt="Museum Map">
+          <div class="map-label" style="top: 25%; left: 30%;">A</div>
+          <div class="map-label" style="top: 35%; left: 50%;">B</div>
+          <div class="map-label" style="top: 45%; left: 25%;">C</div>
+          <div class="map-label" style="top: 55%; left: 60%;">D</div>
+          <div class="map-label" style="top: 65%; left: 40%;">E</div>
+          <div class="map-label" style="top: 75%; left: 20%;">F</div>
+          <div class="map-label" style="top: 25%; left: 70%;">G</div>
+          <div class="map-label" style="top: 45%; left: 75%;">H</div>
+          <div class="map-label" style="top: 65%; left: 75%;">I</div>
         </div>
         <div class="map-questions">
           <div class="map-question">15 The exhibition centre
