@@ -24,7 +24,7 @@
     th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
     th { background-color: #f2f2f2; font-weight: 600; }
 
-    .inline-input { width: 120px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 3px; display: inline-block; margin-left: 5px; font-size: 14px; height: 28px; vertical-align: middle; }
+    .inline-input { width: 80px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 3px; display: inline-block; margin-left: 5px; font-size: 14px; height: 28px; vertical-align: middle; }
 
     .radio-options, .mcq-options { margin: 10px 0 20px 20px; }
     .radio-option, .mcq-option { margin-bottom: 8px; display: flex; align-items: center; }
@@ -55,6 +55,11 @@
     
     .save-status { position: fixed; bottom: 20px; right: 20px; background: #2e86c1; color: white; padding: 8px 15px; border-radius: 4px; font-size: 14px; opacity: 0; transition: opacity 0.3s; }
     .save-status.visible { opacity: 1; }
+    
+    .question-number { display: inline-block; width: 25px; height: 25px; background: #2e86c1; color: white; text-align: center; border-radius: 50%; line-height: 25px; margin-right: 8px; font-size: 14px; }
+    
+    .hostel-table td { position: relative; }
+    .hostel-table .input-container { position: relative; display: inline-block; }
   </style>
 </head>
 <body>
@@ -96,25 +101,25 @@
     <div id="test-page" class="page">
       <div class="section-title">SECTION 1 Questions 1-10</div>
       <p>Complete the table below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
-      <table>
+      <table class="hostel-table">
         <tr><th>HOSTELS</th><th>Name</th><th>Location</th><th>Cost of double room</th><th>notes</th></tr>
         <tr>
           <td>Hostelling International West End</td>
           <td><em>Example</em><br>10 minutes from downtown by <strong>bus</strong></td>
-          <td>$50 per night but only $<input type="text" id="q1" class="inline-input" /> for members</td>
-          <td>Membership card offers discount on entry to <input type="text" id="q2" class="inline-input" /><br>Internet access costs $3 per <input type="text" id="q3" class="inline-input" /></td>
+          <td>$50 per night but only $<span class="input-container"><span class="question-number">1</span><input type="text" id="q1" class="inline-input" /></span> for members</td>
+          <td>Membership card offers discount on entry to <span class="input-container"><span class="question-number">2</span><input type="text" id="q2" class="inline-input" /></span><br>Internet access costs $3 per <span class="input-container"><span class="question-number">3</span><input type="text" id="q3" class="inline-input" /></span></td>
         </tr>
         <tr>
-          <td><input type="text" id="q4" class="inline-input" /> Hostel</td>
-          <td>Near beach. Two-minute walk to <input type="text" id="q5" class="inline-input" /></td>
-          <td>$62. Meals extra but only available in <input type="text" id="q6" class="inline-input" /></td>
-          <td>Was built as a hotel in <input type="text" id="q7" class="inline-input" /><br>Can hire <input type="text" id="q8" class="inline-input" /> from hostel</td>
+          <td><span class="input-container"><span class="question-number">4</span><input type="text" id="q4" class="inline-input" /></span> Hostel</td>
+          <td>Near beach. Two-minute walk to <span class="input-container"><span class="question-number">5</span><input type="text" id="q5" class="inline-input" /></span></td>
+          <td>$62. Meals extra but only available in <span class="input-container"><span class="question-number">6</span><input type="text" id="q6" class="inline-input" /></span></td>
+          <td>Was built as a hotel in <span class="input-container"><span class="question-number">7</span><input type="text" id="q7" class="inline-input" /></span><br>Can hire <span class="input-container"><span class="question-number">8</span><input type="text" id="q8" class="inline-input" /></span> from hostel</td>
         </tr>
         <tr>
           <td>Backpackers Hostel</td>
-          <td>In <input type="text" id="q9" class="inline-input" /> district</td>
+          <td>In <span class="input-container"><span class="question-number">9</span><input type="text" id="q9" class="inline-input" /></span> district</td>
           <td>$45 plus $5 for breakfast</td>
-          <td>A <input type="text" id="q10" class="inline-input" /> on every floor for guests to use</td>
+          <td>A <span class="input-container"><span class="question-number">10</span><input type="text" id="q10" class="inline-input" /></span> on every floor for guests to use</td>
         </tr>
       </table>
 
@@ -334,33 +339,33 @@
         <tr><th colspan="3">INVESTIGATING TASTE</th></tr>
         <tr><th>Procedure</th><th>Result</th><th>Cause</th></tr>
         <tr>
-          <td>more yellow added to green colour of <input type="text" id="q31" class="inline-input" /></td>
-          <td>subjects believed extra <input type="text" id="q32" class="inline-input" /> added to drink</td>
+          <td>more yellow added to green colour of <span class="input-container"><span class="question-number">31</span><input type="text" id="q31" class="inline-input" /></span></td>
+          <td>subjects believed extra <span class="input-container"><span class="question-number">32</span><input type="text" id="q32" class="inline-input" /></span> added to drink</td>
           <td>brain influenced by product presentation</td>
         </tr>
         <tr>
-          <td>gum chewed until it is <input type="text" id="q33" class="inline-input" /> then again with sugar</td>
-          <td>mint flavor <input type="text" id="q34" class="inline-input" /></td>
+          <td>gum chewed until it is <span class="input-container"><span class="question-number">33</span><input type="text" id="q33" class="inline-input" /></span> then again with sugar</td>
+          <td>mint flavor <span class="input-container"><span class="question-number">34</span><input type="text" id="q34" class="inline-input" /></span></td>
           <td>sweetness necessary for mintiness</td>
         </tr>
         <tr>
           <td>same drink tasted cold and at room temperature</td>
-          <td><input type="text" id="q35" class="inline-input" /> drink seems sweeter</td>
+          <td><span class="input-container"><span class="question-number">35</span><input type="text" id="q35" class="inline-input" /></span> drink seems sweeter</td>
           <td>temperature affects sweetness</td>
         </tr>
         <tr>
-          <td>crisps eaten in rooms which were <input type="text" id="q36" class="inline-input" /></td>
-          <td>with louder crunch, subjects believed crisps taste <input type="text" id="q37" class="inline-input" /></td>
+          <td>crisps eaten in rooms which were <span class="input-container"><span class="question-number">36</span><input type="text" id="q36" class="inline-input" /></span></td>
+          <td>with louder crunch, subjects believed crisps taste <span class="input-container"><span class="question-number">37</span><input type="text" id="q37" class="inline-input" /></span></td>
           <td>sound affects taste perceptions</td>
         </tr>
         <tr>
           <td>variety of cheese sauces prepared</td>
           <td>subjects believed some sauces tasted less strong</td>
-          <td><input type="text" id="q38" class="inline-input" /> affects taste perceptions</td>
+          <td><span class="input-container"><span class="question-number">38</span><input type="text" id="q38" class="inline-input" /></span> affects taste perceptions</td>
         </tr>
         <tr>
-          <td>two different flavoured <input type="text" id="q39" class="inline-input" /> tasted together</td>
-          <td>subjects still tasted <input type="text" id="q40" class="inline-input" /> when no longer there</td>
+          <td>two different flavoured <span class="input-container"><span class="question-number">39</span><input type="text" id="q39" class="inline-input" /></span> tasted together</td>
+          <td>subjects still tasted <span class="input-container"><span class="question-number">40</span><input type="text" id="q40" class="inline-input" /></span> when no longer there</td>
           <td>brain is filling the taste 'gap'</td>
         </tr>
       </table>
