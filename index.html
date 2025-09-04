@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IELTS Listening Test - Juned Academy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: #f5f7fa; color: #333; line-height: 1.6; padding: 20px; }
+    .container { max-width: 1000px; margin: 0 auto; background: #fff; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,.1); overflow: hidden; }
+    header { background: linear-gradient(135deg, #1a5276 0%, #2e86c1 100%); color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+    h1 { font-size: 24px; font-weight: 600; }
+    .page { padding: 20px; display: none; }
+    #info-page { display: block; }
+    .section-title { background-color: #eaf2f8; padding: 10px 15px; margin: 20px -20px 15px -20px; border-left: 5px solid #2e86c1; font-weight: 600; color: #1a5276; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: 500; }
+    input[type="text"], input[type="date"], select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+    .btn { background: #2e86c1; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: 500; transition: background .3s; }
+    .btn:hover { background: #1a5276; }
+    .btn-container { text-align: center; margin: 20px 0; }
+
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background-color: #f2f2f2; font-weight: 600; }
+
+    .inline-input { width: 120px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 3px; display: inline-block; margin-left: 5px; font-size: 14px; height: 28px; vertical-align: middle; }
+
+    .radio-options, .mcq-options { margin: 10px 0 20px 20px; }
+    .radio-option, .mcq-option { margin-bottom: 8px; display: flex; align-items: center; }
+    .radio-option input[type="radio"], .mcq-option input[type="checkbox"] { margin-right: 8px; }
+
+    .instructions { background-color: #f9f9f9; padding: 10px 15px; border-left: 4px solid #2e86c1; margin: 15px 0; font-size: 14px; }
+    .results-table { width: 100%; margin: 15px 0; }
+    .results-table th { background-color: #eaf2f8; }
+    .answer-cell { font-weight: 500; color: #1a5276; }
+    .compact-results { max-height: 70vh; overflow-y: auto; }
+    .section-divider { height: 1px; background-color: #ddd; margin: 25px 0; }
+
+    .map-container { display: flex; margin: 20px 0; gap: 20px; }
+    .map-image { flex: 1; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+    .map-image img { max-width: 100%; height: auto; border-radius: 4px; }
+    .map-options { flex: 1; }
+    .map-question { margin-bottom: 15px; display: flex; align-items: center; }
+    .map-question-number { min-width: 120px; font-weight: 500; }
+    
+    .rating-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+    .rating-option { text-align: center; padding: 10px; background-color: #eaf2f8; border-radius: 4px; font-weight: 500; }
+    
+    .skills-table { width: 100%; }
+    .skills-table td { padding: 10px; border-bottom: 1px solid #eee; }
+    .skills-table td:first-child { width: 70%; }
+    
+    .map-questions-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 20px 0; }
+    
+    .library-map-simple { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+    .library-map-simple div { padding: 15px; border: 1px solid #ddd; border-radius: 4px; text-align: center; background-color: #f9f9f9; }
+    .library-map-simple .area-label { font-weight: bold; background-color: #eaf2f8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>IELTS Listening Test - Juned Academy</h1>
+    </header>
+
+    <!-- Candidate info page -->
+    <div id="info-page" class="page">
+      <h2>Candidate Information</h2>
+      <div class="section-divider"></div>
+      <div class="form-group">
+        <label for="candidateName">Full Name:</label>
+        <input type="text" id="candidateName" placeholder="Enter your full name" />
+      </div>
+      <div class="form-group">
+        <label for="candidateNumber">Candidate Number:</label>
+        <input type="text" id="candidateNumber" placeholder="Enter your candidate number" />
+      </div>
+      <div class="form-group">
+        <label for="testModule">Test Module:</label>
+        <select id="testModule">
+          <option value="">Select Module</option>
+          <option value="AC">Academic (AC)</option>
+          <option value="GT">General Training (GT)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="testDate">Test Date:</label>
+        <input type="date" id="testDate" />
+      </div>
+      <div class="btn-container">
+        <button id="start-test" class="btn">Start Test</button>
+      </div>
+    </div>
+
+    <!-- Test page -->
+    <div id="test-page" class="page">
+      <div class="section-title">SECTION 1 Questions 1-10</div>
+      <p>Complete the table below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+      <table>
+        <tr><th>HOSTELS</th><th>Name</th><th>Location</th><th>Cost of double room</th><th>notes</th></tr>
+        <tr>
+          <td>Hostelling International West End</td>
+          <td><em>Example</em><br>10 minutes from downtown by <strong>bus</strong></td>
+          <td>$50 per night but only $<input type="text" id="q1" class="inline-input" /> for members</td>
+          <td>Membership card offers discount on entry to <input type="text" id="q2" class="inline-input" /><br>Internet access costs $3 per <input type="text" id="q3" class="inline-input" /></td>
+        </tr>
+        <tr>
+          <td><input type="text" id="q4" class="inline-input" /> Hostel</td>
+          <td>Near beach. Two-minute walk to <input type="text" id="q5" class="inline-input" /></td>
+          <td>$62. Meals extra but only available in <input type="text" id="q6" class="inline-input" /></td>
+          <td>Was built as a hotel in <input type="text" id="q7" class="inline-input" /><br>Can hire <input type="text" id="q8" class="inline-input" /> from hostel</td>
+        </tr>
+        <tr>
+          <td>Backpackers Hostel</td>
+          <td>In <input type="text" id="q9" class="inline-input" /> district</td>
+          <td>$45 plus $5 for breakfast</td>
+          <td>A <input type="text" id="q10" class="inline-input" /> on every floor for guests to use</td>
+        </tr>
+      </table>
+
+      <div class="section-title">SECTION 2 Questions 11-20</div>
+      <p><strong>Questions 11-15</strong><br>Label the map below. <strong>Choose FIVE answers from the box and write the correct letter A-H next to questions 11-15.</strong></p>
+      
+      <div class="map-container">
+        <div class="map-options">
+          <p><strong>Options:</strong></p>
+          <p>A biography<br>
+          B fiction<br>
+          C magazines<br>
+          D newspapers<br>
+          E non-fiction<br>
+          F photocopiers<br>
+          G reference books<br>
+          H study desks</p>
+        </div>
+        <div class="map-image">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" alt="Library Map">
+        </div>
+      </div>
+      
+      <div class="map-questions-grid">
+        <div class="map-question">
+          <span class="map-question-number">11 Question 11</span>
+          <select id="q11" class="inline-input">
+            <option value="">Select</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            <option value="G">G</option><option value="H">H</option>
+          </select>
+        </div>
+        <div class="map-question">
+          <span class="map-question-number">12 Question 12</span>
+          <select id="q12" class="inline-input">
+            <option value="">Select</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            <option value="G">G</option><option value="H">H</option>
+          </select>
+        </div>
+        <div class="map-question">
+          <span class="map-question-number">13 Question 13</span>
+          <select id="q13" class="inline-input">
+            <option value="">Select</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            <option value="G">G</option><option value="H">H</option>
+          </select>
+        </div>
+        <div class="map-question">
+          <span class="map-question-number">14 Question 14</span>
+          <select id="q14" class="inline-input">
+            <option value="">Select</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            <option value="G">G</option><option value="H">H</option>
+          </select>
+        </div>
+        <div class="map-question">
+          <span class="map-question-number">15 Question 15</span>
+          <select id="q15" class="inline-input">
+            <option value="">Select</option>
+            <option value="A">A</option><option value="B">B</option><option value="C">C</option>
+            <option value="D">D</option><option value="E">E</option><option value="F">F</option>
+            <option value="G">G</option><option value="H">H</option>
+          </select>
+        </div>
+      </div>
+
+      <p><strong>Questions 16-20</strong><br>Choose the correct letter, A, B or C.</p>
+
+      <div class="radio-options">
+        <p><strong>16</strong> After two years, library members have to</p>
+        <div class="radio-option"><input type="radio" id="q16a" name="q16" value="A" /><label for="q16a">A show proof of their current address.</label></div>
+        <div class="radio-option"><input type="radio" id="q16b" name="q16" value="B" /><label for="q16b">B pay for a new membership card.</label></div>
+        <div class="radio-option"><input type="radio" id="q16c" name="q16" value="C" /><label for="q16c">C bring a passport or identity card into the library.</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>17</strong> What happens if you reserve a book?</p>
+        <div class="radio-option"><input type="radio" id="q17a" name="q17" value="A" /><label for="q17a">A It will be available after five days.</label></div>
+        <div class="radio-option"><input type="radio" id="q17b" name="q17" value="B" /><label for="q17b">B You can collect it a week later.</label></div>
+        <div class="radio-option"><input type="radio" id="q17c" name="q17" value="C" /><label for="q17c">C You will be contacted when it is available.</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>18</strong> Which materials can be borrowed for one week only?</p>
+        <div class="radio-option"><input type="radio" id="q18a" name="q18" value="A" /><label for="q18a">A some reference books</label></div>
+        <div class="radio-option"><input type="radio" id="q18b" name="q18" value="B" /><label for="q18b">B CD-ROMs</label></div>
+        <div class="radio-option"><input type="radio" id="q18c" name="q18" value="C" /><label for="q18c">C children's DVDs</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>19</strong> On which day does the library stay open later than it used to?</p>
+        <div class="radio-option"><input type="radio" id="q19a" name="q19" value="A" /><label for="q19a">A Wednesday</label></div>
+        <div class="radio-option"><input type="radio" id="q19b" name="q19" value="B" /><label for="q19b">B Saturday</label></div>
+        <div class="radio-option"><input type="radio" id="q19c" name="q19" value="C" /><label for="q19c">C Sunday</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>20</strong> Large bags should be left on the</p>
+        <div class="radio-option"><input type="radio" id="q20a" name="q20" value="A" /><label for="q20a">A first floor.</label></div>
+        <div class="radio-option"><input type="radio" id="q20b" name="q20" value="B" /><label for="q20b">B second floor.</label></div>
+        <div class="radio-option"><input type="radio" id="q20c" name="q20" value="C" /><label for="q20c">C third floor.</label></div>
+      </div>
+
+      <div class="section-title">SECTION 3 Questions 21-30</div>
+      <p><strong>Questions 21-25</strong><br>Choose the correct letter, A, B or C.</p>
+
+      <div class="radio-options">
+        <p><strong>21</strong> Why did Anita and Lee choose to talk about John Chapman?</p>
+        <div class="radio-option"><input type="radio" id="q21a" name="q21" value="A" /><label for="q21a">A He was Lee's childhood hero.</label></div>
+        <div class="radio-option"><input type="radio" id="q21b" name="q21" value="B" /><label for="q21b">B They wanted to talk about the USA.</label></div>
+        <div class="radio-option"><input type="radio" id="q21c" name="q21" value="C" /><label for="q21c">C He was relevant to the topic of their studies.</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>22</strong> Where did the students record their sources of information?</p>
+        <div class="radio-option"><input type="radio" id="q22a" name="q22" value="A" /><label for="q22a">A on their laptops</label></div>
+        <div class="radio-option"><input type="radio" id="q22b" name="q22" value="B" /><label for="q22b">B on a handout</label></div>
+        <div class="radio-option"><input type="radio" id="q22c" name="q22" value="C" /><label for="q22c">C on a database</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>23</strong> The tutor claims she does not understand whether</p>
+        <div class="radio-option"><input type="radio" id="q23a" name="q23" value="A" /><label for="q23a">A apples grew in America before Europeans arrived.</label></div>
+        <div class="radio-option"><input type="radio" id="q23b" name="q23" value="B" /><label for="q23b">B the Native Americans had always eaten apples.</label></div>
+        <div class="radio-option"><input type="radio" id="q23c" name="q23" value="C" /><label for="q23c">C American apples were first bred in Europe.</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>24</strong> The tutor says the audience was particularly interested to hear about</p>
+        <div class="radio-option"><input type="radio" id="q24a" name="q24" value="A" /><label for="q24a">A grafting techniques in ancient China.</label></div>
+        <div class="radio-option"><input type="radio" id="q24b" name="q24" value="B" /><label for="q24b">B the cultivation of apples in Kazakhstan.</label></div>
+        <div class="radio-option"><input type="radio" id="q24c" name="q24" value="C" /><label for="q24c">C the spread of apples along the Silk Route.</label></div>
+      </div>
+
+      <div class="radio-options">
+        <p><strong>25</strong> How will Anita and Lee present their follow-up work?</p>
+        <div class="radio-option"><input type="radio" id="q25a" name="q25" value="A" /><label for="q25a">A on the department website</label></div>
+        <div class="radio-option"><input type="radio" id="q25b" name="q25" value="B" /><label for="q25b">B as a paper</label></div>
+        <div class="radio-option"><input type="radio" id="q25c" name="q25" value="C" /><label for="q25c">C as a poster</label></div>
+      </div>
+
+      <p><strong>Questions 26-30</strong><br>What do Lee and Anita agree about their presentation skills with their tutor? Write the correct letter A, B or C next to questions 26-30.</p>
+      
+      <div style="display: flex; gap: 30px; margin: 20px 0;">
+        <div class="rating-options">
+          <div class="rating-option">A excellent</div>
+          <div class="rating-option">B acceptable</div>
+          <div class="rating-option">C poor</div>
+        </div>
+        
+        <table class="skills-table">
+          <tr>
+            <td>26 use of equipment</td>
+            <td>
+              <select id="q26" class="inline-input">
+                <option value="">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>27 handling software</td>
+            <td>
+              <select id="q27" class="inline-input">
+                <option value="">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>28 timing of sections</td>
+            <td>
+              <select id="q28" class="inline-input">
+                <option value="">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>29 design of handout</td>
+            <td>
+              <select id="q29" class="inline-input">
+                <option value="">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>30 clarity of speech</td>
+            <td>
+              <select id="q30" class="inline-input">
+                <option value="">Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section-title">SECTION 4 Questions 31-40</div>
+      <p>Complete the table below. Write <strong>NO MORE THAN ONE WORD</strong> for each answer.</p>
+
+      <table>
+        <tr><th colspan="3">INVESTIGATING TASTE</th></tr>
+        <tr><th>Procedure</th><th>Result</th><th>Cause</th></tr>
+        <tr>
+          <td>more yellow added to green colour of <input type="text" id="q31" class="inline-input" /></td>
+          <td>subjects believed extra <input type="text" id="q32" class="inline-input" /> added to drink</td>
+          <td>brain influenced by product presentation</td>
+        </tr>
+        <tr>
+          <td>gum chewed until it is <input type="text" id="q33" class="inline-input" /> then again with sugar</td>
+          <td>mint flavor <input type="text" id="q34" class="inline-input" /></td>
+          <td>sweetness necessary for mintiness</td>
+        </tr>
+        <tr>
+          <td>same drink tasted cold and at room temperature</td>
+          <td><input type="text" id="q35" class="inline-input" /> drink seems sweeter</td>
+          <td>temperature affects sweetness</td>
+        </tr>
+        <tr>
+          <td>crisps eaten in rooms which were <input type="text" id="q36" class="inline-input" /></td>
+          <td>with louder crunch, subjects believed crisps taste <input type="text" id="q37" class="inline-input" /></td>
+          <td>sound affects taste perceptions</td>
+        </tr>
+        <tr>
+          <td>variety of cheese sauces prepared</td>
+          <td>subjects believed some sauces tasted less strong</td>
+          <td><input type="text" id="q38" class="inline-input" /> affects taste perceptions</td>
+        </tr>
+        <tr>
+          <td>two different flavoured <input type="text" id="q39" class="inline-input" /> tasted together</td>
+          <td>subjects still tasted <input type="text" id="q40" class="inline-input" /> when no longer there</td>
+          <td>brain is filling the taste 'gap'</td>
+        </tr>
+      </table>
+
+      <div class="btn-container"><button id="submit-test" class="btn">Submit Test</button></div>
+    </div>
+
+    <!-- Results page -->
+    <div id="results-page" class="page">
+      <h2>Test Results</h2>
+      <div class="section-divider"></div>
+      <div id="candidate-results">
+        <h3>Candidate Information</h3>
+        <table>
+          <tr><th>Name</th><th>Candidate Number</th><th>Test Module</th><th>Test Date</th></tr>
+          <tr><td id="result-name"></td><td id="result-number"></td><td id="result-module"></td><td id="result-date"></td></tr>
+        </table>
+      </div>
+      <div class="section-divider"></div>
+      <h3>Your Answers</h3>
+      <div class="compact-results">
+        <table class="results-table">
+          <tr><th>Question</th><th>Your Answer</th><th>Question</th><th>Your Answer</th></tr>
+        </table>
+      </div>
+      <div class="btn-container"><button id="restart-test" class="btn">Restart Test</button></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const infoPage = document.getElementById('info-page');
+      const testPage = document.getElementById('test-page');
+      const resultsPage = document.getElementById('results-page');
+      const startTestBtn = document.getElementById('start-test');
+      const submitTestBtn = document.getElementById('submit-test');
+      const restartTestBtn = document.getElementById('restart-test');
+
+      startTestBtn.addEventListener('click', function () {
+        const name = document.getElementById('candidateName').value.trim();
+        const number = document.getElementById('candidateNumber').value.trim();
+        const module = document.getElementById('testModule').value;
+        const date = document.getElementById('testDate').value;
+        if (!name || !number || !module || !date) { alert('Please fill in all candidate information fields.'); return; }
+        infoPage.style.display = 'none';
+        testPage.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      submitTestBtn.addEventListener('click', function () {
+        saveAnswers();
+        document.getElementById('result-name').textContent = document.getElementById('candidateName').value;
+        document.getElementById('result-number').textContent = document.getElementById('candidateNumber').value;
+        document.getElementById('result-module').textContent = document.getElementById('testModule').value;
+        document.getElementById('result-date').textContent = document.getElementById('testDate').value;
+        displayAnswers();
+        testPage.style.display = 'none';
+        resultsPage.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      restartTestBtn.addEventListener('click', function () {
+        document.getElementById('candidateName').value = '';
+        document.getElementById('candidateNumber').value = '';
+        document.getElementById('testModule').value = '';
+        document.getElementById('testDate').value = '';
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+          if (input.type === 'checkbox' || input.type === 'radio') input.checked = false; else input.value = '';
+        });
+        localStorage.removeItem('testAnswers');
+        resultsPage.style.display = 'none';
+        infoPage.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      function saveAnswers() {
+        const answers = {};
+        for (let i = 1; i <= 40; i++) {
+          const el = document.getElementById('q' + i);
+          if (el) answers['q' + i] = el.value;
+        }
+        for (let i = 16; i <= 25; i++) {
+          const selected = document.querySelector(`input[name="q${i}"]:checked`);
+          answers['q' + i] = selected ? selected.value : '';
+        }
+        localStorage.setItem('testAnswers', JSON.stringify(answers));
+      }
+
+      function displayAnswers() {
+        const answers = JSON.parse(localStorage.getItem('testAnswers') || '{}');
+        const resultsTable = document.querySelector('.results-table');
+        while (resultsTable.rows.length > 1) resultsTable.deleteRow(1);
+        for (let i = 1; i <= 20; i++) {
+          const row = resultsTable.insertRow(-1);
+          const c1 = row.insertCell(0); const c2 = row.insertCell(1); const c3 = row.insertCell(2); const c4 = row.insertCell(3);
+          c1.textContent = i; c2.textContent = answers['q' + i] || '-'; c2.classList.add('answer-cell');
+          const rightQ = i + 20; c3.textContent = rightQ; c4.textContent = answers['q' + rightQ] || '-'; c4.classList.add('answer-cell');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
