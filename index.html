@@ -54,13 +54,13 @@
         .ielts-logo {
             display: none;
         }
-        
         .logo-ja {
             padding-top: 20px;
             height: 10%;
             width: 10%;
-            align-items: left;
-           
+            display: block; /* Important! */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .test-info {
@@ -88,6 +88,21 @@
             display: flex;
             gap: 10px;
             align-items: center;
+        }
+
+        .telegram-link {
+            color: #3e3e3e;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border: 2px solid #3e3e3e;
+            border-radius: 9999px;
+            background-color: #ffffff;
+            line-height: 1;
         }
 
 
@@ -265,6 +280,23 @@
         .people-table td {
             padding: 8px 10px;
             border: 1px solid #ddd;
+        }
+      
+
+        /* Matching cell styling */
+        .matching-cell {
+            transition: all 0.2s ease;
+        }
+        
+        .matching-cell:hover {
+            background-color: #e3f2fd !important;
+            transform: scale(1.02);
+        }
+        
+        .matching-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+            font-weight: bold;
         }
 
         #part-1 table td {
@@ -599,12 +631,40 @@
             border-color: #999;
         }
 
-    
+        .subQuestion.active {
+            background-color: #4a90e2;
+            color: white;
+            border-color: #4a90e2;
+        }
 
         .subQuestion.completed {
             background-color: #28a745;
             color: white;
             border-color: #28a745;
+        }
+
+        /* Clickable cell styles for Questions 26-30 */
+        .clickable-cell {
+            transition: all 0.2s ease;
+        }
+
+        .clickable-cell:hover {
+            background-color: #e9ecef !important;
+        }
+
+        .clickable-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.incorrect {
+            background-color: #dc3545 !important;
+            color: white !important;
         }
 
         .sr-only {
@@ -1052,7 +1112,9 @@
             color: #333;
         }
 
-       
+        #part-2 .questions-container {
+width: 75%;
+        }
         #score-summary {
             font-size: 18px;
             font-weight: bold;
@@ -1528,10 +1590,6 @@
             margin-left: 8px;
             display: block; 
         }
-
-        #part-3 .questions-container {
-            width: 75%;
-        }
     
         #new-volume-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -1874,74 +1932,74 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 1-6</strong></p>
-                            <p>Complete the form below. Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p><strong>Questions 1-10</strong></p>
+                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS AND/OR NUMBERS</strong> for each answer.</p>
                         </div>
                         
                         <div style="margin-top: 20px;">
-                            <div style="border: 1px solid #ccc; padding: 16px; border-radius: 6px;">
-                                <p style="font-weight: bold; margin-bottom: 10px; text-align: center;">PATIENT RECORD</p>
-                                <div class="aligned-form">
-                                    <div class="question-row">
-                                        <div class="question-label">Time of appointment:</div>
-                                        <div>10:00 am</div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Given names:</div>
-                                        <div>Simon <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off" style="width: 160px;"></div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Family name:</div>
-                                        <div>Lee</div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Date of birth:</div>
-                                        <div><input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off" style="width: 160px;"> 1989</div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Address:</div>
-                                        <div><input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off" style="width: 220px;"> Adams Terrace, Wellington</div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Phone number:</div>
-                                        <div>0211558809</div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Name of insurance company:</div>
-                                        <div><input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off" style="width: 280px;"></div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Date of last eye test:</div>
-                                        <div><input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off" style="width: 180px;"></div>
-                                    </div>
-                                    <div class="question-row">
-                                        <div class="question-label">Patient's observations:</div>
-                                        <div>Problems seeing <input type="text" id="q6" class="answer-input" placeholder="6" autocomplete="off" style="width: 200px;">.</div>
-                                    </div>
-                                </div>
+                            <p class="centered-title"><strong>Basic Details of Project</strong></p>
+
+                            <div style="line-height: 2.5; font-size: 16px;">
+                                
+                                <p><strong>Pre-phase:</strong> involves selecting rooms & <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></p>
+                                
+                                <p><strong>Phase 1:</strong></p>
+                                <p style="margin-left: 20px;">time needed: 3 days</p>
+                                <p style="margin-left: 20px;">staff involved: Jenna, Marco, & <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"></p>
+                                
+                                <p><strong>Phase 2:</strong></p>
+                                <p style="margin-left: 20px;">time needed: <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"></p>
+                                <p style="margin-left: 20px;">staff involved: <input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off">, with assistance from <input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"></p>
+                        
                             </div>
                         </div>
                     </div>
-
                     <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 7-10</strong></p>
-                            <p>Complete the sentences below. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+                        <div class="question-prompt">
+                            <p><strong>Questions 6-10</strong></p>
+                            <p>Choose the correct answer.</p>
+                        
+                        <div style="margin-top: 18px;">
+                            <p><strong>6</strong>&nbsp;&nbsp;The main form of data collection will be</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="A"> questionnaires.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="B"> Internet polling.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="C"> face-to-face interviews.</label></div>
+                            </div>
+                            
+                            <p><strong>7</strong>&nbsp;&nbsp;To finish in time, the staff will have to</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="A"> work late.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="B"> come in early.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="C"> take some work home.</label></div>
+                            </div>
+                            <p><strong>8</strong>&nbsp;&nbsp;The final report will contain</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="A"> three appendices.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="B"> material from the company website.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="C"> a supplementary booklet.</label></div>
+                            </div>
+                            
+                    
+                            <p><strong>9</strong>&nbsp;&nbsp;The final report will be handed in on the</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="A"> 5th.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="B"> 15th.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="C"> 25th.</label></div>
+                            </div>
+                            
+                            <p><strong>10</strong>&nbsp;&nbsp;At the end, there will be</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="A"> an office party.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="B"> a restaurant dinner.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="C"> presents for all involved.</label></div>
+                            </div>
                         </div>
-
-                        <div style="margin-top: 20px; line-height: 1.8;">
-                            <p><strong>7</strong>&nbsp;&nbsp;Simon must wear his glasses when &nbsp;&nbsp;<input type="text" id="q7" class="answer-input" placeholder="7" autocomplete="off" style="width: 300px;"></p>
-                            
-                            <p><strong>8</strong>&nbsp;&nbsp;The least expensive type of glasses is&nbsp;&nbsp;<input type="text" id="q8" class="answer-input" placeholder="8" autocomplete="off" style="width: 300px;"></p>
-                            
-                            <p><strong>9</strong>&nbsp;&nbsp;The glasses Simon chooses are&nbsp;&nbsp;<input type="text" id="q9" class="answer-input" placeholder="9" autocomplete="off" style="width: 300px;"></p>
-                            
-                            <p><strong>10</strong>&nbsp;&nbsp;Simon decides to pay&nbsp;&nbsp;<input type="text" id="q10" class="answer-input" placeholder="10" autocomplete="off" style="width: 300px;"></p>
                         </div>
                     </div>
                 </div>
             </div>
-                        
+
             <div id="part-2" class="question-part hidden">
                 <div class="part-header">
                     <p><strong>Part 2</strong></p>
@@ -1950,109 +2008,138 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 11-14</strong></p>
-                            <p>Which counsellor should you see?</p>
+                            <p><strong>Questions 11-15</strong></p>
+                            <p>Label the map below.</p>
                         </div>
                         
-                        <div style="margin-top: 20px;">
-                            <div style="margin-bottom: 20px;">
-                                <p style="font-weight: bold; margin-bottom: 15px;">List of People</p>
-                                <p><strong>A</strong>&nbsp;&nbsp;Louise Bagshaw</p>
-                                <p><strong>B</strong>&nbsp;&nbsp;Tony Denby</p>
-                                <p><strong>C</strong>&nbsp;&nbsp;Naomi Flynn</p>
-                            </div>
+                        <div style="margin-top: 12px;">
+                            <div style="display: flex; gap: 30px; align-items: flex-start;">
+                                <div class="map-container" style="flex: 1;">
+                                <img src="https://ieltstrainingonline.com/wp-content/uploads/2020/03/5-1-q11-15.jpg" alt="Map for questions 11-15" style="width: 100%; max-width: 600px;">
+                                </div>
                             
-                            <table class="matching-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 60%;">Statement</th>
-                                        <th style="width: 8%;">A</th>
-                                        <th style="width: 8%;">B</th>
-                                        <th style="width: 8%;">C</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>11</strong>&nbsp;&nbsp;If it is your first time seeing a counsellor.</td>
-                                        <td class="clickable-cell" data-question="q11" data-answer="A"></td>
-                                        <td class="clickable-cell" data-question="q11" data-answer="B"></td>
-                                        <td class="clickable-cell" data-question="q11" data-answer="C"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>12</strong>&nbsp;&nbsp;If you are unable to see a counsellor during normal office hours.</td>
-                                        <td class="clickable-cell" data-question="q12" data-answer="A"></td>
-                                        <td class="clickable-cell" data-question="q12" data-answer="B"></td>
-                                        <td class="clickable-cell" data-question="q12" data-answer="C"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>13</strong>&nbsp;&nbsp;If you do not have an appointment.</td>
-                                        <td class="clickable-cell" data-question="q13" data-answer="A"></td>
-                                        <td class="clickable-cell" data-question="q13" data-answer="B"></td>
-                                        <td class="clickable-cell" data-question="q13" data-answer="C"></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>14</strong>&nbsp;&nbsp;If your concerns are related to anxiety.</td>
-                                        <td class="clickable-cell" data-question="q14" data-answer="A"></td>
-                                        <td class="clickable-cell" data-question="q14" data-answer="B"></td>
-                                        <td class="clickable-cell" data-question="q14" data-answer="C"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <div style="flex: 1; margin-top: 0;">
+                                    <p><strong>11</strong>&nbsp;&nbsp;Science Museum <select id="q11" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select></p>
+                                
+                                    <p><strong>12</strong>&nbsp;&nbsp;National History Museum <select id="q12" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select></p>
+                                
+                                    <p><strong>13</strong>&nbsp;&nbsp;Car Park <select id="q13" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select></p>
+                                
+                                    <p><strong>14</strong>&nbsp;&nbsp;Shopping Mall <select id="q14" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select></p>
+                                
+                                    <p><strong>15</strong>&nbsp;&nbsp;Primary School <select id="q15" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                    </select></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 15-20</strong></p>
-                            <p>Complete the table below. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+                            <p><strong>Questions 16-20</strong></p>
+                            <p>What is the improvement of each main point of interest in the area?</p>
                         </div>
                         
-                        <div style="margin-top: 20px;">
-                                <table style="width: 100%; border-collapse: collapse;">
-                                    <thead>
-                                        <tr style="background-color: #f5f5f5;">
-                                            <th style="border: 1px solid #ccc; padding: 12px; text-align: left; font-weight: bold;">Workshop</th>
-                                            <th style="border: 1px solid #ccc; padding: 12px; text-align: left; font-weight: bold;">Content</th>
-                                            <th style="border: 1px solid #ccc; padding: 12px; text-align: left; font-weight: bold;">Target group</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="border: 1px solid #ccc; padding: 12px; font-weight: bold;">Adjusting</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">what you need to succeed academically</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">
-                                                <input type="text" id="q15" class="answer-input" placeholder="15" autocomplete="off" style="width: 180px;"> students
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ccc; padding: 12px; font-weight: bold;">Getting Organised</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">use time effectively, find <input type="text" id="q16" class="answer-input" placeholder="16" autocomplete="off" style="width: 120px;"> between study and leisure</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">all students</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ccc; padding: 12px; font-weight: bold;">Communicating</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">talking with staff, communicating across cultures</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">all students, especially <input type="text" id="q17" class="answer-input" placeholder="17" autocomplete="off" style="width: 120px;"></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ccc; padding: 12px; font-weight: bold;">Anxiety</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">
-                                                <input type="text" id="q18" class="answer-input" placeholder="18" autocomplete="off" style="width: 120px;">, breathing techniques, meditation, etc.
-                                            </td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">students about to sit exams</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ccc; padding: 12px; font-weight: bold;">
-                                                <input type="text" id="q19" class="answer-input" placeholder="19" autocomplete="off" style="width: 120px;">
-                                            </td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">staying on track for long periods</td>
-                                            <td style="border: 1px solid #ccc; padding: 12px;">
-                                                <input type="text" id="q20" class="answer-input" placeholder="20" autocomplete="off" style="width: 120px;"> students only
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div style="margin: 20px 0; padding: 15px; background-color: #f8f8f8;">
+                            <p><strong>A</strong>&nbsp;&nbsp;new entrance</p>
+                            <p><strong>B</strong>&nbsp;&nbsp;free lunch provided</p>
+                            <p><strong>C</strong>&nbsp;&nbsp;free information provided</p>
+                            <p><strong>D</strong>&nbsp;&nbsp;increase in size</p>
+                            <p><strong>E</strong>&nbsp;&nbsp;additional signs</p>
+                            <p><strong>F</strong>&nbsp;&nbsp;new exhibitions</p>
+                            <p><strong>G</strong>&nbsp;&nbsp;new structure</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 18px;">
+                            <p><strong>16</strong>&nbsp;&nbsp;Car Park <select id="q16" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                    </select></p>
+                            
+                            <p><strong>17</strong>&nbsp;&nbsp;Primary School <select id="q17" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                    </select></p>
+                            
+                            <p><strong>18</strong>&nbsp;&nbsp;Science Museum <select id="q18" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                    </select></p>
+                            
+                            <p><strong>19</strong>&nbsp;&nbsp;National History Museum <select id="q19" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                    </select></p>
+                            
+                            <p><strong>20</strong>&nbsp;&nbsp;Shopping Mall <select id="q20" class="answer-input" style="width: 100px;">
+                                        <option value="">Select</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                        <option value="E">E</option>
+                                        <option value="F">F</option>
+                                        <option value="G">G</option>
+                                    </select></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2065,132 +2152,53 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 21-25</strong></p>
-                            <p>Choose the correct answer.</p>
+                            <p><strong>Questions 21-24</strong></p>
+                            <p>Complete the summary. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                         </div>
-                        <div style="margin-top: 20px;">
-                            <div style="margin-bottom: 25px;">
-                                <p><strong>21</strong>&nbsp;&nbsp;Students may fail the exam if they</p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="A"> do not collect primary statistics.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="B"> copy other people's work.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="C"> do not follow the instructions.</label></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 25px;">
-                                <p><strong>22</strong>&nbsp;&nbsp;Why does the man think they should avoid including the pictures of the first volcano in the presentation?</p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="A"> They are not attractive.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="B"> The time is limited.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="C"> People have never heard of it.</label></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 25px;">
-                                <p><strong>23</strong>&nbsp;&nbsp;About Mount Fago, a volcano in Mexico or the USA, the man thinks</p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="A"> they should not use inaccurate information in the presentation.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="B"> they should use another example.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="C"> it does not matter where the volcano is.</label></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 25px;">
-                                <p><strong>24</strong>&nbsp;&nbsp;The woman thinks they should mention Mount Etna since</p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="A"> it covers most of the important points.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="B"> It was formed a long time ago.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="C"> it has stunning views.</label></div>
-                                </div>
-                            </div>
-
-                            <div style="margin-bottom: 25px;">
-                                <p><strong>25</strong>&nbsp;&nbsp;They agree to leave out Mount Herton as</p>
-                                <div class="multi-choice-question">
-                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="A"> other students have used it before.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="B"> it is irrelevant to their topic.</label></div>
-                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="C"> there is nothing special about this volcano.</label></div>
-                                </div>
-                            </div>
+                        
+                        <div style="margin-bottom: 18px; line-height: 2.5; font-size: 16px;">
+                            <p>One of the basic strategies when listening to lectures is to use <input type="text" id="q21" class="answer-input" placeholder="21" autocomplete="off">. This saves times, but it is only effective if they can be <input type="text" id="q22" class="answer-input" placeholder="22" autocomplete="off"> later. More generally, it is necessary to format the page in anticipation of the <input type="text" id="q23" class="answer-input" placeholder="23" autocomplete="off"> of the lecture. As an example, one can draw <input type="text" id="q24" class="answer-input" placeholder="24" autocomplete="off">, tables, and flowcharts, consistent with the way the subject matter is presented.</p>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 26-30</strong></p>
-                            <p>Which statement applies to each of the following situations?</p>
+                            <p><strong>Questions 25-30</strong></p>
+                            <p>Complete the table.</p>
+                            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                         </div>
+                        
                         <div style="margin-top: 20px;">
-                            <div style="display: flex; gap: 30px; margin-bottom: 20px; align-items: flex-start;">
-                                <div style="flex: 1;">
-                                    <p style="font-weight: bold; margin-bottom: 15px;">Options</p>
-                                    <p><strong>A</strong>&nbsp;&nbsp;make a short film</p>
-                                    <p><strong>B</strong>&nbsp;&nbsp;lacked his/her own points</p>
-                                    <p><strong>C</strong>&nbsp;&nbsp;neglect the positive aspect</p>
-                                    <p><strong>D</strong>&nbsp;&nbsp;watch some documentaries</p>
-                                    <p><strong>E</strong>&nbsp;&nbsp;did not prepare beforehand</p>
-                                    <p><strong>F</strong>&nbsp;&nbsp;identify the differences between them.</p>
-                                </div>
-                                <div style="flex: 1;">
-                                    <p style="font-weight: bold; margin-bottom: 15px;">Questions</p>
-                                    <p><strong>26</strong>&nbsp;&nbsp;The woman's last presentation was criticized because it
-                                        <select id="q26" class="answer-input" style="width: 80px; margin-left: 10px;">
-                                            <option value="">Select</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                    </p>
-                                    <p><strong>27</strong>&nbsp;&nbsp;The tutor suggests for the next presentation the woman should
-                                        <select id="q27" class="answer-input" style="width: 80px; margin-left: 10px;">
-                                            <option value="">Select</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                    </p>
-                                    <p><strong>28</strong>&nbsp;&nbsp;People do not know enough about volcanoes and so they
-                                        <select id="q28" class="answer-input" style="width: 80px; margin-left: 10px;">
-                                            <option value="">Select</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                    </p>
-                                    <p><strong>29</strong>&nbsp;&nbsp;The reason why the man felt very nervous is that he
-                                        <select id="q29" class="answer-input" style="width: 80px; margin-left: 10px;">
-                                            <option value="">Select</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                    </p>
-                                    <p><strong>30</strong>&nbsp;&nbsp;They are researching active and extinct volcanoes to
-                                        <select id="q30" class="answer-input" style="width: 80px; margin-left: 10px;">
-                                            <option value="">Select</option>
-                                            <option value="A">A</option>
-                                            <option value="B">B</option>
-                                            <option value="C">C</option>
-                                            <option value="D">D</option>
-                                            <option value="E">E</option>
-                                            <option value="F">F</option>
-                                        </select>
-                                    </p>
-                                </div>
-                            </div>
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <thead>
+                                    <tr style="background-color: #4a90e2; color: white;">
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: bold;">Subject</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: bold;">Recommended Page Design</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><input type="text" id="q25" class="answer-input" placeholder="25" autocomplete="off" > Studies</td>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">flowchart, showing courtroom processes and <input type="text" id="q26" class="answer-input" placeholder="26" autocomplete="off" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">Culture Studies</td>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">table or spider graph, linking <input type="text" id="q27" class="answer-input" placeholder="27" autocomplete="off" > thoughts etc.</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">Management Theory</td>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">network (like spider graph but has <input type="text" id="q28" class="answer-input" placeholder="28" autocomplete="off" >)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">Political Science</td>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">linear <input type="text" id="q29" class="answer-input" placeholder="29" autocomplete="off" ></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">Mass Media</td>
+                                        <td style="border: 1px solid #ddd; padding: 12px;">just use <input type="text" id="q30" class="answer-input" placeholder="30" autocomplete="off" ></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -2205,66 +2213,38 @@
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 31-40</strong></p>
-                            <p>Complete the table below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+                            <p>Complete the notes below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
                         </div>
                         
                         <div style="margin-top: 20px;">
-                            <p style="font-weight: bold; margin-top: 20px; text-align: center;">EXOTIC PESTS</p>
-                            <div style="margin: 20px 0;">
-                                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                                    <thead>
-                                        <tr style="background-color: #f5f5f5;">
-                                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Origin</th>
-                                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
-                                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">New habitat</th>
-                                            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Notes</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Australia</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">red-backed spider</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">New Zealand and Japan</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Even so island in middle of <input type="text" id="q31" class="answer-input" placeholder="31" autocomplete="off" "></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">England</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">rabbit</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Australia</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">800 years ago: imported into England to be used for <input type="text" id="q32" class="answer-input" placeholder="32" autocomplete="off" "></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">America</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">fire ants</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off" "> in Brisbane</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">imported by chance</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Australia</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q34" class="answer-input" placeholder="34" autocomplete="off" "></td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Scotland</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Deliberately introduced in order to improve <input type="text" id="q35" class="answer-input" placeholder="35" autocomplete="off" "> (not effective)</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">New Zealand</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">flatworm</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off" "> Europe</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">accidental introduction inside imported <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off" "></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Japan</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off" "></td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Australian coastal waters</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Some advantages</td>
-                                        </tr>
-                                        <tr>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Australia</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">budgerigar</td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">urban areas of south-east <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off" "></td>
-                                            <td style="border: 1px solid #ddd; padding: 8px;">Smaller flocks because of arrival of <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off" "> in recent years</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <p class="centered-title"><strong>GIVING A SPEECH</strong></p>
+                            
+                            <div style="line-height: 2.5; font-size: 16px;">
+                                <p><strong>Reasons for nervousness</strong></p>
+                                
+                                <p>• Lecturers often feel more <input type="text" id="q31" class="answer-input" placeholder="31" autocomplete="off"> if the speech is important.</p>
+                                
+                                <p>• Many think that the ability to make a good public speaking is <input type="text" id="q32" class="answer-input" placeholder="32" autocomplete="off">, while in fact it is a skill that can be learned by anyone.</p>
+                                
+                                <p style="margin-top: 20px;"><strong>How to prepare a quality speech</strong></p>
+                                
+                                <p>• The audience will only remember the <input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off"> sentence of a speech.</p>
+                                
+                                <p>• Ensure that your speech is <input type="text" id="q34" class="answer-input" placeholder="34" autocomplete="off">.</p>
+                                
+                                <p style="margin-top: 20px;"><strong>Do's and Don'ts</strong></p>
+                                
+                                <p>• Don't start your speech until audience is <input type="text" id="q35" class="answer-input" placeholder="35" autocomplete="off">.</p>
+                                
+                                <p>• You can make your main ideas or notes on cards or a <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off">.</p>
+                                
+                                <p>• You do not need to write down the <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"> speech.</p>
+                                
+                                <p>• You can just write <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"> ideas.</p>
+                                
+                                <p>• Remember to <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> yourself to see how long your speech will be.</p>
+                                
+                                <p>• Don't just read from <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off">.</p>
                             </div>
                         </div>
                     </div>
@@ -2283,162 +2263,102 @@
 
     <div id="transcription-data" style="display:none;">
         <div data-part="1"><strong>SECTION 1</strong>
-
-Section 1. You will hear a conversation between an optometrist and a patient who has come for an eye test. First, you have some time to look at questions 1 to 6. You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.
-
-Good morning, can I help you? Yes, I'm here for an appointment at 10 o'clock with the optometrist. I'm a little early, I know it's only 10 to 10. Are you Simon Lee? Yes, I am.
-
-The time of the appointment is 10 o'clock, so 10am has been written in the space. Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time.
-
-Listen carefully and answer questions 1 to 6. Good morning, can I help you? Yes, I'm here for an appointment at 10 o'clock with the optometrist. I'm a little early, I know it's only 10 to 10. Are you Simon Lee? Yes, I am.
-
-I'm Rachel White, the optometrist here today. Come in and take a seat. Thanks.
-
-Before we test your eyes, I just need to get a few details from you. So Simon, what's your full name? Simon Anthony, that's A-N-T-H-O-N-Y. My family name is Lee, L-E-E.
-
-And your date of birth, Simon? The 1st of June, 1989. The 21st of June? No, the 1st of June. Oh, whoops, sorry.
-
-1989. Ah, the same year my son was born. What's your current address? I'm living at a hall of residence.
-
-Which one? At University Hall, not far from here, in Adams Terrace. University Hall. And do you have any medical insurance? Yes, I'm fully covered.
-
-And who are you insured with? I'm with Health for Life. Healthy Life. No, people always get that wrong.
-
-It's Health for Life. They're part of some big insurance company. Good.
-
-Now, Simon, have you ever had your eyes tested before? Yes, once, but not recently. It was when I was still at school. So, roughly when would that have been? Probably around September 2007.
-
-No, on second thoughts, it must have been the year before. September 2006. And my eyesight was fine then.
-
-But you're having a little difficulty now, are you? Yes. Since I started at university, I've been having difficulty with distance vision. I can't always see things in the distance.
-
-Well, let's have a look. Now, I'm just going to cover your left eye. Can you read the top line? Yes.
-
-R, B, Q, S. Before you hear the rest of the conversation, you have some time to look at questions 7 to 10. Now listen and answer questions 7 to 10. Well, Simon, your eyes have obviously got a little worse since your last test, and I think you're going to need to wear glasses.
-
-Not all the time, and not so much for reading or close work, but definitely for driving. Right, yes, I thought that was probably the case. So, now you need to choose some frames.
-
-There's a wide range to choose from, as you can see. Can you give me some idea of the difference in cost? I quite liked the idea of some frameless glasses. Hmm, did you? Well, the prices vary enormously, like everything, but the frameless ones are the most expensive.
-
-The cheapest are the ones with the full frame. Hmm, perhaps I'd better go for those. Or why not try these ones with the half frame? Hmm, they're not too bad.
-
-Yes, they look quite nice, and they're strong. Far less likely to break than the frameless ones. That's a good point.
-
-OK, I think I'll take those ones. If you pop back next Monday, I should have them ready for you, and you can pay for them when you pick them up. Thanks very much.
-
-Can I pay by credit card? You can, but there'll be a slight charge if you do that. Right. I'll pay by cash then, if you don't mind.
-
-No problem. Cash, credit card, debit card, all the same to us. See you on Monday.
-
-That is the end of section 1. You now have half a minute to check your answers. Now turn to section 2.
+You will hear two colleagues, Marcus and Ella, discussing a work project.
+Marcus: Okay, Ella. As you know, the deadline for this project is the end of the month, so we'd better plan it well.
+Ella: Yes, I've already been thinking along those lines, and I've decided we should divide this project into three phases: the Pre-phase (Example), then Phase 1, and then Phase 2, with strict deadlines involved for each one.
+Marcus: Given that we have to finish this quickly, that sounds good. Tell me more.
+Ella: The Pre-phrase is the simplest. We just need to allocate a space or a place to do our planning, and this space will need to be quite big.
+Marcus: Sure, and we have to decide on the equipment (Q1) needed as well. Remember the last project, when we didn't have enough projectors to present our ideas? We lost lots of time there.
+Ella: Yes, that was a bad start. That's why, after the Pre-phase is finished, I've allocated a mere three days for Phase One.
+Marcus: That will involve drawing the plans. We'll need Jenna to help us.
+Ella: And Marco.
+Marcus: Yes, but not Susan. Susan is just far too busy to participate, as much as I'd like her in the team.
+Ella: Let's just take Fred (Q2) instead. He'll do.
+Marcus: Sure. Fred's not as experienced as Greg, but I agree, he'll do fine for this job.
+Ella: Then it's straight into Phase 2, collecting, collating, analysing, and preparing the final report.
+Marcus: Can we do that in five days?
+Ella: I think that's optimistic, which is why I scheduled six (Q3).
+Marcus: That's almost a week! Do we have that much time?
+Ella: We do, and with the right people, six days should see the job done.
+Marcus: Who are the people for this phase? Arthur and Rob, right?
+Ella: No, Arthur's got other things to do, and Rob's on leave, so Mike (Q4) alone will be the main man on this part. He's done it before, so it should be fine. But he may need some help with the smaller tasks. Someone who is good with detail and procedures.
+Marcus: Hmmm. Peter's not free at the moment, so I can arrange Leo (Q5) to chip in some time and advice. Leo's very useful, particularly under pressure. And that's everything sorted! Well done Ella. This report should certainly be ready in time.
+Marcus: Okay, Ella, you've done a good job with the basic timeframe of this project, but what about specifics?
+Ella: What sort of specifics?
+Marcus: Well, things like information gathering. Are we going to use questionnaires like we did last time?
+Ella: I was thinking of using the Internet to ask people to give their views, but you often get such silly responses when you do that. I'm of the view that the best way to find out things is to ask people directly (Q6), so that's what we'll do.
+Marcus: Okay, but that will take longer. We'll probably even have to do some of the work at home.
+Ella: No, I don't think so, as long as we stay back at work for some afterhours meetings (Q7).
+Marcus: Well, that's better than coming in early. No one functions well in the morning. Also, the final report will need at least two appendices.
+Ella: Not only that, we'll have to attach a small booklet to the end (Q8), containing printouts of the relevant parts from all the foreign websites we accessed.
+Marcus: That will take even more time. Are you sure we can meet this deadline?
+Ella: Yep, I've worked it all out, and I'm confident we can do it. Phase 1 should be finished by the 5th, leaving Phase 2 to begin about the 8th or 9th. Now, there's a public holiday on the 10th, meaning that everything should be able to be submitted on the 15th (Q9), and after that, we can relax, and celebrate on the 25th when the Design Division gives us approval to go ahead.
+Marcus: Hah, you're assuming that the Design Division will approve this, and that's not guaranteed at all.
+Ella: Oh come on Marcus, be positive. You know this should be approved—in fact, I'm even planning the celebration when this is all over.
+Marcus: Oh yeah, what's on the agenda, then?
+Ella: Well, we definitely don't want a party in the office, do we? We'll want to get away from this place, and we're all too busy with our own lives and families to find a mutual time free for a dinner party, so I thought we'd just buy some nice expensive gifts (Q10) for everyone who participated. We can just give these to the people here in the office.
+Marcus: That sounds fine to me, but make sure they're not too expensive. The Budget Department will never approve the cost.
+Ella: Don't worry; I know how much I can get away with.
+Marcus: Alright. I'll leave that with you.
         </div>
         <div data-part="2"><strong>SECTION 2</strong>
-
-Section 2. You will hear a guidance counsellor talking to a group of students. First, you have some time to look at questions 11 to 14.
-
-Listen carefully and answer questions 11 to 14. Hello, everyone. I'm the counselling administrator here at St Ives College, and I've been asked to come and talk to you about our counselling team and the services that we offer.
-
-We have three professional counsellors here at St Ives, Louise Bagshaw, Tony Denby and Naomi Flynn. They each hold daily one-on-one sessions with students, but which counsellor you see will depend on a number of factors. If you've never used a counsellor before, then you should make an appointment with Naomi Flynn.
-
-Naomi specialises in seeing new students and offers a preliminary session where she will talk to you about what you can expect from counselling, followed by some simple questions about what you would like to discuss. This can be really helpful for students who are feeling a bit worried about the counselling process. Naomi is also the best option for students who can only see a counsellor outside office hours.
-
-She is not in on Mondays, but starts early on Wednesday mornings and works late on Thursday evenings, so you can see her before your first class or after your last class on those days. Louise staffs our drop-in centre throughout the day. If you need to see someone without a prior appointment, then she is the one to visit.
-
-Please note that if you use this service, then Louise will either see you herself or place you with the next available counsellor. If you want to be sure to see the same counsellor on each visit, then we strongly recommend you make an appointment ahead of time. You can do this at reception during office hours or by using our online booking form.
-
-Tony is our newest addition to the counselling team. He is our only male counsellor and he has an extensive background in stress management and relaxation techniques. We encourage anyone who is trying to deal with anxiety to see him.
-
-Tony will introduce you to a full range of techniques to help you cope with this problem, such as body awareness, time management and positive reinforcement. Before you hear the rest of the talk, you have some time to look at questions 15 to 20. Now listen and answer questions 15 to 20.
-
-Each semester, the counselling team runs a number of small group workshops. These last for two hours and are free to all enrolled students. Our first workshop is called Adjusting.
-
-We've found that tertiary education can come as a big shock for some people. After the structured learning environment of school, it is easy to feel lost. In this workshop, we will introduce you to what is necessary for academic success.
-
-As you might expect, we're targeting first year students with this offering. Getting organised follows on from the first workshop. Here, we're going to help you break the habit of putting things off, get the most out of your time and discover the right balance between academic and recreational activities.
-
-With getting organised, we're catering to a broader crowd, which includes all undergraduates and postgraduates. Next up is a workshop called Communicating. The way people interact here may be quite different to what you're used to, especially if you've come from abroad.
-
-We'll cover an area that many foreign students struggle with, how to talk with teachers and other staff. We'll cover all aspects of multicultural communication. International students tend to get a lot out of this class, so we particularly encourage you to come along.
-
-But I must say that sometimes students from a local background find it helpful too, so everyone is welcome. The Anxiety Workshop is held later on in the year and deals with something you will all be familiar with, the nerves and anxiety that come when exams are approaching. Many students go through their entire academic careers suffering like this, but you don't have to.
-
-Come to this workshop and we'll teach you all about relaxation and how to breathe properly, as well as meditation and other strategies to remain calm. We've tailored this workshop to anyone who is going to sit exams. Finally, we have the Motivation Workshop.
-
-The big topic here is how to stay on target and motivated during long-term research projects. This workshop is strictly for research students, as less advanced students already have several workshops catering to their needs. Well, that's it.
-
-Thanks for your time. If you have any questions or want more information about our services, do come and see us at the Counselling Service. That is the end of Section 2. You now have half a minute to check your answers.
-
+Thank you all for coming to our community meeting. As you know, we are excited to unveil our improvement plan as we look forward to the influx of tourists in the summer months. I'll start with a quick overview of the main points of interest in the area for anyone who may not quite know his or her way around yet, and then I'll get into the improvements made.
+First off is my favorite, the Science Museum, which is on the corner of Saint George Road (Q11). If you have not visited it yet, I encourage you to go before the busy season. It is absolutely spectacular – there is even a flight simulator you can try out!
+Just west of the Science Museum is the National History Museum (Q12). It's a site not to be missed as well, with each floor devoted to a different era in our nation's history. There are special exhibits for children with interactive games and fun history lessons, too.
+If you're looking for parking, it is available on the intersection of Queen Street and South King Street in the Car Park (Q13). Standard hourly and daily rates do apply.
+The best place for souvenirs is the Shopping Mall, though it gets extremely busy during peak times. You can get there from the tube, or the entrance on Timber Road, just south of Cornwell Road (Q14).
+This area has students everywhere, usually from the Primary School across the street from the Shopping Mall (Q15). Classes often take field trips and engage in guided tours through the area.
+So that's the overview of the main sites and hopefully by now I've given you a general idea of the area.
+Now I'm going to outline the improvements we have made in our efforts to make the experience even better for each and every one of our visitors. You probably noticed when you first drove into the Car Park this morning, that there is now additional signage to help avoid confusion. The directions were not entirely clear at first, so we have increased the number of one-way signs indicating the correct direction of traffic flow (Q16).
+Not far from there, in line with our mission of giving back to the community, we constructed a brand new playground for the Primary School (Q17). It is really something to be excited for – the equipment is state-of-the-art and includes swings, a small climbing wall, and even an obstacle course.
+Now we'll head north and take a look at the Science Museum. In response to our feedback from past visitors to the museum, there is now free information available (Q18) outlining not only upcoming IMAX showings, but also natural wonders like meteor showers, eclipses, and other cool natural events.
+The Science Museum isn't the only Museum improving the experience of its visitors. The National History Museum has added an entire new wing to its facility to accommodate the large crowds (Q19) of people gathering to see the Civil War exhibit, inventions timeline exhibit, and other wonderful sections of the museum. The increase in space will definitely give a more calm, comfortable experience for visitors (Q19).
+And finally, remember when there was actually a line at the mall entrance from the Tube Station? It was terrible trying to get anywhere from the Tube because foot traffic got so backed up sometimes. We have addressed that by adding another entry point into the mall from the other end of the platform to disperse the crowd (Q20).
+So those are the major improvements we have made. Clearly having too many people that want to visit and enjoy what our community has to offer the public is a good problem to have, and I am confident that we have made the changes necessary to accommodate the growing interest in the area.
+As always, we welcome any questions, comments, or concerns about the new improvement plan. In a few minutes I will open up the floor for questions but you can also contact me or any other board member by email or through the city website. Thank you for coming, and I now encourage you to stay for the Questions and Answers panel occurring between now and 10.30…
         </div>
         <div data-part="3"><strong>SECTION 3</strong>
-
-Now turn to Section 3. You will hear Tim and Jenny, two students, talking about their geography assessment. First, you'll have some time to look at questions 21 to 25.
-
-Now listen carefully and answer questions 21 to 25. Hi Jenny. Hi Tim. How are you doing? I'm OK, but I'm really stressed out about our geography assessment next week.
-
-Have you done any work on it yet? I've looked at it a little bit, but it would be helpful to discuss it with someone else. Do you want to chat about it with me? That would be great. Do you know what the rules are for the test? For our assessment last term, we were all required to collect raw data in order to achieve a pass.
-
-However, this term the tutor has said that it won't be necessary for us to do this. I read through the notes and they said that we are all going to be given a set of instructions that we can choose to follow if we wish, but it's not mandatory, and we can complete the exam as we wish. I don't think that the rules will be too strict.
-
-As long as we don't copy the answers from anyone else's exam paper, I think we'll be sure to pass. Yes, I agree. Shall we put together a slideshow presentation with information on all of the volcanoes? I think it will really help us to revise the facts.
-
-OK, great. Let's start with Pompeii. It's the most well-known of all the volcanoes, so it should be easy to find lots of information about it online.
-
-I'll avoid including some of the images in the presentation, as many people were killed and some of them can be quite disturbing. We're lucky to have a double free period today, so we will have plenty of time to revise this together. OK, next up is Mount Fago.
-
-This is an ancient mythical volcano, the location of which is unclear. There are mountainous regions in both Mexico and the USA, both of which are rumoured to be the site of this volcano. It's not very scientific to list two separate locations for one volcano, but since no one has been able to prove which is the correct one, we're left with no choice.
-
-It's interesting that there is no other example of a volcano in existence today that is surrounded by so much mystery. Absolutely. I think we should include some information about Mount Etna in Sicily, which is famous for the stunning panoramas that one can appreciate from its peak.
-
-According to Google, it's a relatively new volcano compared to others in the surrounding region, which may be why it has very few of the features found in older volcanoes. Oh, how interesting! Shall we include information on Mount Hurton? I don't think that any of the other students have carried out much research into it, even though it has a lot of unique features. I think we should leave it out.
-
-Since it's a man-made volcano, it's not that relevant to our syllabus and probably won't be included in any of the exam questions. Before you hear the rest of the conversation, you have some time to look at questions 26 to 30. Now listen and answer questions 26 to 30.
-
-Have you gotten feedback from your tutor on your presentation last week? Yes, I have, but I don't think he was very impressed. He was satisfied by the amount of research that I had prepared before I started, but he criticized the fact that I was mostly summarizing the facts instead of giving my own opinion. Oh, that's a shame.
-
-It was frustrating that he criticized my work, but in the end I learned a lot from my tutor's feedback. He advised me that next time I should present my work as a short documentary film, which he thinks will help me to strengthen my arguments. What topic was your presentation based on? I chose to write about the lack of knowledge that most people have about volcanoes and the fact that they see them in such a negative way.
-
-During documentaries and lectures, the scientific experts often neglect to mention the many positive features that volcanoes possess. That sounds really interesting. Well done! I think everyone enjoyed watching, but I was really nervous about talking in front of an audience.
-
-I also felt very underprepared, since I didn't finish writing the presentation until the night before and therefore had no time to rehearse it. I'm sure it was great. Is there any other information that you think we should include in our slideshow for revision? Yes, I think it's important that we list all of the differences between active and extinct volcanoes, as there will definitely be a question on this topic.
-
-There are no documentaries on the subject, but there's a very informative website that discusses the geological structure of each volcano type. OK. Well, I'll continue collecting images and you can carry on with the online research.
-
-That is the end of Section 3. You now have half a minute to check your answers.
-
+Dylan: Hi, Emily. What did you think of that lecture?
+Emily: A bit hard to follow, but I have some good lecture-listening note-taking strategies which really help, so I can review the lecturer's message later.
+Dylan: Lecture-listening note-taking strategies? Review it later? That sounds interesting. I must admit, I struggle a bit to take down the gist of what I hear. Look at my notes.
+Emily: Well, I can see a basic problem immediately. You're writing full words, such as 'century' when all you need is a 'C', And don't write 'increase'; just draw an 'up' arrow. And why write 'thousand' when a 'th' will do?
+Dylan: I see. Just use symbols (Q21). That's not a bad idea at all.
+Emily: It's the most basic strategy, allowing you to record information at a faster pace. These lecturers can talk faster than others, too, so you don't want to waste any time. But you need to be very familiar with your set of symbols.
+Dylan: Why?
+Emily: Because you'll have to look at these notes days, weeks, or even months afterwards, when you begin writing your essay, so you'll need to be able to interpret (Q22) them at a later stage.
+Dylan: I think I can do this, even by looking at your notes. 'Immed' must mean immediately.
+Emily: But regarding the lecture as a whole, I knew the professor would be giving a set of specific recommendations, and comparing two alternative approaches, so I formatted my page in advance, adding the features consistent with the nature (Q23) of what I was going to hear.
+Dylan: Ah … I think I need an example of what you mean.
+Emily: Well, look at my page. Before the lecture, I drew large headings (Q24) saying 'recommendations'. You should always draw these, and I drew a table saying, 'Approach 1' and 'Approach 2'. At the end I drew a flowchart, as obviously the final recommendation would be a step-by-step approach. Then I was prepared in advance to simply fill in the spaces.
+Dylan: Wow! Now that's clever.
+Dylan: Your advice about note taking sounds great, but I still have one question, Emily. How are you able to design your page in advance? I mean, how can you predict the nature of the talk, and know which design is likely to work best?
+Emily: It's rather obvious when you think about it. What's your next lecture about?
+Dylan: Legal Studies (Q25).
+Emily: Well, that suggests to me that you'll need a flowchart, since the judicial system has a very logical 'do this first, do that second' approach, which must be followed in that order—y'know, all the processes that happen in the courtroom, and the procedures (Q26) that must take place to ensure complete legality.
+Dylan: Sure. That's the way law is, very linear and orderly, but what about Culture Studies? That's just a mass of comparisons of different cultures.
+Emily: Which tells you that you will need a table, where, in tabular form, you can efficiently write down information.
+Dylan: But often the lecture's not that simple. The professor throws in a really complex mix of ideas.
+Emily: Then use a spider graph—like the web a spider makes, where there's a central idea around which you attach all the associated (Q27) thoughts, and ideas, and impressions.
+Dylan: I see. I think I understand. And that would be very quick, too; very efficient. I like that. But what about Management Theory? How would you approach that?
+Emily: The same as with Culture Studies. I'd use a network, which is basically the same as a spider graph, linking thoughts, although this time there are directions (Q28) involved. It is this element that makes it different—the fact that the thoughts go one way and not the other.
+Dylan: Okay … has directions. It sounds logical. And what about the other subjects, such as Political Science? There's no predictable order to that.
+Emily: Well, for that I'd just put my notes (Q29) in a line, that is, in linear, or straight-line fashion, and these notes would use symbols, of course, to save time.
+Dylan: Okay, that just leaves Mass Media.
+Emily: For that, I wouldn't have any special design at all. As you say, sometimes it's impossible to predict in what way lecturers will present their information, in which case the best you can do is pre-write headings (Q30), but not specific, just general, as in Main One, Main Two, Sub One, Two, and Three, and so on.
+Dylan: Okay.
+Emily: But always be prepared to adapt to the nature of the talk, using any one of the other methods if it becomes appropriate at the time.
         </div>
         <div data-part="4"><strong>SECTION 4</strong>
-
-Now turn to Section 4. You will hear part of a lecture about exotic pests, given as the introduction to a course on ecology and environment. First, you have some time to look at questions 31 to 40.
-
-Pause the recording for one minute. Now listen carefully and answer questions 31 to 40. Good afternoon.
-
-I want this afternoon, as an introduction to our ecology module, to offer examples of exotic pests, non-native animals or plants, which are, or may be, causing problems, which might prove a fruitful topic for seminar papers later in the term. People and products are crisscrossing the world as never before. And on these new global highways, plants and animals are travelling too.
-
-Exotic plants and animals are turning up in Antarctica and on the most remote islands on Earth. For example, the Australian red-backed spider. It's made its way to countries fairly near home, such as New Zealand and Japan, as some of you may know.
-
-Well, it's also been found on Tristan da Cunha, which is a remote island thousands of miles from anywhere, way out in the middle of the Atlantic. Now, another famous animal invader in the other direction, so to speak, from England to Australia in the Southern Hemisphere, is the rabbit. This was in 1830, and it might seem less of a threat, but it became an extraordinarily destructive pest.
-
-The fact that rabbits increased so rapidly is perhaps more understandable when we remind ourselves that they had originally been introduced to England from continental Europe eight centuries earlier. This was because they were regarded as a luxury food source, and in spite of having warm fur, they probably originated on the hot, dry plains of Spain, which, of course, explains why they thrive in the climate of Australia. A much less cuddly example of a pest introduced to Australia, this time from America, is fire ants.
-
-These are increasing and spreading very fast. Their huge nests can now be found in gardens in the city of Brisbane, and they are costing the Australian Government a great deal of money in control measures. These were an accidental introduction, rather than a deliberate one, brought to Australia probably in horticultural imports or in mud on second-hand machinery.
-
-As a biologist and conservationist, I have become increasingly concerned about these matters. Exotic invasions are irreversible and deserve to be taken more seriously, even when they aren't particularly damaging. For example, something that is not necessarily a major disaster compared to other ecological experiments.
-
-In 1975, an Australian species of earthworm was deliberately introduced to the Northern Hemisphere in Scotland because they were bigger than the natives. The aim was that they would be more effective than native species, but in fact they don't do more for the soil condition than the smaller locals which they displace. Although they don't do a lot of harm, as far as we know up to now, this will probably prove to have been a mistake.
-
-A much more serious case, also in Scotland, as well as other countries, along with the latest victim, Iceland, is the New Zealand flatworm. This is a most unwelcome newcomer in these regions of Northwest Europe. Basically, this flatworm came into these countries by accident.
-
-It's now been realised that it was actually carried in the plant pots containing exotic ornamental shrubs, and so on, and as it eats local earthworms and doesn't benefit the local ecology in any way, it is a real pest. Next, there's a further instance, this time in the water, and it's come from Japan. It's a delicious but very fast-spreading seaweed and is one of many exotic species, large and small, in the seas covering the rocks around Australia.
-
-Unfortunately, it is replacing indigenous seaweeds and permanently altering the ecosystem. However, to look at the situation from a business point of view, it is now being harvested and exported, dried, back to Japan, its original home, where it's particularly popular. So, sometimes we may find accidental benefits from apparently harmful arrivals.
-
-Well, you could say that world ecology is now going the same way as popular culture. Global music and fashions, food and drinks, are taking over from local ones in every land. And in ecosystems, we find vigorous exotic invaders overwhelming native species and natural habitats.
-
-But can we find any examples of invaders which appear to be a problem and then find that, in fact, they may not be such a big issue after all? We might take as an example a native of Australia, the budgerigar, the most common pet parrot in the world, of course. Because there have been many escapes over the years, it is now to be found flying about in feral flocks where the climate suits it. So, these flocks of budgerigars have been getting very numerous in the south-east of the United States, particularly in residential areas.
-
-People have been getting quite worried about this, but it has been observed that the size of the flocks has diminished somewhat recently. The fact that they are smaller is thought to be due to the fact that new competitors for their habitat have arrived from other places. That's the last example for now.
-
-What I'd like you to consider is this. Is the planet Earth moving towards a one-world ecosystem? How far would it be a wholly bad development? That is the end of Section 4. You now have half a minute to check your answers.
+Good morning. Today I am going to cover the daunting task of giving a quality speech – a thought that makes most of us cringe. In fact, 90% of all people feel nervous about public speaking, about 10% of whom are described as genuinely terrified. Hopefully when we are finished here today, you all will be in the 10% of the population who do not feel nervous at all.
+Did you know that lecturers tend to get more nervous (Q31) if the speech they are giving is an important one? It makes sense, right? You probably wouldn't be nearly as nervous to address your residence hall about the proper use of the recycle and compost bins as you might be if you were asked to give the graduation speech to your entire 5,000-student class.
+So what is it that makes some people completely comfortable in front of crowds? Some people think that the ability to give a good speech is a gift (Q32) that others are simply born with. This is almost never the case. Public speaking can be learned with practice.
+The first, most important thing you can do to improve your confidence in delivering a speech is to prepare a quality speech. Honestly, while the content of your speech is relatively important, the audience will really only remember the last (Q33) sentence you say. It is a good idea to structure the rest of your speech to lead up to this last point to really drive your message home. This is a good way to ensure that your speech is well-organised (Q34).
+Once you are confident in the quality of the speech you have written, the rest is just about your stage presence. Let's go through some do's and don'ts of public speaking.
+First, you want to command the attention of the room. Do not – I repeat, do not proceed with your speech until the audience is paying attention (Q35). Even Martin Luther King, Junior's I Have a Dream speech wouldn't have made any difference in the world without the undivided attention of his audience.
+To continue with the I Have a Dream example, one of the reasons that MLK was such an effective orator was his ability to speak with passion and engage with his audience. That sort of charisma does not come from reading straight from paper. Don't get me wrong – it is a good idea to write your main ideas down on a note card, sheet of paper (Q36), or something. But one factor that will consistently lead to a boring, forgettable speech is writing down your entire speech. Do not write your full (Q37) speech down. If you are constantly reading your paper, you are not making eye contact with your audience, and thus failing to really express the feeling that goes with your ideas.
+I advise you write one or two (Q38) ideas, so I f you suddenly draw a blank you have something to jog your memory. If you've written a good speech that you believe in, those ideas should be sufficient to keep you on track.
+Once you have those ideas written down, give your speech a few practice runs in front of the mirror, into your sound recorder on your phone, or with a friend before it comes time to address a crowd. That way you can hear how the ideas come across, make sure there are no abrupt transitions, and find out whether you're talking too fast or too slow. Timing is important – make sure you time (Q39) yourself beforehand to see how long your speech is. That is pretty much it! With practice you'll be able to deliver an expert speech that engages and even maybe inspires your audience. Just remember – speak with emotion. No one wants to listen to someone reading from a script (Q40).
+As I come to a close in my speech, I'll point out that I have employed all of these tips that I have covered. I practiced my speech ahead of time and timed it, and I can even show you my one small index card with just three simple bullets on it. It's as easy as that!
         </div>
     </div>
 
@@ -2446,16 +2366,16 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
     <div id="answer-key" style="display:none;">
         <h3>Correct Answers:</h3>
         <p><strong>Part 1 (Questions 1-10):</strong></p>
-        <p>1. Anthony<br>2. 1(st) June<br>3. University Hall<br>4. Health for Life<br>5. September 2006<br>6. (in the) distance<br>7. (for) driving<br>8. (the) full frame<br>9. (they are) strong<br>10. (in/by) cash</p>
+        <p>1. Jacobs<br>2. Rod<br>3. highfield<br>4. NH871812C<br>5. Dr.Kevin<br>6. A<br>7. B<br>8. C<br>9. A<br>10. B</p>
         
         <p><strong>Part 2 (Questions 11-20):</strong></p>
-        <p>11. A<br>12. B<br>13. C<br>14. D<br>15. first year<br>16. (right)balance<br>17. international/foreign(students)<br>18. relaxation<br>19. motivation<br>20. research/advanced</p>
+        <p>11. C<br>12. A<br>13. C<br>14. C<br>15. A<br>16. C<br>17. E<br>18. A<br>19. G<br>20. D</p>
         
         <p><strong>Part 3 (Questions 21-30):</strong></p>
-        <p>21. B<br>22. A<br>23. A<br>24. C<br>25. B<br>26. B<br>27. A<br>28. C<br>29. E<br>30. F</p>
+        <p>21. Tomorrow<br>22. Reliability<br>23. 4000 (words)<br>24. e-mail attachment<br>25. market surveys<br>26. stack system<br>27. plagiarism/ using their conclusions<br>28. extension<br>29. (Doctor's) certificate<br>30. mortgage interest rates</p>
         
         <p><strong>Part 4 (Questions 31-40):</strong></p>
-        <p>31. (the) Atlantic (Ocean)<br>32. (luxury) food (source)<br>33. (in) gardens<br>34. earthworm / earth worm<br>35. soil (condition)<br>36. North(-)west / north(-)west<br>37. plant pots<br>38. seaweed(s) / sea weed(s)<br>39. United States / USA<br>40. (new) competitors</p>
+        <p>31. Millennium<br>32. River Thames<br>33. 3.5 million<br>34. British Airways<br>35. 135 metres<br>36. tension piles<br>37. A-frame<br>38. rim<br>39. passenger capsules<br>40. boarding platform</p>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2582,6 +2502,8 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                 <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
             </div>
         </div>
+        
+    
     </nav>
 
     <!-- Context Menu -->
@@ -2656,29 +2578,25 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
 
                 let isAnswered = false;
                 const textInput = document.getElementById(`q${qNum}`);
-                const selectInput = document.getElementById(`q${qNum}`);
                 const radioInput = document.querySelector(`input[name="q${qNum}"]:checked`);
                 const dropZone = document.querySelector(`.drop-zone[data-question-id="${qNum}"]`);
-                const clickableCell = document.querySelector(`.clickable-cell[data-question="q${qNum}"].selected`) || 
-                                     document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
+                const clickableCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
 
-                // Check for checkbox questions with multiple answer requirements
-                    if (selectInput && selectInput.tagName === 'SELECT' && selectInput.value && selectInput.value !== '') {
+                // Check for radio button questions first (questions 15-16, 17-20, etc.)
+                if (radioInput) {
                     isAnswered = true;
-                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
-                    isAnswered = true;
-                } else if (radioInput) {
-                    isAnswered = true;
-                    if (qNum >= 17 && qNum <= 20) {
+                    if (qNum >= 15 && qNum <= 20) {
                         console.log(`Question ${qNum} radio detected as answered: ${radioInput.value}`);
                     }
+                // Check for checkbox questions with multiple answer requirements
+                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
+                    isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
                     isAnswered = true;
                 } else if (clickableCell) {
                     isAnswered = true;
-                    if (qNum >= 11 && qNum <= 14 || qNum >= 25 && qNum <= 30) {
-                        const cellValue = clickableCell.getAttribute('data-answer') || clickableCell.getAttribute('data-value');
-                        console.log(`Question ${qNum} clickable cell detected as answered: ${cellValue}`);
+                    if (qNum >= 13 && qNum <= 16 || qNum >= 25 && qNum <= 30) {
+                        console.log(`Question ${qNum} clickable cell detected as answered: ${clickableCell.getAttribute('data-value')}`);
                         console.log(`Clickable cell element:`, clickableCell);
                     }
                 }
@@ -2705,69 +2623,14 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia801009.us.archive.org/8/items/mix-26m-24s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-c/mix_26m24s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia800907.us.archive.org/21/items/mix-23m-47s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_23m47s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
         audioPlayer.src = audioSource;
 
-        const correctAnswers = {
-            /* --- Part 1 --- */
-            'q1': ['Anthony'],
-            'q2': ['1st June', '1 June', 'June 1st', 'June 1', 'first June'],
-            'q3': ['University Hall', 'university hall'],
-            'q4': ['Health for Life', 'health for life'],
-            'q5': ['September 2006'],
-            'q6': ['in the distance', 'distance'],
-            'q7': [ 'driving'],
-            'q8': ['full frame', 'full-frame'],
-            'q9': ['strong'],
-            'q10': ['in cash', 'by cash', 'cash'],
 
-            /* --- Part 2 --- */
-            'q11': 'A',
-            'q12': 'B',
-            'q13': 'C',
-            'q14': 'D',
-            'q15': ['first year'],
-            'q16': ['right balance', 'balance'],
-            'q17': ['international', 'foreign', 'international students', 'foreign students'],
-            'q18': ['relaxation'],
-            'q19': ['motivation'],
-            'q20': ['research', 'advanced'],
 
-            /* --- Part 3 --- */
-            'q21': 'B',
-            'q22': 'A',
-            'q23': 'A',
-            'q24': 'C',
-            'q25': 'B',
-            'q26': 'B',
-            'q27': 'A',
-            'q28': 'C',
-            'q29': 'E',
-            'q30': 'F',
-
-            /* --- Part 4 --- */
-            'q31': ['the Atlantic', 'Atlantic', 'the Atlantic Ocean', 'Atlantic Ocean'],
-            'q32': ['luxury food', 'food', 'luxury food source', 'food source'],
-            'q33': ['gardens', 'in gardens' ],
-            'q34': ['earthworm', 'earth worm'],
-            'q35': ['soil', 'soil condition'],
-            'q36': ['Northwest', 'North-west', 'northwest', 'north-west'],
-            'q37': ['plant pots'],
-            'q38': ['seaweed', 'seaweeds', 'sea weed', 'sea weeds'],
-            'q39': ['the United States', 'the USA'],
-            'q40': ['new competitors', 'competitors']
-        };
-
-        const questionTypes = {
-            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text', 'q5': 'text',
-            'q6': 'text', 'q7': 'text', 'q8': 'text', 'q9': 'text', 'q10': 'text',
-            'q11': 'matching', 'q12': 'matching', 'q13': 'matching', 'q14': 'matching', 'q15': 'text', 'q16': 'text', 'q17': 'text', 'q18': 'text', 'q19': 'text', 'q20': 'text',
-            'q21': 'mcq', 'q22': 'mcq', 'q23': 'mcq', 'q24': 'mcq', 'q25': 'mcq', 'q26': 'select', 'q27': 'select', 'q28': 'select', 'q29': 'select', 'q30': 'select',
-            'q31': 'text', 'q32': 'text', 'q33': 'text', 'q34': 'text', 'q35': 'text', 'q36': 'text', 'q37': 'text', 'q38': 'text', 'q39': 'text', 'q40': 'text'
-        };
-
-                    function setupCheckboxLimits() {
+                function setupCheckboxLimits() {
                 const groupsWithLimits = [
+                    // No checkbox groups with limits currently defined
                 ];
 
             groupsWithLimits.forEach(({ name, max }) => {
@@ -2806,58 +2669,33 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
             cells.forEach((cell, index) => {
                 const question = cell.getAttribute('data-question');
                 const value = cell.getAttribute('data-value');
-                const onclick = cell.getAttribute('onclick');
-                console.log(`Cell ${index}: question=${question}, value=${value}, onclick=${onclick}`);
+                console.log(`Cell ${index}: question=${question}, value=${value}`);
             });
         }
         
         function selectCell(cell, questionNumber, value) {
-            try {
-                console.log(`selectCell called: question ${questionNumber}, value ${value}`);
-                console.log('Cell element:', cell);
-                console.log('Cell classes:', cell.className);
-                console.log('Cell data-question:', cell.getAttribute('data-question'));
-                console.log('Cell data-value:', cell.getAttribute('data-value'));
-                
-                // Remove previous selection for this question
-                const row = cell.closest('tr');
-                if (!row) {
-                    console.error('Could not find row for cell');
-                    return;
-                }
-                
-                const cells = row.querySelectorAll('.clickable-cell');
-                console.log(`Found ${cells.length} clickable cells in row`);
-                cells.forEach(c => {
-                    c.classList.remove('selected');
-                    console.log(`Removed 'selected' class from cell with value: ${c.getAttribute('data-value')}`);
-                });
-                
-                // Select the clicked cell
-                cell.classList.add('selected');
-                console.log(`Added 'selected' class to cell with value: ${value}`);
-                console.log('Cell classes after selection:', cell.className);
-                
-                // Store the answer in the hidden input
-                const hiddenInput = document.getElementById(`q${questionNumber}`);
-                if (hiddenInput) {
-                    hiddenInput.value = value;
-                    console.log(`Hidden input q${questionNumber} value set to: ${value}`);
-                } else {
-                    console.error(`Hidden input q${questionNumber} not found`);
-                }
-
-                // Update answered indicators
-                updateAnsweredIndicators();
-                
-                // Force a visual update
-                cell.style.display = 'none';
-                cell.offsetHeight; // Force reflow
-                cell.style.display = '';
-                
-            } catch (error) {
-                console.error('Error in selectCell:', error);
+            // Remove previous selection for this question
+            const questionRow = cell.closest('tr');
+            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
+            cellsInRow.forEach(cell => {
+                cell.classList.remove('selected');
+                cell.style.backgroundColor = '#f8f9fa';
+                cell.style.color = 'black';
+            });
+            
+            // Select the clicked cell
+            cell.classList.add('selected');
+            cell.style.backgroundColor = '#4a90e2';
+            cell.style.color = 'white';
+            
+            // Persist selection in hidden input (for answered state and grading if needed)
+            const hiddenInput = document.getElementById(`q${questionNumber}`);
+            if (hiddenInput) {
+                hiddenInput.value = value;
             }
+            
+            // Update answered indicators
+            updateAnsweredIndicators();
         }
 
         function switchToPart(partNumber, andPlay = false) {
@@ -3177,17 +3015,17 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
         function updateAttemptedCount(partNumber) {
             const partContainer = document.getElementById(`part-${partNumber}`);
             if (!partContainer) return;
-            const inputs = partContainer.querySelectorAll('input.answer-input:not([disabled]):not([type="hidden"]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select');
+            const inputs = partContainer.querySelectorAll('input.answer-input:not([disabled]):not([type="hidden"]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled])');
             let answeredCount = 0;
             const answeredGroups = {};
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
-                    if (input.name === 'q18-20') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q18-20"]:checked').length;
-                        // Represent q18, q19, and q20 as three separate questions in the footer count
-                        const keyFirst = 'q18-20-first';
-                        const keySecond = 'q18-20-second';
-                        const keyThird = 'q18-20-third';
+                    if (input.name === 'q28-30') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q28-30"]:checked').length;
+                        // Represent q28, q29, and q30 as three separate questions in the footer count
+                        const keyFirst = 'q28-30-first';
+                        const keySecond = 'q28-30-second';
+                        const keyThird = 'q28-30-third';
                         if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
                             answeredCount++;
                             answeredGroups[keyFirst] = true;
@@ -3200,12 +3038,11 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                             answeredCount++;
                             answeredGroups[keyThird] = true;
                         }
-                    } else if (input.name === 'q38-40') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q38-40"]:checked').length;
-                        // Represent q38, q39, and q40 as three separate questions in the footer count
-                        const keyFirst = 'q38-40-first';
-                        const keySecond = 'q38-40-second';
-                        const keyThird = 'q38-40-third';
+                    } else if (input.name === 'q31-32') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q31-32"]:checked').length;
+                        // Represent q31 and q32 as two separate questions in the footer count
+                        const keyFirst = 'q31-32-first';
+                        const keySecond = 'q31-32-second';
                         if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
                             answeredCount++;
                             answeredGroups[keyFirst] = true;
@@ -3213,22 +3050,13 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                         if (checkedCount >= 2 && !answeredGroups[keySecond]) {
                             answeredCount++;
                             answeredGroups[keySecond] = true;
-                        }
-                        if (checkedCount >= 3 && !answeredGroups[keyThird]) {
-                            answeredCount++;
-                            answeredGroups[keyThird] = true;
                         }
                     } else if (input.checked && !answeredGroups[input.name]) {
                         answeredCount++;
                         answeredGroups[input.name] = true;
                     }
                 } else {
-                    // Don't count hidden inputs for matching questions (they're counted via clickable cells)
-                    const questionType = questionTypes[input.id];
-                    if (questionType !== 'matching' && input.value.trim() !== '' && !answeredGroups[input.id]) {
-                        answeredCount++;
-                        answeredGroups[input.id] = true;
-                    }
+                    if (input.value.trim() !== '') answeredCount++;
                 }
             });
             // Include drag/drop filled zones as answered
@@ -3239,26 +3067,91 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                 }
             });
             
-            // Include clickable cells as answered (only for questions that use clickable cells, not text inputs)
+            // Include clickable cells as answered (includes Questions 26-30)
             const clickableCells = partContainer.querySelectorAll('.clickable-cell.selected');
             clickableCells.forEach(cell => {
                 const questionNum = cell.getAttribute('data-question');
                 if (questionNum && !answeredGroups[`clickable-${questionNum}`]) {
-                    // Only count clickable cells if there's no corresponding text input for this question
-                    const textInput = partContainer.querySelector(`#q${questionNum}`);
-                    // For matching questions (11-14), we should count the clickable cell, not the hidden input
-                    const questionType = questionTypes[`q${questionNum}`];
-                    if (questionType === 'matching' || (!textInput || textInput.type !== 'text')) {
-                        answeredCount++;
-                        answeredGroups[`clickable-${questionNum}`] = true;
-                    }
+                    answeredCount++;
+                    answeredGroups[`clickable-${questionNum}`] = true;
                 }
             });
             
-            // Questions 15-20 are text inputs, already counted in the main input loop above
+            // Include map questions (11-15) as answered if they have a selection
+            for (let i = 11; i <= 15; i++) {
+                const selectElement = partContainer.querySelector(`#q${i}`);
+                if (selectElement && selectElement.value && selectElement.value !== '' && !answeredGroups[`map-${i}`]) {
+                    answeredCount++;
+                    answeredGroups[`map-${i}`] = true;
+                }
+            }
             const countDisplay = document.querySelector(`.footer__questionWrapper___1tZ46:nth-child(${partNumber}) .attemptedCount`);
             if (countDisplay) countDisplay.textContent = `${answeredCount} of 10`;
         }
+
+        // === Answer key and question type mapping ===
+        const correctAnswers = {
+            // Part 1
+            q1: 'equipment',
+            q2: 'Fred',
+            q3: ['6 days', 'six days'],
+            q4: 'Mike',
+            q5: 'Leo',
+            // Part 1 MCQ
+            q6: 'C',
+            q7: 'A',
+            q8: 'C',
+            q9: 'B',
+            q10: 'C',
+            // Part 2 map (selects)
+            q11: 'B',
+            q12: 'A',
+            q13: 'E',
+            q14: 'C',
+            q15: 'D',
+            // Part 2 MCQ
+            q16: 'E',
+            q17: 'G',
+            q18: 'C',
+            q19: 'D',
+            q20: 'A',
+            // Part 3 text
+            q21: 'symbols',
+            q22: 'interpreted',
+            q23: 'nature',
+            q24: 'headings',
+            q25: 'legal',
+            q26: 'procedures',
+            q27: 'associated',
+            q28: 'directions',
+            q29: 'notes',
+            q30: 'headings',
+            // Part 4 text
+            q31: 'nervous',
+            q32: ['a gift', 'gift'],
+            q33: 'last',
+            q34: ['well-organised', 'well-organized'],
+            q35: 'paying attention',
+            q36: 'sheet of paper',
+            q37: 'full',
+            q38: ['one or two', '1 or 2'],
+            q39: 'time',
+            q40: ['a script', 'script']
+        };
+
+        const questionTypes = {
+            // Part 1
+            q1: 'text', q2: 'text', q3: 'text', q4: 'text', q5: 'text',
+            q6: 'mcq', q7: 'mcq', q8: 'mcq', q9: 'mcq', q10: 'mcq',
+            // Part 2
+            q11: 'mcq', q12: 'mcq', q13: 'mcq', q14: 'mcq', q15: 'mcq',
+            q16: 'mcq', q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
+            // Part 3
+            q21: 'text', q22: 'text', q23: 'text', q24: 'text',
+            q25: 'text', q26: 'text', q27: 'text', q28: 'text', q29: 'text', q30: 'text',
+            // Part 4
+            q31: 'text', q32: 'text', q33: 'text', q34: 'text', q35: 'text', q36: 'text', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
+        };
 
         function checkAnswers() {
             let score = 0;
@@ -3277,9 +3170,71 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                 let isCorrect = false;
                 const questionType = questionTypes[key];
                 
-                    // Handle different question types
+                // Handle different question types
                 if (key.includes('-')) {
-                    // Currently no hyphenated keys used in Part 3 after rewrite; skip
+                    // Multi-question keys like 'q11-12', 'q13-14'
+                    const [startQ, endQ] = key.split('-').map(q => parseInt(q.replace('q', '')));
+                    
+                    switch(questionType) {
+                        case 'checkbox':
+                            const checkedBoxes = document.querySelectorAll(`input[name="${key}"]:checked`);
+                            const userAnswers = Array.from(checkedBoxes).map(cb => cb.value).sort();
+                            userAnswer = userAnswers.join(', ');
+                            const correctAnswersSorted = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [correctAnswer];
+                            
+                            // Count how many correct answers the user selected
+                            const correctUserAnswers = userAnswers.filter(ans => correctAnswersSorted.includes(ans));
+                            
+                            // Additive-only scoring: 1 point per correct selected; no penalty for incorrect
+                            const questionScore = correctUserAnswers.length;
+                            score += questionScore;
+                            
+                            // Mark group as fully correct only if all correct options are selected and no extra are selected
+                            isCorrect = (correctUserAnswers.length === correctAnswersSorted.length && userAnswers.length === correctAnswersSorted.length);
+                            
+                            // Mark individual checkboxes
+                            checkedBoxes.forEach(cb => {
+                                const label = cb.closest('label');
+                                if (label) {
+                                    if (correctAnswersSorted.includes(cb.value)) {
+                                        label.classList.add('correct');
+                                    } else {
+                                        label.classList.add('incorrect');
+                                    }
+                                }
+                            });
+                            
+                            // Mark correct answers that weren't selected
+                            correctAnswersSorted.forEach(correctVal => {
+                                const correctCheckbox = document.querySelector(`input[name="${key}"][value="${correctVal}"]`);
+                                if (correctCheckbox && !correctCheckbox.checked) {
+                                    const correctLabel = correctCheckbox.closest('label');
+                                    if (correctLabel) {
+                                        correctLabel.classList.add('correct');
+                                    }
+                                }
+                            });
+                            break;
+                    }
+                    
+                    // Mark buttons for the question range
+                    for (let qNum = startQ; qNum <= endQ; qNum++) {
+                        const btn = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
+                        if (btn) {
+                            btn.classList.remove('answered');
+                            btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    }
+                    
+                    resultsData.push({
+                        question: `${startQ}-${endQ}`,
+                        userAnswer: userAnswer || 'No Answer',
+                        correctAnswer: Array.isArray(correctAnswer) ? correctAnswer.join(', ') : String(correctAnswer),
+                        isCorrect: isCorrect
+                    });
+                    
+                    // For checkbox questions in multi-question keys, score was already added in switch statement
+                    // Don't add additional score here - return to next iteration of forEach
                     return;
                 }
                 
@@ -3291,7 +3246,6 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                    if (!questionType) {
                        if (element?.type === 'radio') questionType = 'mcq';
                        else if (element?.type === 'text') questionType = 'text';
-                       else if (element?.tagName === 'SELECT') questionType = 'select';
                    }
                    
                     switch (questionType) {
@@ -3307,25 +3261,9 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                                 element.insertAdjacentElement('afterend', correctAnswerSpan);
                            }
                            break;
-                        case 'select':
-                            userAnswer = (element.value || '').trim();
-                            // If correct answer is not set yet (empty), do not mark wrong
-                            if (String(correctAnswer).trim() === '') {
-                                isCorrect = false;
-                            } else {
-                                isCorrect = userAnswer === correctAnswer;
-                            }
-                            element.classList.add(isCorrect ? 'correct' : 'incorrect');
-                            if (!isCorrect) {
-                                const correctAnswerSpan = document.createElement('span');
-                                correctAnswerSpan.className = 'correct-inline';
-                                correctAnswerSpan.textContent = String(correctAnswer || '?');
-                                element.insertAdjacentElement('afterend', correctAnswerSpan);
-                            }
-                            break;
                         case 'mcq':
-                            // For map questions (15-20), use the select dropdown selection instead of radios
-                            if (qNum >= 15 && qNum <= 20) {
+                            // For map questions (11-20), use the select dropdown selection instead of radios
+                            if (qNum >= 11 && qNum <= 20) {
                                 const selectElement = document.getElementById(key);
                                 if (selectElement) {
                                     userAnswer = (selectElement.value || '').trim();
@@ -3344,16 +3282,12 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                             // Default MCQ grading via radio inputs
                             const radioChecked = document.querySelector(`input[name="${key}"]:checked`);
                             userAnswer = radioChecked ? radioChecked.value : 'No Answer';
-                            if (String(correctAnswer).trim() === '') {
-                                isCorrect = false;
-                            } else {
-                                isCorrect = userAnswer === correctAnswer;
-                            }
+                            isCorrect = userAnswer === correctAnswer;
                             const radios = document.querySelectorAll(`input[name="${key}"]`);
                             radios.forEach(radio => {
                                 const label = radio.closest('label');
                                 const wrapper = radio.closest('.multi-choice-option') || label;
-                                if (String(correctAnswer).trim() !== '' && radio.value === correctAnswer) {
+                                if (radio.value === correctAnswer) {
                                     wrapper.classList.add('correct');
                                 } else if (radio.checked) {
                                     wrapper.classList.add('incorrect');
@@ -3391,39 +3325,14 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                             }
                             break; }
                        case 'clickable':
-                           console.log(`Checking clickable question ${qNum}, correct answer: ${correctAnswer}`);
                            const selectedCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
-                           console.log(`Selected cell for question ${qNum}:`, selectedCell);
-                           userAnswer = selectedCell ? (selectedCell.getAttribute('data-answer') || selectedCell.getAttribute('data-value')) : 'No Answer';
-                           console.log(`User answer for question ${qNum}: ${userAnswer}`);
+                           userAnswer = selectedCell ? selectedCell.getAttribute('data-value') : 'No Answer';
                            isCorrect = userAnswer === correctAnswer;
-                           console.log(`Question ${qNum} is correct: ${isCorrect}`);
                            
                            // Mark cells as correct/incorrect
                            const allCells = document.querySelectorAll(`.clickable-cell[data-question="${qNum}"]`);
                            allCells.forEach(cell => {
-                               const cellValue = cell.getAttribute('data-answer') || cell.getAttribute('data-value');
-                               if (cellValue === correctAnswer) {
-                                   cell.classList.add('correct');
-                               } else if (cell.classList.contains('selected')) {
-                                   cell.classList.add('incorrect');
-                               }
-                           });
-                           break;
-                       case 'matching':
-                           console.log(`Checking matching question ${qNum}, correct answer: ${correctAnswer}`);
-                           const selectedMatchingCell = document.querySelector(`.clickable-cell[data-question="q${qNum}"].selected`);
-                           console.log(`Selected cell for question ${qNum}:`, selectedMatchingCell);
-                           userAnswer = selectedMatchingCell ? selectedMatchingCell.getAttribute('data-answer') : 'No Answer';
-                           console.log(`User answer for question ${qNum}: ${userAnswer}`);
-                           isCorrect = userAnswer === correctAnswer;
-                           console.log(`Question ${qNum} is correct: ${isCorrect}`);
-                           
-                           // Mark cells as correct/incorrect
-                           const allMatchingCells = document.querySelectorAll(`.clickable-cell[data-question="q${qNum}"]`);
-                           allMatchingCells.forEach(cell => {
-                               const cellValue = cell.getAttribute('data-answer');
-                               if (cellValue === correctAnswer) {
+                               if (cell.getAttribute('data-value') === correctAnswer) {
                                    cell.classList.add('correct');
                                } else if (cell.classList.contains('selected')) {
                                    cell.classList.add('incorrect');
@@ -4213,8 +4122,8 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
             updateAnsweredIndicators();
             ensureClickableHiddenInputs();
             
-            // Add specific event listeners for questions 17-25 radio buttons
-            document.querySelectorAll('input[name="q17"], input[name="q18"], input[name="q19"], input[name="q20"], input[name="q21"], input[name="q22"], input[name="q23"], input[name="q24"], input[name="q25"]').forEach(radio => {
+            // Add specific event listeners for questions 17-20 radio buttons
+            document.querySelectorAll('input[name="q17"], input[name="q18"], input[name="q19"], input[name="q20"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     const questionNumber = this.name.substring(1); // Remove 'q' prefix
                     const hiddenInput = document.getElementById(`q${questionNumber}`);
@@ -4246,14 +4155,8 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
             // Initialize clickable cells for questions 27-31
             initClickableCells();
             
-            // Add event listeners for map questions (11-15) and diagram questions (25-30)
+            // Add event listeners for map questions (11-15)
             for (let i = 11; i <= 15; i++) {
-                const selectElement = document.getElementById(`q${i}`);
-                if (selectElement) {
-                    selectElement.addEventListener('change', updateAnsweredIndicators);
-                }
-            }
-            for (let i = 25; i <= 30; i++) {
                 const selectElement = document.getElementById(`q${i}`);
                 if (selectElement) {
                     selectElement.addEventListener('change', updateAnsweredIndicators);
@@ -4266,45 +4169,15 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
             clickableCells.forEach(cell => {
                 cell.addEventListener('click', function() {
                     const questionNumber = this.getAttribute('data-question');
-                    const value = this.getAttribute('data-answer') || this.getAttribute('data-value');
+                    const value = this.getAttribute('data-value');
                     selectCell(this, questionNumber, value);
                 });
             });
         }
 
-        function selectCell(clickedCell, questionNumber, value) {
-            // Remove previous selection for this question
-            const questionRow = clickedCell.closest('tr');
-            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
-            cellsInRow.forEach(cell => {
-                cell.classList.remove('selected');
-                cell.style.backgroundColor = '';
-            });
-            
-            // Select the clicked cell
-            clickedCell.classList.add('selected');
-            clickedCell.style.backgroundColor = '#4a90e2';
-            clickedCell.style.color = 'white';
-            // Persist selection in hidden input (for answered state and grading if needed)
-            const hiddenInput = document.getElementById(`q${questionNumber}`);
-            if (hiddenInput) {
-                hiddenInput.value = value;
-            }
-            
-            // Update answered indicators
-            updateAnsweredIndicators();
-        }
 
         function ensureClickableHiddenInputs() {
-            for (let q = 11; q <= 14; q++) {
-                if (!document.getElementById(`q${q}`)) {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.id = `q${q}`;
-                    document.body.appendChild(input);
-                }
-            }
-            for (let q = 27; q <= 30; q++) {
+            for (let q = 26; q <= 30; q++) {
                 if (!document.getElementById(`q${q}`)) {
                     const input = document.createElement('input');
                     input.type = 'hidden';
@@ -4313,6 +4186,11 @@ What I'd like you to consider is this. Is the planet Earth moving towards a one-
                 }
             }
         }
+
+        // Initialize matching cells when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is now handled by initClickableCells() which is called in initAllDragAndDrop()
+        });
 
         function findParentOptionsList(element) {
             // Specific for map
