@@ -54,14 +54,6 @@
         .ielts-logo {
             display: none;
         }
-        .logo-ja {
-            padding-top: 20px;
-            height: 10%;
-            width: 10%;
-            display: block; /* Important! */
-            margin-left: auto;
-            margin-right: auto;
-        }
 
         .test-info {
             display: flex;
@@ -89,22 +81,6 @@
             gap: 10px;
             align-items: center;
         }
-
-        .telegram-link {
-            color: #3e3e3e;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            border: 2px solid #3e3e3e;
-            border-radius: 9999px;
-            background-color: #ffffff;
-            line-height: 1;
-        }
-
 
         #volume-slider {
             -webkit-appearance: none;
@@ -280,23 +256,6 @@
         .people-table td {
             padding: 8px 10px;
             border: 1px solid #ddd;
-        }
-      
-
-        /* Matching cell styling */
-        .matching-cell {
-            transition: all 0.2s ease;
-        }
-        
-        .matching-cell:hover {
-            background-color: #e3f2fd !important;
-            transform: scale(1.02);
-        }
-        
-        .matching-cell.selected {
-            background-color: #4a90e2 !important;
-            color: white !important;
-            font-weight: bold;
         }
 
         #part-1 table td {
@@ -643,30 +602,6 @@
             border-color: #28a745;
         }
 
-        /* Clickable cell styles for Questions 26-30 */
-        .clickable-cell {
-            transition: all 0.2s ease;
-        }
-
-        .clickable-cell:hover {
-            background-color: #e9ecef !important;
-        }
-
-        .clickable-cell.selected {
-            background-color: #4a90e2 !important;
-            color: white !important;
-        }
-
-        .clickable-cell.correct {
-            background-color: #28a745 !important;
-            color: white !important;
-        }
-
-        .clickable-cell.incorrect {
-            background-color: #dc3545 !important;
-            color: white !important;
-        }
-
         .sr-only {
             position: absolute;
             width: 1px;
@@ -852,7 +787,6 @@
     z-index: 10;
     position: relative;
     pointer-events: auto;
-    font-weight: 600;
 }
         .drag-drop-container {
             display: flex;
@@ -1882,9 +1816,6 @@ width: 75%;
         <div class="timer-container">
             <span class="timer-display">60:00</span>
         </div>
-        <div>
-         <img class="logo-ja" src="https://github.com/kawsarahmedeeeee-png/Reading/blob/main/Bold.png?raw=true" alt="Juned Academy">
-        </div>
         <div class="header-icons">
         
         </div>
@@ -1932,69 +1863,92 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 1-10</strong></p>
-                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS AND/OR NUMBERS</strong> for each answer.</p>
+                            <p><strong>Questions 1-5</strong></p>
+                            <p>Complete the form below. Write <strong>NO MORE THAN ONE WORD OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
                         <div style="margin-top: 20px;">
-                            <p class="centered-title"><strong>Basic Details of Project</strong></p>
-
-                            <div style="line-height: 2.5; font-size: 16px;">
-                                
-                                <p><strong>Pre-phase:</strong> involves selecting rooms & <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></p>
-                                
-                                <p><strong>Phase 1:</strong></p>
-                                <p style="margin-left: 20px;">time needed: 3 days</p>
-                                <p style="margin-left: 20px;">staff involved: Jenna, Marco, & <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"></p>
-                                
-                                <p><strong>Phase 2:</strong></p>
-                                <p style="margin-left: 20px;">time needed: <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"></p>
-                                <p style="margin-left: 20px;">staff involved: <input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off">, with assistance from <input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"></p>
-                        
-                            </div>
+                            <p class="centered-title"><strong>Oakham Surgery New Patient Form</strong></p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px; width: 30%;"><strong>Example: <br><br>New Patient's Road</strong></td>
+                                    <td style="border: 1px solid #ddd; padding: 8px; width: 70%;"><strong>Answer: <br><br>Dawson Road</strong></td>
+                                </tr>
+                              
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Full name:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Mike <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Wife's first name:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Janet</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Children's first names:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">1st <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"> 2nd 3rd 4th</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Address:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">52 Dawson Road <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"> Melbourne</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Health card number:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off"></td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Wife's health card number:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">will give later</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #ddd; padding: 8px;">Preferred doctor selected:</td>
+                                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"> White</td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
+
                     <div class="question">
-                        <div class="question-prompt">
+                        <div class="question-prompt" style="margin-top: 40px;">
                             <p><strong>Questions 6-10</strong></p>
                             <p>Choose the correct answer.</p>
-                        
-                        <div style="margin-top: 18px;">
-                            <p><strong>6</strong>&nbsp;&nbsp;The main form of data collection will be</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="A"> questionnaires.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="B"> Internet polling.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="C"> face-to-face interviews.</label></div>
-                            </div>
-                            
-                            <p><strong>7</strong>&nbsp;&nbsp;To finish in time, the staff will have to</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="A"> work late.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="B"> come in early.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="C"> take some work home.</label></div>
-                            </div>
-                            <p><strong>8</strong>&nbsp;&nbsp;The final report will contain</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="A"> three appendices.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="B"> material from the company website.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="C"> a supplementary booklet.</label></div>
-                            </div>
-                            
-                    
-                            <p><strong>9</strong>&nbsp;&nbsp;The final report will be handed in on the</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="A"> 5th.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="B"> 15th.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="C"> 25th.</label></div>
-                            </div>
-                            
-                            <p><strong>10</strong>&nbsp;&nbsp;At the end, there will be</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="A"> an office party.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="B"> a restaurant dinner.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="C"> presents for all involved.</label></div>
-                            </div>
                         </div>
+                        
+                        <div style="margin-bottom: 18px;">
+                            <p><strong>6</strong>&nbsp;&nbsp;When is Mike's wife's first appointment?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="A"> Friday 21st at 2.00pm.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="B"> Friday 21st at 2.30pm.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="C"> Friday 21st at 3.30pm.</label></div>
+                            </div>
+                            
+                            <p><strong>7</strong>&nbsp;&nbsp;What is the surgery's phone number?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="A"> 7253 9819</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="B"> 7253 9829</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="C"> 7523 9829</label></div>
+                            </div>
+                            
+                            <p><strong>8</strong>&nbsp;&nbsp;What is the name of the girl with whom Mike is speaking at the surgery?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="A"> Rachel</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="B"> Elizabeth</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="C"> Angela</label></div>
+                            </div>
+                            
+                            <p><strong>9</strong>&nbsp;&nbsp;What's the night doctor's mobile number?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="A"> 0506 759 3856</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="B"> 0506 759 3857</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="C"> 0506 758 3856</label></div>
+                            </div>
+                            
+                            <p><strong>10</strong>&nbsp;&nbsp;Which of the following does the surgery NOT make a charge for?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="A"> Travel vaccinations</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="B"> Consultations</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="C"> Insurance reports</label></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2008,95 +1962,69 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 11-15</strong></p>
-                            <p>Label the map below.</p>
+                            <p><strong>Questions 11-16</strong></p>
+                            <p>Choose the correct answer.</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <div style="display: flex; gap: 30px; align-items: flex-start;">
-                                <div class="map-container" style="flex: 1;">
-                                <img src="https://ieltstrainingonline.com/wp-content/uploads/2020/03/5-1-q11-15.jpg" alt="Map for questions 11-15" style="width: 100%; max-width: 600px;">
-                                </div>
+                        <div style="margin-bottom: 18px;">
+                            <p><strong>11</strong>&nbsp;&nbsp;The most famous view in this park is</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="A"> the largest waterfall worldwide.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="B"> the longest river in the world.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="C"> the biggest sub-tropical rainforest in the world.</label></div>
+                            </div>
                             
-                                <div style="flex: 1; margin-top: 0;">
-                                    <p><strong>11</strong>&nbsp;&nbsp;Science Museum <select id="q11" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select></p>
-                                
-                                    <p><strong>12</strong>&nbsp;&nbsp;National History Museum <select id="q12" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select></p>
-                                
-                                    <p><strong>13</strong>&nbsp;&nbsp;Car Park <select id="q13" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select></p>
-                                
-                                    <p><strong>14</strong>&nbsp;&nbsp;Shopping Mall <select id="q14" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select></p>
-                                
-                                    <p><strong>15</strong>&nbsp;&nbsp;Primary School <select id="q15" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select></p>
-                                </div>
+                            <p><strong>12</strong>&nbsp;&nbsp;According to the tour guide, what is best to do on top of the mountain?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="A"> having a picnic</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="B"> taking photos</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="C"> strolling about</label></div>
+                            </div>
+                            
+                            <p><strong>13</strong>&nbsp;&nbsp;What did the tour guide recommend for more experienced walkers?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="A"> the mountain trail</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="B"> the Bush Track</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="C"> the Creek Circuit</label></div>
+                            </div>
+                            
+                            <p><strong>14</strong>&nbsp;&nbsp;What is mentioned about the transport in the park?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> Bicycles can be hired.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> Trams are available for tourists.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> It is included in the bill.</label></div>
+                            </div>
+                            
+                            <p><strong>15</strong>&nbsp;&nbsp;Which activity is provided for adults all year round?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="A"> abseiling</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="B"> bungee jumping</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="C"> paragliding</label></div>
+                            </div>
+                            
+                            <p><strong>16</strong>&nbsp;&nbsp;What should the visitors do before they go to the restaurant?</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="A"> make bookings</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="B"> inquire about availability</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="C"> collect the meal ticket at the reception</label></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 16-20</strong></p>
-                            <p>What is the improvement of each main point of interest in the area?</p>
+                            <p><strong>Questions 17-20</strong></p>
+                            <p>Label the plan below.</p>
                         </div>
                         
-                        <div style="margin: 20px 0; padding: 15px; background-color: #f8f8f8;">
-                            <p><strong>A</strong>&nbsp;&nbsp;new entrance</p>
-                            <p><strong>B</strong>&nbsp;&nbsp;free lunch provided</p>
-                            <p><strong>C</strong>&nbsp;&nbsp;free information provided</p>
-                            <p><strong>D</strong>&nbsp;&nbsp;increase in size</p>
-                            <p><strong>E</strong>&nbsp;&nbsp;additional signs</p>
-                            <p><strong>F</strong>&nbsp;&nbsp;new exhibitions</p>
-                            <p><strong>G</strong>&nbsp;&nbsp;new structure</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 18px;">
-                            <p><strong>16</strong>&nbsp;&nbsp;Car Park <select id="q16" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                    </select></p>
+                        <div style="margin-top: 12px;">
+                            <div style="display: flex; gap: 30px; align-items: flex-start;">
+                                <div class="map-container" style="flex: 1;">
+                                <img src="https://ieltstrainingonline.com/wp-content/uploads/2020/03/4-1-q17-20-962x1024.jpg" alt="Park Plan for questions 17-20" style="width: 100%; max-width: 600px;">
+                                </div>
                             
-                            <p><strong>17</strong>&nbsp;&nbsp;Primary School <select id="q17" class="answer-input" style="width: 100px;">
+                                <div style="flex: 1; margin-top: 0;">
+                                    <p><strong>17</strong>&nbsp;&nbsp;Campsite <select id="q17" class="answer-input" style="width: 100px;">
                                         <option value="">Select</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -2105,9 +2033,11 @@ width: 75%;
                                         <option value="E">E</option>
                                         <option value="F">F</option>
                                         <option value="G">G</option>
+                                        <option value="H">H</option>
+                                        <option value="I">I</option>
                                     </select></p>
-                            
-                            <p><strong>18</strong>&nbsp;&nbsp;Science Museum <select id="q18" class="answer-input" style="width: 100px;">
+                                
+                                    <p><strong>18</strong>&nbsp;&nbsp;Business Centre <select id="q18" class="answer-input" style="width: 100px;">
                                         <option value="">Select</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -2116,9 +2046,11 @@ width: 75%;
                                         <option value="E">E</option>
                                         <option value="F">F</option>
                                         <option value="G">G</option>
+                                        <option value="H">H</option>
+                                        <option value="I">I</option>
                                     </select></p>
-                            
-                            <p><strong>19</strong>&nbsp;&nbsp;National History Museum <select id="q19" class="answer-input" style="width: 100px;">
+                                
+                                    <p><strong>19</strong>&nbsp;&nbsp;Museum <select id="q19" class="answer-input" style="width: 100px;">
                                         <option value="">Select</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -2127,9 +2059,11 @@ width: 75%;
                                         <option value="E">E</option>
                                         <option value="F">F</option>
                                         <option value="G">G</option>
+                                        <option value="H">H</option>
+                                        <option value="I">I</option>
                                     </select></p>
-                            
-                            <p><strong>20</strong>&nbsp;&nbsp;Shopping Mall <select id="q20" class="answer-input" style="width: 100px;">
+                                
+                                    <p><strong>20</strong>&nbsp;&nbsp;Cafe <select id="q20" class="answer-input" style="width: 100px;">
                                         <option value="">Select</option>
                                         <option value="A">A</option>
                                         <option value="B">B</option>
@@ -2138,7 +2072,11 @@ width: 75%;
                                         <option value="E">E</option>
                                         <option value="F">F</option>
                                         <option value="G">G</option>
+                                        <option value="H">H</option>
+                                        <option value="I">I</option>
                                     </select></p>
+                                </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -2153,52 +2091,47 @@ width: 75%;
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 21-24</strong></p>
-                            <p>Complete the summary. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+                            <p>Answer the questions.Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-bottom: 18px; line-height: 2.5; font-size: 16px;">
-                            <p>One of the basic strategies when listening to lectures is to use <input type="text" id="q21" class="answer-input" placeholder="21" autocomplete="off">. This saves times, but it is only effective if they can be <input type="text" id="q22" class="answer-input" placeholder="22" autocomplete="off"> later. More generally, it is necessary to format the page in anticipation of the <input type="text" id="q23" class="answer-input" placeholder="23" autocomplete="off"> of the lecture. As an example, one can draw <input type="text" id="q24" class="answer-input" placeholder="24" autocomplete="off">, tables, and flowcharts, consistent with the way the subject matter is presented.</p>
+                        <div style="margin-bottom: 18px;">
+                            <p><strong>21</strong>&nbsp;&nbsp;When will Simon begin writing his essay? <input type="text" id="q21" class="answer-input" placeholder="21" autocomplete="off"></p>
+                            
+                            <p><strong>22</strong>&nbsp;&nbsp;According to Simon, what kind of problems did Jaguar have in the 1970s and 80s? <input type="text" id="q22" class="answer-input" placeholder="22" autocomplete="off"></p>
+                            
+                            
+                            <p><strong>23</strong>&nbsp;&nbsp;What is the word limit for the essay? <input type="text" id="q23" class="answer-input" placeholder="23" autocomplete="off"></p>
+                            
+                            <p><strong>24</strong>&nbsp;&nbsp;What is the preferable method for handing in the essay? <input type="text" id="q24" class="answer-input" placeholder="24" autocomplete="off"></p>
+                            </p>     
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 25-30</strong></p>
-                            <p>Complete the table.</p>
-                            <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+                            <p><strong>Questions 25-27</strong></p>
+                            <p>Complete the sentences below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 18px;">
+                            <p>Jennifer wants to write about how &nbsp;&nbsp;<input type="text" id="q25" class="answer-input" placeholder="25" autocomplete="off"> are used by supermarkets.</p>
+                            
+                            <p>Jennifer found some publications in the library &nbsp;&nbsp;<input type="text" id="q26" class="answer-input" placeholder="26" autocomplete="off"> to help her analysis.</p>
+                            
+                            <p>The tutor warned Jennifer about &nbsp;&nbsp;<input type="text" id="q27" class="answer-input" placeholder="27" autocomplete="off"> in her work.</p>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>Questions 28-30</strong></p>
+                            <p>Complete the tutor's summary notes on Melanie below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
                         </div>
                         
                         <div style="margin-top: 20px;">
-                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                                <thead>
-                                    <tr style="background-color: #4a90e2; color: white;">
-                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: bold;">Subject</th>
-                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: bold;">Recommended Page Design</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td style="border: 1px solid #ddd; padding: 12px;"><input type="text" id="q25" class="answer-input" placeholder="25" autocomplete="off" > Studies</td>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">flowchart, showing courtroom processes and <input type="text" id="q26" class="answer-input" placeholder="26" autocomplete="off" ></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">Culture Studies</td>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">table or spider graph, linking <input type="text" id="q27" class="answer-input" placeholder="27" autocomplete="off" > thoughts etc.</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">Management Theory</td>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">network (like spider graph but has <input type="text" id="q28" class="answer-input" placeholder="28" autocomplete="off" >)</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">Political Science</td>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">linear <input type="text" id="q29" class="answer-input" placeholder="29" autocomplete="off" ></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">Mass Media</td>
-                                        <td style="border: 1px solid #ddd; padding: 12px;">just use <input type="text" id="q30" class="answer-input" placeholder="30" autocomplete="off" ></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <p class="centered-title"><strong>Notes on Student Essays</strong></p>
+                            
+                            <p>Student Melanie needs an &nbsp;&nbsp;<input type="text" id="q28" class="answer-input" placeholder="28" autocomplete="off"> as she has been unwell with the flu. She will get a &nbsp;&nbsp;<input type="text" id="q29" class="answer-input" placeholder="29" autocomplete="off"> from the doctor. She's going to write about &nbsp;&nbsp;<input type="text" id="q30" class="answer-input" placeholder="30" autocomplete="off"> in the UK and their effect on housing trends. She should be on track with the essay by the end of the weekend.</p>
                         </div>
                     </div>
                 </div>
@@ -2212,43 +2145,81 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 31-40</strong></p>
-                            <p>Complete the notes below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
+                            <p><strong>Questions 31-32</strong></p>
+                            <p>Choose the correct answer.</p>
                         </div>
                         
-                        <div style="margin-top: 20px;">
-                            <p class="centered-title"><strong>GIVING A SPEECH</strong></p>
+                        <div style="margin-bottom: 18px;">
+                            <p><strong>31</strong>&nbsp;&nbsp;Originally, country</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="A"> required fewer workers.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="B"> had lots of animals.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="C"> were more interesting places.</label></div>
+                            </div>
                             
-                            <div style="line-height: 2.5; font-size: 16px;">
-                                <p><strong>Reasons for nervousness</strong></p>
-                                
-                                <p>• Lecturers often feel more <input type="text" id="q31" class="answer-input" placeholder="31" autocomplete="off"> if the speech is important.</p>
-                                
-                                <p>• Many think that the ability to make a good public speaking is <input type="text" id="q32" class="answer-input" placeholder="32" autocomplete="off">, while in fact it is a skill that can be learned by anyone.</p>
-                                
-                                <p style="margin-top: 20px;"><strong>How to prepare a quality speech</strong></p>
-                                
-                                <p>• The audience will only remember the <input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off"> sentence of a speech.</p>
-                                
-                                <p>• Ensure that your speech is <input type="text" id="q34" class="answer-input" placeholder="34" autocomplete="off">.</p>
-                                
-                                <p style="margin-top: 20px;"><strong>Do's and Don'ts</strong></p>
-                                
-                                <p>• Don't start your speech until audience is <input type="text" id="q35" class="answer-input" placeholder="35" autocomplete="off">.</p>
-                                
-                                <p>• You can make your main ideas or notes on cards or a <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off">.</p>
-                                
-                                <p>• You do not need to write down the <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"> speech.</p>
-                                
-                                <p>• You can just write <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"> ideas.</p>
-                                
-                                <p>• Remember to <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> yourself to see how long your speech will be.</p>
-                                
-                                <p>• Don't just read from <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off">.</p>
+                            <p><strong>32</strong>&nbsp;&nbsp;Now, the problems there</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="A"> can be solved.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="B"> are numerous.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="C"> are expected.</label></div>
                             </div>
                         </div>
                     </div>
 
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>Questions 33-35</strong></p>
+                            <p>Choose <strong>THREE</strong> correct answers.</p><br>
+                            <p><strong>33-35</strong>&nbsp;&nbsp;Which THREE factors are typical of modern farming?</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 18px;">
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="q33-35" value="A"> Many overheads</label>
+                                <label><input type="checkbox" name="q33-35" value="B"> More machines</label>
+                                <label><input type="checkbox" name="q33-35" value="C"> Fewer types of products</label>
+                                <label><input type="checkbox" name="q33-35" value="D"> More frequent feeding</label>
+                                <label><input type="checkbox" name="q33-35" value="E"> Greater numbers of products</label>
+                                <label><input type="checkbox" name="q33-35" value="F"> More factories</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>Questions 36-40</strong></p>
+                            <p>Complete the table. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                                <thead>
+                                    <tr style="background-color: #f8f9fa;">
+                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Possible Solution</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Important Factor</th>
+                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Examples</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">tourism</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Locals must <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off"></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Daylesford area uses its <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">using the <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">– is <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> by its distinctive product</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Shepparton is known for its <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">– must market the idea effectively</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2263,102 +2234,156 @@ width: 75%;
 
     <div id="transcription-data" style="display:none;">
         <div data-part="1"><strong>SECTION 1</strong>
-You will hear two colleagues, Marcus and Ella, discussing a work project.
-Marcus: Okay, Ella. As you know, the deadline for this project is the end of the month, so we'd better plan it well.
-Ella: Yes, I've already been thinking along those lines, and I've decided we should divide this project into three phases: the Pre-phase (Example), then Phase 1, and then Phase 2, with strict deadlines involved for each one.
-Marcus: Given that we have to finish this quickly, that sounds good. Tell me more.
-Ella: The Pre-phrase is the simplest. We just need to allocate a space or a place to do our planning, and this space will need to be quite big.
-Marcus: Sure, and we have to decide on the equipment (Q1) needed as well. Remember the last project, when we didn't have enough projectors to present our ideas? We lost lots of time there.
-Ella: Yes, that was a bad start. That's why, after the Pre-phase is finished, I've allocated a mere three days for Phase One.
-Marcus: That will involve drawing the plans. We'll need Jenna to help us.
-Ella: And Marco.
-Marcus: Yes, but not Susan. Susan is just far too busy to participate, as much as I'd like her in the team.
-Ella: Let's just take Fred (Q2) instead. He'll do.
-Marcus: Sure. Fred's not as experienced as Greg, but I agree, he'll do fine for this job.
-Ella: Then it's straight into Phase 2, collecting, collating, analysing, and preparing the final report.
-Marcus: Can we do that in five days?
-Ella: I think that's optimistic, which is why I scheduled six (Q3).
-Marcus: That's almost a week! Do we have that much time?
-Ella: We do, and with the right people, six days should see the job done.
-Marcus: Who are the people for this phase? Arthur and Rob, right?
-Ella: No, Arthur's got other things to do, and Rob's on leave, so Mike (Q4) alone will be the main man on this part. He's done it before, so it should be fine. But he may need some help with the smaller tasks. Someone who is good with detail and procedures.
-Marcus: Hmmm. Peter's not free at the moment, so I can arrange Leo (Q5) to chip in some time and advice. Leo's very useful, particularly under pressure. And that's everything sorted! Well done Ella. This report should certainly be ready in time.
-Marcus: Okay, Ella, you've done a good job with the basic timeframe of this project, but what about specifics?
-Ella: What sort of specifics?
-Marcus: Well, things like information gathering. Are we going to use questionnaires like we did last time?
-Ella: I was thinking of using the Internet to ask people to give their views, but you often get such silly responses when you do that. I'm of the view that the best way to find out things is to ask people directly (Q6), so that's what we'll do.
-Marcus: Okay, but that will take longer. We'll probably even have to do some of the work at home.
-Ella: No, I don't think so, as long as we stay back at work for some afterhours meetings (Q7).
-Marcus: Well, that's better than coming in early. No one functions well in the morning. Also, the final report will need at least two appendices.
-Ella: Not only that, we'll have to attach a small booklet to the end (Q8), containing printouts of the relevant parts from all the foreign websites we accessed.
-Marcus: That will take even more time. Are you sure we can meet this deadline?
-Ella: Yep, I've worked it all out, and I'm confident we can do it. Phase 1 should be finished by the 5th, leaving Phase 2 to begin about the 8th or 9th. Now, there's a public holiday on the 10th, meaning that everything should be able to be submitted on the 15th (Q9), and after that, we can relax, and celebrate on the 25th when the Design Division gives us approval to go ahead.
-Marcus: Hah, you're assuming that the Design Division will approve this, and that's not guaranteed at all.
-Ella: Oh come on Marcus, be positive. You know this should be approved—in fact, I'm even planning the celebration when this is all over.
-Marcus: Oh yeah, what's on the agenda, then?
-Ella: Well, we definitely don't want a party in the office, do we? We'll want to get away from this place, and we're all too busy with our own lives and families to find a mutual time free for a dinner party, so I thought we'd just buy some nice expensive gifts (Q10) for everyone who participated. We can just give these to the people here in the office.
-Marcus: That sounds fine to me, but make sure they're not too expensive. The Budget Department will never approve the cost.
-Ella: Don't worry; I know how much I can get away with.
-Marcus: Alright. I'll leave that with you.
+
+Section 1. You will hear a conversation between a man and a receptionist on the subject of joining a surgery. First you have some time to look at questions 1 to 5. You will see that there is an example. This time only, the conversation relating to this will be played first.
+
+Hello, I've just moved to Melbourne for a new job and I've been advised to register with a new doctor for my family and myself. I think that this surgery is the nearest one to where I live. What's the name of the road that you live in, sir? Dawson Road.
+
+So, Dawson Road is the correct answer. Now we begin. You should answer the questions as you listen, as the recording is not played twice.
+
+Listen carefully to the conversation and answer questions 1 to 5. Hello, I've just moved to Melbourne for a new job and I've been advised to register with a new doctor for my family and myself. I think that this surgery is the nearest one to where I live. What's the name of the road that you live in, sir? Dawson Road.
+
+Yes, that's in our area. Would you like to register with us now? Yes, please. Right, I'll just have to take some details.
+
+First of all, could you give me your name? It's Mike Jacobs. J-A-C-O-B-S. And your family? My wife's name is Janet and I have one little boy whose name is Rod.
+
+Rod? No, Rod. R-O-D. Good, that's fine.
+
+And what is your address here in Melbourne? 52 Dawson Road, Highfield, Melbourne. Highfield. H-I-G-H-F-I-E-L-D.
+
+Good. And I'll need to know your health card number. It's N-H-8-7-1-8-1-2-C.
+
+What about my family? Oh, only yours for now. Do you know the name of your old doctor? It was Dr. Graham McKenzie in Perth. Now, we've got four doctors here.
+
+There's Dr. Susan Larkins, Dr. Kevin White, Dr. James Nicholson and Dr. Linda Williams. Which one would you like to register with? Oh, I didn't think of that. Well, I think I would like a man as my doctor.
+
+I'll go for the last one. Was that one a man? No, that was Dr. Linda. How about Dr. Kevin? Yes, that will be fine.
+
+Right, Dr. White it is. Will that be the same for your family? Oh yes, my wife might not want a man as her doctor. Well, we'll leave it as it is for now and my wife can change if she wants to.
+
+Before the conversation continues, you have some time to look at questions 6 to 10. Now listen carefully and answer questions 6 to 10. I'd like to make an appointment now for my wife.
+
+She wants to come in at the end of the week. How about this Friday morning? That's Friday the 21st. I don't think she can make the morning.
+
+Any openings in the afternoon? There are appointments available at 2.30 and 3.30. We'll take the first one, please. OK, that's done. Oh, and what shall my wife do if she wants to switch doctor? She can just give us a call here.
+
+Do you want to take the number down? Yes, please. It's 7253 9829. Can you give me your name, please? My name's Angela, but there are two other girls who might be on duty as well.
+
+Their names are Elizabeth and Rachel, but it doesn't matter who's on duty. Anyone can take care of it. Now, what do we do if we need to call out a doctor during the night? We've got a rotation system with the doctors in the area.
+
+There's a mobile number you can call and that'll get through to the doctor who's on duty. What's that number? It's 0506 759 3856. Got that.
+
+I didn't ask about any charges. Like all Australia, prescriptions have to be paid for at the chemist at the prevailing rate. Some things like vaccinations for travel and an insurance report we make a standard charge for, and I can give you a pricelist for those.
+
+Consultations, though, are under the National Health Service, so they'll be free. Great. Well, that's all.
+
+Thanks and goodbye. Goodbye. That is the end of Section 1. You will now have half a minute to check your answers.
         </div>
         <div data-part="2"><strong>SECTION 2</strong>
-Thank you all for coming to our community meeting. As you know, we are excited to unveil our improvement plan as we look forward to the influx of tourists in the summer months. I'll start with a quick overview of the main points of interest in the area for anyone who may not quite know his or her way around yet, and then I'll get into the improvements made.
-First off is my favorite, the Science Museum, which is on the corner of Saint George Road (Q11). If you have not visited it yet, I encourage you to go before the busy season. It is absolutely spectacular – there is even a flight simulator you can try out!
-Just west of the Science Museum is the National History Museum (Q12). It's a site not to be missed as well, with each floor devoted to a different era in our nation's history. There are special exhibits for children with interactive games and fun history lessons, too.
-If you're looking for parking, it is available on the intersection of Queen Street and South King Street in the Car Park (Q13). Standard hourly and daily rates do apply.
-The best place for souvenirs is the Shopping Mall, though it gets extremely busy during peak times. You can get there from the tube, or the entrance on Timber Road, just south of Cornwell Road (Q14).
-This area has students everywhere, usually from the Primary School across the street from the Shopping Mall (Q15). Classes often take field trips and engage in guided tours through the area.
-So that's the overview of the main sites and hopefully by now I've given you a general idea of the area.
-Now I'm going to outline the improvements we have made in our efforts to make the experience even better for each and every one of our visitors. You probably noticed when you first drove into the Car Park this morning, that there is now additional signage to help avoid confusion. The directions were not entirely clear at first, so we have increased the number of one-way signs indicating the correct direction of traffic flow (Q16).
-Not far from there, in line with our mission of giving back to the community, we constructed a brand new playground for the Primary School (Q17). It is really something to be excited for – the equipment is state-of-the-art and includes swings, a small climbing wall, and even an obstacle course.
-Now we'll head north and take a look at the Science Museum. In response to our feedback from past visitors to the museum, there is now free information available (Q18) outlining not only upcoming IMAX showings, but also natural wonders like meteor showers, eclipses, and other cool natural events.
-The Science Museum isn't the only Museum improving the experience of its visitors. The National History Museum has added an entire new wing to its facility to accommodate the large crowds (Q19) of people gathering to see the Civil War exhibit, inventions timeline exhibit, and other wonderful sections of the museum. The increase in space will definitely give a more calm, comfortable experience for visitors (Q19).
-And finally, remember when there was actually a line at the mall entrance from the Tube Station? It was terrible trying to get anywhere from the Tube because foot traffic got so backed up sometimes. We have addressed that by adding another entry point into the mall from the other end of the platform to disperse the crowd (Q20).
-So those are the major improvements we have made. Clearly having too many people that want to visit and enjoy what our community has to offer the public is a good problem to have, and I am confident that we have made the changes necessary to accommodate the growing interest in the area.
-As always, we welcome any questions, comments, or concerns about the new improvement plan. In a few minutes I will open up the floor for questions but you can also contact me or any other board member by email or through the city website. Thank you for coming, and I now encourage you to stay for the Questions and Answers panel occurring between now and 10.30…
+
+Now turn to Section 2. You will hear a guide talking to a group of visitors about a national park. First, you have some time to look at questions 11 to 16. Now listen carefully and answer questions 11 to 16.
+
+Welcome to Byron National Park. I am Jim Carson, your tour guide for the trip. First, I'd like to give you some basic information about the park.
+
+Covering 7,000 acres of land and spanning across three states, Byron National Park was established to protect the area's most spectacular scenic values. With unique geological features, natural history and native plant and animal life, it is an ideal destination for recreation as well as research purposes. The park has a breathtaking waterfall connecting the longest river in the country, but it is most renowned for having the largest subtropical rainforest worldwide.
+
+There are many layers of tall, medium and low vegetation growing with seasonal variations in the park. It is a place where the air seems green. Ardent hikers can find an awesome array of options here, apart from the dense green rainforest, tourists can also hike along the mountain trail.
+
+Despite the stunning view, taking photos is not advised on the way up, I'm afraid, as one might get distracted and the narrow trail by the sheer cliff is quite dangerous. When you reach the top of the mountain, there is nothing better than having a picnic under the trees with your family. Accompanied mostly by wildlife, walkers as well as cyclists may find the bush track a good choice for having a tranquil time to themselves.
+
+As your tour guide, I suggest that only expert hikers take the creek circuit, because its beautiful and inspiring scenery through the subtropical jungle is paralleled by its physical challenges. A list of transport is available within the park. Bicycles are a popular choice as it is the most flexible way to get around.
+
+Electric trams are temporarily closed for maintenance. Boat trips down the river are an ideal way to spend a tranquil afternoon. Rest assured that transport within the park is covered in the bill.
+
+Extreme sports is another highlight of the park. There are, for adventurous grown-ups, especially those who are comfortable with having a racing heart, scary as it may sound, it is actually safe to participate in extreme sports under strict instructions and close supervision. Abseiling is available regardless of the weather.
+
+It is a fun way to overcome fear of heights, gain new skills and get an adrenaline rush. Bungee jumping and paragliding are also available, except for during the summer. At this point, you might worry about meals here.
+
+Well, even though there is only one restaurant in the park at the moment, the variety of dishes is astonishing. There are two meals included in the price. Just get your meal ticket at the reception before dining.
+
+Also, there is no need to make reservations or worry about availability, since there are plenty of tables. Before you hear the rest of the talk, you have some time to look at questions 17 to 20. Now listen and answer questions 17 to 20.
+
+During your stay here, you might want to know what there is to do. Let's turn to the plan, so I can familiarise you with the layout of the park. Most tourists would choose to stay in our guesthouse, located in the south-east corner.
+
+It features 63 tastefully appointed guestrooms, many of which offer spectacular views of the park. You will find a home away from home at our guesthouse. But for those who want to experience the natural beauty up close, there is also a campsite.
+
+When you get out of the guesthouse, go straight ahead, turn right at the end of the road. To your left, there is a campsite amongst the trees, where you could spend a night under the stars together with owls and chipmunks. If you look at the top left of the plan, you will notice a picnic area.
+
+You can either bring your own food, or we can deliver food to you. Barbecue is an option. The business centre is situated directly opposite the picnic area.
+
+It provides flexible, fully serviced offices, conferencing suites, meeting rooms, and is equipped with the latest multimedia facilities. Wired, as well as wireless, high-speed internet is available within the entire premises. The centre is designed to cater to both individual travellers and corporate groups.
+
+Visitors can also go to the museum, which holds a vast collection, that exhibits local history and a natural habitat. You start from the guesthouse, just turn left at the first conjunction, then walk past the tea house, turn right, you will see the museum after making the third right. Have you found it? Pretty easy, right? To spend a delightful afternoon with a book and a fresh cup of coffee, you can go to the only cafe in the park.
+
+From the guesthouse, you go straight, then take the second right, and you will see the cafe right in front of you. You might want to check out our all-season tennis court, which offers instruction for all ages and skill levels. It is located right opposite the cafe.
+
+That is the end of section 2. You now have half a minute to check your answers.
         </div>
         <div data-part="3"><strong>SECTION 3</strong>
-Dylan: Hi, Emily. What did you think of that lecture?
-Emily: A bit hard to follow, but I have some good lecture-listening note-taking strategies which really help, so I can review the lecturer's message later.
-Dylan: Lecture-listening note-taking strategies? Review it later? That sounds interesting. I must admit, I struggle a bit to take down the gist of what I hear. Look at my notes.
-Emily: Well, I can see a basic problem immediately. You're writing full words, such as 'century' when all you need is a 'C', And don't write 'increase'; just draw an 'up' arrow. And why write 'thousand' when a 'th' will do?
-Dylan: I see. Just use symbols (Q21). That's not a bad idea at all.
-Emily: It's the most basic strategy, allowing you to record information at a faster pace. These lecturers can talk faster than others, too, so you don't want to waste any time. But you need to be very familiar with your set of symbols.
-Dylan: Why?
-Emily: Because you'll have to look at these notes days, weeks, or even months afterwards, when you begin writing your essay, so you'll need to be able to interpret (Q22) them at a later stage.
-Dylan: I think I can do this, even by looking at your notes. 'Immed' must mean immediately.
-Emily: But regarding the lecture as a whole, I knew the professor would be giving a set of specific recommendations, and comparing two alternative approaches, so I formatted my page in advance, adding the features consistent with the nature (Q23) of what I was going to hear.
-Dylan: Ah … I think I need an example of what you mean.
-Emily: Well, look at my page. Before the lecture, I drew large headings (Q24) saying 'recommendations'. You should always draw these, and I drew a table saying, 'Approach 1' and 'Approach 2'. At the end I drew a flowchart, as obviously the final recommendation would be a step-by-step approach. Then I was prepared in advance to simply fill in the spaces.
-Dylan: Wow! Now that's clever.
-Dylan: Your advice about note taking sounds great, but I still have one question, Emily. How are you able to design your page in advance? I mean, how can you predict the nature of the talk, and know which design is likely to work best?
-Emily: It's rather obvious when you think about it. What's your next lecture about?
-Dylan: Legal Studies (Q25).
-Emily: Well, that suggests to me that you'll need a flowchart, since the judicial system has a very logical 'do this first, do that second' approach, which must be followed in that order—y'know, all the processes that happen in the courtroom, and the procedures (Q26) that must take place to ensure complete legality.
-Dylan: Sure. That's the way law is, very linear and orderly, but what about Culture Studies? That's just a mass of comparisons of different cultures.
-Emily: Which tells you that you will need a table, where, in tabular form, you can efficiently write down information.
-Dylan: But often the lecture's not that simple. The professor throws in a really complex mix of ideas.
-Emily: Then use a spider graph—like the web a spider makes, where there's a central idea around which you attach all the associated (Q27) thoughts, and ideas, and impressions.
-Dylan: I see. I think I understand. And that would be very quick, too; very efficient. I like that. But what about Management Theory? How would you approach that?
-Emily: The same as with Culture Studies. I'd use a network, which is basically the same as a spider graph, linking thoughts, although this time there are directions (Q28) involved. It is this element that makes it different—the fact that the thoughts go one way and not the other.
-Dylan: Okay … has directions. It sounds logical. And what about the other subjects, such as Political Science? There's no predictable order to that.
-Emily: Well, for that I'd just put my notes (Q29) in a line, that is, in linear, or straight-line fashion, and these notes would use symbols, of course, to save time.
-Dylan: Okay, that just leaves Mass Media.
-Emily: For that, I wouldn't have any special design at all. As you say, sometimes it's impossible to predict in what way lecturers will present their information, in which case the best you can do is pre-write headings (Q30), but not specific, just general, as in Main One, Main Two, Sub One, Two, and Three, and so on.
-Dylan: Okay.
-Emily: But always be prepared to adapt to the nature of the talk, using any one of the other methods if it becomes appropriate at the time.
+
+Now turn to section 3. You will hear a tutor and three students discussing their work. First you have some time to look at questions 21 to 27.
+
+Now listen carefully and answer questions 21 to 27. Good morning, everyone. Well, in today's tutorial, we're going to discuss the essays that you have to submit by the end of next week.
+
+Some of you will have already started them, which is good. And if you haven't, well, that's OK, but you'll have to get a move on. So, let's begin with you, Simon.
+
+What's happening with you? Well, I've made a start on it. I researched the background quite extensively last weekend, and I should get to the writing stage tomorrow with a bit of luck, and I'll get finished at the weekend. Now, what are you writing about? I decided to look at the car manufacturing company, Jaguar, examine the problems they had with reliability in the 1970s and 80s, how they dealt with it, and how it affected their marketing and sales strategy.
+
+That sounds pretty interesting. Any problems with that? At the start, I had problems getting information from that far back, but after rooting around in the library, I found some magazines which gave me information, and also gave me references to find other stuff. It seems now the only problem is keeping to the 4,000 word limit.
+
+It just seems I have so much to write about. It seems I'll need 5,000 or even 6,000 words to be able to cope. Yes, your essay title seems to me to be very wide-ranging.
+
+Would you think about cutting out part of it? How about looking at their sales and marketing strategy, but only mentioning the problems in the 70s and 80s, and not going too far into it? That's a good idea. That will make it much easier to handle. By the way, how do you want us to hand in our work? Do you want us to drop in a hard copy to your office? You could do that, but I'd prefer it if you just emailed it to me as an attachment.
+
+You've all got my address. If not, give it to the secretary clearly marked that it's for me. Right, Jennifer, how about you? I've not really got going on it yet, but I have decided on a subject.
+
+I'll try and do some research during the rest of this week, and I should get writing this weekend. OK, what are you writing about then? I want to look into how supermarkets use market surveys to develop their products. Will you have enough time to find out what sort of things that the supermarkets do? You won't have much time for that.
+
+I should be OK. I've had a look in the stack system in the library, and I've found a magazine that surveyed all the UK major supermarkets, and a trade publication that analysed the same things in Canadian supermarkets. Be careful about using their conclusions too much.
+
+The university takes a tough stance on plagiarism. Make sure you properly list where you get your information from in a bibliography, and try and do your own analysis. Get going too, as that analysis will take a bit of time.
+
+OK, thanks. You now have some time to look at questions 28 to 30. Now listen to the rest of the discussion, and answer questions 28 to 30.
+
+And Melanie, how is your work going? I'm a bit behind I'm afraid. I was sick all last week and the weekend with flu. I've got a subject I think, but I've not done any work on it yet.
+
+Is there any chance I can get an extension to the submittal date? The policy of the department is not to give any extensions, unless they're extenuating circumstances. Do you have a doctor's certificate or anything? No, I went to the doctor's but I didn't get a note as I didn't realise I would need it. The doctor will have a record of me though as I got a prescription.
+
+I'll go back and get one. Yes, do. If you get one, then there shouldn't be a problem getting an extension.
+
+Without it though, you'll be in trouble. What subject are you considering anyway? I thought I'd do an overview of the UK mortgage interest rates and their effect on housing sales trends over the last ten years. I thought it might be of interest because of the huge increases of house prices over the last decade.
+
+Certainly an interesting subject and it should be no great problem getting information as this has been fairly well documented. It's a lot of work again though and you'll really need to get cracking on it even with the extension, if you get one. Well, I've not got much on for the rest of the week and I've set aside the weekend to really get to grips with it.
+
+Good. Now, is there anything else? That is the end of section three. You will now have half a minute to check your answers.
         </div>
         <div data-part="4"><strong>SECTION 4</strong>
-Good morning. Today I am going to cover the daunting task of giving a quality speech – a thought that makes most of us cringe. In fact, 90% of all people feel nervous about public speaking, about 10% of whom are described as genuinely terrified. Hopefully when we are finished here today, you all will be in the 10% of the population who do not feel nervous at all.
-Did you know that lecturers tend to get more nervous (Q31) if the speech they are giving is an important one? It makes sense, right? You probably wouldn't be nearly as nervous to address your residence hall about the proper use of the recycle and compost bins as you might be if you were asked to give the graduation speech to your entire 5,000-student class.
-So what is it that makes some people completely comfortable in front of crowds? Some people think that the ability to give a good speech is a gift (Q32) that others are simply born with. This is almost never the case. Public speaking can be learned with practice.
-The first, most important thing you can do to improve your confidence in delivering a speech is to prepare a quality speech. Honestly, while the content of your speech is relatively important, the audience will really only remember the last (Q33) sentence you say. It is a good idea to structure the rest of your speech to lead up to this last point to really drive your message home. This is a good way to ensure that your speech is well-organised (Q34).
-Once you are confident in the quality of the speech you have written, the rest is just about your stage presence. Let's go through some do's and don'ts of public speaking.
-First, you want to command the attention of the room. Do not – I repeat, do not proceed with your speech until the audience is paying attention (Q35). Even Martin Luther King, Junior's I Have a Dream speech wouldn't have made any difference in the world without the undivided attention of his audience.
-To continue with the I Have a Dream example, one of the reasons that MLK was such an effective orator was his ability to speak with passion and engage with his audience. That sort of charisma does not come from reading straight from paper. Don't get me wrong – it is a good idea to write your main ideas down on a note card, sheet of paper (Q36), or something. But one factor that will consistently lead to a boring, forgettable speech is writing down your entire speech. Do not write your full (Q37) speech down. If you are constantly reading your paper, you are not making eye contact with your audience, and thus failing to really express the feeling that goes with your ideas.
-I advise you write one or two (Q38) ideas, so I f you suddenly draw a blank you have something to jog your memory. If you've written a good speech that you believe in, those ideas should be sufficient to keep you on track.
-Once you have those ideas written down, give your speech a few practice runs in front of the mirror, into your sound recorder on your phone, or with a friend before it comes time to address a crowd. That way you can hear how the ideas come across, make sure there are no abrupt transitions, and find out whether you're talking too fast or too slow. Timing is important – make sure you time (Q39) yourself beforehand to see how long your speech is. That is pretty much it! With practice you'll be able to deliver an expert speech that engages and even maybe inspires your audience. Just remember – speak with emotion. No one wants to listen to someone reading from a script (Q40).
-As I come to a close in my speech, I'll point out that I have employed all of these tips that I have covered. I practiced my speech ahead of time and timed it, and I can even show you my one small index card with just three simple bullets on it. It's as easy as that!
+
+Section four. You will hear a lecturer talking about the movement of population towards cities. First, you have some time to look at questions thirty-one and thirty-two.
+
+Now listen carefully and answer questions thirty-one and thirty-two. If you consider the farms of old, the type your father or grandfather grew up on, they were small and labour intensive, requiring lots of workers. In addition, they often had a diversity of products, be that animal or vegetable, say cows and sheep, or oranges and lemons with some peaches and a few chickens on the side for the production of eggs.
+
+The many workers involved raised their families who needed products and support services, such as medical clinics and schools. So the small country towns had mercantile activity, storefronts and community participation with all ages present and a distinct town culture. And how it has changed.
+
+Travel to any small country town in virtually any developed country and you will often see that these places are now somewhat forlorn and deserted, lacking life and vigour. Many of the residents have long since moved towards the big cities, so the country areas have become depopulated and their downtowns empty. This phenomenon is so predictable and widespread that it even has a name, rural flight or rural exodus, and it has produced some fairly predictable problems.
+
+Before you hear the next part of the lecture, you have some time to look at questions 33 to 35. Now listen and answer questions 33 to 35. As for the causes of rural exodus, the most obvious is the industrialisation of agriculture.
+
+This comes in two aspects, one of them being monocultural farming practices. What this means is that it is now more efficient to have one product and focus on its needs almost exclusively. So, for example, animal husbandry will usually involve a single type of animal, say, pigs, but with huge factory farming techniques or, in other words, the second aspect, economies of scale.
+
+This means instead of 200 pigs, there will be 2000, tightly fitted into small pens or cages, with high-density waste disposal and automatic feeding systems. Yet, despite this huge size, it can all be controlled by just a dozen farm workers pushing the right button. You might not like it, but in a competitive market, the cheaper the overheads, the better, and one can't argue with market economics.
+
+It's simply the way of the modern world, and it has changed the face of rural districts mostly for the worst. Before you hear the rest of the lecture, you have some time to look at questions 36 to 40. Now listen and answer questions 36 to 40.
+
+We can talk at length about the problem of rural exodus, but what about solutions? Well, there is certainly some cause for hope, since many are now feeling the negatives of increasing urbanisation, negatives which the countryside generally does not have. Thus, tourism, for example, is certainly one avenue of revenue and revitalisation. The most important consideration here is that the local residents themselves participate in developing such initiatives and deciding what happens, since outsiders, be they state government or city-based planners, do not fully understand the local settings, the possibilities which may be on offer, or the town culture, since even small rural areas can be highly distinctive from neighbouring ones.
+
+For example, the Daylesford area has developed a tourist industry based on the natural springs there, putting forward the angle that this water is relaxing and revitalising for the health. There has been the development of spas, saunas, and small-scale accommodation within its picturesque hillsides, and another solution is to utilise the predominant local product. This takes advantage of the fact that many city people are developing a dislike for factory-produced and packaged foodstuffs.
+
+They are becoming interested in products that can be sold directly to them, at a cheaper price, while preserving all the freshness from the tree or animal. It is important here that the country area is not only characterised by a specific product, but markets this idea well. For example, many areas of country Victoria have developed widespread grape-growing and winemaking facilities and encourage wine-tasting tourism, now a thriving industry with an international patronage.
+
+Similarly, Harcourt is famous for apples, Shepparton for mature cheeses, and Mildura for its citrus products. Such strategies, done well, give hope that rural areas can revitalise somewhat, and once again be lively and interesting places to live in. That is the end of Section 4. You now have half a minute to check your answers.
+
+That is the end of the listening test.
         </div>
     </div>
 
@@ -2375,7 +2400,7 @@ As I come to a close in my speech, I'll point out that I have employed all of th
         <p>21. Tomorrow<br>22. Reliability<br>23. 4000 (words)<br>24. e-mail attachment<br>25. market surveys<br>26. stack system<br>27. plagiarism/ using their conclusions<br>28. extension<br>29. (Doctor's) certificate<br>30. mortgage interest rates</p>
         
         <p><strong>Part 4 (Questions 31-40):</strong></p>
-        <p>31. Millennium<br>32. River Thames<br>33. 3.5 million<br>34. British Airways<br>35. 135 metres<br>36. tension piles<br>37. A-frame<br>38. rim<br>39. passenger capsules<br>40. boarding platform</p>
+        <p>31. C<br>32. C<br>33-35. B, C, E<br>36. participate<br>37. natural springs<br>38. local product<br>39. characterized/ characterised<br>40. mature cheese(s)</p>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2503,7 +2528,10 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             </div>
         </div>
         
-    
+        <button id="deliver-button" aria-label="Review your answers" class="footer__deliverButton___3FM07">
+            <i class="fa fa fa-check" aria-hidden="true"></i>
+            <span>Check Answers</span>
+        </button>
     </nav>
 
     <!-- Context Menu -->
@@ -2589,6 +2617,30 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                         console.log(`Question ${qNum} radio detected as answered: ${radioInput.value}`);
                     }
                 // Check for checkbox questions with multiple answer requirements
+                // Questions 11-12: group name q11-12, choose TWO
+                } else if (qNum === 11) {
+                    const checkboxes = document.querySelectorAll('input[name="q11-12"]:checked');
+                    if (checkboxes.length >= 1) { isAnswered = true; }
+                } else if (qNum === 12) {
+                    const checkboxes = document.querySelectorAll('input[name="q11-12"]:checked');
+                    if (checkboxes.length >= 2) { isAnswered = true; }
+                // Questions 13-14: group name q13-14, choose TWO
+                } else if (qNum === 13) {
+                    const checkboxes = document.querySelectorAll('input[name="q13-14"]:checked');
+                    if (checkboxes.length >= 1) { isAnswered = true; }
+                } else if (qNum === 14) {
+                    const checkboxes = document.querySelectorAll('input[name="q13-14"]:checked');
+                    if (checkboxes.length >= 2) { isAnswered = true; }
+                // Questions 33-35: group name q33-35, choose THREE
+                } else if (qNum === 33) {
+                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
+                    if (checkboxes.length >= 1) { isAnswered = true; }
+                } else if (qNum === 34) {
+                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
+                    if (checkboxes.length >= 2) { isAnswered = true; }
+                } else if (qNum === 35) {
+                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
+                    if (checkboxes.length >= 3) { isAnswered = true; }
                 } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
                     isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
@@ -2623,14 +2675,14 @@ As I come to a close in my speech, I'll point out that I have employed all of th
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia800907.us.archive.org/21/items/mix-23m-47s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_23m47s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia903203.us.archive.org/9/items/mix-25m-48s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_25m48s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
         audioPlayer.src = audioSource;
 
 
 
                 function setupCheckboxLimits() {
                 const groupsWithLimits = [
-                    // No checkbox groups with limits currently defined
+                    { name: 'q33-35', max: 3 }, // Questions 33-35: choose THREE
                 ];
 
             groupsWithLimits.forEach(({ name, max }) => {
@@ -2669,33 +2721,58 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             cells.forEach((cell, index) => {
                 const question = cell.getAttribute('data-question');
                 const value = cell.getAttribute('data-value');
-                console.log(`Cell ${index}: question=${question}, value=${value}`);
+                const onclick = cell.getAttribute('onclick');
+                console.log(`Cell ${index}: question=${question}, value=${value}, onclick=${onclick}`);
             });
         }
         
         function selectCell(cell, questionNumber, value) {
-            // Remove previous selection for this question
-            const questionRow = cell.closest('tr');
-            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
-            cellsInRow.forEach(cell => {
-                cell.classList.remove('selected');
-                cell.style.backgroundColor = '#f8f9fa';
-                cell.style.color = 'black';
-            });
-            
-            // Select the clicked cell
-            cell.classList.add('selected');
-            cell.style.backgroundColor = '#4a90e2';
-            cell.style.color = 'white';
-            
-            // Persist selection in hidden input (for answered state and grading if needed)
-            const hiddenInput = document.getElementById(`q${questionNumber}`);
-            if (hiddenInput) {
-                hiddenInput.value = value;
+            try {
+                console.log(`selectCell called: question ${questionNumber}, value ${value}`);
+                console.log('Cell element:', cell);
+                console.log('Cell classes:', cell.className);
+                console.log('Cell data-question:', cell.getAttribute('data-question'));
+                console.log('Cell data-value:', cell.getAttribute('data-value'));
+                
+                // Remove previous selection for this question
+                const row = cell.closest('tr');
+                if (!row) {
+                    console.error('Could not find row for cell');
+                    return;
+                }
+                
+                const cells = row.querySelectorAll('.clickable-cell');
+                console.log(`Found ${cells.length} clickable cells in row`);
+                cells.forEach(c => {
+                    c.classList.remove('selected');
+                    console.log(`Removed 'selected' class from cell with value: ${c.getAttribute('data-value')}`);
+                });
+                
+                // Select the clicked cell
+                cell.classList.add('selected');
+                console.log(`Added 'selected' class to cell with value: ${value}`);
+                console.log('Cell classes after selection:', cell.className);
+                
+                // Store the answer in the hidden input
+                const hiddenInput = document.getElementById(`q${questionNumber}`);
+                if (hiddenInput) {
+                    hiddenInput.value = value;
+                    console.log(`Hidden input q${questionNumber} value set to: ${value}`);
+                } else {
+                    console.error(`Hidden input q${questionNumber} not found`);
+                }
+
+                // Update answered indicators
+                updateAnsweredIndicators();
+                
+                // Force a visual update
+                cell.style.display = 'none';
+                cell.offsetHeight; // Force reflow
+                cell.style.display = '';
+                
+            } catch (error) {
+                console.error('Error in selectCell:', error);
             }
-            
-            // Update answered indicators
-            updateAnsweredIndicators();
         }
 
         function switchToPart(partNumber, andPlay = false) {
@@ -3020,7 +3097,35 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             const answeredGroups = {};
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
-                    if (input.name === 'q28-30') {
+                    if (input.name === 'q11-12') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q11-12"]:checked').length;
+                        // Represent q11 and q12 as two separate questions in the footer count
+                        // Count 1 if at least one selected, and +1 again if two selected
+                        const keyFirst = 'q11-12-first';
+                        const keySecond = 'q11-12-second';
+                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
+                            answeredCount++;
+                            answeredGroups[keyFirst] = true;
+                        }
+                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
+                            answeredCount++;
+                            answeredGroups[keySecond] = true;
+                        }
+                    } else if (input.name === 'q13-14') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q13-14"]:checked').length;
+                        // Represent q13 and q14 as two separate questions in the footer count
+                        // Count 1 if at least one selected, and +1 again if two selected
+                        const keyFirst = 'q13-14-first';
+                        const keySecond = 'q13-14-second';
+                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
+                            answeredCount++;
+                            answeredGroups[keyFirst] = true;
+                        }
+                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
+                            answeredCount++;
+                            answeredGroups[keySecond] = true;
+                        }
+                    } else if (input.name === 'q28-30') {
                         const checkedCount = partContainer.querySelectorAll('input[name="q28-30"]:checked').length;
                         // Represent q28, q29, and q30 as three separate questions in the footer count
                         const keyFirst = 'q28-30-first';
@@ -3067,7 +3172,7 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                 }
             });
             
-            // Include clickable cells as answered (includes Questions 26-30)
+            // Include clickable cells as answered
             const clickableCells = partContainer.querySelectorAll('.clickable-cell.selected');
             clickableCells.forEach(cell => {
                 const questionNum = cell.getAttribute('data-question');
@@ -3077,8 +3182,8 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                 }
             });
             
-            // Include map questions (11-15) as answered if they have a selection
-            for (let i = 11; i <= 15; i++) {
+            // Include map questions (15-20) as answered if they have a selection
+            for (let i = 15; i <= 20; i++) {
                 const selectElement = partContainer.querySelector(`#q${i}`);
                 if (selectElement && selectElement.value && selectElement.value !== '' && !answeredGroups[`map-${i}`]) {
                     answeredCount++;
@@ -3092,51 +3197,51 @@ As I come to a close in my speech, I'll point out that I have employed all of th
         // === Answer key and question type mapping ===
         const correctAnswers = {
             // Part 1
-            q1: 'equipment',
-            q2: 'Fred',
-            q3: ['6 days', 'six days'],
-            q4: 'Mike',
-            q5: 'Leo',
+            q1: 'Jacobs',
+            q2: 'Rod',
+            q3: 'highfield',
+            q4: 'NH871812C',
+            q5: 'Dr.Kevin',
             // Part 1 MCQ
-            q6: 'C',
-            q7: 'A',
+            q6: 'A',
+            q7: 'B',
             q8: 'C',
-            q9: 'B',
-            q10: 'C',
-            // Part 2 map (selects)
-            q11: 'B',
-            q12: 'A',
-            q13: 'E',
-            q14: 'C',
-            q15: 'D',
+            q9: 'A',
+            q10: 'B',
             // Part 2 MCQ
-            q16: 'E',
-            q17: 'G',
-            q18: 'C',
-            q19: 'D',
-            q20: 'A',
+            q11: 'C',
+            q12: 'A',
+            q13: 'C',
+            q14: 'C',
+            q15: 'A',
+            q16: 'C',
+            // Part 2 map (selects)
+            q17: 'E',
+            q18: 'A',
+            q19: 'G',
+            q20: 'D',
             // Part 3 text
-            q21: 'symbols',
-            q22: 'interpreted',
-            q23: 'nature',
-            q24: 'headings',
-            q25: 'legal',
-            q26: 'procedures',
-            q27: 'associated',
-            q28: 'directions',
-            q29: 'notes',
-            q30: 'headings',
+            q21: 'tomorrow',
+            q22: 'reliability',
+            q23: ['4000', '4,000'],
+            q24: ['e-mail attachment', 'email attachment', 'attachment'],
+            q25: 'market surveys',
+            q26: 'stack system',
+            q27: 'plagiarism',
+            q28: 'extension',
+            q29: 'certificate',
+            q30: 'mortgage interest rates',
+            // Part 4 MCQ
+            q31: 'C',
+            q32: 'C',
+            // Part 4 checkbox (choose THREE)
+            'q33-35': ['B', 'C', 'E'],
             // Part 4 text
-            q31: 'nervous',
-            q32: ['a gift', 'gift'],
-            q33: 'last',
-            q34: ['well-organised', 'well-organized'],
-            q35: 'paying attention',
-            q36: 'sheet of paper',
-            q37: 'full',
-            q38: ['one or two', '1 or 2'],
-            q39: 'time',
-            q40: ['a script', 'script']
+            q36: 'participate',
+            q37: 'natural springs',
+            q38: 'local product',
+            q39: ['characterized', 'characterised'],
+            q40: 'mature cheeses'
         };
 
         const questionTypes = {
@@ -3144,13 +3249,15 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             q1: 'text', q2: 'text', q3: 'text', q4: 'text', q5: 'text',
             q6: 'mcq', q7: 'mcq', q8: 'mcq', q9: 'mcq', q10: 'mcq',
             // Part 2
-            q11: 'mcq', q12: 'mcq', q13: 'mcq', q14: 'mcq', q15: 'mcq',
-            q16: 'mcq', q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
+            q11: 'mcq', q12: 'mcq', q13: 'mcq', q14: 'mcq', q15: 'mcq', q16: 'mcq',
+            q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
             // Part 3
-            q21: 'text', q22: 'text', q23: 'text', q24: 'text',
-            q25: 'text', q26: 'text', q27: 'text', q28: 'text', q29: 'text', q30: 'text',
+            q21: 'text', q22: 'text', q23: 'text', q24: 'text', q25: 'text',
+            q26: 'text', q27: 'text', q28: 'text', q29: 'text', q30: 'text',
             // Part 4
-            q31: 'text', q32: 'text', q33: 'text', q34: 'text', q35: 'text', q36: 'text', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
+            q31: 'mcq', q32: 'mcq',
+            'q33-35': 'checkbox',
+            q36: 'text', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
         };
 
         function checkAnswers() {
@@ -3262,8 +3369,8 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                            }
                            break;
                         case 'mcq':
-                            // For map questions (11-20), use the select dropdown selection instead of radios
-                            if (qNum >= 11 && qNum <= 20) {
+                            // For map questions (15-20), use the select dropdown selection instead of radios
+                            if (qNum >= 15 && qNum <= 20) {
                                 const selectElement = document.getElementById(key);
                                 if (selectElement) {
                                     userAnswer = (selectElement.value || '').trim();
@@ -3325,9 +3432,13 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                             }
                             break; }
                        case 'clickable':
+                           console.log(`Checking clickable question ${qNum}, correct answer: ${correctAnswer}`);
                            const selectedCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
+                           console.log(`Selected cell for question ${qNum}:`, selectedCell);
                            userAnswer = selectedCell ? selectedCell.getAttribute('data-value') : 'No Answer';
+                           console.log(`User answer for question ${qNum}: ${userAnswer}`);
                            isCorrect = userAnswer === correctAnswer;
+                           console.log(`Question ${qNum} is correct: ${isCorrect}`);
                            
                            // Mark cells as correct/incorrect
                            const allCells = document.querySelectorAll(`.clickable-cell[data-question="${qNum}"]`);
@@ -4155,8 +4266,8 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             // Initialize clickable cells for questions 27-31
             initClickableCells();
             
-            // Add event listeners for map questions (11-15)
-            for (let i = 11; i <= 15; i++) {
+            // Add event listeners for map questions (15-20)
+            for (let i = 15; i <= 20; i++) {
                 const selectElement = document.getElementById(`q${i}`);
                 if (selectElement) {
                     selectElement.addEventListener('change', updateAnsweredIndicators);
@@ -4175,9 +4286,31 @@ As I come to a close in my speech, I'll point out that I have employed all of th
             });
         }
 
+        function selectCell(clickedCell, questionNumber, value) {
+            // Remove previous selection for this question
+            const questionRow = clickedCell.closest('tr');
+            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
+            cellsInRow.forEach(cell => {
+                cell.classList.remove('selected');
+                cell.style.backgroundColor = '';
+            });
+            
+            // Select the clicked cell
+            clickedCell.classList.add('selected');
+            clickedCell.style.backgroundColor = '#4a90e2';
+            clickedCell.style.color = 'white';
+            // Persist selection in hidden input (for answered state and grading if needed)
+            const hiddenInput = document.getElementById(`q${questionNumber}`);
+            if (hiddenInput) {
+                hiddenInput.value = value;
+            }
+            
+            // Update answered indicators
+            updateAnsweredIndicators();
+        }
 
         function ensureClickableHiddenInputs() {
-            for (let q = 26; q <= 30; q++) {
+            for (let q = 27; q <= 30; q++) {
                 if (!document.getElementById(`q${q}`)) {
                     const input = document.createElement('input');
                     input.type = 'hidden';
@@ -4186,11 +4319,6 @@ As I come to a close in my speech, I'll point out that I have employed all of th
                 }
             }
         }
-
-        // Initialize matching cells when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // This is now handled by initClickableCells() which is called in initAllDragAndDrop()
-        });
 
         function findParentOptionsList(element) {
             // Specific for map
