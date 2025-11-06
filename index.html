@@ -82,6 +82,7 @@
             align-items: center;
         }
 
+      
         #volume-slider {
             -webkit-appearance: none;
             appearance: none;
@@ -366,8 +367,7 @@
             margin: 20px auto;
             width: 100%;
             max-width: 600px;
-            /* display: block; */
-            /* display: flex; */
+            display: block;
         }
         .map-container img {
             width: 100%;
@@ -799,18 +799,25 @@
             flex-direction: column;
             gap: 8px;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
             min-height: 200px;
         }
         .drag-item {
             background: white;
-    border: 1px solid #9c9c9c;
-    font-weight: 600;
-    padding: 0px 5px;
+            border: 1px solid #ddd;
+            padding: 6px 8px;
             border-radius: 4px;
             cursor: move;
             font-size: 16px;
             transition: all 0.2s;
             user-select: none;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.2;
+            max-width: 100%;
+            box-sizing: border-box;
         }
         .drag-item:hover {
             background: #e9ecef;
@@ -820,40 +827,26 @@
             transform: rotate(2deg);
         }
         .drop-zone {
-            border: 2px dashed #aaa;
+            border: 1px dashed #ccc;
             border-radius: 4px;
-            height: 25px;
-            margin-top: 19px;
-            margin-bottom: 5px;
+            min-height: 40px;
+            height: auto;
+            max-width: 120px;
+            min-width: 100px;
             transition: background-color 0.2s, border-color 0.2s;
-            padding: 0.5px 5px;
+            padding: 5px;
             display: flex;
             align-items: center;
-            position: relative;
-            color: #b3b3b3;
-            font-weight: 600;
-            min-width: 200px;
-            width: auto;
+            justify-content: center;
+            flex-wrap: wrap;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            text-align: center;
+            line-height: 1.2;
         }
         .drop-zone.drag-over {
             background-color: #e6f4ff;
             border-color: #4a90e2;
-        }
-        /* Letter pill displayed inside drop-zones */
-        .drop-letter {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 22px;
-            height: 20px;
-            padding: 0 6px;
-            border: 1px solid #4a90e2;
-            color: #0f5bd7;
-            background: #eef5ff;
-            border-radius: 9999px;
-            font-weight: 700;
-            cursor: move;
-            user-select: none;
         }
         .drop-zone.correct {
             background-color: #e9f7ef;
@@ -1045,10 +1038,6 @@
         .modal-close-btn:hover {
             color: #333;
         }
-
-        #part-2 .questions-container {
-width: 75%;
-        }
         #score-summary {
             font-size: 18px;
             font-weight: bold;
@@ -1121,25 +1110,23 @@ width: 75%;
             font-weight: 600;
         }
         .matching-table .drop-zone {
-            /* Unify with global drop-zone styling */
-            border: 2px dashed #aaa;
-            border-radius: 4px;
-            height: 25px;
+            min-height: 35px;
+            height: 35px;
             width: 100%;
             max-width: none;
             min-width: 200px;
-            padding: 0.5px 5px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             flex-wrap: nowrap;
-            background-color: transparent;
+            background-color: #fff;
+            border: 1px dashed #ccc;
+            border-radius: 4px;
             word-break: break-word;
             overflow-wrap: break-word;
             text-align: left;
             line-height: 1.2;
-            color: #b3b3b3;
-            font-weight: 600;
         }
         .matching-table .drop-zone .drag-item {
             width: auto;
@@ -1212,38 +1199,6 @@ width: 75%;
         .clickable-cell.incorrect::after {
             content: "✗";
             font-weight: bold;
-        }
-        
-        /* Clickable cell styles for questions 27-30 */
-        .clickable-cell {
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s ease;
-            min-width: 50px;
-            min-height: 50px;
-            border: 2px solid #e0e0e0;
-            position: relative;
-            background-color: #f8f9fa;
-            margin: 2px;
-        }
-       
-        .clickable-cell:hover {
-            background-color: #e6f4ff;
-            border-color: #4a90e2;
-        }
-        .clickable-cell.selected {
-            background-color: #4a90e2 !important;
-            color: white !important;
-        }
-        
-        .clickable-cell.correct {
-            background-color: #28a745 !important;
-            color: white !important;
-        }
-        
-        .clickable-cell.incorrect {
-            background-color: #dc3545 !important;
-            color: white !important;
         }
         
 
@@ -1766,27 +1721,9 @@ width: 75%;
         .checkbox-group label.incorrect::before { content: '✖ '; color: #dc3545; font-weight: 600; margin-right: 6px; }
 
         /* Drag & Drop enhancements */
-        /* When filled, hide zone border and show a blue outlined pill around the dropped option */
-        .drop-zone.filled { 
-            background: transparent; 
-            border: none !important; 
-            padding: 0; 
-            justify-content: flex-start; 
-            width: auto;
-            min-width: fit-content;
-        }
-        .drop-zone.filled .drag-item { 
-            width: auto; 
-            height: auto; 
-            display: inline-block; 
-            white-space: nowrap; 
-            border: 1px solid #2c6bed; 
-            border-radius: 4px; 
-            padding: 2px 6px; 
-            font-weight: 600; 
-            background: #fff; 
-            color: #222; 
-        }
+        /* Filled zone should look like an input with blue border */
+        .drop-zone.filled { background-color: #ffffff; border: 2px solid #2c6bed !important; outline: none !important; box-shadow: none !important; padding: 6px 10px; border-radius: 4px; }
+        .drop-zone.filled .drag-item { width: auto; height: auto; display: inline-block; border: none; border-radius: 0; padding: 0; font-weight: 500; background: transparent; box-shadow: none; white-space: nowrap; }
 
         /* ===== Results Modal UI ===== */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
@@ -1812,14 +1749,6 @@ width: 75%;
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="timer-container">
-            <span class="timer-display">60:00</span>
-        </div>
-        <div class="header-icons">
-        
-        </div>
-    </div>
 
     <div class="audio-player-container">
         <button id="play-pause-btn" class="player-btn">
@@ -1863,93 +1792,45 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 1-5</strong></p>
-                            <p>Complete the form below. Write <strong>NO MORE THAN ONE WORD OR A NUMBER</strong> for each answer.</p>
+                            <p><strong>Questions 1-10</strong></p>
+                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-top: 20px;">
-                            <p class="centered-title"><strong>Oakham Surgery New Patient Form</strong></p>
-                            
-                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px; width: 30%;"><strong>Example: <br><br>New Patient's Road</strong></td>
-                                    <td style="border: 1px solid #ddd; padding: 8px; width: 70%;"><strong>Answer: <br><br>Dawson Road</strong></td>
-                                </tr>
-                              
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Full name:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Mike <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Wife's first name:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Janet</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Children's first names:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">1st <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"> 2nd 3rd 4th</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Address:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">52 Dawson Road <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"> Melbourne</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Health card number:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off"></td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Wife's health card number:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">will give later</td>
-                                </tr>
-                                <tr>
-                                    <td style="border: 1px solid #ddd; padding: 8px;">Preferred doctor selected:</td>
-                                    <td style="border: 1px solid #ddd; padding: 8px;"><input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"> White</td>
-                                </tr>
+                            <p class="centered-title">Student Accommodation</p>
+                            <table class="people-table" style="margin-top: 10px; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Cost</th>
+                                        <th>Contract</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="font-weight: 600;">Example College: Single room</td>
+                                        <td>Standards £3276 per year <br>Ensuite: <input type="text" id="q1" class="answer-input" placeholder="1" style="width: 120px;"> £ per year<br>(meals are not included)</td>
+                                        <td>36 weeks (Rooms not available during the <input type="text" id="q2" class="answer-input" placeholder="2" style="width: 120px;">)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" id="q3" class="answer-input" placeholder="3" style="width: 120px;"> Room with a family</td>
+                                        <td>£150 per week —all inclusive</td>
+                                        <td>Arrangements are <input type="text" id="q4" class="answer-input" placeholder="4" style="width: 120px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Private renting: <br>Room in a share house or a <input type="text" id="q5" class="answer-input" placeholder="5" style="width: 120px;"></td>
+                                        <td>
+                                            <ul style="list-style-type: none; padding-left: 0;">
+                                                <li>&bull;&nbsp;&nbsp;From £275 to £490 per<br>month additional costs (for this year)</li>
+                                                <li>&bull;&nbsp;&nbsp;gas and electricity <input type="text" id="q6" class="answer-input" placeholder="6" style="width: 120px;"> £ per month approx.</li>
+                                                <li>&bull;&nbsp;&nbsp;<input type="text" id="q7" class="answer-input" placeholder="7" style="width: 120px;"> £9</li>
+                                                <li>&bull;&nbsp;&nbsp;<input type="text" id="q8" class="answer-input" placeholder="8" style="width: 120px;"></li>
+                                            </ul>
+                                        </td>
+                                        <td>6 months Need <input type="text" id="q9" class="answer-input" placeholder="9" style="width: 120px;"><br>• two <input type="text" id="q10" class="answer-input" placeholder="10" style="width: 120px;"></td>
+                                    </tr>
+                                 
+                                </tbody>
                             </table>
-                        </div>
-                    </div>
-
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 6-10</strong></p>
-                            <p>Choose the correct answer.</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 18px;">
-                            <p><strong>6</strong>&nbsp;&nbsp;When is Mike's wife's first appointment?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="A"> Friday 21st at 2.00pm.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="B"> Friday 21st at 2.30pm.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q6" value="C"> Friday 21st at 3.30pm.</label></div>
-                            </div>
-                            
-                            <p><strong>7</strong>&nbsp;&nbsp;What is the surgery's phone number?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="A"> 7253 9819</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="B"> 7253 9829</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q7" value="C"> 7523 9829</label></div>
-                            </div>
-                            
-                            <p><strong>8</strong>&nbsp;&nbsp;What is the name of the girl with whom Mike is speaking at the surgery?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="A"> Rachel</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="B"> Elizabeth</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q8" value="C"> Angela</label></div>
-                            </div>
-                            
-                            <p><strong>9</strong>&nbsp;&nbsp;What's the night doctor's mobile number?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="A"> 0506 759 3856</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="B"> 0506 759 3857</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q9" value="C"> 0506 758 3856</label></div>
-                            </div>
-                            
-                            <p><strong>10</strong>&nbsp;&nbsp;Which of the following does the surgery NOT make a charge for?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="A"> Travel vaccinations</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="B"> Consultations</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q10" value="C"> Insurance reports</label></div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1962,121 +1843,80 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 11-16</strong></p>
+                            <p><strong>Questions 11-18</strong></p>
                             <p>Choose the correct answer.</p>
                         </div>
                         
                         <div style="margin-bottom: 18px;">
-                            <p><strong>11</strong>&nbsp;&nbsp;The most famous view in this park is</p>
+                            <p><strong>11</strong>&nbsp;&nbsp;The Heritage Clothes exhibition was put together by</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="A"> the largest waterfall worldwide.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="B"> the longest river in the world.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="C"> the biggest sub-tropical rainforest in the world.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="A"> museum staff.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="B"> local residents.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="C"> clothing manufacturers.</label></div>
                             </div>
-                            
-                            <p><strong>12</strong>&nbsp;&nbsp;According to the tour guide, what is best to do on top of the mountain?</p>
+
+                            <p><strong>12</strong>&nbsp;&nbsp;The photographs show the clothes worn by</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="A"> having a picnic</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="B"> taking photos</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="C"> strolling about</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="A"> their owners.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="B"> professional models.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="C"> design students.</label></div>
                             </div>
-                            
-                            <p><strong>13</strong>&nbsp;&nbsp;What did the tour guide recommend for more experienced walkers?</p>
+
+                            <p><strong>13</strong>&nbsp;&nbsp;The exhibition called Toys from the Past is</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="A"> the mountain trail</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="B"> the Bush Track</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="C"> the Creek Circuit</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="A"> displayed in a new gallery.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="B"> on show for a limited time.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="C"> aimed specially at children.</label></div>
                             </div>
-                            
-                            <p><strong>14</strong>&nbsp;&nbsp;What is mentioned about the transport in the park?</p>
+
+                            <p><strong>14</strong>&nbsp;&nbsp;Visitors to Toys from the Past are recommended to</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> Bicycles can be hired.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> Trams are available for tourists.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> It is included in the bill.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> play with the toy trains.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> look at all the dolls.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> see the board games.</label></div>
                             </div>
-                            
-                            <p><strong>15</strong>&nbsp;&nbsp;Which activity is provided for adults all year round?</p>
+
+                            <p><strong>15</strong>&nbsp;&nbsp;The miniature toys have been</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="A"> abseiling</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="B"> bungee jumping</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="C"> paragliding</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="A"> made by the museum.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="B"> bought by the museum.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="C"> borrowed by the museum.</label></div>
                             </div>
-                            
-                            <p><strong>16</strong>&nbsp;&nbsp;What should the visitors do before they go to the restaurant?</p>
+
+                            <p><strong>16</strong>&nbsp;&nbsp;The biscuit factory made tins</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="A"> make bookings</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="B"> inquire about availability</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="C"> collect the meal ticket at the reception</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="A"> for people all over the world.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="B"> of different shapes.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q16" value="C"> for many famous people.</label></div>
+                            </div>
+
+                            <p><strong>17</strong>&nbsp;&nbsp;People's favourite biscuit used to be</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q17" value="A"> an unsweetened one.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q17" value="B"> one covered in chocolate.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q17" value="C"> one filled with cream.</label></div>
+                            </div>
+
+                            <p><strong>18</strong>&nbsp;&nbsp;The hands-on activity allows people to</p>
+                            <div class="multi-choice-question">
+                                <div class="multi-choice-option"><label><input type="radio" name="q18" value="A"> make some biscuits.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q18" value="B"> taste some of the biscuits.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q18" value="C"> pack a biscuit tin.</label></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 17-20</strong></p>
-                            <p>Label the plan below.</p>
+                        <div class="question-prompt" style="margin-top: 60px;">
+                            <p><strong>Questions 19 and 20</strong></p>
+                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <div style="display: flex; gap: 30px; align-items: flex-start;">
-                                <div class="map-container" style="flex: 1;">
-                                <img src="https://ieltstrainingonline.com/wp-content/uploads/2020/03/4-1-q17-20-962x1024.jpg" alt="Park Plan for questions 17-20" style="width: 100%; max-width: 600px;">
-                                </div>
-                            
-                                <div style="flex: 1; margin-top: 0;">
-                                    <p><strong>17</strong>&nbsp;&nbsp;Campsite <select id="q17" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                        <option value="H">H</option>
-                                        <option value="I">I</option>
-                                    </select></p>
-                                
-                                    <p><strong>18</strong>&nbsp;&nbsp;Business Centre <select id="q18" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                        <option value="H">H</option>
-                                        <option value="I">I</option>
-                                    </select></p>
-                                
-                                    <p><strong>19</strong>&nbsp;&nbsp;Museum <select id="q19" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                        <option value="H">H</option>
-                                        <option value="I">I</option>
-                                    </select></p>
-                                
-                                    <p><strong>20</strong>&nbsp;&nbsp;Cafe <select id="q20" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                        <option value="F">F</option>
-                                        <option value="G">G</option>
-                                        <option value="H">H</option>
-                                        <option value="I">I</option>
-                                    </select></p>
-                                </div>
-                                </div>
+                        <div class="example-box" style="margin-top: 12px;">
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;The gift shop is located beside the <input type="text" id="q19" class="answer-input" placeholder="19" style="width: 200px;"> on the ground floor.</li>
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Free <input type="text" id="q20" class="answer-input" placeholder="20" style="width: 200px;"> are available for visitors' belongings.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -2090,48 +1930,103 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 21-24</strong></p>
-                            <p>Answer the questions.Write <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p><strong>Questions 21-30</strong></p>
+                            <p>Complete the notes below.</p>
+                            <p>Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-bottom: 18px;">
-                            <p><strong>21</strong>&nbsp;&nbsp;When will Simon begin writing his essay? <input type="text" id="q21" class="answer-input" placeholder="21" autocomplete="off"></p>
+                        <div class="example-box">
+                            <p class="centered-title" >Archaeology Course</p>
                             
-                            <p><strong>22</strong>&nbsp;&nbsp;According to Simon, what kind of problems did Jaguar have in the 1970s and 80s? <input type="text" id="q22" class="answer-input" placeholder="22" autocomplete="off"></p>
+                            <ul style="list-style-type: none; padding-left: 40;">
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Can be combined with any other subject except <input type="text" id="q21" class="answer-input" placeholder="21" style="width: 160px;"></li>
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Has three <input type="text" id="q22" class="answer-input" placeholder="22" style="width: 160px;"> modules in first semester</li>
+                            </ul>
                             
                             
-                            <p><strong>23</strong>&nbsp;&nbsp;What is the word limit for the essay? <input type="text" id="q23" class="answer-input" placeholder="23" autocomplete="off"></p>
+                            <div style="margin-top: 20px;">
+                                <p><strong>Module 1</strong></p>
+                                <table class="people-table" style="margin-top: 10px; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 30%; font-weight: 600;">Title:</td>
+                                            <td><input type="text" id="q23" class="answer-input" placeholder="23" style="width: 160px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Lecturer:</td>
+                                            <td>Dr. Morris</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Learning method:</td>
+                                            <td>Lectures and practical sessions</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Content:</td>
+                                            <td>Based on processes<br>
+                                            • recording<br>
+                                            • <input type="text" id="q24" class="answer-input" placeholder="24" style="width: 160px;"><br>
+                                            • interpretation<br>
+                                            • display</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Assessment:</td>
+                                            <td>By <input type="text" id="q25" class="answer-input" placeholder="25" style="width: 160px;"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             
-                            <p><strong>24</strong>&nbsp;&nbsp;What is the preferable method for handing in the essay? <input type="text" id="q24" class="answer-input" placeholder="24" autocomplete="off"></p>
-                            </p>     
-                        </div>
-                    </div>
-
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 25-27</strong></p>
-                            <p>Complete the sentences below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 18px;">
-                            <p>Jennifer wants to write about how &nbsp;&nbsp;<input type="text" id="q25" class="answer-input" placeholder="25" autocomplete="off"> are used by supermarkets.</p>
+                            <div style="margin-top: 20px;">
+                                <p><strong>Module 2</strong></p>
+                                <table class="people-table" style="margin-top: 10px; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 30%; font-weight: 600;">Title:</td>
+                                            <td><input type="text" id="q26" class="answer-input" placeholder="26" style="width: 160px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Lecturer:</td>
+                                            <td>Prof. Elliot</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Content:</td>
+                                            <td><input type="text" id="q27" class="answer-input" placeholder="27" style="width: 160px;"> and development of built environments</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Assessment:</td>
+                                            <td>By <input type="text" id="q28" class="answer-input" placeholder="28" style="width: 160px;"> examination</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             
-                            <p>Jennifer found some publications in the library &nbsp;&nbsp;<input type="text" id="q26" class="answer-input" placeholder="26" autocomplete="off"> to help her analysis.</p>
-                            
-                            <p>The tutor warned Jennifer about &nbsp;&nbsp;<input type="text" id="q27" class="answer-input" placeholder="27" autocomplete="off"> in her work.</p>
-                        </div>
-                    </div>
-
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 28-30</strong></p>
-                            <p>Complete the tutor's summary notes on Melanie below. Write <strong>NO MORE THAN THREE WORDS</strong> for each answer.</p>
-                        </div>
-                        
-                        <div style="margin-top: 20px;">
-                            <p class="centered-title"><strong>Notes on Student Essays</strong></p>
-                            
-                            <p>Student Melanie needs an &nbsp;&nbsp;<input type="text" id="q28" class="answer-input" placeholder="28" autocomplete="off"> as she has been unwell with the flu. She will get a &nbsp;&nbsp;<input type="text" id="q29" class="answer-input" placeholder="29" autocomplete="off"> from the doctor. She's going to write about &nbsp;&nbsp;<input type="text" id="q30" class="answer-input" placeholder="30" autocomplete="off"> in the UK and their effect on housing trends. She should be on track with the essay by the end of the weekend.</p>
+                            <div style="margin-top: 20px;">
+                                <p><strong>Module 3</strong></p>
+                                <table class="people-table" style="margin-top: 10px; width: 100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 30%; font-weight: 600;">Title:</td>
+                                            <td>Method and Science</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Lecturer:</td>
+                                            <td>Dr. Thompson</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Content:</td>
+                                            <td>Standard techniques in fieldwork and analysis</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Learning method:</td>
+                                            <td>50% lab work, 50% <input type="text" id="q29" class="answer-input" placeholder="29" style="width: 160px;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: 600;">Site survey:</td>
+                                            <td>at end of module (the <input type="text" id="q30" class="answer-input" placeholder="30" style="width: 160px;"> is to be announced later)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2145,79 +2040,79 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 31-32</strong></p>
+                            <p><strong>Questions 31 and 32</strong></p>
                             <p>Choose the correct answer.</p>
                         </div>
                         
                         <div style="margin-bottom: 18px;">
-                            <p><strong>31</strong>&nbsp;&nbsp;Originally, country</p>
+                            <p><strong>31</strong>&nbsp;&nbsp;Participants in the learner Persistence study were all drawn from the same</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="A"> required fewer workers.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="B"> had lots of animals.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="C"> were more interesting places.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="A"> age group.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="B"> geographical area.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q31" value="C"> socio-economic level.</label></div>
                             </div>
-                            
-                            <p><strong>32</strong>&nbsp;&nbsp;Now, the problems there</p>
+
+                            <p><strong>32</strong>&nbsp;&nbsp;The study showed that when starting their course, older students were most concerned about</p>
                             <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="A"> can be solved.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="B"> are numerous.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="C"> are expected.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="A"> effects on their home life.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="B"> implications for their future career.</label></div>
+                                <div class="multi-choice-option"><label><input type="radio" name="q32" value="C"> financial constraints.</label></div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 33-35</strong></p>
-                            <p>Choose <strong>THREE</strong> correct answers.</p><br>
-                            <p><strong>33-35</strong>&nbsp;&nbsp;Which THREE factors are typical of modern farming?</p>
+                        <div class="question-prompt" style="margin-top: 60px;">
+                            <p><strong>Questions 33-37</strong></p>
+                            <p>Complete the table. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                         </div>
-                        
-                        <div style="margin-bottom: 18px;">
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" name="q33-35" value="A"> Many overheads</label>
-                                <label><input type="checkbox" name="q33-35" value="B"> More machines</label>
-                                <label><input type="checkbox" name="q33-35" value="C"> Fewer types of products</label>
-                                <label><input type="checkbox" name="q33-35" value="D"> More frequent feeding</label>
-                                <label><input type="checkbox" name="q33-35" value="E"> Greater numbers of products</label>
-                                <label><input type="checkbox" name="q33-35" value="F"> More factories</label>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 36-40</strong></p>
-                            <p>Complete the table. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
-                        </div>
-                        
-                        <div style="margin-top: 20px;">
-                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                        <div class="example-box" style="margin-top: 12px;">
+                            <p class="centered-title">Research findings</p>
+                            <table class="people-table" style="margin-top: 10px; width: 100%;">
                                 <thead>
-                                    <tr style="background-color: #f8f9fa;">
-                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Possible Solution</th>
-                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Important Factor</th>
-                                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Examples</th>
+                                    <tr>
+                                        <th></th>
+                                        <th>Social and Environmental Factors</th>
+                                        <th>Other Factors</th>
+                                        <th>Personal Characteristics</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">tourism</td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">Locals must <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off"></td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">Daylesford area uses its <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"></td>
+                                        <td style="font-weight: 600;">First level of importance</td>
+                                        <td>Effective support</td>
+                                        <td>Perceived success in study</td>
+                                        <td>Enjoyment of a <input type="text" id="q33" class="answer-input" placeholder="33" style="width: 120px;"></td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">using the <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"></td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">– is <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> by its distinctive product</td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">Shepparton is known for its <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off"></td>
+                                        <td style="font-weight: 600;">Second level of importance</td>
+                                        <td>Positive experiences at <input type="text" id="q34" class="answer-input" placeholder="34" style="width: 120px;"></td>
+                                        <td>Good <input type="text" id="q35" class="answer-input" placeholder="35" style="width: 120px;"></td>
+                                        <td>Many <input type="text" id="q36" class="answer-input" placeholder="36" style="width: 120px;"> in daily life</td>
                                     </tr>
                                     <tr>
-                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;">– must market the idea effectively</td>
-                                        <td style="border: 1px solid #ddd; padding: 8px;"></td>
+                                        <td style="font-weight: 600;">Third level of importance</td>
+                                        <td>Good interaction with the <input type="text" id="q37" class="answer-input" placeholder="37" style="width: 120px;"></td>
+                                        <td>No family problems</td>
+                                        <td>Capacity for multi-tasking</td>
                                     </tr>
+                                    
                                 </tbody>
                             </table>
+                        </div>
+
+                        <div class="question-prompt" style="margin-top: 60px;">
+                            <p><strong>Questions 38-40</strong></p>
+                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+                        </div>
+
+                        <div class="example-box" style="margin-top: 12px;">
+                            <p class="centered-title">Recommendations</p>
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Ask new students to complete questionnaires to gauge their level of <input type="text" id="q38" class="answer-input" placeholder="38" style="width: 200px;">.</li>
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Train selected students to act as <input type="text" id="q39" class="answer-input" placeholder="39" style="width: 200px;">.</li>
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Outside office hours, offer <input type="text" id="q40" class="answer-input" placeholder="40" style="width: 200px;"> help.</li>
+                                <li style="margin-bottom: 15px;">&bull;&nbsp;&nbsp;Follow up students who miss deadlines.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -2235,155 +2130,149 @@ width: 75%;
     <div id="transcription-data" style="display:none;">
         <div data-part="1"><strong>SECTION 1</strong>
 
-Section 1. You will hear a conversation between a man and a receptionist on the subject of joining a surgery. First you have some time to look at questions 1 to 5. You will see that there is an example. This time only, the conversation relating to this will be played first.
+You will hear a student from overseas phoning the student accommodation office of a college in the UK for some information. First you have some time to look at questions 1 to 4 on page 2. You will see that there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.
 
-Hello, I've just moved to Melbourne for a new job and I've been advised to register with a new doctor for my family and myself. I think that this surgery is the nearest one to where I live. What's the name of the road that you live in, sir? Dawson Road.
+College Accommodation Bureau, Darren speaking. How may I help you? Oh, good morning. I'm starting at the college in September and I need to find some accommodation.
 
-So, Dawson Road is the correct answer. Now we begin. You should answer the questions as you listen, as the recording is not played twice.
+Right. Well, there are various options. The first one is to stay in college accommodation.
 
-Listen carefully to the conversation and answer questions 1 to 5. Hello, I've just moved to Melbourne for a new job and I've been advised to register with a new doctor for my family and myself. I think that this surgery is the nearest one to where I live. What's the name of the road that you live in, sir? Dawson Road.
+That would be a single room. The first type of accommodation is a single room in the college. So, single room has been written in the space.
 
-Yes, that's in our area. Would you like to register with us now? Yes, please. Right, I'll just have to take some details.
+Now we shall begin. You should answer the questions as you listen because you will not hear the recording a second time. Listen carefully and answer questions 1 to 4. College Accommodation Bureau, Darren speaking.
 
-First of all, could you give me your name? It's Mike Jacobs. J-A-C-O-B-S. And your family? My wife's name is Janet and I have one little boy whose name is Rod.
+How may I help you? Oh, good morning. I'm starting at the college in September and I need to find some accommodation. Right.
 
-Rod? No, Rod. R-O-D. Good, that's fine.
+Well, there are various options. The first one is to stay in college accommodation. That would be a single room.
 
-And what is your address here in Melbourne? 52 Dawson Road, Highfield, Melbourne. Highfield. H-I-G-H-F-I-E-L-D.
+How much would that cost? Well, it depends. For a standard room, you're looking at three thousand two hundred and seventy six pounds for the year. That's just for a room with washbasin.
 
-Good. And I'll need to know your health card number. It's N-H-8-7-1-8-1-2-C.
+Or three thousand eight hundred and thirty four pounds if you want an ensuite. That's with your own small bathroom. I see.
 
-What about my family? Oh, only yours for now. Do you know the name of your old doctor? It was Dr. Graham McKenzie in Perth. Now, we've got four doctors here.
+That's more than I expected. It does include heating. That's quite a saving because energy costs can be high, especially in winter.
 
-There's Dr. Susan Larkins, Dr. Kevin White, Dr. James Nicholson and Dr. Linda Williams. Which one would you like to register with? Oh, I didn't think of that. Well, I think I would like a man as my doctor.
+Hmm. Does it include meals as well? No. All our rooms are self-catering now.
 
-I'll go for the last one. Was that one a man? No, that was Dr. Linda. How about Dr. Kevin? Yes, that will be fine.
+There's a shared kitchen on each corridor where you can cook if you want to or there are plenty of places to eat out on campus. Okay. And you said that's the price for the whole year? Well, you pay annually but actually it's for 36 weeks.
 
-Right, Dr. White it is. Will that be the same for your family? Oh yes, my wife might not want a man as her doctor. Well, we'll leave it as it is for now and my wife can change if she wants to.
+It doesn't include holidays. You have to vacate the room then. Oh, I need somewhere to stay in the holidays.
 
-Before the conversation continues, you have some time to look at questions 6 to 10. Now listen carefully and answer questions 6 to 10. I'd like to make an appointment now for my wife.
+I can't afford to go home. The flights are too expensive. Well, there is another option.
 
-She wants to come in at the end of the week. How about this Friday morning? That's Friday the 21st. I don't think she can make the morning.
+Several families who either work at the college or have children studying here offer visiting students a room in their homes. Oh? We call this arrangement home welcome and we've still got a few places left at the moment. You pay a hundred and fifty pounds per week and that includes breakfast, a packed lunch and dinner as well as heating.
 
-Any openings in the afternoon? There are appointments available at 2.30 and 3.30. We'll take the first one, please. OK, that's done. Oh, and what shall my wife do if she wants to switch doctor? She can just give us a call here.
+Is there a contract? Do you have to stay for the whole year? No. It's flexible. It sounds really good but I'm not sure.
 
-Do you want to take the number down? Yes, please. It's 7253 9829. Can you give me your name, please? My name's Angela, but there are two other girls who might be on duty as well.
+I really want to be a little more independent. Before you hear the rest of the conversation, you have some time to look at questions five to ten on page two. Now listen and answer questions five to ten.
 
-Their names are Elizabeth and Rachel, but it doesn't matter who's on duty. Anyone can take care of it. Now, what do we do if we need to call out a doctor during the night? We've got a rotation system with the doctors in the area.
+What about finding somewhere to live off campus? Yes, you can rent a property in town privately. You might want to rent a room in a shared house. You'd have a room of your own and share the kitchen and bathroom with other students.
 
-There's a mobile number you can call and that'll get through to the doctor who's on duty. What's that number? It's 0506 759 3856. Got that.
+What about if I don't want to share? You can get what we call a studio. They're often quite small but they'll have everything you need. Right.
 
-I didn't ask about any charges. Like all Australia, prescriptions have to be paid for at the chemist at the prevailing rate. Some things like vaccinations for travel and an insurance report we make a standard charge for, and I can give you a pricelist for those.
+How much would those two options cost? Well, prices vary depending on which part of town the property's in. Generally speaking, the cheapest is around 275 pounds a month for each student. Oh, that's not too bad.
 
-Consultations, though, are under the National Health Service, so they'll be free. Great. Well, that's all.
+Yes, but it can also be as high as 490 pounds and then you'll have to pay all your other bills. What sort of amount would I be looking at for those? Well, last year students were paying on average about 43 pounds per month each for gas and electricity. This year it'll probably be somewhere in the region of 48 pounds.
 
-Thanks and goodbye. Goodbye. That is the end of Section 1. You will now have half a minute to check your answers.
+That's a lot. Yes, they've gone up quite a bit and on top of that you have to pay for water and that'll probably be around nine pounds. That didn't occur to me and I guess I'd have to pay for transportation, too.
+
+That's right. Most of these properties are quite a long way from the college. It just gets worse and worse.
+
+What's the minimum contract on this type of accommodation? Six months and you have to pay a deposit but of course you can stay there over the holidays. That's true. And you'd have to provide references.
+
+They want two from someone in this country. I see, but that's not a problem. If you do choose this option, we can't find the property for you.
+
+You'd have to go through the estate agent which manages the property for the owner. Right. Thanks.
+
+Well, I think I'd like to see what's available privately. Could you give me the estate agent details? That is the end of section 1. You now have half a minute to check your answers. Now turn to section 2 on page 3.
         </div>
         <div data-part="2"><strong>SECTION 2</strong>
 
-Now turn to Section 2. You will hear a guide talking to a group of visitors about a national park. First, you have some time to look at questions 11 to 16. Now listen carefully and answer questions 11 to 16.
+You will hear an audio guide introducing visitors to a museum. First you have some time to look at questions 11 to 15 on page 3. Now listen carefully and answer questions 11 to 15. Welcome to the Global Museum located at the heart of this truly multicultural city which is home to more than 60 different nationalities. The museum has a number of exciting displays and exhibitions and this audio guide is designed to help you make the most of your visit.
 
-Welcome to Byron National Park. I am Jim Carson, your tour guide for the trip. First, I'd like to give you some basic information about the park.
+Altogether the museum has 18 different galleries and this season sees the opening of three new exhibitions. We recommend that you begin your tour by visiting this season's highlights. The Heritage Clothes exhibition is located in gallery 5 of the museum.
 
-Covering 7,000 acres of land and spanning across three states, Byron National Park was established to protect the area's most spectacular scenic values. With unique geological features, natural history and native plant and animal life, it is an ideal destination for recreation as well as research purposes. The park has a breathtaking waterfall connecting the longest river in the country, but it is most renowned for having the largest subtropical rainforest worldwide.
+People who live in the area have spent two years preparing this exhibition which brings together some of the fascinating garments traditionally worn in their own communities. They researched the history of their community's clothing traditions and the customs and rituals associated with them. Altogether 16 countries are represented from Ghana to Korea from Turkey to Nepal.
 
-There are many layers of tall, medium and low vegetation growing with seasonal variations in the park. It is a place where the air seems green. Ardent hikers can find an awesome array of options here, apart from the dense green rainforest, tourists can also hike along the mountain trail.
+The photographs that accompany each display case were taken by some of the city college students who are studying design and show the clothes being modelled by the real people who wear them in the course of their everyday lives. Another highlight this season is the exhibition called Toys from the Past which can be found in gallery 9. This exhibition which will appeal to people of all ages is on tour throughout the country and will be here for 10 weeks only. The exhibits include dolls made over a hundred years ago with beautiful porcelain faces and in some cases real hair.
 
-Despite the stunning view, taking photos is not advised on the way up, I'm afraid, as one might get distracted and the narrow trail by the sheer cliff is quite dangerous. When you reach the top of the mountain, there is nothing better than having a picnic under the trees with your family. Accompanied mostly by wildlife, walkers as well as cyclists may find the bush track a good choice for having a tranquil time to themselves.
+The collection covers the favourite toys such as wooden train sets from many different generations and provides plenty of interest for children and adults. The gigantic board games which are laid out on the gallery floor are one of the most popular activities in the exhibition and should not be missed. This exhibition concludes with a special display of miniature toys.
 
-As your tour guide, I suggest that only expert hikers take the creek circuit, because its beautiful and inspiring scenery through the subtropical jungle is paralleled by its physical challenges. A list of transport is available within the park. Bicycles are a popular choice as it is the most flexible way to get around.
+These small objects are on loan from countries all over the world and in some cases measure no more than a few centimetres. There's a tiny car made from matchsticks, a toy aeroplane complete with pilot and passengers made out of seashells and some exquisite little buildings no higher than four centimetres. Before you hear the rest of the talk you have some time to look at questions 16 to 20 on pages 3 and 4. Now listen and answer questions 16 to 20.
 
-Electric trams are temporarily closed for maintenance. Boat trips down the river are an ideal way to spend a tranquil afternoon. Rest assured that transport within the park is covered in the bill.
+The final gallery highlight of the season is the biscuit gallery at number 15. Many years ago this city was famous for its biscuits although today the factory no longer exists. Did you know for example that before biscuits were packed in paper or cardboard boxes biscuit tins were fashion items.
 
-Extreme sports is another highlight of the park. There are, for adventurous grown-ups, especially those who are comfortable with having a racing heart, scary as it may sound, it is actually safe to participate in extreme sports under strict instructions and close supervision. Abseiling is available regardless of the weather.
+The factory made tins round, square, triangular, hexagonal for a whole range of different occasions to celebrate national events, festivals, famous faces and so on. One fascinating display deals with people's favourite biscuits. There are sweet biscuits and savoury ones, biscuits filled with jam and biscuits filled with currants, biscuits with pink, yellow and white sugar icing or coloured sugar flowers.
 
-It is a fun way to overcome fear of heights, gain new skills and get an adrenaline rush. Bungee jumping and paragliding are also available, except for during the summer. At this point, you might worry about meals here.
+When the factory finally closed it announced that people's favourite biscuit was not as you might expect a chocolate biscuit or one filled with jam and cream but a plain savoury one which was eaten with cheese. When you get to the end of the exhibition there's an entertaining hands-on activity to fill your own biscuit tin. All the biscuits ever produced by the company are piled up on a table along with various tins.
 
-Well, even though there is only one restaurant in the park at the moment, the variety of dishes is astonishing. There are two meals included in the price. Just get your meal ticket at the reception before dining.
+The biscuits are made out of thin pieces of wood but the weight, colours and shapes replicate the original biscuits. Your job is to fill a tin with biscuits so that when the lid is taken off they sit there as neatly as they did when the job was done by machine. It's not as easy as it looks.
 
-Also, there is no need to make reservations or worry about availability, since there are plenty of tables. Before you hear the rest of the talk, you have some time to look at questions 17 to 20. Now listen and answer questions 17 to 20.
+If you would like to buy a memento of your visit there is a museum gift shop selling postcards, souvenirs and handmade pottery next to the information desk on the ground floor. And finally if you don't want to carry your coats and bags around with you during your visit please make use of the free lockers provided by the museum. Enjoy your visit.
 
-During your stay here, you might want to know what there is to do. Let's turn to the plan, so I can familiarise you with the layout of the park. Most tourists would choose to stay in our guesthouse, located in the south-east corner.
-
-It features 63 tastefully appointed guestrooms, many of which offer spectacular views of the park. You will find a home away from home at our guesthouse. But for those who want to experience the natural beauty up close, there is also a campsite.
-
-When you get out of the guesthouse, go straight ahead, turn right at the end of the road. To your left, there is a campsite amongst the trees, where you could spend a night under the stars together with owls and chipmunks. If you look at the top left of the plan, you will notice a picnic area.
-
-You can either bring your own food, or we can deliver food to you. Barbecue is an option. The business centre is situated directly opposite the picnic area.
-
-It provides flexible, fully serviced offices, conferencing suites, meeting rooms, and is equipped with the latest multimedia facilities. Wired, as well as wireless, high-speed internet is available within the entire premises. The centre is designed to cater to both individual travellers and corporate groups.
-
-Visitors can also go to the museum, which holds a vast collection, that exhibits local history and a natural habitat. You start from the guesthouse, just turn left at the first conjunction, then walk past the tea house, turn right, you will see the museum after making the third right. Have you found it? Pretty easy, right? To spend a delightful afternoon with a book and a fresh cup of coffee, you can go to the only cafe in the park.
-
-From the guesthouse, you go straight, then take the second right, and you will see the cafe right in front of you. You might want to check out our all-season tennis court, which offers instruction for all ages and skill levels. It is located right opposite the cafe.
-
-That is the end of section 2. You now have half a minute to check your answers.
+That is the end of section 2. You now have half a minute to check your answers. Now turn to section 3 on page 5.
         </div>
         <div data-part="3"><strong>SECTION 3</strong>
 
-Now turn to section 3. You will hear a tutor and three students discussing their work. First you have some time to look at questions 21 to 27.
+You'll hear a student called Paul talking to a tutor about a course he is thinking of doing. First you have some time to look at questions 21 to 25 on page 5. Now listen carefully and answer questions 21 to 25.
 
-Now listen carefully and answer questions 21 to 27. Good morning, everyone. Well, in today's tutorial, we're going to discuss the essays that you have to submit by the end of next week.
+Good morning. Come in. You're Paul are you? Yes.
 
-Some of you will have already started them, which is good. And if you haven't, well, that's OK, but you'll have to get a move on. So, let's begin with you, Simon.
+I spoke to you on the phone. Yes. Have a seat.
 
-What's happening with you? Well, I've made a start on it. I researched the background quite extensively last weekend, and I should get to the writing stage tomorrow with a bit of luck, and I'll get finished at the weekend. Now, what are you writing about? I decided to look at the car manufacturing company, Jaguar, examine the problems they had with reliability in the 1970s and 80s, how they dealt with it, and how it affected their marketing and sales strategy.
+You wanted to talk to me about the archaeology course? Yes. I've read the handbook but I'd like to find out a few more details before I decide whether to do it. Right.
 
-That sounds pretty interesting. Any problems with that? At the start, I had problems getting information from that far back, but after rooting around in the library, I found some magazines which gave me information, and also gave me references to find other stuff. It seems now the only problem is keeping to the 4,000 word limit.
+Yes. What would you like to know? Well first of all can I combine the archaeology course with one in anthropology? Yes. You can combine it with any other subject apart from classical history.
 
-It just seems I have so much to write about. It seems I'll need 5,000 or even 6,000 words to be able to cope. Yes, your essay title seems to me to be very wide-ranging.
+That's simply because there's some overlap in the lecture times for those two courses. We weren't able to coordinate them. Okay fine.
 
-Would you think about cutting out part of it? How about looking at their sales and marketing strategy, but only mentioning the problems in the 70s and 80s, and not going too far into it? That's a good idea. That will make it much easier to handle. By the way, how do you want us to hand in our work? Do you want us to drop in a hard copy to your office? You could do that, but I'd prefer it if you just emailed it to me as an attachment.
+And could you tell me about the modules? Well in the first semester there are three. All of them are compulsory. We don't offer optional modules till next year.
 
-You've all got my address. If not, give it to the secretary clearly marked that it's for me. Right, Jennifer, how about you? I've not really got going on it yet, but I have decided on a subject.
+Right. The first one focuses on what can be learned from specific artifacts such as pottery and stone tools. It's called object matters and it's taught by Dr. Morris.
 
-I'll try and do some research during the rest of this week, and I should get writing this weekend. OK, what are you writing about then? I want to look into how supermarkets use market surveys to develop their products. Will you have enough time to find out what sort of things that the supermarkets do? You won't have much time for that.
+Is that how is the module presented? I mean is it lectures? We refer to the means of presentation as the learning method and in this case it's lectures integrated with practical sessions so it's a mixture. What about the content? I suppose we'll be looking at different kinds of archaeological remains and how to date them and so on. To some extent but the module is basically about processes.
 
-I should be OK. I've had a look in the stack system in the library, and I've found a magazine that surveyed all the UK major supermarkets, and a trade publication that analysed the same things in Canadian supermarkets. Be careful about using their conclusions too much.
+First of all recording material, then classification, then interpretation of the data. That's how archaeologists draw conclusions about their findings. And finally display.
 
-The university takes a tough stance on plagiarism. Make sure you properly list where you get your information from in a bibliography, and try and do your own analysis. Get going too, as that analysis will take a bit of time.
+Is that okay? I think so. Yes thanks. One other thing.
 
-OK, thanks. You now have some time to look at questions 28 to 30. Now listen to the rest of the discussion, and answer questions 28 to 30.
+How is the module assessed? Is there an exam? No it's all based on coursework. Before you hear the rest of the discussion you have some time to look at questions 26 to 30 on page 6. Now listen and answer questions 26 to 30. Okay.
 
-And Melanie, how is your work going? I'm a bit behind I'm afraid. I was sick all last week and the weekend with flu. I've got a subject I think, but I've not done any work on it yet.
+And the second module, that's the one called towns and cities, is taught by our department head Professor Elliott and as the name suggests the modules about the origins of built environments and how they developed. That's mainly factual then I suppose? It is really and for that reason the assessments by examination but you may be pleased to know it's an oral rather than a written exam. It sounds a bit scary.
 
-Is there any chance I can get an extension to the submittal date? The policy of the department is not to give any extensions, unless they're extenuating circumstances. Do you have a doctor's certificate or anything? No, I went to the doctor's but I didn't get a note as I didn't realise I would need it. The doctor will have a record of me though as I got a prescription.
+Most of our students find they actually enjoy it so don't worry too much. Okay. And then the title of the third module is method and science and in that Dr. Thompson will be introducing you to the standard techniques used in archaeological fieldwork and analysis.
 
-I'll go back and get one. Yes, do. If you get one, then there shouldn't be a problem getting an extension.
+Things like excavating and dating. What about the learning method for this module? Are there any lectures or is this all laboratory work? Oh it's half lab work and half seminars. There aren't any lectures.
 
-Without it though, you'll be in trouble. What subject are you considering anyway? I thought I'd do an overview of the UK mortgage interest rates and their effect on housing sales trends over the last ten years. I thought it might be of interest because of the huge increases of house prices over the last decade.
+Then right at the end of the module you'll take part in a site survey. The date for that is week beginning the 10th of March but I can't tell you the location yet. That will be announced later but I think you'll find it very useful.
 
-Certainly an interesting subject and it should be no great problem getting information as this has been fairly well documented. It's a lot of work again though and you'll really need to get cracking on it even with the extension, if you get one. Well, I've not got much on for the rest of the week and I've set aside the weekend to really get to grips with it.
-
-Good. Now, is there anything else? That is the end of section three. You will now have half a minute to check your answers.
+Yes I know someone who went on That is the end of section 3. You now have half a minute to check your answers. Now turn to section 4 on page 7.
         </div>
         <div data-part="4"><strong>SECTION 4</strong>
 
-Section four. You will hear a lecturer talking about the movement of population towards cities. First, you have some time to look at questions thirty-one and thirty-two.
+You will hear part of a talk about research into learner persistence given by a university lecturer to her colleagues. First you have some time to look at questions 31 to 40 on pages 7 and 8. Now listen carefully and answer questions 31 to 40.
 
-Now listen carefully and answer questions thirty-one and thirty-two. If you consider the farms of old, the type your father or grandfather grew up on, they were small and labour intensive, requiring lots of workers. In addition, they often had a diversity of products, be that animal or vegetable, say cows and sheep, or oranges and lemons with some peaches and a few chickens on the side for the production of eggs.
+My talk is about a research study I did over a period of five years on learner persistence. Why some people stick at academic study better than others. As teachers you will know that there is a tremendous variation in the learners response to certain things.
 
-The many workers involved raised their families who needed products and support services, such as medical clinics and schools. So the small country towns had mercantile activity, storefronts and community participation with all ages present and a distinct town culture. And how it has changed.
+For example a short period of illness might completely destabilize some students and cause them to give up their degree studies. Other learners might overcome tremendous difficulties to stay the course. I am particularly interested in this second group who are the ones with learner persistence.
 
-Travel to any small country town in virtually any developed country and you will often see that these places are now somewhat forlorn and deserted, lacking life and vigour. Many of the residents have long since moved towards the big cities, so the country areas have become depopulated and their downtowns empty. This phenomenon is so predictable and widespread that it even has a name, rural flight or rural exodus, and it has produced some fairly predictable problems.
+What I decided to do was design a research study using a sample of my university's third-year undergraduate students 295 in all who obviously had already stayed the course pretty well. The sample was drawn from a range of ages but there was deliberately a significant number of mature students and all respondents were living at home in the local region. I wanted to have this element of consistency not having some coming from outside the area and living in university accommodation.
 
-Before you hear the next part of the lecture, you have some time to look at questions 33 to 35. Now listen and answer questions 33 to 35. As for the causes of rural exodus, the most obvious is the industrialisation of agriculture.
+It should be noted though that there was significant variation in home background to reflect the variation in our student population. I designed questionnaires which were devised to elicit what their concerns had been as they started the course and what had sustained them throughout the three years. Findings from the first section indicated that their worries when they started varied from financial concerns though this had not been as strong as I expected to career prospects but mature students with children tended to emphasize uncertainties about their relationship with them.
 
-This comes in two aspects, one of them being monocultural farming practices. What this means is that it is now more efficient to have one product and focus on its needs almost exclusively. So, for example, animal husbandry will usually involve a single type of animal, say, pigs, but with huge factory farming techniques or, in other words, the second aspect, economies of scale.
+The second section of my questionnaire looked at learner persistence under three main headings social and environmental factors other factors and intrinsic or personal characteristics. I identified three levels of importance for each of these. At the first level those points identified by participants as most important in learner persistence.
 
-This means instead of 200 pigs, there will be 2000, tightly fitted into small pens or cages, with high-density waste disposal and automatic feeding systems. Yet, despite this huge size, it can all be controlled by just a dozen farm workers pushing the right button. You might not like it, but in a competitive market, the cheaper the overheads, the better, and one can't argue with market economics.
+For social factors many respondents said how crucial it had been to have good support though there was no one specific source it could be family or friends. As regards other factors students are heartened not so much by high grades but by what they regard as success in study and for personal characteristics many respondents reported that they took pleasure in challenge and that this was regarded as very significant. At the second level of importance in the first category a sizable percentage talked about the fact that they had enjoyed themselves in school as an important social factor.
 
-It's simply the way of the modern world, and it has changed the face of rural districts mostly for the worst. Before you hear the rest of the lecture, you have some time to look at questions 36 to 40. Now listen and answer questions 36 to 40.
+In the second column other factors a number of people said that what was of most importance was decent health. This had a fairly strong influence on their persistence in their studies and then under the heading of personal characteristics there were quite a large percentage of respondents who mentioned they felt it was important to have lots of interests in their everyday lives. This gave them a depth and sense of perspective which less persistent learners might lack.
 
-We can talk at length about the problem of rural exodus, but what about solutions? Well, there is certainly some cause for hope, since many are now feeling the negatives of increasing urbanisation, negatives which the countryside generally does not have. Thus, tourism, for example, is certainly one avenue of revenue and revitalisation. The most important consideration here is that the local residents themselves participate in developing such initiatives and deciding what happens, since outsiders, be they state government or city-based planners, do not fully understand the local settings, the possibilities which may be on offer, or the town culture, since even small rural areas can be highly distinctive from neighbouring ones.
+And then on to the third level under social factors several respondents talked about good relationships with their tutors. For other factors they mentioned lack or absence of any problems in their families and finally under column 3 they identified an ability to juggle several roles what we might call their capacity for multitasking. Now these findings obviously helped inform the design of activities as I mentioned but in addition a number of further recommendations emerged.
 
-For example, the Daylesford area has developed a tourist industry based on the natural springs there, putting forward the angle that this water is relaxing and revitalising for the health. There has been the development of spas, saunas, and small-scale accommodation within its picturesque hillsides, and another solution is to utilise the predominant local product. This takes advantage of the fact that many city people are developing a dislike for factory-produced and packaged foodstuffs.
+Firstly I propose that the department distributes questionnaires to first-year students to help get an idea of their maturity when starting the course. This is really our overriding concern. Secondly I recommend we look into ways of offering induction courses for some selected students to allow them to take on the role of advisors.
 
-They are becoming interested in products that can be sold directly to them, at a cheaper price, while preserving all the freshness from the tree or animal. It is important here that the country area is not only characterised by a specific product, but markets this idea well. For example, many areas of country Victoria have developed widespread grape-growing and winemaking facilities and encourage wine-tasting tourism, now a thriving industry with an international patronage.
+We think they are the best people to act in that role. This policy will make support much more accessible to our students. Thirdly this help is often most needed in the evening and night when offices are closed and so we should set up online services instead of the more traditional telephone services.
 
-Similarly, Harcourt is famous for apples, Shepparton for mature cheeses, and Mildura for its citrus products. Such strategies, done well, give hope that rural areas can revitalise somewhat, and once again be lively and interesting places to live in. That is the end of Section 4. You now have half a minute to check your answers.
+Research has shown that these services are actually more accessible to the majority of students and finally it is often important to be proactive. If students are not meeting deadlines then someone should contact them rather than wait for them to come to us. Now are there any questions about the point? That is the end of section 4. You now have half a minute to check your answers.
 
-That is the end of the listening test.
+That is the end of the listening test. You now have 10 minutes to transfer your answers to the listening answer sheet.
         </div>
     </div>
 
@@ -2391,16 +2280,16 @@ That is the end of the listening test.
     <div id="answer-key" style="display:none;">
         <h3>Correct Answers:</h3>
         <p><strong>Part 1 (Questions 1-10):</strong></p>
-        <p>1. Jacobs<br>2. Rod<br>3. highfield<br>4. NH871812C<br>5. Dr.Kevin<br>6. A<br>7. B<br>8. C<br>9. A<br>10. B</p>
+        <p>1. 3834<br>2. holidays<br>3. Home Welcome<br>4. flexible<br>5. studio<br>6. 48<br>7. water<br>8. transportation<br>9. a deposit<br>10. UK references</p>
         
         <p><strong>Part 2 (Questions 11-20):</strong></p>
-        <p>11. C<br>12. A<br>13. C<br>14. C<br>15. A<br>16. C<br>17. E<br>18. A<br>19. G<br>20. D</p>
+        <p>11. B<br>12. A<br>13. B<br>14. C<br>15. C<br>16. B<br>17. A<br>18. C<br>19. information desk<br>20. lockers</p>
         
         <p><strong>Part 3 (Questions 21-30):</strong></p>
-        <p>21. Tomorrow<br>22. Reliability<br>23. 4000 (words)<br>24. e-mail attachment<br>25. market surveys<br>26. stack system<br>27. plagiarism/ using their conclusions<br>28. extension<br>29. (Doctor's) certificate<br>30. mortgage interest rates</p>
+        <p>21. classical history<br>22. compulsory<br>23. Object Matters<br>24. classification<br>25. coursework<br>26. Towns and Cities<br>27. The origins<br>28. oral<br>29. seminars<br>30. location</p>
         
         <p><strong>Part 4 (Questions 31-40):</strong></p>
-        <p>31. C<br>32. C<br>33-35. B, C, E<br>36. participate<br>37. natural springs<br>38. local product<br>39. characterized/ characterised<br>40. mature cheese(s)</p>
+        <p>31. B<br>32. A<br>33. challenge<br>34. school<br>35. health<br>36. interests<br>37. tutors<br>38. maturity<br>39. advisors<br>40. online help</p>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2527,7 +2416,7 @@ That is the end of the listening test.
                 <button class="subQuestion scorable-item" onclick="goToQuestion(40)"><span class="sr-only">Question 40</span><span aria-hidden="true">40</span></button>
             </div>
         </div>
-        
+    
     </nav>
 
     <!-- Context Menu -->
@@ -2606,46 +2495,27 @@ That is the end of the listening test.
                 const dropZone = document.querySelector(`.drop-zone[data-question-id="${qNum}"]`);
                 const clickableCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
 
-                // Check for radio button questions first (questions 15-16, 17-20, etc.)
-                if (radioInput) {
+                if (textInput && textInput.value.trim() !== '') {
                     isAnswered = true;
-                    if (qNum >= 15 && qNum <= 20) {
+                } else if (radioInput) {
+                    isAnswered = true;
+                    if (qNum >= 17 && qNum <= 20) {
                         console.log(`Question ${qNum} radio detected as answered: ${radioInput.value}`);
                     }
-                // Check for checkbox questions with multiple answer requirements
-                // Questions 11-12: group name q11-12, choose TWO
-                } else if (qNum === 11) {
-                    const checkboxes = document.querySelectorAll('input[name="q11-12"]:checked');
-                    if (checkboxes.length >= 1) { isAnswered = true; }
-                } else if (qNum === 12) {
-                    const checkboxes = document.querySelectorAll('input[name="q11-12"]:checked');
-                    if (checkboxes.length >= 2) { isAnswered = true; }
-                // Questions 13-14: group name q13-14, choose TWO
-                } else if (qNum === 13) {
-                    const checkboxes = document.querySelectorAll('input[name="q13-14"]:checked');
-                    if (checkboxes.length >= 1) { isAnswered = true; }
-                } else if (qNum === 14) {
-                    const checkboxes = document.querySelectorAll('input[name="q13-14"]:checked');
-                    if (checkboxes.length >= 2) { isAnswered = true; }
-                // Questions 33-35: group name q33-35, choose THREE
-                } else if (qNum === 33) {
-                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
-                    if (checkboxes.length >= 1) { isAnswered = true; }
-                } else if (qNum === 34) {
-                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
-                    if (checkboxes.length >= 2) { isAnswered = true; }
-                } else if (qNum === 35) {
-                    const checkboxes = document.querySelectorAll('input[name="q33-35"]:checked');
-                    if (checkboxes.length >= 3) { isAnswered = true; }
-                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
-                    isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
                     isAnswered = true;
                 } else if (clickableCell) {
                     isAnswered = true;
-                    if (qNum >= 13 && qNum <= 16 || qNum >= 25 && qNum <= 30) {
+                    if (qNum >= 13 && qNum <= 16) {
                         console.log(`Question ${qNum} clickable cell detected as answered: ${clickableCell.getAttribute('data-value')}`);
                         console.log(`Clickable cell element:`, clickableCell);
+                    }
+                } else if (qNum >= 24 && qNum <= 25) {
+                    const checkedCount2425 = document.querySelectorAll('input[name="q24-25"]:checked').length;
+                    if (qNum === 24) {
+                        isAnswered = checkedCount2425 >= 1;
+                    } else if (qNum === 25) {
+                        isAnswered = checkedCount2425 >= 2;
                     }
                 }
 
@@ -2671,43 +2541,73 @@ That is the end of the listening test.
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia903203.us.archive.org/9/items/mix-25m-48s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_25m48s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia801007.us.archive.org/26/items/mix-27m-05s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy/mix_27m05s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopy.mp3';
         audioPlayer.src = audioSource;
 
+        const correctAnswers = {
+            /* --- Part 1 --- */
+            'q1': ['3834'],
+            'q2': ['holidays'],
+            'q3': ['Home Welcome'],
+            'q4': ['flexible'],
+            'q5': ['studio'],
+            'q6': ['48'],
+            'q7': ['water'],
+            'q8': ['transportation'],
+            'q9': ['a deposit', 'deposit'],
+            'q10': ['references'],
+
+            /* --- Part 2 --- */
+            'q11': 'B',
+            'q12': 'A',
+            'q13': 'B',
+            'q14': 'C',
+            'q15': 'C',
+            'q16': 'B',
+            'q17': 'A',
+            'q18': 'C',
+            'q19': ['information desk'],
+            'q20': ['lockers'],
+
+            /* --- Part 3 --- */
+            'q21': ['classical history'],
+            'q22': ['compulsory'],
+            'q23': ['object matters'],
+            'q24': ['classification'],
+            'q25': ['coursework'],
+            'q26': ['towns and cities'],
+            'q27': ['the origins', 'origins'],
+            'q28': ['oral'],
+            'q29': ['seminars'],
+            'q30': ['location'],
+
+            /* --- Part 4 --- */
+            'q31': 'B',
+            'q32': 'A',
+            'q33': ['challenge'],
+            'q34': ['school'],
+            'q35': ['health'],
+            'q36': ['interests'],
+            'q37': ['tutors'],
+            'q38': ['maturity'],
+            'q39': ['advisors'],
+            'q40': ['online']
+        };
+        
+        const questionTypes = {
+            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text', 'q5': 'text',
+            'q6': 'text', 'q7': 'text', 'q8': 'text', 'q9': 'text', 'q10': 'text',
+            'q11': 'mcq', 'q12': 'mcq', 'q13': 'mcq', 'q14': 'mcq', 'q15': 'mcq',
+            'q16': 'mcq', 'q17': 'mcq', 'q18': 'mcq', 'q19': 'text', 'q20': 'text',
+            'q21': 'text', 'q22': 'text', 'q23': 'text', 'q24': 'text', 'q25': 'text', 'q26': 'text', 'q27': 'text', 'q28': 'text', 'q29': 'text', 'q30': 'text',
+            'q31': 'mcq', 'q32': 'mcq', 'q33': 'text', 'q34': 'text', 'q35': 'text',
+            'q36': 'text', 'q37': 'text', 'q38': 'text', 'q39': 'text', 'q40': 'text'
+        };
 
 
-                function setupCheckboxLimits() {
-                const groupsWithLimits = [
-                    { name: 'q33-35', max: 3 }, // Questions 33-35: choose THREE
-                ];
-
-            groupsWithLimits.forEach(({ name, max }) => {
-                const checkboxes = Array.from(document.querySelectorAll(`input[type="checkbox"][name="${name}"]`));
-                if (checkboxes.length === 0) return;
-
-                const applyLimitState = () => {
-                    const checkedCount = checkboxes.filter(c => c.checked).length;
-                    if (checkedCount >= max) {
-                        // Disable all remaining unchecked options when limit reached
-                        checkboxes.forEach(c => { if (!c.checked) c.disabled = true; });
-                    } else {
-                        // Re-enable options when below limit
-                        checkboxes.forEach(c => { c.disabled = false; });
-                    }
-                    updateAnsweredIndicators();
-                };
-
-                checkboxes.forEach(cb => {
-                    cb.addEventListener('change', applyLimitState);
-                });
-
-                // Initialize on load
-                applyLimitState();
-            });
+        function setupCheckboxLimits() {
+            // No checkbox questions in current test
         }
-
-        // Ensure checkbox limits are applied once the DOM is ready
-        document.addEventListener('DOMContentLoaded', setupCheckboxLimits);
 
         // Test function to verify clickable cells are working
         function testClickableCells() {
@@ -2727,8 +2627,6 @@ That is the end of the listening test.
                 console.log(`selectCell called: question ${questionNumber}, value ${value}`);
                 console.log('Cell element:', cell);
                 console.log('Cell classes:', cell.className);
-                console.log('Cell data-question:', cell.getAttribute('data-question'));
-                console.log('Cell data-value:', cell.getAttribute('data-value'));
                 
                 // Remove previous selection for this question
                 const row = cell.closest('tr');
@@ -2832,8 +2730,7 @@ That is the end of the listening test.
             } else {
                 questionElement = document.getElementById(`q${questionNumber}`) || // text inputs
                                 document.querySelector(`[data-question-id="${questionNumber}"]`) || // drag-drop
-                                document.querySelector(`input[name="q${questionNumber}"]`) || // radio buttons
-                                document.querySelector(`.clickable-cell[data-question="${questionNumber}"]`); // clickable cells (27-30)
+                                document.querySelector(`input[name="q${questionNumber}"]`); // radio buttons
             }
             
             if (questionElement) {
@@ -3093,57 +2990,12 @@ That is the end of the listening test.
             const answeredGroups = {};
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
-                    if (input.name === 'q11-12') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q11-12"]:checked').length;
-                        // Represent q11 and q12 as two separate questions in the footer count
+                    if (input.name === 'q24-25') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q24-25"]:checked').length;
+                        // Represent q24 and q25 as two separate questions in the footer count
                         // Count 1 if at least one selected, and +1 again if two selected
-                        const keyFirst = 'q11-12-first';
-                        const keySecond = 'q11-12-second';
-                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
-                            answeredCount++;
-                            answeredGroups[keyFirst] = true;
-                        }
-                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
-                            answeredCount++;
-                            answeredGroups[keySecond] = true;
-                        }
-                    } else if (input.name === 'q13-14') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q13-14"]:checked').length;
-                        // Represent q13 and q14 as two separate questions in the footer count
-                        // Count 1 if at least one selected, and +1 again if two selected
-                        const keyFirst = 'q13-14-first';
-                        const keySecond = 'q13-14-second';
-                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
-                            answeredCount++;
-                            answeredGroups[keyFirst] = true;
-                        }
-                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
-                            answeredCount++;
-                            answeredGroups[keySecond] = true;
-                        }
-                    } else if (input.name === 'q28-30') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q28-30"]:checked').length;
-                        // Represent q28, q29, and q30 as three separate questions in the footer count
-                        const keyFirst = 'q28-30-first';
-                        const keySecond = 'q28-30-second';
-                        const keyThird = 'q28-30-third';
-                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
-                            answeredCount++;
-                            answeredGroups[keyFirst] = true;
-                        }
-                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
-                            answeredCount++;
-                            answeredGroups[keySecond] = true;
-                        }
-                        if (checkedCount >= 3 && !answeredGroups[keyThird]) {
-                            answeredCount++;
-                            answeredGroups[keyThird] = true;
-                        }
-                    } else if (input.name === 'q31-32') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q31-32"]:checked').length;
-                        // Represent q31 and q32 as two separate questions in the footer count
-                        const keyFirst = 'q31-32-first';
-                        const keySecond = 'q31-32-second';
+                        const keyFirst = 'q24-25-first';
+                        const keySecond = 'q24-25-second';
                         if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
                             answeredCount++;
                             answeredGroups[keyFirst] = true;
@@ -3177,84 +3029,9 @@ That is the end of the listening test.
                     answeredGroups[`clickable-${questionNum}`] = true;
                 }
             });
-            
-            // Include map questions (15-20) as answered if they have a selection
-            for (let i = 15; i <= 20; i++) {
-                const selectElement = partContainer.querySelector(`#q${i}`);
-                if (selectElement && selectElement.value && selectElement.value !== '' && !answeredGroups[`map-${i}`]) {
-                    answeredCount++;
-                    answeredGroups[`map-${i}`] = true;
-                }
-            }
             const countDisplay = document.querySelector(`.footer__questionWrapper___1tZ46:nth-child(${partNumber}) .attemptedCount`);
             if (countDisplay) countDisplay.textContent = `${answeredCount} of 10`;
         }
-
-        // === Answer key and question type mapping ===
-        const correctAnswers = {
-            // Part 1
-            q1: 'Jacobs',
-            q2: 'Rod',
-            q3: 'highfield',
-            q4: 'NH871812C',
-            q5: 'Dr.Kevin',
-            // Part 1 MCQ
-            q6: 'A',
-            q7: 'B',
-            q8: 'C',
-            q9: 'A',
-            q10: 'B',
-            // Part 2 MCQ
-            q11: 'C',
-            q12: 'A',
-            q13: 'C',
-            q14: 'C',
-            q15: 'A',
-            q16: 'C',
-            // Part 2 map (selects)
-            q17: 'E',
-            q18: 'A',
-            q19: 'G',
-            q20: 'D',
-            // Part 3 text
-            q21: 'tomorrow',
-            q22: 'reliability',
-            q23: ['4000', '4,000'],
-            q24: ['e-mail attachment', 'email attachment', 'attachment'],
-            q25: 'market surveys',
-            q26: 'stack system',
-            q27: 'plagiarism',
-            q28: 'extension',
-            q29: 'certificate',
-            q30: 'mortgage interest rates',
-            // Part 4 MCQ
-            q31: 'C',
-            q32: 'C',
-            // Part 4 checkbox (choose THREE)
-            'q33-35': ['B', 'C', 'E'],
-            // Part 4 text
-            q36: 'participate',
-            q37: 'natural springs',
-            q38: 'local product',
-            q39: ['characterized', 'characterised'],
-            q40: 'mature cheeses'
-        };
-
-        const questionTypes = {
-            // Part 1
-            q1: 'text', q2: 'text', q3: 'text', q4: 'text', q5: 'text',
-            q6: 'mcq', q7: 'mcq', q8: 'mcq', q9: 'mcq', q10: 'mcq',
-            // Part 2
-            q11: 'mcq', q12: 'mcq', q13: 'mcq', q14: 'mcq', q15: 'mcq', q16: 'mcq',
-            q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
-            // Part 3
-            q21: 'text', q22: 'text', q23: 'text', q24: 'text', q25: 'text',
-            q26: 'text', q27: 'text', q28: 'text', q29: 'text', q30: 'text',
-            // Part 4
-            q31: 'mcq', q32: 'mcq',
-            'q33-35': 'checkbox',
-            q36: 'text', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
-        };
 
         function checkAnswers() {
             let score = 0;
@@ -3337,15 +3114,15 @@ That is the end of the listening test.
                     });
                     
                     // For checkbox questions in multi-question keys, score was already added in switch statement
-                    // Don't add additional score here - return to next iteration of forEach
+                    // Don't add additional score here - return early to skip the final score increment
                     return;
-                }
-                
+                } else {
                    const qNum = parseInt(key.replace('q', ''));
                    const btn = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
                    const element = document.getElementById(key) || document.querySelector(`input[name="${key}"]`);
 
                    // Determine question type: prefer explicit mapping over DOM input type
+                   let questionType = questionTypes[key];
                    if (!questionType) {
                        if (element?.type === 'radio') questionType = 'mcq';
                        else if (element?.type === 'text') questionType = 'text';
@@ -3365,24 +3142,6 @@ That is the end of the listening test.
                            }
                            break;
                         case 'mcq':
-                            // For map questions (15-20), use the select dropdown selection instead of radios
-                            if (qNum >= 15 && qNum <= 20) {
-                                const selectElement = document.getElementById(key);
-                                if (selectElement) {
-                                    userAnswer = (selectElement.value || '').trim();
-                                    isCorrect = userAnswer === correctAnswer;
-                                    selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
-                                    if (!isCorrect) {
-                                        const correctAnswerSpan = document.createElement('span');
-                                        correctAnswerSpan.className = 'correct-inline';
-                                        correctAnswerSpan.textContent = String(correctAnswer);
-                                        selectElement.insertAdjacentElement('afterend', correctAnswerSpan);
-                                    }
-                                    break;
-                                }
-                            }
-
-                            // Default MCQ grading via radio inputs
                             const radioChecked = document.querySelector(`input[name="${key}"]:checked`);
                             userAnswer = radioChecked ? radioChecked.value : 'No Answer';
                             isCorrect = userAnswer === correctAnswer;
@@ -3428,13 +3187,9 @@ That is the end of the listening test.
                             }
                             break; }
                        case 'clickable':
-                           console.log(`Checking clickable question ${qNum}, correct answer: ${correctAnswer}`);
                            const selectedCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
-                           console.log(`Selected cell for question ${qNum}:`, selectedCell);
                            userAnswer = selectedCell ? selectedCell.getAttribute('data-value') : 'No Answer';
-                           console.log(`User answer for question ${qNum}: ${userAnswer}`);
                            isCorrect = userAnswer === correctAnswer;
-                           console.log(`Question ${qNum} is correct: ${isCorrect}`);
                            
                            // Mark cells as correct/incorrect
                            const allCells = document.querySelectorAll(`.clickable-cell[data-question="${qNum}"]`);
@@ -3498,6 +3253,7 @@ That is the end of the listening test.
                        correctAnswer: Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : String(correctAnswer),
                        isCorrect: isCorrect
                    });
+               }
 
                 // For checkbox questions, score was already added in the switch statement
                 // Only add score for non-checkbox questions
@@ -3725,117 +3481,6 @@ That is the end of the listening test.
 
         document.getElementById('deliver-button').addEventListener('click', checkAnswers);
         
-        // ===== Drag & Drop handlers for Questions 17-20 =====
-        (function initDragDrop(){
-            // make items draggable with data transfer id
-            function handleDragStart(e){
-                const id = e.target.id;
-                if (!id) {
-                    // ensure each option has an id
-                    const letter = e.target.getAttribute('data-letter') || e.target.getAttribute('data-value');
-                    e.target.id = 'opt_' + letter;
-                }
-                e.dataTransfer.setData('text/plain', e.target.id);
-            }
-            function handleDragOver(e){
-                e.preventDefault();
-                const zone = e.currentTarget;
-                zone.classList.add('drag-over');
-            }
-            function handleDragLeave(e){
-                e.currentTarget.classList.remove('drag-over');
-            }
-            function placeItemInZone(itemEl, zone){
-                // Only allow one item per zone
-                const existing = zone.querySelector('.drag-item');
-                if (existing){
-                    // move existing back to options box
-                    const partId = zone.closest('.question-part').id;
-                    const bank = partId === 'part-2' ? document.getElementById('part2-options-box') : document.getElementById('part3-options-box');
-                    if (bank) bank.appendChild(existing);
-                }
-                // ensure letter badge is visible along with text
-                // keep full item so it remains draggable and shows its letter
-                itemEl.classList.add('in-zone');
-                zone.textContent = '';
-                zone.appendChild(itemEl);
-                // sync hidden input for this question
-                const qid = zone.getAttribute('data-question-id') || zone.getAttribute('data-question');
-                const hidden = document.getElementById('q' + qid);
-                if (hidden){
-                    const letter = itemEl.getAttribute('data-letter') || itemEl.getAttribute('data-value');
-                    hidden.value = letter;
-                }
-                updateAnsweredIndicators();
-            }
-            function handleDrop(e){
-                e.preventDefault();
-                const zone = e.currentTarget;
-                zone.classList.remove('drag-over');
-                const id = e.dataTransfer.getData('text/plain');
-                const itemEl = document.getElementById(id);
-                if (!itemEl) return;
-                placeItemInZone(itemEl, zone);
-                const ph = zone.querySelector('.placeholder');
-                if (ph) ph.style.display = 'none';
-            }
-            function handleBankDrop(e){
-                e.preventDefault();
-                const bank = e.currentTarget;
-                const id = e.dataTransfer.getData('text/plain');
-                const itemEl = document.getElementById(id);
-                if (!itemEl) return;
-                // If coming from a zone, clear that zone's hidden input
-                const fromZone = itemEl.parentElement && itemEl.parentElement.classList.contains('drop-zone') ? itemEl.parentElement : null;
-                if (fromZone){
-                    const qid = fromZone.getAttribute('data-question-id') || fromZone.getAttribute('data-question');
-                    const hidden = document.getElementById('q' + qid);
-                    if (hidden) hidden.value = '';
-                    // Restore the drop zone to show placeholder
-                    fromZone.classList.remove('filled');
-                    fromZone.innerHTML = '';
-                    const placeholder = document.createElement('span');
-                    placeholder.className = 'placeholder';
-                    placeholder.innerHTML = '&nbsp;';
-                    fromZone.appendChild(placeholder);
-                }
-                itemEl.classList.remove('in-zone');
-                bank.appendChild(itemEl);
-                updateAnsweredIndicators();
-            }
-            // Attach listeners for Part 2
-            document.querySelectorAll('#part-2 .drag-item').forEach(el=>{
-                el.addEventListener('dragstart', handleDragStart);
-            });
-            document.querySelectorAll('#part-2 .drop-zone').forEach(zone=>{
-                zone.addEventListener('dragover', handleDragOver);
-                zone.addEventListener('dragleave', handleDragLeave);
-                zone.addEventListener('drop', handleDrop);
-            });
-            const bank2 = document.getElementById('part2-options-box');
-            if (bank2){
-                bank2.addEventListener('dragover', handleDragOver);
-                bank2.addEventListener('dragleave', handleDragLeave);
-                bank2.addEventListener('drop', handleBankDrop);
-            }
-            
-            // Attach listeners for Part 3
-            document.querySelectorAll('#part-3 .drag-item').forEach(el=>{
-                el.addEventListener('dragstart', handleDragStart);
-            });
-            document.querySelectorAll('#part-3 .drop-zone').forEach(zone=>{
-                zone.addEventListener('dragover', handleDragOver);
-                zone.addEventListener('dragleave', handleDragLeave);
-                zone.addEventListener('drop', handleDrop);
-            });
-            const bank3 = document.getElementById('part3-options-box');
-            if (bank3){
-                bank3.addEventListener('dragover', handleDragOver);
-                bank3.addEventListener('dragleave', handleDragLeave);
-                bank3.addEventListener('drop', handleBankDrop);
-            }
-        })();
-        
         // Go To Question Widget Logic
         const gotoWidget = document.getElementById('goto-widget');
         const gotoInput = document.getElementById('goto-input');
@@ -3887,10 +3532,6 @@ That is the end of the listening test.
             }
             const dz = e.target.closest('.drop-zone');
             if(dz && draggedElement){
-                // Skip if this is a Part 2 drop zone (let the Part 2 specific handler handle it)
-                if (dz.closest('#part-2')) {
-                    return;
-                }
                 // If already filled, move old back
                 const container = dz.closest('.matching-container') || dz.closest('.matching-question-container') || document;
                 const optionsList = container.querySelector('.matching-options-list') || document.querySelector('.matching-options-list');
@@ -3905,13 +3546,6 @@ That is the end of the listening test.
                     const qIdOld = dz.getAttribute('data-question-id');
                     const hiddenOld = document.getElementById(`q${qIdOld}`);
                     if (hiddenOld) hiddenOld.value = '';
-                    // Restore the drop zone to show placeholder
-                    dz.classList.remove('filled');
-                    dz.innerHTML = '';
-                    const placeholder = document.createElement('span');
-                    placeholder.className = 'placeholder';
-                    placeholder.innerHTML = '&nbsp;';
-                    dz.appendChild(placeholder);
                 }
                 // save full label before mutating
                 if (!draggedElement.dataset.fullLabel) {
@@ -3924,33 +3558,7 @@ That is the end of the listening test.
                 if (!draggedElement.dataset.letter && letter) {
                     draggedElement.dataset.letter = letter;
                 }
-                                    // Create a new element with the letter pill and plain text
-                    const newElement = document.createElement('div');
-                    newElement.className = 'drag-item';
-                    newElement.setAttribute('draggable', 'true');
-                    newElement.setAttribute('data-letter', letter);
-                    newElement.setAttribute('data-value', letter);
-                    newElement.setAttribute('data-fullLabel', full);
-                    newElement.style.width = 'auto';
-                    newElement.style.minWidth = 'fit-content';
-                    
-                    // Create the letter pill
-                    const letterPill = document.createElement('span');
-                    letterPill.className = 'drop-letter';
-                    letterPill.textContent = letter;
-                    
-                    // Create the text span
-                    const textSpan = document.createElement('span');
-                    textSpan.textContent = plain;
-                    textSpan.style.marginLeft = '8px';
-                    textSpan.style.whiteSpace = 'nowrap';
-                    
-                    newElement.appendChild(letterPill);
-                    newElement.appendChild(textSpan);
-                    
-                    // Replace the original element
-                    draggedElement.parentNode.replaceChild(newElement, draggedElement);
-                    draggedElement = newElement;
+                draggedElement.textContent = plain;
                 dz.appendChild(draggedElement);
                 draggedElement.classList.remove('selected');
                 draggedElement=null;
@@ -4053,13 +3661,6 @@ That is the end of the listening test.
                     return;
                 }
 
-                // Skip if this is a Part 2 drop zone (let the Part 2 specific handler handle it)
-                if (dropTarget.closest('#part-2')) {
-                    draggedElement.classList.remove('dragging');
-                    draggedElement = null;
-                    return;
-                }
-
                 document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
                 
                 const existingItem = dropTarget.matches('.drop-zone') ? dropTarget.querySelector('.drag-item') : null;
@@ -4071,58 +3672,13 @@ That is the end of the listening test.
                     if (existingItem.dataset && existingItem.dataset.fullLabel) {
                         existingItem.textContent = existingItem.dataset.fullLabel;
                     }
-                    
-                    // If the original parent is a drop-zone, we need to handle it properly
+                    originalParent.appendChild(existingItem);
+                    // If the original parent is a drop-zone and now empty, unfill it
                     if (originalParent.classList && originalParent.classList.contains('drop-zone')) {
-                        // Clear the original drop zone first
-                        originalParent.innerHTML = '';
-                        originalParent.classList.remove('filled');
-                        
-                        // Restore placeholder
-                        const placeholder = document.createElement('span');
-                        placeholder.className = 'placeholder';
-                        placeholder.innerHTML = '&nbsp;';
-                        originalParent.appendChild(placeholder);
-                        
-                        // Clear the hidden input
-                        const qId = originalParent.getAttribute('data-question-id');
-                        const hiddenInput = document.getElementById(`q${qId}`);
-                        if (hiddenInput) hiddenInput.value = '';
-                        
-                        // Now place the existing item in the original drop zone
-                        originalParent.appendChild(existingItem);
-                        
-                        // Update the original drop zone to show it's filled
-                        originalParent.classList.add('filled');
-                        if (placeholder) placeholder.style.display = 'none';
-                        
-                        // Update the hidden input for the original drop zone
-                        const existingItemValue = existingItem.getAttribute('data-value') || 
-                                               existingItem.getAttribute('data-letter') || 
-                                               (existingItem.dataset.fullLabel ? existingItem.dataset.fullLabel.trim().charAt(0).toUpperCase() : '');
-                        if (hiddenInput) hiddenInput.value = existingItemValue;
-                    } else {
-                        // If original parent is not a drop zone, just append normally
-                        originalParent.appendChild(existingItem);
-                    }
-                } else {
-                    // If there's no existing item in the target drop zone, but the dragged item is coming from a drop zone,
-                    // we need to restore the original drop zone to its empty state
-                    if (originalParent.classList && originalParent.classList.contains('drop-zone')) {
-                        // Clear the original drop zone
-                        originalParent.innerHTML = '';
-                        originalParent.classList.remove('filled');
-                        
-                        // Restore placeholder
-                        const placeholder = document.createElement('span');
-                        placeholder.className = 'placeholder';
-                        placeholder.innerHTML = '&nbsp;';
-                        originalParent.appendChild(placeholder);
-                        
-                        // Clear the hidden input
-                        const qId = originalParent.getAttribute('data-question-id');
-                        const hiddenInput = document.getElementById(`q${qId}`);
-                        if (hiddenInput) hiddenInput.value = '';
+                        if (originalParent.children.length === 1 && originalParent.querySelector('.placeholder')) {
+                            originalParent.classList.remove('filled');
+                            originalParent.querySelector('.placeholder').style.display = '';
+                        }
                     }
                 }
                 
@@ -4142,33 +3698,7 @@ That is the end of the listening test.
                     if (!draggedElement.dataset.letter && letter) {
                         draggedElement.dataset.letter = letter;
                     }
-                    // Create a new element with the letter pill and plain text
-                    const newElement = document.createElement('div');
-                    newElement.className = 'drag-item';
-                    newElement.setAttribute('draggable', 'true');
-                    newElement.setAttribute('data-letter', letter);
-                    newElement.setAttribute('data-value', letter);
-                    newElement.setAttribute('data-fullLabel', full);
-                    newElement.style.width = 'auto';
-                    newElement.style.minWidth = 'fit-content';
-                    
-                    // Create the letter pill
-                    const letterPill = document.createElement('span');
-                    letterPill.className = 'drop-letter';
-                    letterPill.textContent = letter;
-                    
-                    // Create the text span
-                    const textSpan = document.createElement('span');
-                    textSpan.textContent = plain;
-                    textSpan.style.marginLeft = '8px';
-                    textSpan.style.whiteSpace = 'nowrap';
-                    
-                    newElement.appendChild(letterPill);
-                    newElement.appendChild(textSpan);
-                    
-                    // Replace the original element
-                    draggedElement.parentNode.replaceChild(newElement, draggedElement);
-                    draggedElement = newElement;
+                    draggedElement.textContent = plain;
                     // sync hidden input (use data-letter if present, else text)
                     const qId = dropTarget.getAttribute('data-question-id');
                     const hiddenInput = document.getElementById(`q${qId}`);
@@ -4192,7 +3722,6 @@ That is the end of the listening test.
             
             // Initialize drag and drop and clickable cells
             initAllDragAndDrop();
-            ensureClickableHiddenInputs();
             
             // Test clickable cells after a short delay
             setTimeout(() => {
@@ -4227,7 +3756,6 @@ That is the end of the listening test.
         // Initial setup on DOM load
         document.addEventListener('DOMContentLoaded', function() {
             updateAnsweredIndicators();
-            ensureClickableHiddenInputs();
             
             // Add specific event listeners for questions 17-20 radio buttons
             document.querySelectorAll('input[name="q17"], input[name="q18"], input[name="q19"], input[name="q20"]').forEach(radio => {
@@ -4253,22 +3781,28 @@ That is the end of the listening test.
             });
         });
 
-        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"], select').forEach(input => {
+        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"]').forEach(input => {
             input.addEventListener('input', updateAnsweredIndicators);
             input.addEventListener('change', updateAnsweredIndicators);
         });
 
         function initAllDragAndDrop() {
+            const dragItems = document.querySelectorAll('.drag-item');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+
             // Initialize clickable cells for questions 27-31
             initClickableCells();
-            
-            // Add event listeners for map questions (15-20)
-            for (let i = 15; i <= 20; i++) {
-                const selectElement = document.getElementById(`q${i}`);
-                if (selectElement) {
-                    selectElement.addEventListener('change', updateAnsweredIndicators);
-                }
-            }
         }
 
         function initClickableCells() {
@@ -4282,56 +3816,94 @@ That is the end of the listening test.
             });
         }
 
-        function selectCell(clickedCell, questionNumber, value) {
-            // Remove previous selection for this question
-            const questionRow = clickedCell.closest('tr');
-            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
-            cellsInRow.forEach(cell => {
-                cell.classList.remove('selected');
-                cell.style.backgroundColor = '';
-            });
-            
-            // Select the clicked cell
-            clickedCell.classList.add('selected');
-            clickedCell.style.backgroundColor = '#4a90e2';
-            clickedCell.style.color = 'white';
-            // Persist selection in hidden input (for answered state and grading if needed)
-            const hiddenInput = document.getElementById(`q${questionNumber}`);
-            if (hiddenInput) {
-                hiddenInput.value = value;
+            function handleDragStart(e) {
+                draggedElement = e.target;
+                setTimeout(() => e.target.classList.add('dragging'), 0);
             }
-            
-            // Update answered indicators
-            updateAnsweredIndicators();
-        }
 
-        function ensureClickableHiddenInputs() {
-            for (let q = 27; q <= 30; q++) {
-                if (!document.getElementById(`q${q}`)) {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.id = `q${q}`;
-                    document.body.appendChild(input);
+            function handleDragEnd(e) {
+                e.target.classList.remove('dragging');
+            }
+
+            function handleDragOver(e) {
+                e.preventDefault();
+                const zone = e.target.closest('.drop-zone');
+                if (zone) zone.classList.add('drag-over');
+            }
+
+            function handleDragLeave(e) {
+                const zone = e.target.closest('.drop-zone');
+                if (zone) zone.classList.remove('drag-over');
+            }
+
+            function handleDrop(e) {
+                e.preventDefault();
+                const targetZone = e.target.closest('.drop-zone');
+                if (!targetZone || !draggedElement) return;
+                
+                targetZone.classList.remove('drag-over');
+
+                const sourceContainer = draggedElement.parentNode;
+                const itemInTargetZone = targetZone.querySelector('.drag-item');
+                
+                // Prevent dropping on self or non-droppable area inside zone
+                if (e.target.classList.contains('drag-item') && e.target !== draggedElement) {
+                    return; // Or handle swap explicitly here if needed
                 }
-            }
-        }
+                
+                if (itemInTargetZone && itemInTargetZone !== draggedElement) {
+                    // If source is an options list, move the existing item back
+                    const optionsList = findParentOptionsList(targetZone);
+                    if (sourceContainer.classList.contains('matching-options-list') || sourceContainer.classList.contains('map-options-list')) {
+                    if (itemInTargetZone.dataset && itemInTargetZone.dataset.fullLabel) {
+                        itemInTargetZone.textContent = itemInTargetZone.dataset.fullLabel;
+                    }
+                    optionsList.appendChild(itemInTargetZone);
+                    } 
+                    // If source is another drop zone (swapping)
+                    else if (sourceContainer.classList.contains('drop-zone')) {
+                        if (itemInTargetZone.dataset && itemInTargetZone.dataset.fullLabel) {
+                            itemInTargetZone.textContent = itemInTargetZone.dataset.fullLabel;
+                        }
+                        sourceContainer.appendChild(itemInTargetZone);
+                    }
+                }
 
-        function findParentOptionsList(element) {
-            // Specific for map
-            if (element.closest('#map-drag-container')) {
-                return document.getElementById('map-options-q11-15');
+                targetZone.appendChild(draggedElement);
+                if (targetZone.querySelector('.placeholder')) {
+                    targetZone.querySelector('.placeholder').style.display = 'none';
+                }
+                // Sync hidden input for drag/drop questions so checking works and counters update
+                const qId = targetZone.getAttribute('data-question-id');
+                const hiddenInput = document.getElementById(`q${qId}`);
+                if (hiddenInput) {
+                    // Set to letter using data-letter if available; otherwise infer from full label
+                    const letter = draggedElement.getAttribute('data-letter');
+                    if (letter) {
+                        hiddenInput.value = letter;
+                    } else if (draggedElement.dataset.fullLabel) {
+                        hiddenInput.value = draggedElement.dataset.fullLabel.trim().charAt(0).toUpperCase();
+                    } else {
+                        hiddenInput.value = draggedElement.textContent.trim();
+                    }
+                }
+                
+                updateAnsweredIndicators();
             }
-            // Specific for Part 3
-            if (element.closest('#part-3')) {
-                return document.getElementById('part3-options-box');
+
+            function findParentOptionsList(element) {
+                // Specific for map
+                if (element.closest('#map-drag-container')) {
+                    return document.getElementById('map-options-q11-15');
+                }
+                // Generic for matching
+                const container = element.closest('.matching-container');
+                if (container) {
+                    return container.querySelector('.matching-options-list');
+                }
+                return null;
             }
-            // Generic for matching
-            const container = element.closest('.matching-container');
-            if (container) {
-                return container.querySelector('.matching-options-list');
-            }
-            return null;
-        }
+        
 
         let transcriptionHighlighted = false;
         function highlightAnswersInTranscription() {
