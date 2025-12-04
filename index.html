@@ -65,6 +65,15 @@
             align-items: center;
         }
 
+        .telegram-link {
+            color: #0088cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         #volume-slider {
             -webkit-appearance: none;
@@ -667,19 +676,19 @@
             border: 1px solid #888;
             border-radius: 4px;
             background-color: #fff;
-            padding: 2px 5px;
+            padding: 4px 8px;
             font-size: 16px;
             text-align: center;
             margin-right: 4px;
             margin-left: 4px;
-            width: 100px;
-            max-width: 120px;
-            min-width: 80px;
+            width: 140px;
+            max-width: 160px;
+            min-width: 120px;
             word-break: break-word;
             overflow-wrap: break-word;
             white-space: normal;
-            height: auto;
-            min-height: 28px;
+            height: 24px;
+            min-height: 24px;
             line-height: 1.2;
             vertical-align: middle;
         }
@@ -724,7 +733,7 @@
             padding: 6px 8px;
             border-radius: 4px;
             cursor: move;
-            font-size: 14px;
+            font-size: 16px;
             transition: all 0.2s;
             user-select: none;
             word-break: break-word;
@@ -985,6 +994,28 @@
             color: #dc3545;
             font-weight: bold;
         }
+        
+        #result-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        #result-details th,
+        #result-details td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        #result-details th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        #result-details tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
         .context-menu-icon {
             width: 16px;
@@ -1016,33 +1047,38 @@
             font-weight: 600;
         }
         .matching-table .drop-zone {
-            min-height: 36px;
-            height: auto;
-            max-width: 120px;
-            min-width: 100px;
-            padding: 5px;
+            min-height: 35px;
+            height: 35px;
+            width: 100%;
+            max-width: none;
+            min-width: 200px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
             background-color: #fff;
             border: 1px dashed #ccc;
             border-radius: 4px;
             word-break: break-word;
             overflow-wrap: break-word;
-            text-align: center;
+            text-align: left;
             line-height: 1.2;
         }
         .matching-table .drop-zone .drag-item {
-            width: 100%;
-            max-width: 100%;
-            text-align: center;
-            padding: 4px 5px;
-            font-size: 13px;
-            line-height: 1.1;
+            width: auto;
+            max-width: none;
+            text-align: left;
+            padding: 6px 8px;
+            font-size: 14px;
+            line-height: 1.2;
             word-break: break-word;
             overflow-wrap: break-word;
             box-sizing: border-box;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 2px;
         }
         .matching-options-list {
             display: flex;
@@ -1494,7 +1530,7 @@
         <div class="timer-container">
             <span class="timer-display">60:00</span>
         </div>
-        <H2>JUNED ACADEMY</H2>
+        <H2>Juned Academy</H2>
         <div class="header-icons">
         
         </div>
@@ -1544,30 +1580,35 @@
                         <div class="question-prompt">
                             <p><strong>Questions 1-10</strong></p>
                             <p>Complete the notes below.</p>
-                            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
-                        <div style="border: 1px solid #000000; padding: 15px;"> <p class="centered-title">Midbury Drama Club</p>
-                            <p><strong>Background</strong></p>
-                            <ul style="list-style-type: none; padding-left: 20px;">
-                                <li>&bull;&nbsp;&nbsp;prize recently won by <input type="text" id="q1" class="answer-input" placeholder="1"> section</li>
-                                <li>&bull;&nbsp;&nbsp;usually performs <input type="text" id="q2" class="answer-input" placeholder="2"> plays</li>
-                            </ul>
-                            <p><strong>Meetings</strong></p>
-                            <ul style="list-style-type: none; padding-left: 20px;">
-                                <li>&bull;&nbsp;&nbsp;next auditions will be on Tuesday <input type="text" id="q3" class="answer-input" placeholder="3"></li>
-                                <li>&bull;&nbsp;&nbsp;help is needed with <input type="text" id="q4" class="answer-input" placeholder="4"> and <input type="text" id="q4_2" class="answer-input" placeholder=""></li>
-                                <li>&bull;&nbsp;&nbsp;rehearsals take place in the <input type="text" id="q5" class="answer-input" placeholder="5"> hall</li>
-                                <li>&bull;&nbsp;&nbsp;nearest car park for rehearsals is in Ashburton Road opposite the <input type="text" id="q6" class="answer-input" placeholder="6"></li>
-                            </ul>
-                            <p><strong>Costs</strong></p>
-                            <ul style="list-style-type: none; padding-left: 20px;">
-                                <li>&bull;&nbsp;&nbsp;annual membership fee is <input type="text" id="q7" class="answer-input" placeholder="7"> £</li>
-                                <li>&bull;&nbsp;&nbsp;extra payment for <input type="text" id="q8" class="answer-input" placeholder="8"></li>
-                            </ul>
-                            <p><strong>Contact</strong></p>
-                            <ul style="list-style-type: none; padding-left: 20px;">
-                                <li>&bull;&nbsp;&nbsp;secretary's name is Sarah <input type="text" id="q9" class="answer-input" placeholder="9"></li>
-                                <li>&bull;&nbsp;&nbsp;secretary's phone number is <input type="text" id="q10" class="answer-input" placeholder="10"></li>
+                        <div style="border: 1px solid #000000; padding: 15px;"> <p class="centered-title">Notes on A Part-time Society</p>
+                            <div class="example-box">
+                                <p><strong>Example</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Answer</strong></p>
+                                <p>Name of society: <strong>Leighton</strong></p>
+                            </div>
+                            <ul style="list-style-type: none; padding-left: 0px;">
+                                <li>Location: <input type="text" id="q1" class="answer-input" placeholder="1"> house</li>
+                                <li>Want: <input type="text" id="q2" class="answer-input" placeholder="2"> actors and singers (no experience required)</li>
+                                <li>Transportation: shuttle services (need someone who is able to <input type="text" id="q3" class="answer-input" placeholder="3">)</li>
+                                <li>Meeting time: 6:00-8:00pm every <input type="text" id="q4" class="answer-input" placeholder="4"></li>
+                                <li>Close time: during <input type="text" id="q5" class="answer-input" placeholder="5"></li>
+                                <li><strong>Membership fee (including</strong> <input type="text" id="q6" class="answer-input" placeholder="6">)</li>
+                                <ul style="list-style-type: none; padding-left: 20px;">
+                                    <li>&bull;&nbsp;&nbsp; £40 for employed members (under 30 years of age)</li>
+                                    <li>&bull;&nbsp;&nbsp; £60 for employed members (30-60 years of age)</li>
+                                    <li>&bull;&nbsp;&nbsp; £7 for retired or unemployed members (over 60 years of age)</li>
+    
+                                </ul>
+                                <li><strong>Minimum joining age:</strong> <input type="text" id="q8" class="answer-input" placeholder="8"></li>
+                                <li><strong>Most members are</strong></li>
+                                <ul style="list-style-type: none; padding-left: 20px;">
+                                    <li>&bull;&nbsp;&nbsp; friendly</li>
+                                    <li>&bull;&nbsp;&nbsp; fond of culture and music</li>
+                                    <li>&bull;&nbsp;&nbsp; <input type="text" id="q9" class="answer-input" placeholder="9"> authors looking for new experiences to write about in their books</li>
+                                </ul>
+                                <li><strong>Charity</strong></li>
+                                <li>The children's <input type="text" id="q10" class="answer-input" placeholder="10"> will get the money raised by the annual dinner.</li>
                             </ul></div>
                         
                     </div>
@@ -1582,94 +1623,129 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 11-15</strong><br>Choose the correct letter, <strong> A, B or C</strong>.</p>
+                            <p><strong>Questions 11-14</strong><br>Choose the correct letter, <strong> A, B or C</strong>.</p>
                         </div>
                         <div class="single-choice-container">
                             <div class="single-choice">
-                                <p><strong>11</strong>   What does the charity Forward thinking do?</p>
-                                <label><input type="radio" name="q11" value="A"> It funds art exhibitions in hospitals.</label>
-                                <label><input type="radio" name="q11" value="B"> It produces affordable materials for art therapy.</label>
-                                <label><input type="radio" name="q11" value="C"> It encourages the use of arts projects in healthcare.</label>
+                                <p><strong>11</strong>   What kind of changes is the station making?</p>
+                                <label><input type="radio" name="q11" value="A">&nbsp;&nbsp;relocation</label>
+                                <label><input type="radio" name="q11" value="B">&nbsp;&nbsp;reconstruction</label>
+                                <label><input type="radio" name="q11" value="C">&nbsp;&nbsp;expansion</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>12</strong>   What benefit of Forward thinking's work does Jasmine mention?</p>
-                                <label><input type="radio" name="q12" value="A"> People avoid going to hospital.</label>
-                                <label><input type="radio" name="q12" value="B"> Patients require fewer drugs.</label>
-                                <label><input type="radio" name="q12" value="C"> Medical students do better in tests.</label>
+                                <p><strong>12</strong>   The original buildings on the site were</p>
+                                <label><input type="radio" name="q12" value="A">&nbsp;&nbsp;houses.</label>
+                                <label><input type="radio" name="q12" value="B">&nbsp;&nbsp;industrial buildings.</label>
+                                <label><input type="radio" name="q12" value="C">&nbsp;&nbsp;shops.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>13</strong>   When did the organization become known as Forward thinking?</p>
-                                <label><input type="radio" name="q13" value="A"> 1986</label>
-                                <label><input type="radio" name="q13" value="B"> in the 1990s</label>
-                                <label><input type="radio" name="q13" value="C"> 2005</label>
+                                <p><strong>13</strong>   Firstly the station intended to use the site as</p>
+                                <label><input type="radio" name="q13" value="A">&nbsp;&nbsp;a leisure centre.</label>
+                                <label><input type="radio" name="q13" value="B">&nbsp;&nbsp;a car park.</label>
+                                <label><input type="radio" name="q13" value="C">&nbsp;&nbsp;a lounge.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>14</strong>   Where does Forward thinking operate?</p>
-                                <label><input type="radio" name="q14" value="A"> within Clifton city</label>
-                                <label><input type="radio" name="q14" value="B"> in all parts of London</label>
-                                <label><input type="radio" name="q14" value="C"> in several towns and villages near Clifton</label>
-                            </div>
-                            <div class="single-choice">
-                                <p><strong>15</strong>   Jasmine explains that the Colville Centre is</p>
-                                <label><input type="radio" name="q15" value="A"> a school for people with health problems.</label>
-                                <label><input type="radio" name="q15" value="B"> a venue for a range of different activities.</label>
-                                <label><input type="radio" name="q15" value="C"> a building which needs repairing.</label>
+                                <p><strong>14</strong>   The new buildings will be situated to the right side of</p>
+                                <label><input type="radio" name="q14" value="A">&nbsp;&nbsp;the shopping district.</label>
+                                <label><input type="radio" name="q14" value="B">&nbsp;&nbsp;the apartment blocks.</label>
+                                <label><input type="radio" name="q14" value="C">&nbsp;&nbsp;the new formal gardens.</label>
                             </div>
                         </div>
                     </div>
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 16-20</strong></p>
-                            <p>Who can take part in each of the classes?</p>
-                            <p>Write the correct letter <strong>A, B or C</strong> next to questions 16-20.</p>
-                            <ul class="mcq-options">
-                                <li><strong>A</strong>     children and teenagers</li>
-                                <li><strong>B</strong>     adults</li>
-                                <li><strong>C</strong>     all ages</li>
-                            </ul>
+                            <p><strong>Questions 15-20</strong></p>
+                            <p>Label the map below.</p>
+                            <p>Write the correct letter, <strong>A-G</strong>, next to questions 15-20.</p>
                         </div>
-                        <table class="mcq-table" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Class</th>
-                                    <th>A</th>
-                                    <th>B</th>
-                                    <th>C</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>16</strong>   Learn Salsa</td>
-                                    <td><input type="radio" name="q16" value="A"></td>
-                                    <td><input type="radio" name="q16" value="B"></td>
-                                    <td><input type="radio" name="q16" value="C"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>17</strong>   Smooth Movers</td>
-                                    <td><input type="radio" name="q17" value="A"></td>
-                                    <td><input type="radio" name="q17" value="B"></td>
-                                    <td><input type="radio" name="q17" value="C"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>18</strong>   Art of the Forest</td>
-                                    <td><input type="radio" name="q18" value="A"></td>
-                                    <td><input type="radio" name="q18" value="B"></td>
-                                    <td><input type="radio" name="q18" value="C"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>19</strong>   The Money Maze</td>
-                                    <td><input type="radio" name="q19" value="A"></td>
-                                    <td><input type="radio" name="q19" value="B"></td>
-                                    <td><input type="radio" name="q19" value="C"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>20</strong>   Make a Play</td>
-                                    <td><input type="radio" name="q20" value="A"></td>
-                                    <td><input type="radio" name="q20" value="B"></td>
-                                    <td><input type="radio" name="q20" value="C"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div>
+                            <h3 style="text-align: center; margin-bottom: 20px;">Leisure Complex Plan</h3>
+                                                                                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                                <div>
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRfCIF8MMF-NkXmjFBBiewE0xViGN3-q5Afg&s" alt="Leisure Complex Plan Map" style="width: 100%; max-width: 800px; height: auto; border: 1px solid #ddd; border-radius: 4px; display: block; margin: 0 auto;">
+                                </div>
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">15   Cafe</span>
+                                        <select class="answer-input" id="q15" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">16   Taxi Rank</span>
+                                        <select class="answer-input" id="q16" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">17   Car Park</span>
+                                        <select class="answer-input" id="q17" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">18   Passenger Waiting Area</span>
+                                        <select class="answer-input" id="q18" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">19   Waiting Area for Wheelchair Users</span>
+                                        <select class="answer-input" id="q19" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <span style="font-weight: 500;">20   Tourist Office</span>
+                                        <select class="answer-input" id="q20" style="width: 80px; text-align: center; padding: 4px;">
+                                            <option value="">Select</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="E">E</option>
+                                            <option value="F">F</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1682,90 +1758,87 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 21-26</strong></p>
+                            <p><strong>Questions 21-25</strong></p>
                             <p>Choose the correct letter, <strong>A, B or C</strong>.</p>
                         </div>
-                        <p class="centered-title">Reflective Journal Assignment</p>
                         <div class="single-choice-container">
                             <div class="single-choice">
-                                <p><strong>21</strong>   What should be firstly included in the reflective journal?</p>
-                                <label><input type="radio" name="q21" value="A"> A   topics he is going to talk about</label>
-                                <label><input type="radio" name="q21" value="B"> B   study aims for the module</label>
-                                <label><input type="radio" name="q21" value="C"> C   suggestions from others</label>
+                                <p><strong>21</strong>   What has Irene recently done?</p>
+                                <label><input type="radio" name="q21" value="A">&nbsp;&nbsp;She has almost finished planning the experiment.</label>
+                                <label><input type="radio" name="q21" value="B">&nbsp;&nbsp;She is not applying herself enough to her work.</label>
+                                <label><input type="radio" name="q21" value="C">&nbsp;&nbsp;She spends a lot of time in the laboratory.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>22</strong>   The woman has got</p>
-                                <label><input type="radio" name="q22" value="A"> A   a lot of friends to help her.</label>
-                                <label><input type="radio" name="q22" value="B"> B   several books that may be useful.</label>
-                                <label><input type="radio" name="q22" value="C"> C   sufficient resources showing that she is a good technology user.</label>
+                                <p><strong>22</strong>   What is Bill's attitude toward Kim?</p>
+                                <label><input type="radio" name="q22" value="A">&nbsp;&nbsp;He is grateful for Kim's contribution.</label>
+                                <label><input type="radio" name="q22" value="B">&nbsp;&nbsp;He is not fond of Kim's tastes in clothes.</label>
+                                <label><input type="radio" name="q22" value="C">&nbsp;&nbsp;He thinks Kim is not good at laboratory work.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>23</strong>   What was the man's biggest achievement in the past?</p>
-                                <label><input type="radio" name="q23" value="A"> A   He worked as a waiter in a restaurant.</label>
-                                <label><input type="radio" name="q23" value="B"> B   He got an offer to lead a team.</label>
-                                <label><input type="radio" name="q23" value="C"> C   He became the chairman of the Student Union.</label>
+                                <p><strong>23</strong>   What does Jen think of the other people in the group?</p>
+                                <label><input type="radio" name="q23" value="A">&nbsp;&nbsp;The boys are good at maths which is very helpful.</label>
+                                <label><input type="radio" name="q23" value="B">&nbsp;&nbsp;They would fail the experiment without Irene's contribution.</label>
+                                <label><input type="radio" name="q23" value="C">&nbsp;&nbsp;Irene has completed the data analysis so the experiment is nearly done.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>24</strong>   The man decides to</p>
-                                <label><input type="radio" name="q24" value="A"> A   do it by himself.</label>
-                                <label><input type="radio" name="q24" value="B"> B   find a tutor.</label>
-                                <label><input type="radio" name="q24" value="C"> C   listen to others.</label>
+                                <p><strong>24</strong>   How did Jen and Bill feel about Linda?</p>
+                                <label><input type="radio" name="q24" value="A">&nbsp;&nbsp;She was always submitted her work late for the group work.</label>
+                                <label><input type="radio" name="q24" value="B">&nbsp;&nbsp;She was difficult to get in touch with.</label>
+                                <label><input type="radio" name="q24" value="C">&nbsp;&nbsp;She thought it was easy to get a high score.</label>
                             </div>
                             <div class="single-choice">
-                                <p><strong>25</strong>   What is the man's attitude after the discussion?</p>
-                                <label><input type="radio" name="q25" value="A"> A   He thinks it is useless.</label>
-                                <label><input type="radio" name="q25" value="B"> B   He is looking forward to doing the assignment</label>
-                                <label><input type="radio" name="q25" value="C"> C   He feels uncertain about it.</label>
-                            </div>
-                            <div class="single-choice">
-                                <p><strong>26</strong>   What should be shown in the man's reflective journal?</p>
-                                <label><input type="radio" name="q26" value="A"> A   self-awareness</label>
-                                <label><input type="radio" name="q26" value="B"> B   mistakes</label>
-                                <label><input type="radio" name="q26" value="C"> C   achievements</label>
+                                <p><strong>25</strong>   Why was Jen invited to the professor's individual project?</p>
+                                <label><input type="radio" name="q25" value="A">&nbsp;&nbsp;She was quite popular among students.</label>
+                                <label><input type="radio" name="q25" value="B">&nbsp;&nbsp;She always finished reading all the assignments.</label>
+                                <label><input type="radio" name="q25" value="C">&nbsp;&nbsp;She was close to the professor.</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 27-30</strong></p>
-                            <p>What is the woman's attitude toward each of the following activities of study?</p>
-                            <p>Choose <strong>FOUR</strong> answers from the box and write the correct letter, <strong>A-E</strong>, next to questions 27-30.</p>
-                       
+                            <p><strong>Questions 26-30</strong></p>
+                            <p>What task has been given to each person? Choose the correct answer for each person and move it into the gap.</p>
                         </div>
                         <div class="matching-container">
-                            <table class="matching-table">
-                                <thead>
-                                    <tr>
-                                        <th>Activity</th>
-                                        <th>Answer</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>27</strong>   writing an essay</td>
-                                        <td><div class="drop-zone" data-question-id="27" data-question="q27"><span class="placeholder">27</span></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>28</strong>   taking exams</td>
-                                        <td><div class="drop-zone" data-question-id="28" data-question="q28"><span class="placeholder">28</span></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>29</strong>   making class notes</td>
-                                        <td><div class="drop-zone" data-question-id="29" data-question="q29"><span class="placeholder">29</span></div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>30</strong>   taking presentation notes</td>
-                                        <td><div class="drop-zone" data-question-id="30" data-question="q30"><span class="placeholder">30</span></div></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="matching-options-list">
-                                <div class="drag-item" draggable="true" data-option-id="A">A define a problem</div>
-                                <div class="drag-item" draggable="true" data-option-id="B">B independent learning</div>
-                                <div class="drag-item" draggable="true" data-option-id="C">C develop study skills</div>
-                                <div class="drag-item" draggable="true" data-option-id="D">D gain confidence</div>
-                                <div class="drag-item" draggable="true" data-option-id="E">E find it difficult</div>
+                            <div style="display: flex; gap: 40px; align-items: flex-start;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin-bottom: 15px; font-weight: bold;">People</h4>
+                                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span style="font-weight: 500;">Irene:</span>
+                                            <div class="drop-zone" data-question-id="26" data-question="q26" style="min-width: 120px; min-height: 35px; border: 2px dashed #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;"></div>
+                    </div>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span style="font-weight: 500;">Kim:</span>
+                                            <div class="drop-zone" data-question-id="27" data-question="q27" style="min-width: 120px; min-height: 35px; border: 2px dashed #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;"></div>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span style="font-weight: 500;">Jen:</span>
+                                            <div class="drop-zone" data-question-id="28" data-question="q28" style="min-width: 120px; min-height: 35px; border: 2px dashed #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;"></div>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span style="font-weight: 500;">Bill:</span>
+                                            <div class="drop-zone" data-question-id="29" data-question="q29" style="min-width: 120px; min-height: 35px; border: 2px dashed #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;"></div>
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 10px;">
+                                            <span style="font-weight: 500;">Linda:</span>
+                                            <div class="drop-zone" data-question-id="30" data-question="q30" style="min-width: 120px; min-height: 35px; border: 2px dashed #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; background-color: #f9f9f9;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin-bottom: 15px; font-weight: bold;">Tasks</h4>
+                                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                                        <div class="drag-item" draggable="true" data-option-id="A" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">A. Abstract</div>
+                                        <div class="drag-item" draggable="true" data-option-id="B" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">B. Acknowledgement</div>
+                                        <div class="drag-item" draggable="true" data-option-id="C" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">C. Methodology</div>
+                                        <div class="drag-item" draggable="true" data-option-id="D" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">D. Bibliography</div>
+                                        <div class="drag-item" draggable="true" data-option-id="E" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">E. Literature review</div>
+                                        <div class="drag-item" draggable="true" data-option-id="F" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">F. Results</div>
+                                        <div class="drag-item" draggable="true" data-option-id="G" style="background: white; border: 1px solid #ddd; padding: 8px 12px; border-radius: 4px; cursor: move; font-size: 14px; transition: all 0.2s; user-select: none; text-align: center;">G. Discussion</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1780,40 +1853,39 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 31-35</strong></p>
-                            <p>Complete the sentences below.</p>
-                            <p>Write <strong>ONLY ONE WORD</strong> for each answer.</p>
-                        </div>
-                        <p class="centered-title">Manufacturing in the English Midlands</p>
-                        <p><strong>31</strong>   In the eighteenth century, the <input type="text" class="answer-input" id="q31" placeholder="31"> still determined how most people made a living.</p>
-                        <p><strong>32</strong>   In the ground were minerals which supported the many <input type="text" class="answer-input" id="q32" placeholder="32"> of the region.</p>
-                        <p><strong>33</strong>   Since the late sixteenth century the French settlers had made <input type="text" class="answer-input" id="q33" placeholder="33"></p>
-                        <p><strong>34</strong>   In Cheshire <input type="text" class="answer-input" id="q34" placeholder="34"> was mined and transported on the river Mersey.</p>
-                        <p><strong>35</strong>   Potters worked in a few <input type="text" class="answer-input" id="q35" placeholder="35"> situated on the small hills of North Staffordshire.</p>
-                    </div>
-
-                    <div class="question">
-                        <div class="question-prompt">
-                            <p><strong>Questions 36-40</strong></p>
+                            <p><strong>Questions 31-40</strong></p>
                             <p>Complete the notes below.</p>
                             <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                         </div>
-                        <div style="border: 1px solid #000000; padding: 15px;"> <p class="centered-title">Pottery notes</p>
-                        <p><strong>Earthenware</strong></p>
-                        <p style="list-style-type: none; padding-left: 20px; font-weight: 600;">Advantages:</p>
-                        <ul style="list-style-type: none; padding-left: 40px;">
-                            <li>&bull;&nbsp;&nbsp;pottery used <input type="text" class="answer-input" id="q36" placeholder="36"> clay</li>
-                            <li>&bull;&nbsp;&nbsp;saved money on <input type="text" class="answer-input" id="q37" placeholder="37"></li>
-                        </ul>
-                        <p style="list-style-type: none; padding-left: 20px; font-weight: 600;">Disadvantages:</p>
-                        <ul style="list-style-type: none; padding-left: 40px;">
-                            <li>&bull;&nbsp;&nbsp;needed two firings in the Kiln to be <input type="text" class="answer-input" id="q38" placeholder="38"></li>
-                            <li>&bull;&nbsp;&nbsp;fragility led to high <input type="text" class="answer-input" id="q39" placeholder="39"> during manufacturing</li>
-                        </ul>
-                        <p><strong>Stoneware</strong></p>
+                        <div style="border: 1px solid #000000; padding: 15px;"> <p class="centered-title">Nanotechnology</p>
+                        <p><strong>General information</strong></p>
+                        <p>explanation: manipulation of matter on a minutes scale</p>
+                        <p>huge investment in research</p>
+                        <p>The reason why development of Nanotechnology may be started because of a new type of <input type="text" class="answer-input" id="q31" placeholder="31"></p>
+                        <p><strong>Application</strong></p>
+                        <p><strong>a) daily lives</strong></p>
                         <ul style="list-style-type: none; padding-left: 20px;">
-                            <li>&bull;&nbsp;&nbsp;more emotive but better</li>
-                            <li>&bull;&nbsp;&nbsp;made from a <input type="text" class="answer-input" id="q40" placeholder="40"> of clay and flint</li>
+                            <li>&bull;&nbsp;&nbsp; aids in getting <input type="text" class="answer-input" id="q32" placeholder="32"> from diet</li>
+                            <li>&bull;&nbsp;&nbsp; reduces the cost of <input type="text" class="answer-input" id="q33" placeholder="33"></li>
+                            <li>&bull;&nbsp;&nbsp; improves the <input type="text" class="answer-input" id="q34" placeholder="34"> of food</li>
+                        </ul>
+                        <p><strong>b) agriculture</strong></p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li>&bull;&nbsp;&nbsp; use of Nanotechnology has resulted in a spray which increase the efficiency of <input type="text" class="answer-input" id="q35" placeholder="35"> in the soil and can be use instead of Artificial chemical</li>
+                        </ul>
+                        <p><strong>c) medical area</strong></p>
+                        
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li>&bull;&nbsp;&nbsp; Nanotechnology can help avoid food poisoing</li>
+                            <li>&bull;&nbsp;&nbsp; Nanotechnology can kill foods' <input type="text" class="answer-input" id="q36" placeholder="36"> and make them safe to eat.</li>
+                            <li>&bull;&nbsp;&nbsp; Nanoparticles are injected into the body and allow <input type="text" class="answer-input" id="q37" placeholder="37"> to enter the veins.</li>
+                            <li>&bull;&nbsp;&nbsp; Some certain nanoparticles are able to sterilise more than 650 types of bacteria.</li>
+                            <li>&bull;&nbsp;&nbsp; <input type="text" class="answer-input" id="q38" placeholder="38"> has the greatest antibacterial qualities.</li>
+                            <li>&bull;&nbsp;&nbsp; Splifferenes help <input type="text" class="answer-input" id="q39" placeholder="39"> loss programmes.</li>
+                        </ul>
+                        <p><strong>d) cosmetics</strong></p>
+                        <ul style="list-style-type: none; padding-left: 20px;">
+                            <li>&bull;&nbsp;&nbsp; Preventing <input type="text" class="answer-input" id="q40" placeholder="40"> from entering the body avoids skin cancer.</li>
                         </ul></div>
                     </div>
                 </div>
@@ -1830,172 +1902,188 @@
     </div>
 
     <div id="transcription-data" style="display:none;">
-        <div data-part="1">Section 1. You will hear a woman talking to a man about joining a drama club. First, you have some time to look at questions 1 to 6. Pause the recording for 30 seconds. You will see that there is an example that has been done for you.
+        <div data-part="1"><strong>SECTION 1</strong>
 
-On this occasion only, the conversation relating to this will be played first. Hello, Robert Gladwell speaking. Oh, hi.
+You will hear a man who has just retired telephoning a part-time society to ask about membership and activities. First, you have some time to look at questions 1 to 5. You will see there is an example that has been done for you. On this occasion only, the conversation relating to this will be played first.
 
-My name's Chloe Martin. I was given your name and phone number by Ben Winters. I work with him and he said you're a member of Midbury Drama Club.
+Hello, this is the Leighton Society. How can I help? Oh, hello. I'm just phoning you because I'm interested in becoming a member of your society, and I was wondering if you could give me some more information.
 
-Yes, I am. Well, I've just moved to the area and I'm keen to join a drama club. Great.
+The name of the society is Leighton, so Leighton has been written in the space. Now we shall begin. You should answer the questions as you listen, because you will not hear the recording a second time.
 
-Yes, I can give you some information. We're one of the oldest drama clubs in the area as the club started in 1957. We now have about 60 members.
+Listen carefully and answer questions 1 to 5. Hello, this is the Leighton Society. How can I help? Oh, hello. I'm just phoning you because I'm interested in becoming a member of your society, and I was wondering if you could give me some more information.
 
-Our youngest member is 10 and our oldest member is 78. The year the drama club started was 1957, so 1957 has been written in the space. Now we shall begin.
+Of course. What would you like to know? Well, first of all, I'd like to know where you hold the club meetings. As I'm not very mobile anymore, and I'm looking for somewhere that's within walking distance of my house.
 
-You should answer the questions as you listen. Because you will not hear the recording a second time. Listen carefully and answer questions 1 to 6. Hello, Robert Gladwell speaking.
+Are you still down at the old boathouse? No, we moved away from there a while ago. Meetings are now held at the clubhouse. Oh, brilliant.
 
-Oh, hi. My name's Chloe Martin. I was given your name and phone number by Ben Winters.
+That's only five minutes from me. Do you require members to have any skills or experience? No, there is no experience required. We have plenty of female singers and actresses, but we don't have many men who can play the male roles.
 
-I work with him and he said you're a member of Midbury Drama Club. Yes, I am. Well, I've just moved to the area and I'm keen to join a drama club.
+We are looking to resolve this, and are especially interested in recruiting male actors and singers. I've never sung professionally, but I'm very keen on it, and I've been told that I'm talented, so I think this would be a good fit. Do you organise coaches to transport members to practice at the theatre? Unfortunately, the club does not have sufficient funds to organise transportation, though this is something we are working towards.
 
-Great. Yes, I can give you some information. We're one of the oldest drama clubs in the area as the club started in 1957.
+We are currently looking for members who can drive, so that we can organise car sharing. Members who are able to shuttle people in their cars will obviously be compensated for their petrol usage. I don't drive, but I'd be happy to contribute some money in order to use the shuttle services.
 
-We now have about 60 members. Our youngest member is 10 and our oldest member is 78. Oh, I think I saw a picture in the newspaper the other day of some of your members being presented with a prize.
+Yes, that is no problem. Are you aware of when the meetings take place? No, I couldn't find the meeting times on your website. We hold meetings from 6 to 8pm every Tuesday.
 
-Yes, the youth section did very well in a competition and won £100, which will help with their next production. Anyway, tell me a bit more about yourself. Well, I've done a bit of acting.
+Ah, that's lucky. I go to a debating club every Wednesday, so I'm glad that it's on a different night so I can attend both. Do you operate year round? We used to close during December for the Christmas period, but we found that a lot of members wanted to continue their practices during this time.
 
-I was in a couple of musicals when I was at university and a historical play more recently. We mainly do comedy plays. We get good audiences for that kind of thing.
+We operate for most of the year, but we do, however, close for August because the weather gets so hot that we are unable to practice comfortably. This may change when we have enough funds to operate the air conditioning. Before you hear the rest of the conversation, you have some time to look at questions 6 to 10.
 
-We haven't attempted a musical yet, but we might do one soon. Oh, when do you usually meet? On Tuesdays. Well, presumably I'll need to do an audition.
+Now listen and answer questions 6 to 10. OK. I also wanted to ask how much the membership fee is and what is included with it.
 
-Yes, there were a few auditions last Tuesday, and we'll be doing more at our next meeting, which is in two weeks' time. That's on Tuesday, the 12th of March. There'll be another opportunity two weeks after that, which will be on the 26th of March.
+Our membership fee is inexpensive and it includes many benefits that certainly make the costs worth it. For example, we hold an annual event where members can meet each other and converse about topics that they have in common. We find that this is very popular as the dinner is truly superb and included with your membership fee.
 
-Oh, well, I can come to your next meeting, and if I don't get an acting part in a play, I'd be happy to help with something else. I've designed publicity before. Great! We're very short of people who can do that, so that would be really good.
+Wow, that sounds great. And how much does membership cost? We have a couple of membership rates depending on your age and situation. For employed members under the age of 30, the fee is £40, while it costs £60 for members aged between 30 and 60.
 
-There are a lot of people who like making scenery, so we get plenty of help with that, but we haven't got enough people to do the lights at the moment. So, if you think you can do that, or you have any friends who would like to, do bring them along. We can show you what to do if you haven't got any experience.
+Which of these categories do you fit into? Oh, I don't fit into either of those. I'm 65 years old and retired, so I'm no longer employed. That's no problem at all.
 
-I'll have to think about it. So, do you meet in the theatre? We do our performances in the Manor Theatre, but we only hire that for the nights of the actual performances. We meet to rehearse every Tuesday evening in the Community Hall.
+You qualify for the lowest priced membership fee of £25, which applies to those who are either unemployed or retired. Wow, that's really affordable. I was thinking of bringing my grandson along to some of the practices.
 
-We rent a room there. Oh, I'm not sure where that is. I'll be coming by car because I don't live in the town centre.
+So what would the membership cost for him? He's 14. I'm afraid that the club is for adults only. That is to say, we don't allow members who are aged 16 and under.
 
-It's in Ashburton Road. As you're coming towards the centre, down Regent Street, you need to turn left at the crossroads. Oh, I know.
+He is welcome to join in two years' time though. Ah, that's a shame. I guess I can wait and buy him a membership for his birthday present.
 
-There's a big car park down there, just before you get to a hotel. It's on the other side of the road from the Sports Centre. That's it.
+Yes, what a good idea. I was hoping I could bring him with me so I have someone there to talk to. I'm worried that I won't have anything in common with the other members.
 
-That's the closest place to leave your car, and you don't have to pay in the evening to park there. We meet at 7.30, and we usually finish by 9.30 or 10. OK.
+I'm sure you'll fit in just fine. All our members are very friendly and interested in culture and music. Most of the people involved are modern day authors looking for new experiences to write about in their books.
 
-Before you hear the rest of the conversation, you have some time to look at questions 7 to 10. Pause the recording for 30 seconds. Now listen and answer questions 7 to 10.
+You could read some of their books so you have something to discuss with them. That's a good suggestion. I'll definitely do that.
 
-I haven't mentioned that we have to make a charge. Everyone pays a subscription of £180 to be a member for a year. You can pay for the whole year at once, or you can pay £15 every month.
+I'm really looking forward to attending the annual dinner so I can meet new people and hopefully make some friends. Absolutely. Everyone has a great night and it's all for charity, as all of the money raised from this event is donated to the children's hospital so they can buy toys and clothes.
 
-It works out the same. There are reductions for retired people and under-18s, but I don't think you come into either category. No, I'm 26.
+Wow, what a great cause. Well, I will definitely be popping in soon to arrange my membership. Thank you for all of your help.
 
-Oh, that fee covers all the costs, like photocopying of scripts and producing the posters, but it excludes the costumes for the performances. We ask people to pay for the hire of those themselves. It does mean they look after them properly, as they know they won't get their deposit back otherwise.
+No problem at all. Goodbye. Bye.
 
-Can I come along to the next meeting then? Of course. We'd love to see you. And if you want to know more about how we run the auditions or the next play we're doing, why don't you give our secretary a ring? She'll be really pleased to help you.
+That is the end of section 1. You now have half a minute to check your answers.</div>
+        <div data-part="2"><strong>SECTION 2</strong>
 
-Oh, what's her name? It's Sarah Sordicott. That's S-A-W-D-I-C-O-T. Got that.
+You will hear a part of a talk given by a director of a train station. First, you have some time to look at questions 11 to 14.
 
-And her phone number? I've only got a mobile number for her. Just a minute. Let me find it.
+Now listen carefully and answer questions 11 to 14. Hello and thank you for attending this meeting. I have called it to discuss station matters as there have been a number of changes made and I want to ensure that you are all filled in.
 
-Ah, it's 07955 240063. Great. Thanks for your help.
+Well, as I'm sure you will all have heard, there are plans underway to make some alterations to the station complex. Though we did the reconstruction work that occurred last year, from the data collected this year, we have learned that our station is too small to cope with a large number of visitors passing through it on a daily basis. However, relocation is unnecessary which means you, our staff, will be unaffected and can continue with your work as normal.
 
-That is the end of section one. You now have half a minute to check your answers.</div>
-        <div data-part="2">Section two.
+We have decided that our only option is to make the area bigger by building new platforms and new facilities such as cafes and lounge areas. We have already purchased the site on which these new facilities will be constructed. We had initially planned to build on the site of the old industrial buildings.
 
-You will hear a radio programme in which a presenter called Jasmine tells her colleague Fergus about a charity. First, you have some time to look at questions 11 to 15. Pause the recording for 30 seconds.
+However, tests carried out on the soil and water showed that it was too highly contaminated with waste from the industrial processes. Instead, we have purchased the site just across the road on which there used to be a lot of houses that were later converted into shops. These buildings will, of course, be demolished to make room for our new facilities.
 
-Now listen carefully and answer questions 11 to 15. And now here's Jasmine, who's come to tell us about this week's charity. Hi, Fergus.
+What is going to be built on this new site? I see you thinking to yourselves. There have been a lot of ideas put forward by all the parties involved. Initially, the station had planned to use the site as a car park.
 
-This week, I'm going to talk about Forward Thinking and their plans for the Colville Centre. So, in recent years, people have realised how useful the arts can be within healthcare. The idea behind Forward Thinking is to use the arts to promote wellbeing.
+However, we decided this would be a very unsatisfactory way to occupy the space. Instead, we have hired an architect who has an exciting vision to transform the site into a large leisure centre complete with cafes, shops and a lounge where visitors can relax. We hope that this new complex will attract many visitors, not just from the station but also from the apartment blocks in the nearby town centre.
 
-The charity develops projects for people with special needs and health problems and also delivers training to healthcare professionals in using the arts, as well as supplying them with information and advice. Forward Thinking doesn't just run art and craft classes to distract people who are ill or recovering from illness, but arranges longer-term projects and courses, as it's been shown that the arts can bring all sorts of positive changes in patients, including benefits such as shortening the length of stay in hospital and reducing the amounts of medicine they need. I see.
+As part of the construction works, we are also going to create new formal gardens where visitors can enjoy the greenery and sit outside in the fresh air. The new leisure complex will be located to the right of the shopping district, so these formal gardens will serve as a meeting place for pedestrians. Before you hear the rest of the talk, you have some time to look at questions 15 to 20.
 
-Forward Thinking has experience of working with a broad range of people, from young adults with learning difficulties to older people in homes or daycare centres and people with physical disabilities. The organisation's been around since 1986 and it gradually expanded during the 1990s. Then, in the new millennium, it was decided to find a memorable name, so it's been operating as Forward Thinking for several years, in fact, since 2005.
+Now, listen and answer questions 15 to 20. Now, I'm delighted to be able to introduce you all to the plans for our new complex, so if you could please focus your attention on the maps in front of you. We will start at the main entrance and make our way towards the cafe, which is located behind the wall that we can see directly in front of us, just next to the rear entrance.
 
-It's quite a locally-based charity, mainly for people in the southern part of this region, which includes all rural and urban communities outside the city of Clifton, which has its own organisation. There are, of course, some similar charities in other parts of the country, in London and so on. And what's the present fundraising in aid of? Yeah, well, the charity needs funding in order to buy the Colville Centre.
+In this position, the cafe is obscured from the entrances, which will keep the space warm and also create an intimate atmosphere. Once visitors arrive at our station, they often need further transport in order to reach their homes. Therefore, we have introduced a taxi rank with its own waiting area.
 
-This is a former village school, which was built in 1868. It was modernised and refurbished by the present owners last year, so it's ideal for art classes and for small social events, performances, seminars and so on. Forward Thinking is fundraising to purchase the building so they can use it to continue running classes and so on for the general public and eventually also for some of the people they help.
+In order to reach these facilities, the visitors must simply leave the complex via the rear entrance and turn left. Visitors who have travelled to the station by car can leave it in the car park for a small fee, which is located just outside of the rear entrance to the right. At present, our station does not have an internal seating area for passengers, so they are forced to wait for their trains outside on the platforms, which can be particularly unpleasant during the winter.
 
-Before you hear the rest of the talk, you have some time to look at questions 16 to 20. Pause the recording for 30 seconds. Now listen and answer questions 16 to 20.
+We have, therefore, decided to introduce a passenger waiting area inside the new complex to the right of the rear entrance, with comfortable seating where passengers can pass the time comfortably in the warmth. As this space is a distance away from the station, we have also proposed a waiting area for wheelchair users that is closer. As visitors enter through the main entrance, this space will be located behind the wall to their left.
 
-Right, so can you give us a few ideas about what classes people might do there? Is it all art classes? Well, there are some very good art classes, but there are lots of other things going on as well. So, for example, there's Learn Salsa with Nina Bellina's team. They say that salsa is an easy dance to learn.
+Finally, we have also decided that it would be a great idea to introduce a new tourist office, where visitors can get maps and information on our wonderful town. We want this new office to be easily accessible, so visitors entering through the main entrance will find it directly to their right. Now, I think that's all I have to tell you.
 
-It's also an excellent form of exercise, according to Nina. And that class is for both men and women, of course. It's ideal for beginners and what they call refreshers.
+Please feel free to ask any questions if you would like to know anything else. That is the end of section 2. You now have half a minute to check your answers.</div>
+        <div data-part="3"><strong>SECTION 3</strong>
 
-That's £100 for 10 sessions. Then another class is called Smooth Movers. It's with Kevin Bennett.
+You will hear three students discussing an experiment they're interested in.
 
-And it's for you if you don't have the same energy levels as you used to when you were a teenager. It's a gentle exercise class geared to the needs of whoever is in the group in a particular session. And Kevin is qualified to teach classes to people getting over injuries and so on and balance training.
+First, you have some time to look at questions 21 to 25. Now listen carefully and answer questions 21 to 25. Oh, hi Jen and Irene.
 
-That's £60 for 10 sessions. Then there's a day called Art of the Forest with Jamie Graham, where you discover Upper Wood, a short walk from the Colville Centre, and learn how to design in 3D with natural materials. It's an unusual and exciting way to be creative.
+Are you two heading to class? Hey Bill. Yes, we're just walking there now. We're a little bit early, but we wanted to prepare our apparatus for the experiment.
 
-Jamie is an artist with a background also as a country park ranger. For this day, youngsters must be accompanied by a parent or guardian, and the costs are adults £40, under-14s £10. But it's best value at £80 for a family of four.
+Do you want to walk with us? Yes, sure. It'll be good to catch up. How is everything going with your experiment? Have you decided what your test subject is yet? It's going really well and we're conducting the test as laboratory partners.
 
-The next one is The Money Maze. And this is a series of talks by Peter O'Reilly, an independent financial advisor. He gives advice on family finances, things like everything parents need to know about managing the costs of bringing up children, sending them to university, and actually also about care for elderly relatives.
+We've decided to test the effects of gravitational force on a series of objects with different densities. It's interesting, but it's a lot of work. I've been planning the experiment for the last two weeks and I only finished yesterday.
 
-It's £10 per talk, which will all go to support forward thinking. And as a final example of what's on offer, there's Make a Play. That's for 8-14s, and this activity is such a hit that it usually sells out within days of being announced.
+Gosh, Irene, I'm really impressed by how hard-working you are. I enjoy chemistry so much that it doesn't feel like work. Whenever I have some free time at the weekend, I spend it in the laboratory working on it.
 
-Basically, what you do is write, rehearse and perform a play in just two days, and it doesn't require any previous experience. I gather there's lots of fun and silliness along the way. And the best bit, perhaps, is that there's a performance for family and friends at the end.
+It almost feels like a second home to me. How about you, Bill? Who is your laboratory partner? The tutor partnered me with Kim. At first I was worried because I've never worked with him before and I was worried that he wouldn't be very good at laboratory work, but actually he's very capable.
 
-It's just £50 for two days. Pretty good range of activities, I think. And all raising money for a good cause.
+I've noticed that he's always very well-dressed. Yes, he's very stylish and we share the same tastes in clothes. That doesn't stop him from getting his hands dirty, though.
 
-Yes, and the all-important contact details are colville at forwardthinking.org.uk or write. That is the end of section 2. You now have half a minute to check your answers.</div>
-        <div data-part="3">Section 3 You will hear Tom and Danny, two students, talking with their professor about the assignment.
+He's a very hard worker and makes a significant contribution, which I'm really grateful for. Ah, it's good that you get on well with your partner. It makes the experiment so much more enjoyable when you work well together.
 
-First, you have some time to look at questions 21 to 26. Now listen carefully and answer questions 21 to 26. Professor Tomlinson, may Annie and I please quickly ask you a few questions about the reflective journal assignment? It's just that we're a bit confused as to what you want us to include and discuss.
+What do you think of the other people in our group? A lot of the boys are really good at maths, which is really helpful with all the calculations we have to do. Irene is good at maths as well, which makes her contribution really useful because she can do all the equations. I take care of all the writing because Irene finds that difficult.
 
-Yes, of course. What are you having trouble with? Well, everything really. To start with, what should be included first in the reflective journal? Perhaps suggestions from others? No, no.
+We'd probably fail without each other's help. That's true. I'm so glad that we're nearly finished.
 
-Firstly, you should include the study goals you set yourself at the beginning of the module. This section should have been discussed in some detail towards the beginning of the course by Professor May. You should be able to find her suggestions on the slides she has provided the class online.
+Only because you've finished the data analysis. Oh, Jen, you give me too much credit. I'm so glad that I didn't get partnered with Linda again.
 
-OK, thank you, Professor. Could I also trouble you to take a brief look at my bibliography and footnotes? I feel like they're missing something. Most of our friends' bibliographies are longer.
+Jen and I were grouped with her for our last experiment and it was a nightmare. Yes, she always submitted her work on time for the group work, but she never had her phone on her, so it was impossible for anyone to keep in touch with her and vice versa. Her attitude was pretty annoying, but in all fairness she was a very hard worker because she realised the amount of work needed to get a high score.
 
-Well, looking at this, Annie, I can see that you have used a wide range of resources, which shows that you have made effective use of communication technology. As far as I can tell, you need not make any changes to this. Although you might want to double-check that your referencing complies with the Harvard Referencing Style regulations.
+Jen is such a hard worker. In fact, she has been invited to work on the professor's personal project. Wow, that's amazing.
 
-Oh, I'm very surprised you've said that. Thank you. Now I can set my mind at ease.
+Well done. Why were you picked? I thought he would pick one of the students that he's closer to, but he told me he was impressed with me because I always complete reading the assignments in time for class. I bet you'll be really popular among the other students when they find out.
 
-Tom, you said you wanted to ask the Professor about the achievement section? Ah yes, Professor. In the assignment guidelines, we're asked to introduce and elaborate on our biggest achievement in the past, saying which skills we learned in the process and how these skills can be transferred to various different future careers. The only problem is that I don't know what my greatest achievement actually is.
+They'll all want to hear about the project. Before you hear the rest of the conversation, you have some time to look at questions 26 to 30.
 
-I've only ever worked as a waiter in a hotel restaurant during the summer holidays from university. If you worked as a waiter in a hotel restaurant, you're bound to have worked with other waiters as part of a team. Would you say that during your time as a waiter, you developed any leadership skills? Yes, well, I suppose I was asked to become the team leader of the food and beverage department, but that's hardly an achievement.
+Now listen and answer questions 26 to 30. You should give everyone tasks so that they have the opportunity to participate. That's a really good idea actually. Will you help me decide who to assign each task to? Of course.
 
-You might not think so, but if you write that you were offered the position of the team leader, it shows a lot more about your character. For example, that you're charismatic and work well in a high-pressure situation. I never would have thought to write that down, thank you.
+Now let's see. Well, as Irene finds writing difficult, perhaps it would be useful for her to practice that by doing the bibliography. I think the bibliography is a bit long for me.
 
-I guess I should start listening to others more often. Annie, do you have any more questions, or are you ready to go back to the library? Yeah, I think I've got everything I need. Thank you very much, Professor Tomlinson.
+I think I'd be better suited to the methodology. Yes, that makes sense. Bill, you've told us that Kim is a hard worker, so I think he should be tasked with the conclusions as there is quite a lot of effort involved.
 
-That was really helpful. I'm actually starting to look forward to writing this now, and it should be a really useful exercise to prepare us for writing CVs and applying for jobs. It's shocking how bad I am at identifying my strengths and weaknesses.
+Okay, sure. I know that Kyle hasn't been feeling well, so he should take care of the abstract and the acknowledgement because there is very little work to be done for those tasks. Jen, do you want to review some of the literature? It's a lot of work, but I know that you really enjoy writing, so I'm confident that you'll do a good job.
 
-Professor Tomlinson has shown me that I definitely need to start displaying some self-awareness. Yeah, Tom, you really do. You're always so modest.
+Sure, sounds great. Right, so that leaves the bibliography and the discussion to assign. I think that Linda will struggle with the amount of work involved in the referencing, so perhaps I should take care of that task, and she can do the other one? That's great, guys.
 
-Modesty is great until it comes to applying for jobs. Before you hear the rest of the conversation, you have some time to look at questions 27 to 30. Now listen and answer questions 27 to 30.
+Thanks for your help. I'll tell the tutor when he arrives. That is the end of Section 3. You now have half a minute to check your answers.
 
-Oh no, I forgot to ask the professor about the section on identifying the skills gained through different activities. Do you remember? When it asks you, for example, whether writing an essay develops your study skills, or your independent learning, and so on. Oh goodness, we really should have asked him that.
+Irene: That's impressive, Jen. You deserve it.
 
-I've been having trouble with it too. It just seems like such a pointless task. What do you reckon the answers are? I think writing an essay might be a way of identifying and resolving a problem, because you have to state the problem in the introduction and then solve it.
+Before you hear the rest of the conversation, you have some time to look at questions 26 to 30. Now listen and answer questions 26 to 30.
 
-I'm not so sure about taking exams. I thought they were supposed to develop lots of different skill sets. If I really had to choose, I'd say that taking exams enables you to become more confident in yourself.
+Jen: So, let's divide up the tasks for the final report. Irene, you should do the methodology since you planned the experiment.
 
-Do you agree? Maybe. I really don't know either. What do you think about the last two? Making class notes and presentation notes? Oh, it's so difficult.
+Irene: That makes sense. I'll take methodology.
 
-I think making class notes has to be a way of becoming a more independent learner, because you yourself decide what the important information is and learn it. That reminds me, I find taking presentation notes is a disaster. The professors speak much too quickly and I write much too slowly.
+Bill: I'll handle the bibliography. I'm good at organizing references.
 
-That is the end of section three. You now have half a minute to check your answers.</div>
-        <div data-part="4">Section four. You will hear a lecturer giving the beginning of a talk on the history of British pottery. First, you have some time to look at questions thirty-one to forty.
+Jen: Perfect. Kim, you can do the abstract since you have a good overview of the whole project.
 
-Pause the recording for one minute. Now listen carefully and answer questions thirty-one to forty. Thank you for coming to this series of talks.
+Kim: Sure, I'll write the abstract.
 
-Before I talk in detail about the experiments and innovations of the British ceramicists, I'd like to give you a summary of the social and manufacturing background in which they lived and worked. So, we're talking about England, or more specifically, the region known as the Midlands, and we need to go back, mainly to the 18th century, and briefly even earlier, to put it in a global context. Now, at that period, the majority of the population, whatever their station in life, as you might say, were dependent for their living, in one way or another, not on the geographical location of where they lived, but on the physical characteristics of the actual land they lived on.
+Jen: I'll take the results section since I've been analyzing the data.
 
-This is true whether we're talking about the aristocracy, the owners of great estates who, incidentally, had no snobbery about the concept of making money from all the reserves of coal, or timber, or stone, on their rolling acres, or the farmers making a fat living from the rich soils. And besides these groups, and the less affluent ones, the deposits of iron ore and lead, the limestone and flint, and the brown and yellow clays also sustained the numerous industries in the area. It's important to recognise that it was already an industrial region, and had been so for centuries.
+Bill: What about Linda? What should she do?
 
-There were many Midland trades, some of them indigenous, some of them not. For example, there were immigrants from France who came as early as the late 16th century, and they were producers of glass. A century later, there is plenty of evidence that the variety of trades was enormous.
+Jen: Linda can do the literature review. She's good at research and reading background materials.
 
-There was brewing in Burton-on-Trent, silk weaving and ribbon making near Coventry, framework knitting around Nottingham, and of course, in Cheshire, men dug the salt, as we still do nowadays even, which in that era was sent downriver to the estuary of the Mersey. Now, among these well-established trades, one of the oldest of the local crafts was pottery. As you will probably be aware, ceramics has always been a mix of science, design, and skill.
+Irene: That works well. So we have methodology, bibliography, abstract, results, and literature review covered.
 
-And a good potter is, in a sense, an experimental chemist, trying out new mixes and glazes, and needing to be alert to the impact of changes of temperature on different types of clay. For 200 years, up to the time we are concerned with, potters had been making butter pots and pitchers and patterned plates, using the clay which was plentiful in the area where they lived, in a handful of North Staffordshire villages dotted along the low hills. Now I want to explain a little about the industrial processes which had preceded the great breakthrough in Germany in 1708.
+Jen: Exactly. That covers all the main sections we need.
 
-That's when the formula for porcelain was discovered, a secret that had been held in China for a thousand years. In the Midlands, in England as elsewhere, there had basically been two kinds of pottery. The first was known, is still known, as earthenware.
+That is the end of section 3. You now have half a minute to check your answers.</div>
+        <div data-part="4"><strong>SECTION 4</strong>
 
-Now, this was a bit rough and ready, but it was deservedly popular for several reasons. To start with, it was relatively cheap, so it could be used by most households. This was because it could be made from local clay, without any complicated processing or added materials.
+You will hear a talk on research in nanotechnology. First, you have some time to look at questions 31 to 40.
 
-From the potter's point of view, there was another reason for its cheapness. This was that it could be fired in simple ovens or kilns and at relatively low temperatures, so he didn't have to spend so much money on fuel to achieve the necessary heat. On the other hand, after one firing in the kiln, the problem with earthenware was that it remained porous, so had limited usefulness.
+Now listen carefully and answer questions 31 to 40. Good morning, everyone. Welcome to the second lecture in our series on modern technology. Today I'll be discussing the recent developments in nanotechnology, in addition to its applications in a number of environments, such as domestic and medical.
 
-So for most purposes, it had to go back in the kiln for a second firing before it became waterproof. And another thing was that it was extremely breakable. I mean, before it had even been sold.
+First of all, I'd like to begin with a short explanation of what nanotechnology is. It is the manipulation of matter on a minutes scale. Because of its limitless applications and uses, the government has invested billions of dollars into the research and development of nanotechnology in order to explore its potential.
 
-I suppose the potter wouldn't have minded so much if people just had to keep coming back for more every time they broke a jug or whatever. But it was very inconvenient, because it meant there was a lot of wastage in the course of the manufacturing process. Anyway, for all these reasons, if people could afford it, and that would be all but the very poor, they would buy stoneware, a much tougher product.
+It is only recently that we have been able to engage in the development of nanotechnology since nanoparticles are so miniscule that a new type of microscope had to be invented to enable us to see them. Many of you may not realise that we all use nanotechnology in our homes as a part of our daily lives. For example, a new dietary supplement uses nanotechnology in order to help our body to absorb iron from our diet more efficiently, which can help to prevent anaemia.
 
-Now, for this, the potter used a slightly more expensive raw material, which was made by combining clay and flint. And this mixture was fired at a far higher heat, with the result that the ingredients vitrified. That is to say, in effect, the whole thing became glassy.
+This technology also makes it easier and cheaper for factories to produce foods such as chocolates, as the nanomolecules help the food to meet our recommended daily intake of certain vitamins and minerals. This may sound odd, but in fact it just means that the food is healthier and cheaper and has increased flavour. Another application for nanotechnology is in the agriculture industry.
 
-And because of this, it was non-porous, and naturally, this was regarded as a great advance. Well, that's the situation in the 18th century. Are there any questions at this stage? OK, so now we can go on to look at the age of innovation.</div>
+In the past, farmers have been using many artificial chemicals to fertilise the soil, which is extremely bad for the planet as it contaminates the water that we drink. By using nanotechnology, scientists have been able to develop a spray, which increases the efficiency of fertilisers that occur naturally in the soil. This means that a lot more food can now be produced per square hectare, making it cheaper and more efficient to grow without harming the planet.
+
+One of the industries upon which nanotechnology has had the biggest impact is the production of pharmaceuticals. One of the most commonly occurring illnesses is food poisoning, as many foods have naturally occurring contaminants that can be harmful if eaten without being thoroughly cooked. Nanotechnology makes it possible for us to sterilise the food and make it safe to eat by killing these bacteria.
+
+A major success in the use of nanotechnology in the medical field is in the treatment of cancer. Researchers have found that they can attach medicine to nanoparticles, which are then injected into the body and enable the therapeutic drugs to be absorbed into the veins. These drugs then travel throughout the blood system and target cancerous tumours.
+
+Scientists have also discovered that certain metals contain nanoparticles that have antibacterial qualities with the ability to destroy over 650 types of bacteria. These metals are used, for example, on fridges to prevent the growth of bacteria. They can even be woven into materials to create clothing that is self-cleaning and has an attractive metallic appearance.
+
+The most popular of these materials contains silver, which naturally has the strongest antibacterial qualities. These clothes have a special tag on them to show that they use nanotechnology, so keep a look out for them next time you go shopping. Another observation made by some researchers showed that certain types of nanoparticles called splipherines can destroy fat tissues and therefore stimulate fat loss without the need for dieting or exercise.
+
+They are currently developing a supplement that can be ingested in order to help dieters with their weight loss programmes. It is predicted that these supplements will be on the market by 2020. I would like to finish today's lecture with a final example of a domestic application for nanotechnology – cosmetics.
+
+Nanoparticles are used in many make-ups and body lotions, but they have the greatest effect in sun cream. Ultraviolet rays given off by the sun are a serious cause of skin cancer, but the nanoparticles in sun cream protect the skin against the sun by blocking the ultraviolet radiation from entering the body. This is why you must always wear suntan lotion on the beach.
+
+Now I'd be happy to answer any questions you may have. That is the end of section 4. You now have half a minute to check your answers. That is the end of the listening test.
+
+In the IELTS test, you will now have 10 minutes to transfer your answers to the answer sheet.</div>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2198,11 +2286,14 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                 let isAnswered = false;
                 const textInput = document.getElementById(`q${qNum}`);
                 const radioInput = document.querySelector(`input[name="q${qNum}"]:checked`);
+                const selectInput = document.getElementById(`q${qNum}`);
                 const dropZone = document.querySelector(`.drop-zone[data-question-id="${qNum}"]`);
 
                 if (textInput && textInput.value.trim() !== '') {
                     isAnswered = true;
                 } else if (radioInput) {
+                    isAnswered = true;
+                } else if (selectInput && selectInput.tagName === 'SELECT' && selectInput.value !== '' && selectInput.value !== 'Select') {
                     isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
                     isAnswered = true;
@@ -2234,58 +2325,58 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia601005.us.archive.org/35/items/full-copy-copy-copy-copy-copy-copy-copy/full%20-%20CopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia601005.us.archive.org/1/items/mix-27m-18s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy/mix_27m18s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopy.mp3';
         audioPlayer.src = audioSource;
 
         const correctAnswers = {
-            'q1': ['youth'],
-            'q2': ['comedy', 'comedies'],
-            'q3': ['12th march', 'march 12th', '12 march', 'march 12'],
-            'q4': ['publicity', 'design', 'lights'],
-            'q5': ['community'],
-            'q6': ['sports centre', 'sport centre'],
-            'q7': ['180'],
-            'q8': ['costumes', 'costume hire'],
-            'q9': ['sawdicott'],
-            'q10': ['07955240063', '07955 240063'],
+            'q1': ['club'],
+            'q2': ['male'],
+            'q3': ['drive'],
+            'q4': ['tuesday'],
+            'q5': ['august'],
+            'q6': ['dinner'],
+            'q7': ['25'],
+            'q8': ['16'],
+            'q9': ['modern'],
+            'q10': ['hospital'],
             'q11': 'C',
-            'q12': 'B',
-            'q13': 'C',
-            'q14': 'C',
-            'q15': 'B',
-            'q16': 'B',
-            'q17': 'B',
-            'q18': 'C',
-            'q19': 'B',
-            'q20': 'A',
-            'q21': 'B',
-            'q22': 'C',
-            'q23': 'B',
-            'q24': 'C',
+            'q12': 'A',
+            'q13': 'B',
+            'q14': 'A',
+            'q15': ['F'],
+            'q16': ['C'],
+            'q17': ['D'],
+            'q18': ['E'],
+            'q19': ['B'],
+            'q20': ['A'],
+            'q21': 'C',
+            'q22': 'A',
+            'q23': 'C',
+            'q24': 'B',
             'q25': 'B',
-            'q26': 'A',
-            'q27': 'A',
-            'q28': 'D',
-            'q29': 'B',
-            'q30': 'E',
-            'q31': ['land'],
-            'q32': ['industries', 'trades'],
-            'q33': ['glass'],
-            'q34': ['salt'],
-            'q35': ['villages'],
-            'q36': ['local'],
-            'q37': ['fuel'],
-            'q38': ['waterproof'],
-            'q39': ['wastage', 'waste'],
-            'q40': ['mixture', 'mix', 'combination']
+            'q26': ['C'],
+            'q27': ['F'],
+            'q28': ['E'],
+            'q29': ['D'],
+            'q30': ['G'],
+            'q31': ['microscope'],
+            'q32': ['iron'],
+            'q33': ['chocolates'],
+            'q34': ['flavour'],
+            'q35': ['fertilisers'],
+            'q36': ['bacteria'],
+            'q37': ['drugs'],
+            'q38': ['silver'],
+            'q39': ['weight'],
+            'q40': ['sun']
         };
         
         const questionTypes = {
-            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text_unordered_pair', 'q5': 'text', 
+            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text', 'q5': 'text',
             'q6': 'text', 'q7': 'text', 'q8': 'text', 'q9': 'text', 'q10': 'text',
-            'q11': 'mcq', 'q12': 'mcq', 'q13': 'mcq', 'q14': 'mcq', 'q15': 'mcq',
-            'q16': 'mcq', 'q17': 'mcq', 'q18': 'mcq', 'q19': 'mcq', 'q20': 'mcq',
-            'q21': 'mcq', 'q22': 'mcq', 'q23': 'mcq', 'q24': 'mcq', 'q25': 'mcq', 'q26': 'mcq',
+            'q11': 'mcq', 'q12': 'mcq', 'q13': 'mcq', 'q14': 'mcq', 'q15': 'select',
+            'q16': 'select', 'q17': 'select', 'q18': 'select', 'q19': 'select', 'q20': 'select',
+            'q21': 'mcq', 'q22': 'mcq', 'q23': 'mcq', 'q24': 'mcq', 'q25': 'mcq', 'q26': 'drag_drop',
             'q27': 'drag_drop', 'q28': 'drag_drop', 'q29': 'drag_drop', 'q30': 'drag_drop',
             'q31': 'text', 'q32': 'text', 'q33': 'text', 'q34': 'text', 'q35': 'text',
             'q36': 'text', 'q37': 'text', 'q38': 'text', 'q39': 'text', 'q40': 'text'
@@ -2406,14 +2497,158 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                 closeContextMenu();
                 return;
             }
+            
             try {
-                const span = document.createElement('span');
-                span.className = 'highlight';
-                selectedRange.surroundContents(span);
-            } catch(err){
-                console.warn('Complex selection – fallback highlight');
-                document.execCommand('backColor', false, 'yellow');
+                // Check if selection spans multiple elements
+                const startContainer = selectedRange.startContainer;
+                const endContainer = selectedRange.endContainer;
+                
+                if (startContainer === endContainer && startContainer.nodeType === Node.TEXT_NODE) {
+                    // Simple case: selection within a single text node
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    selectedRange.surroundContents(span);
+                } else {
+                    // Complex case: selection spans multiple elements
+                    // Handle partial text selections and complex DOM structures
+                    
+                    // First, handle partial text at the start
+                    const startOffset = selectedRange.startOffset;
+                    const endOffset = selectedRange.endOffset;
+                    
+                    if (startContainer.nodeType === Node.TEXT_NODE && startOffset > 0) {
+                        // Split the start text node if selection starts in the middle
+                        const startText = startContainer.textContent;
+                        const beforeText = startText.substring(0, startOffset);
+                        const selectedStartText = startText.substring(startOffset);
+                        
+                        const beforeNode = document.createTextNode(beforeText);
+                        const selectedNode = document.createTextNode(selectedStartText);
+                        
+                        const parent = startContainer.parentNode;
+                        parent.insertBefore(beforeNode, startContainer);
+                        parent.insertBefore(selectedNode, startContainer);
+                        parent.removeChild(startContainer);
+                        
+                        // Update the range to start from the new node
+                        selectedRange.setStart(selectedNode, 0);
+                    }
+                    
+                    if (endContainer.nodeType === Node.TEXT_NODE && endOffset < endContainer.textContent.length) {
+                        // Split the end text node if selection ends in the middle
+                        const endText = endContainer.textContent;
+                        const selectedEndText = endText.substring(0, endOffset);
+                        const afterText = endText.substring(endOffset);
+                        
+                        const selectedNode = document.createTextNode(selectedEndText);
+                        const afterNode = document.createTextNode(afterText);
+                        
+                        const parent = endContainer.parentNode;
+                        parent.insertBefore(selectedNode, endContainer);
+                        parent.insertBefore(afterNode, endContainer);
+                        parent.removeChild(endContainer);
+                        
+                        // Update the range to end at the new node
+                        selectedRange.setEnd(selectedNode, selectedNode.textContent.length);
+                    }
+                    
+                    // Now extract the contents and highlight all text nodes
+                    const fragment = selectedRange.extractContents();
+                    
+                    // Create a tree walker to find all text nodes
+                    const walker = document.createTreeWalker(
+                        fragment,
+                        NodeFilter.SHOW_TEXT,
+                        {
+                            acceptNode: function(node) {
+                                // Accept text nodes that have content (not just whitespace)
+                                return node.textContent.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                            }
+                        },
+                        false
+                    );
+                    
+                    const textNodes = [];
+                    let node;
+                    while (node = walker.nextNode()) {
+                        textNodes.push(node);
+                    }
+                    
+                    // Wrap each text node in a highlight span
+                    textNodes.forEach(textNode => {
+                        const span = document.createElement('span');
+                        span.className = 'highlight';
+                        const parent = textNode.parentNode;
+                        if (parent) {
+                            parent.insertBefore(span, textNode);
+                            span.appendChild(textNode);
+                        }
+                    });
+                    
+                    // Insert the highlighted fragment back
+                    selectedRange.insertNode(fragment);
+                }
+            } catch(err) {
+                console.warn('Primary highlighting failed, trying robust fallback:', err);
+                
+                // Robust fallback for complex selections
+                try {
+                    const selection = window.getSelection();
+                    if (selection.rangeCount > 0) {
+                        const range = selection.getRangeAt(0);
+                        
+                        // Get all nodes in the selection
+                        const startContainer = range.startContainer;
+                        const endContainer = range.endContainer;
+                        const commonAncestor = range.commonAncestorContainer;
+                        
+                        // Create a temporary range to work with
+                        const tempRange = document.createRange();
+                        tempRange.selectNodeContents(commonAncestor);
+                        
+                        // Find the start and end positions
+                        const startPos = range.startOffset;
+                        const endPos = range.endOffset;
+                        
+                        // Extract and highlight the content
+                        const contents = range.extractContents();
+                        
+                        // Recursively highlight all text content
+                        function highlightAllText(node) {
+                            if (node.nodeType === Node.TEXT_NODE) {
+                                if (node.textContent.trim()) {
+                                    const span = document.createElement('span');
+                                    span.className = 'highlight';
+                                    span.style.backgroundColor = '#ffff00';
+                                    const parent = node.parentNode;
+                                    if (parent) {
+                                        parent.insertBefore(span, node);
+                                        span.appendChild(node);
+                                    }
+                                }
+                            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                                Array.from(node.childNodes).forEach(child => {
+                                    highlightAllText(child);
+                                });
+                            }
+                        }
+                        
+                        highlightAllText(contents);
+                        range.insertNode(contents);
+                    }
+                } catch(e2) {
+                    console.warn('Robust fallback failed, using final method:', e2);
+                    // Final fallback - use execCommand
+                    try {
+                        document.execCommand('backColor', false, 'yellow');
+                    } catch(e3) {
+                        console.error('All highlighting methods failed:', e3);
+                        // Show user feedback
+                        alert('Highlighting failed for this selection. Please try selecting smaller portions of text.');
+                    }
+                }
             }
+            
             window.getSelection().removeAllRanges();
             closeContextMenu();
         }
@@ -2504,8 +2739,10 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
             const partContainer = document.getElementById(`part-${partNumber}`);
             if (!partContainer) return;
             const inputs = partContainer.querySelectorAll('input.answer-input:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled])');
+            const selects = partContainer.querySelectorAll('select.answer-input:not([disabled])');
             let answeredCount = 0;
             const answeredGroups = {};
+            
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
                     if (input.checked && !answeredGroups[input.name]) {
@@ -2516,6 +2753,11 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                     if (input.value.trim() !== '') answeredCount++;
                 }
             });
+            
+            selects.forEach(select => {
+                if (select.value !== '' && select.value !== 'Select') answeredCount++;
+            });
+            
             const countDisplay = document.querySelector(`.footer__questionWrapper___1tZ46:nth-child(${partNumber}) .attemptedCount`);
             if (countDisplay) countDisplay.textContent = `${answeredCount} of 10`;
         }
@@ -2525,51 +2767,8 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
             let resultsData = [];
             document.querySelectorAll('.correct, .incorrect, .correct-answer-text').forEach(el => el.classList.contains('correct-answer-text') ? el.remove() : el.classList.remove('correct', 'incorrect'));
             
-            // For unordered pair questions like q4
-            const q4_1 = document.getElementById('q4');
-            const q4_2 = document.getElementById('q4_2');
-            if (q4_1 && q4_2) {
-                const userAnswer1 = q4_1.value.trim().toLowerCase();
-                const userAnswer2 = q4_2.value.trim().toLowerCase();
-                const correctAnswers_q4 = correctAnswers['q4'].map(a => a.toLowerCase());
-                
-                let isCorrect1 = false;
-                let isCorrect2 = false;
-
-                if (userAnswer1 && userAnswer2 && userAnswer1 !== userAnswer2) {
-                    isCorrect1 = correctAnswers_q4.includes(userAnswer1);
-                    isCorrect2 = correctAnswers_q4.includes(userAnswer2);
-                } else if (userAnswer1 && !userAnswer2) {
-                     isCorrect1 = correctAnswers_q4.includes(userAnswer1);
-                } else if (!userAnswer1 && userAnswer2) {
-                     isCorrect2 = correctAnswers_q4.includes(userAnswer2);
-                }
-
-                if (isCorrect1 && isCorrect2) {
-                    q4_1.classList.add('correct');
-                    q4_2.classList.add('correct');
-                    score++; // Assuming q4 as a whole is 1 point
-                } else {
-                    q4_1.classList.add('incorrect');
-                    q4_2.classList.add('incorrect');
-                }
-                const btn = document.querySelector(`.subQuestion[onclick="goToQuestion(4)"]`);
-                 if (btn) {
-                    btn.classList.remove('answered');
-                    btn.classList.add((isCorrect1 && isCorrect2) ? 'correct' : 'incorrect');
-                }
-                resultsData.push({
-                    question: '4',
-                    userAnswer: `${userAnswer1}, ${userAnswer2}`,
-                    correctAnswer: correctAnswers['q4'].join(' / '),
-                    isCorrect: isCorrect1 && isCorrect2
-                });
-            }
-
-
             Object.keys(correctAnswers).forEach(key => {
                 const qNum = parseInt(key.replace('q', ''), 10);
-                if (qNum === 4) return; // Skip q4 as it's handled separately
 
                 const correctAnswer = correctAnswers[key];
                 let userAnswer = '';
@@ -2598,7 +2797,7 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                     case 'mcq':
                         const radioChecked = document.querySelector(`input[name="${key}"]:checked`);
                         userAnswer = radioChecked ? radioChecked.value : '';
-                        isCorrect = userAnswer === correctAnswer;
+                        isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
                         const isTable = document.querySelector(`input[name="${key}"]`) ? document.querySelector(`input[name="${key}"]`).closest('.mcq-table') : false;
 
                         if (radioChecked) {
@@ -2635,6 +2834,17 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                                 }
                             }
                         }
+                        
+                        // If no answer was selected, show the correct answer
+                        if (!radioChecked) {
+                            const correctRadio = document.querySelector(`input[name="${key}"][value="${correctAnswer}"]`);
+                            if (correctRadio) {
+                                const correctLabel = correctRadio.closest('label');
+                                if (correctLabel) {
+                                    correctLabel.classList.add('correct');
+                                }
+                            }
+                        }
                         break;
                     
                     case 'drag_drop':
@@ -2642,19 +2852,36 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                         if (dropZone) {
                             const droppedItem = dropZone.querySelector('.drag-item');
                             if (droppedItem) {
-                                // Extract just the letter from the text (e.g., "A define a problem" -> "A")
+                                // Extract just the letter from the text (e.g., "A. Abstract" -> "A")
                                 const fullText = droppedItem.textContent.trim();
                                 userAnswer = fullText.charAt(0); // Get first character which should be the letter
                             } else {
                                 userAnswer = '';
                             }
-                            isCorrect = userAnswer.toUpperCase() === correctAnswer.toUpperCase();
+                            const acceptedAnswers = Array.isArray(correctAnswer) ? correctAnswer : [String(correctAnswer)];
+                            isCorrect = acceptedAnswers.some(ans => ans.toUpperCase() === userAnswer.toUpperCase());
                             dropZone.classList.add(isCorrect ? 'correct' : 'incorrect');
                             if (!isCorrect) {
                                 const correctAnswerSpan = document.createElement('span');
                                 correctAnswerSpan.className = 'correct-answer-text';
-                                correctAnswerSpan.textContent = `(Correct: ${correctAnswer})`;
+                                correctAnswerSpan.textContent = `(Correct: ${acceptedAnswers.join(' / ')})`;
                                 dropZone.appendChild(correctAnswerSpan);
+                            }
+                        }
+                        break;
+                    
+                    case 'select':
+                        const selectElement = document.getElementById(key);
+                        if (selectElement) {
+                            userAnswer = selectElement.value;
+                            const acceptedAnswers = Array.isArray(correctAnswer) ? correctAnswer : [String(correctAnswer)];
+                            isCorrect = acceptedAnswers.some(ans => ans.toUpperCase() === userAnswer.toUpperCase());
+                            selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+                            if (!isCorrect) {
+                                const correctAnswerSpan = document.createElement('span');
+                                correctAnswerSpan.className = 'correct-answer-text';
+                                correctAnswerSpan.textContent = `(Correct: ${acceptedAnswers.join(' / ')})`;
+                                selectElement.parentNode.insertBefore(correctAnswerSpan, selectElement.nextSibling);
                             }
                         }
                         break;
@@ -2675,28 +2902,16 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                 });
             });
 
-            const deliverButton = document.getElementById('deliver-button');
-            const band = (function(raw){
-                if(raw>=39) return 9;
-                if(raw>=37) return 8.5;
-                if(raw>=35) return 8;
-                if(raw>=32) return 7.5;
-                if(raw>=30) return 7;
-                if(raw>=26) return 6.5;
-                if(raw>=23) return 6;
-                if(raw>=18) return 5.5;
-                if(raw>=16) return 5;
-                if(raw>=13) return 4.5;
-                if(raw>=10) return 4;
-                if(raw>=8)  return 3.5;
-                if(raw>=6)  return 3;
-                if(raw>=4)  return 2.5;
-                if(raw>=2)  return 2;
-                if(raw===1) return 1.5;
-                return 0;
-            })(score);
-            deliverButton.innerHTML = `<span>Score: ${score} / 40 (Band ${band})</span><br><span>Estimated Band: ${band}</span>`;
-            deliverButton.disabled = true;
+           
+            
+           
+            
+            // Store results for modal
+            window.testResults = {
+                score: score,
+                band: band,
+                resultsData: resultsData
+            };
             document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"]').forEach(input => {
                 input.disabled = true;
             });
@@ -2711,6 +2926,37 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
             document.querySelector('.main-container').classList.add('results-mode');
             switchToPart(currentPart); // Show the transcription for the current part
 
+            // Populate and show modal
+            const modal = document.getElementById('result-modal');
+            const scoreSummary = document.getElementById('score-summary');
+            const resultDetails = document.getElementById('result-details');
+            
+            scoreSummary.textContent = `You scored ${score} out of 40 (Band ${band}).`;
+            
+            let tableHTML = '<table><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Result</th></tr>';
+            resultsData.sort((a,b) => parseInt(a.question, 10) - parseInt(b.question, 10)).forEach(res => {
+                tableHTML += `
+                    <tr>
+                        <td>${res.question}</td>
+                        <td>${res.userAnswer}</td>
+                        <td>${res.correctAnswer}</td>
+                        <td class="${res.isCorrect ? 'result-correct' : 'result-incorrect'}">
+                            ${res.isCorrect ? '✔ Correct' : '✖ Incorrect'}
+                        </td>
+                    </tr>
+                `;
+            });
+            tableHTML += '</table>';
+            resultDetails.innerHTML = tableHTML;
+
+            modal.style.display = 'flex';
+        }
+        
+        function showResultsModal() {
+            if (!window.testResults) return;
+            
+            const { score, band, resultsData } = window.testResults;
+            
             // Populate and show modal
             const modal = document.getElementById('result-modal');
             const scoreSummary = document.getElementById('score-summary');
@@ -2824,13 +3070,6 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
                 speedOptions.classList.add('hidden');
             }
         });
-
-        document.getElementById('deliver-button').addEventListener('click', checkAnswers);
-        
-        // Go To Question Widget Logic
-        const gotoWidget = document.getElementById('goto-widget');
-        const gotoInput = document.getElementById('goto-input');
-        const gotoBtn = document.getElementById('goto-btn');
 
         document.addEventListener('keydown', (e) => {
             if (e.key >= '0' && e.key <= '9' && document.activeElement.tagName !== 'INPUT') {
@@ -3045,7 +3284,7 @@ And because of this, it was non-porous, and naturally, this was regarded as a gr
             });
         });
 
-        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"]').forEach(input => {
+        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"], select.answer-input').forEach(input => {
             input.addEventListener('input', updateAnsweredIndicators);
             input.addEventListener('change', updateAnsweredIndicators);
         });
