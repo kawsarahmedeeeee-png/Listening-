@@ -54,6 +54,11 @@
         .ielts-logo {
             display: none;
         }
+        #deliver-button {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
         .test-info {
             display: flex;
@@ -81,7 +86,6 @@
             gap: 10px;
             align-items: center;
         }
-
 
         #volume-slider {
             -webkit-appearance: none;
@@ -257,6 +261,25 @@
         .people-table td {
             padding: 8px 10px;
             border: 1px solid #ddd;
+        }
+        #part-4 .questions-container {
+            width: 80%;
+        }
+
+        /* Matching cell styling */
+        .matching-cell {
+            transition: all 0.2s ease;
+        }
+        
+        .matching-cell:hover {
+            background-color: #e3f2fd !important;
+            transform: scale(1.02);
+        }
+        
+        .matching-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+            font-weight: bold;
         }
 
         #part-1 table td {
@@ -603,6 +626,30 @@
             border-color: #28a745;
         }
 
+        /* Clickable cell styles for Questions 26-30 */
+        .clickable-cell {
+            transition: all 0.2s ease;
+        }
+
+        .clickable-cell:hover {
+            background-color: #e9ecef !important;
+        }
+
+        .clickable-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.incorrect {
+            background-color: #dc3545 !important;
+            color: white !important;
+        }
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -788,6 +835,7 @@
     z-index: 10;
     position: relative;
     pointer-events: auto;
+    font-weight: 600;
 }
         .drag-drop-container {
             display: flex;
@@ -1544,11 +1592,6 @@ width: 75%;
         .speed-container {
             position: relative;
         }
-        #deliver-button {
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: not-allowed;
-}
         #speed-btn {
             font-size: 12px;
             font-weight: 600;
@@ -1822,7 +1865,7 @@ width: 75%;
         <div class="timer-container">
             <span class="timer-display">60:00</span>
         </div>
-        <H2 style="color: rgb(89, 2, 89);">Juned Academy</H2>
+        <h2 style="color: purple;">JUNED ACADEMY</h2>
         <div class="header-icons">
         
         </div>
@@ -1871,29 +1914,67 @@ width: 75%;
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 1-10</strong></p>
-                            <p>Complete the notes. Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p>Complete the notes below.</p>
+                            <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
                         <div style="margin-top: 20px;">
-                            <p class="centered-title">Birmingham Exhibition</p>
+                            <p class="centered-title"><strong>Riverdale Pre-school</strong></p>
                             
-                            <p><strong>Example</strong></p>
-                            
-                            <ul style="list-style-type: disc; padding-left: 20px;">
-                                <li style="margin-bottom: 8px;">Purpose of calling: <strong>purchasing tickets</strong></li>
-                                <li style="margin-bottom: 8px;">Open in: <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></li>
-                                <li style="margin-bottom: 8px;">Length of exhibition: <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"></li>
-                                <li style="margin-bottom: 8px;">A wide range of manufacturers will be showcased.</li>
-                                <li style="margin-bottom: 8px;">Some cars are available to observe and the others are for <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"></li>
-                                <li style="margin-bottom: 8px;">The <input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off"> is prohibited to take into the museum.</li>
-                                <li style="margin-bottom: 8px;">Every ticket includes one free photo.</li>
-                                <li style="margin-bottom: 8px;">Price of ticket: £ <input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"> (in advance)</li>
-                                <li style="margin-bottom: 8px;">Transfer to Mark <input type="text" id="q6" class="answer-input" placeholder="6" autocomplete="off"> (Box Office Manager)</li>
-                                <li style="margin-bottom: 8px;">Held in the <input type="text" id="q7" class="answer-input" placeholder="7" autocomplete="off"> Palace this year</li>
-                                <li style="margin-bottom: 8px;">Not far from <input type="text" id="q8" class="answer-input" placeholder="8" autocomplete="off"></li>
-                                <li style="margin-bottom: 8px;">Website: www. <input type="text" id="q9" class="answer-input" placeholder="9" autocomplete="off"> .com</li>
-                                <li style="margin-bottom: 8px;">Best way to contact: <input type="text" id="q10" class="answer-input" placeholder="10" autocomplete="off"></li>
-                            </ul>
+                            <div class="example-box" style="background-color: #f8f9fa; padding: 15px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 20px;">
+                                <p><strong>Example</strong></p>
+                                <p>Children: 20 in a class</p>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <p><strong>Classes:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li style="margin-bottom: 10px;">First group - Mrs. Oliver</li>
+                                    <li style="margin-bottom: 10px;">Second group - Mrs. <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"></li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <p><strong>Hours & Days:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li style="margin-bottom: 10px;">Suzie will attend 3 days a week for a total of <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"> hours</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <p><strong>Activities:</strong></p>
+                                <p><em>Outside time</em></p>
+                                <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 10px;">
+                                    <li style="margin-bottom: 5px;">running, playing, or something quieter</li>
+                                    <li style="margin-bottom: 5px;">just got a new piece of equipment</li>
+                                    <li style="margin-bottom: 10px;">intend to make a <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"></li>
+                                </ul>
+                                <p><em>Indoors</em></p>
+                                <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 10px;">
+                                    <li style="margin-bottom: 5px;">this year, <input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off"> activities are popular</li>
+                                    <li style="margin-bottom: 10px;">they hear a <input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"> every day</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <p><strong>Fees:</strong></p>
+                                <ul style="list-style-type: none; padding-left: 0;">
+                                    <li style="margin-bottom: 10px;">Now costs $<input type="text" id="q6" class="answer-input" placeholder="6" autocomplete="off"> per term</li>
+                                </ul>
+                                <p><em>Fees include:</em></p>
+                                <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 10px;">
+                                    <li style="margin-bottom: 5px;">a trip to a <input type="text" id="q7" class="answer-input" placeholder="7" autocomplete="off"> this year</li>
+                                    <li style="margin-bottom: 10px;">chance to take home a <input type="text" id="q8" class="answer-input" placeholder="8" autocomplete="off"> every week</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <p><strong>Do not forget:</strong></p>
+                                <ul style="list-style-type: disc; padding-left: 20px;">
+                                    <li style="margin-bottom: 10px;">Put a <input type="text" id="q9" class="answer-input" placeholder="9" autocomplete="off">, in Suzie's bag</li>
+                                    <li style="margin-bottom: 10px;">Arrange a visit; phone number: <input type="text" id="q10" class="answer-input" placeholder="10" autocomplete="off"></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1908,121 +1989,82 @@ width: 75%;
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 11-15</strong></p>
-                            <p>Choose the correct answer.</p>
+                            <p>Complete the sentences below.</p>
+                            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-bottom: 18px;">
-                            <p><strong>11</strong>&nbsp;&nbsp;How many patients does the hospital consult every year?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="A"> 3,000</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="B"> 5,000</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q11" value="C"> 11,000</label></div>
-                            </div>
-
-                            <p><strong>12</strong>&nbsp;&nbsp;When can patients meet the female doctor?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="A"> on weekday mornings</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="B"> three days a week</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q12" value="C"> only on Mondays and Fridays</label></div>
-                            </div>
-
-                            <p><strong>13</strong>&nbsp;&nbsp;Who is the expert on treating hearing loss?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="A"> Mr. Robert</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="B"> Mr. Green</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q13" value="C"> Mr. Edwards</label></div>
-                            </div>
-
-                            <p><strong>14</strong>&nbsp;&nbsp;Where are patients recommended to buy their medicine?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> the supermarket in the town</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> pharmacies nearby the city centre</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> the health care's pharmacy</label></div>
-                            </div>
-                            
-                            <p><strong>15</strong>&nbsp;&nbsp;What will the patients be asked about whether they are willing to do?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="A"> Letting one student attend the consultation</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="B"> Asking postgraduate students to do treatment</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q15" value="C"> Meeting students in group discussion</label></div>
-                            </div>
+                        <div style="margin-top: 20px;">
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">
+                                    <strong>11</strong>&nbsp;&nbsp;Special conditions may apply to <input type="text" id="q11" class="answer-input" placeholder="11" autocomplete="off"> students looking for a job.
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>12</strong>&nbsp;&nbsp;The university Job Centre is located on the <input type="text" id="q12" class="answer-input" placeholder="12" autocomplete="off"> Campus.
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>13</strong>&nbsp;&nbsp;The Job Centre remains open until <input type="text" id="q13" class="answer-input" placeholder="13" autocomplete="off"> every evening.
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>14</strong>&nbsp;&nbsp;The only day the employment lawyer is available is <input type="text" id="q14" class="answer-input" placeholder="14" autocomplete="off"> .
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>15</strong>&nbsp;&nbsp;The university <input type="text" id="q15" class="answer-input" placeholder="15" autocomplete="off"> regularly advertises new jobs.
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
                             <p><strong>Questions 16-20</strong></p>
-                            <p>Label the map below.</p>
+                            <p>Choose the correct answer.</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <div style="display: flex; gap: 30px; align-items: flex-start;">
-                                <div class="map-container" style="flex: 1;">
-                                <img src="https://ieltstrainingonline.com/wp-content/uploads/2020/03/3-2-Q16-20.jpg" alt="Hospital Map for questions 16-20" style="width: 100%; max-width: 600px;">
+                        <div style="margin-top: 20px;">
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>16</strong>&nbsp;&nbsp;At present, the university is offering part-time work in</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="A"> its offices.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="B"> the IT centre.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q16" value="C"> the car parks.</label></div>
                                 </div>
-                            
-                                <div style="flex: 1; margin-top: 0;">
-                                    <p><strong>16</strong>&nbsp;&nbsp;Reception <select id="q16" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                    </select></p>
-                                
-                                    <p><strong>17</strong>&nbsp;&nbsp;Mr. Green's Room <select id="q17" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                    </select></p>
-                                
-                                    <p><strong>18</strong>&nbsp;&nbsp;Medical Records Office <select id="q18" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                    </select></p>
-                                
-                                    <p><strong>19</strong>&nbsp;&nbsp;Surgery Room <select id="q19" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                    </select></p>
-                                
-                                    <p><strong>20</strong>&nbsp;&nbsp;Manager's Office <select id="q20" class="answer-input" style="width: 100px;">
-                                        <option value="">Select</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
-                                    <option value="D">D</option>
-                                    <option value="E">E</option>
-                                    <option value="F">F</option>
-                                    <option value="G">G</option>
-                                    <option value="H">H</option>
-                                    </select></p>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>17</strong>&nbsp;&nbsp;Local employers visit the university</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q17" value="A"> only in the first term.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q17" value="B"> twice a term.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q17" value="C"> throughout the year.</label></div>
                                 </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>18</strong>&nbsp;&nbsp;According to the speaker, a part-time job can</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q18" value="A"> lead to a full-time job after graduation.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q18" value="B"> provide a useful work record for the future.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q18" value="C"> give the chance to develop team-work skills.</label></div>
                                 </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>19</strong>&nbsp;&nbsp;Students who work part-time</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q19" value="A"> will be taxed.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q19" value="B"> will be paid every week.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q19" value="C"> will need private insurance.</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>20</strong>&nbsp;&nbsp;Part-time student workers are advised to</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q20" value="A"> give notice in writing.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q20" value="B"> communicate by email.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q20" value="C"> have a mobile phone.</label></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2036,101 +2078,96 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 21-25</strong></p>
-                            <p>What is the main opinion of each of the following people?</p>
-                        </div>
-                        
-                        <div style="margin-top: 12px;">
-                            <div class="drag-drop-container">
-                                <div class="questions-container">
-                                    <p style="font-weight: bold; margin-bottom: 15px;">People</p>
-                                    <p><strong>21</strong>&nbsp;&nbsp;Ken Simpson</p>
-                                    <div class="drop-zone" data-question-id="21" data-question="21">
-                                        <span class="placeholder">Drop answer here</span>
-                                    </div>
-                                
-                                    <p><strong>22</strong>&nbsp;&nbsp;Dave Kepler</p>
-                                    <div class="drop-zone" data-question-id="22" data-question="22">
-                                        <span class="placeholder">Drop answer here</span>
-                                    </div>
-                                
-                                    <p><strong>23</strong>&nbsp;&nbsp;Sharon Grey</p>
-                                    <div class="drop-zone" data-question-id="23" data-question="23">
-                                        <span class="placeholder">Drop answer here</span>
-                                    </div>
-                                
-                                    <p><strong>24</strong>&nbsp;&nbsp;Maria Jackson</p>
-                                    <div class="drop-zone" data-question-id="24" data-question="24">
-                                        <span class="placeholder">Drop answer here</span>
-                                    </div>
-                                
-                                    <p><strong>25</strong>&nbsp;&nbsp;Barbara Swallow</p>
-                                    <div class="drop-zone" data-question-id="25" data-question="25">
-                                        <span class="placeholder">Drop answer here</span>
-                                    </div>
-                                    
-                                    <!-- Hidden inputs to store answers -->
-                                    <input type="hidden" id="q21" value="">
-                                    <input type="hidden" id="q22" value="">
-                                    <input type="hidden" id="q23" value="">
-                                    <input type="hidden" id="q24" value="">
-                                    <input type="hidden" id="q25" value="">
-                                </div>
-
-                                <div class="recommendations-box" id="part3-options-box">
-                                    <p style="font-weight: bold; margin-bottom: 15px;">Opinions</p>
-                                    <div class="drag-item" data-letter="A" draggable="true">A lighting restrictions</div>
-                                    <div class="drag-item" data-letter="B" draggable="true">B alternative lighting</div>
-                                    <div class="drag-item" data-letter="C" draggable="true">C reduce the number of insects</div>
-                                    <div class="drag-item" data-letter="D" draggable="true">D decline in the number of species</div>
-                                    <div class="drag-item" data-letter="E" draggable="true">E climate changes</div>
-                                    <div class="drag-item" data-letter="F" draggable="true">F impacts on the growth of animals</div>
-                                    <div class="drag-item" data-letter="G" draggable="true">G impacts on water quality</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <div class="question">
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 26-27</strong></p>
+                            <p><strong>Questions 21-26</strong></p>
                             <p>Choose the correct answer.</p>
                         </div>
                         
-                        <div style="margin-bottom: 18px;">
-                            <p><strong>26</strong>&nbsp;&nbsp;What does Jim think about the difference among species in natural and artificial light?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q26" value="A"> It makes no difference.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q26" value="B"> Species will die out in natural light.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q26" value="C"> Species will die out in artificial light.</label></div>
+                        <div style="margin-top: 20px;">
+                            <p class="centered-title"><strong>Research Project</strong></p>
+                            
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>21</strong>&nbsp;&nbsp;How did John choose the topic of his research project?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="A"> He thought the information would be useful for town planning.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="B"> He has a special interest in the use of public services.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q21" value="C"> He read about a similar study which had been done earlier.</label></div>
+                                </div>
                             </div>
 
-                            <p><strong>27</strong>&nbsp;&nbsp;One reason why Jim and Jane felt unsatisfied about the theories discussed in the lecture was that</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option"><label><input type="radio" name="q27" value="A"> governments didn't increase any spending on them.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q27" value="B"> most theories had nothing to do with the exams.</label></div>
-                                <div class="multi-choice-option"><label><input type="radio" name="q27" value="C"> many theories lacked solid proof in the field.</label></div>
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>22</strong>&nbsp;&nbsp;During his research, John is expecting to find that</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="A"> The use of public services has altered very little.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="B"> A group of people has changed its habits.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q22" value="C"> The most frequently used facility is the library.</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>23</strong>&nbsp;&nbsp;What is the problem with using official records?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="A"> They may be lacking in detail.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="B"> They may not be readily available.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q23" value="C"> They may be difficult to analyse.</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>24</strong>&nbsp;&nbsp;What does the tutor think about John using a questionnaire to get information?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="A"> He needs to do a course in questionnaire design first.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="B"> He should use this method instead of looking at public records.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q24" value="C"> He will find the practice he gets useful the following year.</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>25</strong>&nbsp;&nbsp;Which new variable does John agree to add to his investigation?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="A"> Occupation</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="B"> Income group</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q25" value="C"> Qualifications</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>26</strong>&nbsp;&nbsp;How many questionnaires will John distribute?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q26" value="A"> The same number as in the previous study</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q26" value="B"> A greater number than he needs for analysis</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q26" value="C"> The number recommended in the project guidelines</label></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 28-30</strong></p>
-                            <p>Choose <strong>THREE</strong> correct answers.</p><br>
-                            <p><strong>28-30</strong>&nbsp;&nbsp;Which <strong>THREE</strong> topics are they interested in studying in the future?</p>
+                            <p><strong>Questions 27-30</strong></p>
+                            <p>Choose <strong>TWO</strong> answers.</p>
+                            <p><strong>27-28</strong>&nbsp;&nbsp;Which <strong>TWO</strong> strategies will John use to encourage people to fill out his questionnaire?</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" name="q28-30" value="A"> quality of life of tourists</label>
-                                <label><input type="checkbox" name="q28-30" value="B"> wildlife park animals</label>
-                                <label><input type="checkbox" name="q28-30" value="C"> migration birds</label>
-                                <label><input type="checkbox" name="q28-30" value="D"> animals living in rural areas</label>
-                                <label><input type="checkbox" name="q28-30" value="E"> animals living in tropical climate</label>
-                                <label><input type="checkbox" name="q28-30" value="F"> the impacts of different environment on animals</label>
-                                <label><input type="checkbox" name="q28-30" value="G"> pandas in the zoo</label>
-                            </div>
+                        <div class="checkbox-group" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+                            <label><input type="checkbox" name="q27-28" value="A"> Using simple language</label>
+                            <label><input type="checkbox" name="q27-28" value="B"> Delivering the questionnaires in person</label>
+                            <label><input type="checkbox" name="q27-28" value="C"> Making the questionnaires anonymous</label>
+                            <label><input type="checkbox" name="q27-28" value="D"> Providing return envelopes</label>
+                            <label><input type="checkbox" name="q27-28" value="E"> Trialing the questionnaire on friends</label>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>29-30</strong>&nbsp;&nbsp;Which <strong>TWO</strong> pieces of advice does the tutor give John about his questionnaire?</p>
+                        </div>
+                        
+                        <div class="checkbox-group" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+                            <label><input type="checkbox" name="q29-30" value="A"> There should be a mixture of question types.</label>
+                            <label><input type="checkbox" name="q29-30" value="B"> Some questions should elicit personal information.</label>
+                            <label><input type="checkbox" name="q29-30" value="C"> There should be an introduction to explain the survey's purpose.</label>
+                            <label><input type="checkbox" name="q29-30" value="D"> A telephone number should be provided for queries.</label>
+                            <label><input type="checkbox" name="q29-30" value="E"> The questions should only take a few minutes to answer.</label>
                         </div>
                     </div>
                 </div>
@@ -2144,40 +2181,111 @@ width: 75%;
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 31-32</strong></p>
-                            <p>Choose <strong>TWO</strong> correct answers.</p><br>
-                            <p><strong>31-32</strong>&nbsp;&nbsp;Which <strong>TWO</strong> aspects did the new rules at the end of the 19th century focus on?</p>
+                            <p><strong>Questions 31-33</strong></p>
+                            <p>Complete the sentences below.</p>
+                            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" name="q31-32" value="A"> cooperation</label>
-                                <label><input type="checkbox" name="q31-32" value="B"> competition</label>
-                                <label><input type="checkbox" name="q31-32" value="C"> moral values</label>
-                                <label><input type="checkbox" name="q31-32" value="D"> player's physical protection</label>
-                                <label><input type="checkbox" name="q31-32" value="E"> business model</label>
+                        <div style="margin-top: 20px;">
+                            <p class="centered-title"><strong>Driverless vehicle competition</strong></p>
+                            
+                            <ul style="list-style-type: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;">
+                                    <strong>31</strong>&nbsp;&nbsp;Undergraduates from both the engineering school and the <input type="text" id="q31" class="answer-input" placeholder="31" autocomplete="off"> department can definitely take part in the project.
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>32</strong>&nbsp;&nbsp;The automated vehicles will have to avoid obstacles such as <input type="text" id="q32" class="answer-input" placeholder="32" autocomplete="off"> .
+                                </li>
+                                <li style="margin-bottom: 15px;">
+                                    <strong>33</strong>&nbsp;&nbsp;The tutor mentions one vehicle which used technology such as <input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off"> , lasers, and laptops to measure its surroundings.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>Questions 34-36</strong></p>
+                            <p>Choose the correct answer.</p>
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>34</strong>&nbsp;&nbsp;The purpose of holding the race is to</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="A"> Interest students in careers in industry.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="B"> Help provide finance for universities.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q34" value="C"> Find useful new design features.</label></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>35</strong>&nbsp;&nbsp;The tutor says success will depend on</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="A"> The software design.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="B"> Good, solid construction.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q35" value="C"> Sophisticated mechanisms.</label></div>
+                                </div>
+                            </div>
+
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>36</strong>&nbsp;&nbsp;This year's competitors were surprised that the vehicles</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="A"> Were so easy to design.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="B"> Were as successful as they were.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q36" value="C"> Took such a short time to construct.</label></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 33-40</strong></p>
-                            <p>Complete the sentences below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+                            <p><strong>Questions 37-40</strong></p>
+                            <p>Complete the table below.</p>
+                            <p>Write <strong>ONE WORDS ONLY</strong> for each answer.</p>
                         </div>
                         
-                        <div style="margin-top: 12px;">
-                            <p class="centered-title">Football in the UK</p>
-                            <ul style="list-style-type: disc; padding-left: 20px;">
-                                <li style="margin-bottom: 8px;">At present the main reason why UK schools push football education is the pressure from <input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off"></li>
-                                <li style="margin-bottom: 8px;">Prior to the 19th century, football players used different <input type="text" id="q34" class="answer-input" placeholder="34" autocomplete="off"> of rules.</li>
-                                <li style="margin-bottom: 8px;">People attempted to standardise the rules from the whole <input type="text" id="q35" class="answer-input" placeholder="35" autocomplete="off">, known as the 'Cambridge Rules' in 1848.</li>
-                                <li style="margin-bottom: 8px;">Attendances were increasing due to the improvement of infrastructure and the <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off"> system.</li>
-                                <li style="margin-bottom: 8px;">Football became popular and it is regarded as a <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"> event.</li>
-                                <li style="margin-bottom: 8px;">The football clubs were responsible for most of the <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"> and development for the football association.</li>
-                                <li style="margin-bottom: 8px;"><input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> against other teams were also organised by the football clubs.</li>
-                                <li style="margin-bottom: 8px;">In 1910s, <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off"> football players were approved of in the game.</li>
-                            </ul>
+                        <div style="margin-top: 20px;">
+                            <p class="centered-title"><strong>Schedule</strong></p>
+                            
+                            <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold; width: 30%;">Early May</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Introductory <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"> about the project</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">Late May</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Essay giving information about relevant experience</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">June</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Visit to a factory</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;"><input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"></td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Workshop</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">September</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">
+                                            <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+                                                <li style="margin-bottom: 5px;">discuss <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"></li>
+                                                <li>learn to use design package</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">December</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Submission of initial designs</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">January</td>
+                                        <td style="border: 1px solid #ddd; padding: 10px;">Selection of the <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -2194,86 +2302,171 @@ width: 75%;
 
     <div id="transcription-data" style="display:none;">
         <div data-part="1"><strong>SECTION 1</strong>
-
-Events Coordinator: Good morning, you're through to the events coordinator at the Birmingham City Council, how may I help you?
-Julie:      Hello there, my husband and I are interested in purchasing (Example) tickets to the automobile exhibition, but I couldn't find many details about it on your website, and I was wondering whether you could provide me with some more information. Does it open in June?
-Events Coordinator: Yes, of course, Madam. The exhibition will take place during July (Q1), and will showcase the history of automobiles from the very first commercial car in the late 1800s all the way through to the present day.
-Julie:      Is the exhibition open for the duration of July?
-Events Coordinator: No, Madam, the exhibition will last 3 days (Q2), from the 1st of July to the 3rd of July, and then the cars will be taken to another exhibition.
-Julie:      Okay. Does the exhibition focus on a certain manufacturer?
-Events Coordinator: No, it will showcase a wide range of manufacturers.
-Julie:      Wonderful! I'm ever so fed up of going to these shows and only seeing one manufacturer. Are there any opportunities to sit in or even drive the cars?
-Events Coordinator: There will be many opportunities for you to sit in the cars; however, some of the cars will only be available to observe. We are yet to be told whether any of the antique cars will be available to drive, however there will certainly be an opportunity to test driving (Q3) some of the more modern cars on a purpose-built track.
-Julie:      That sounds like great fun! I mustn't forget to bring my camera, or my husband will never forgive me!
-Events Coordinator: I'm afraid to say that cameras (Q4) are actually strictly not allowed to bring into the exhibition. There will however be a section where a professional photographer will be available to take photos of you sitting in a car in period clothing.
-Julie:      Well, that sounds like it could be fun, but I assume the photos won't be free.
-Events Coordinator: On the contrary, one free photograph is included within every ticket, but each photo after this will cost £5.
-Julie:      That's a nice surprise, not many things are free anymore. I've been asking around about the ticket prices, but I haven't yet had a definite answer. Is it correct that the tickets are £100 whether you buy them now or on arrival?
-Events Coordinator: I'm afraid not. If you buy the ticket in advance the price is £110 (Q5), but it's £165 on the door.
-Julie:      Oh goodness! I suppose I'd best pay for them now then. Is it possible to buy tickets from you now over the phone?
-Events Coordinator: Yes, of course, Madam. I'll transfer you to the Box Office Manager, Mark Edgeworth (Q6), that's E-D-G-E-W-O-R-T-H, and he will probably need to take your credit card details and some personal details.
-Julie:      Yes, that's fine. Before you transfer me, I just need to ask a few more questions. Will the exhibition be held in the Birmingham Exhibition Centre? I think that's where I went last time.
-Events Coordinator: No, Madam, the Birmingham Exhibition Centre is currently undergoing some renovations, so this year all exhibitions will be held in the Summer (Q7) Palace.
-Julie:      Summer Palace? I'm not entirely sure where that is.
-Events Coordinator: Well, it's not too far from city centre (Q8). Once you're in the centre, you should be able to find signs for the palace. If not, most people in Birmingham will be able to direct you.
-Julie:      Hmm…neither my husband nor I am particularly good with directions. Is there anywhere I can find this information on the Internet?
-Events Coordinator: Our website will give you an address. Perhaps you could visit www.directions.com (Q9) for more detailed information, and they should be able to provide you with step-by-step instructions.
-Julie:      Okay and is this the best way to contact you, by phone?
-Events Coordinator: I think the most convenient way to contact us is enquiring online (Q10), which is much simpler than having to dial various different numbers to reach the right person! Unless you have any more questions, I'll transfer you now.
-Julie:      No, that's great! Thank you for your help.
+<br><br>
+Teacher: Hello, Riverdale Pre-school.
+<br><br>
+Parent: Oh hello, I'd like to enquire about your school for my daughter Suzie.
+<br><br>
+Teacher: Certainly. We have 20 children in a class.
+<br><br>
+Parent: And who are the teachers?
+<br><br>
+Teacher: The first group is with Mrs. Oliver. And the second group is with Mrs. <strong>Keogh</strong> (Q1). That's K-E-O-G-H.
+<br><br>
+Parent: Right.
+<br><br>
+Teacher: Classes are 3 days a week. Suzie will attend for a total of <strong>15</strong> (Q2) hours.
+<br><br>
+Parent: What about activities?
+<br><br>
+Teacher: Well, outside, they do running and playing. We just got some new equipment. And we intend to make a <strong>garden</strong> (Q3) soon.
+<br><br>
+Parent: Oh lovely.
+<br><br>
+Teacher: And indoors, this year <strong>music</strong> (Q4) activities are very popular.
+<br><br>
+Parent: And do they have stories?
+<br><br>
+Teacher: Yes, they hear a <strong>story</strong> (Q5) every day.
+<br><br>
+Parent: How much are the fees?
+<br><br>
+Teacher: It now costs $<strong>470</strong> (Q6) per term.
+<br><br>
+Parent: Does that include trips?
+<br><br>
+Teacher: Yes, fees include a trip to a <strong>farm</strong> (Q7) this year.
+<br><br>
+Parent: And can they borrow books?
+<br><br>
+Teacher: Well, they have the chance to take home a <strong>toy</strong> (Q8) every week.
+<br><br>
+Parent: What should I put in her bag?
+<br><br>
+Teacher: Please put a <strong>pillow</strong> (Q9) in Suzie's bag for rest time.
+<br><br>
+Parent: Great. Can I arrange a visit?
+<br><br>
+Teacher: Yes, you can arrange a visit. My phone number is <strong>0914638520</strong> (Q10).
+<br><br>
+Parent: Thank you!
         </div>
         <div data-part="2"><strong>SECTION 2</strong>
 
-Hello, and welcome to the home page for the Healthy Hearing Medical Clinic and Surgery, where we'd like to share a little more information about the services we provide and more.
-Our hospital is one of the leading specialised hospitals in the United Kingdom, attracting the very best healthcare professionals from around the globe. Not only are we a leading medical practice, but we are also the only hospital in the United Kingdom dedicated entirely to the treatment of, and research into the curing of hearing loss. Our facilities and staff here are renowned across Europe, attracting thousands of patients a year. Our consultations can number anything up to 11,000 patients a year, however we aim to treat around 5,000 patients a year so as to maintain and ensure the quality of our services (Q11). Our patients are guaranteed the highest standard of care, as well as the use of our first class facilities. All patients requiring overnight treatment are provided with their own private room with en-suite facilities, as well as a state-of-the-art entertainment centre, which includes a flat screen LCD television and Playstation.
-Appointments with our healthcare professionals can be made at any time during the week, with female doctors available between 8 am and 11 am (Q12). If you need to see a doctor outside of these times, please visit the 'Out of Hours' page of our website for more information. Our doctors are all trained to an exceptionally high standard, and practice a vast array of specialties: Mr. Robert is a fully qualified ear and throat specialist, Mr. Edwards is a pediatric hearing specialist, while Mr. Green specialises in reversing hearing loss (Q13). For more details about our people, please visit the 'Staff Members' page on our website.
-During a consultation, doctors will sometimes decide medication is required, for which patients should receive a prescription. There are several pharmacies within the city; however we recommend that patients use the pharmacy housed within our health care facility (Q14). Our in-house pharmacy is well-stocked at all times, our products are competitively priced, and our pharmacists are on hand to help and advise from 8 am until 10 pm from Monday to Saturday, and from 9 am until 12 pm on Sundays. If you require any help outside of these hours, please see our 'Out of Hours' page on the website.
-Since the Healthy Hearing Medical Clinic and Surgery also functions as a teaching hospital, we aim to provide our students with every opportunity to expose themselves to medicine in practice. Therefore we would like to encourage our patients to give their consent for a medical student to attend their consultations (Q15). If our patients are not comfortable with this, there will be a form at reception where patients will be able to opt out.
-Now, please look at the map I've given you of the Healthy Hearing Medical Clinic and Surgery. For those not familiar with our practice, reception can be found through the main door at the end of the corridor (Q16). If your consultation is booked with Mr. Green, you need to go through the main door and turn right by the nurses' desk, and his office is at the end of the corridor on your left-hand side (Q17). If you need to alter any of your personal details, please visit our secretary at the Office for Medical Records, which you will find next to the therapy room (Q18). If you're awaiting surgery, please first check in with reception, before taking the first door on the right after you enter the clinic. (Q19)
-Finally, in the event that you feel disappointed with any of the services we have provided, or have any further questions, please locate our Manager's Office, which can be found near the Office for Medical Records and between two closets. (Q20)
-If you have any more questions about the Healthy Hearing Medical Clinic and Surgery, please do not hesitate to contact us on 01256 111 111. [fade out]
+Hello everyone, and welcome to the University of New South Wales.
+The first thing I'd like to do at today's Orientation Session is get you all oriented! That means tell you the location of some useful facilities and services. So, first of all, take out the maps we gave you all as you came in the door. The map is the big yellow sheet of paper.
+As you can see on the map, North is at the top, South at the bottom, et cetera. Which way is North? Well, look through that window on my left, your right. See the rising sun? That would have to be East. So North must be directly behind me.
+Now, we are at the campus's Main Gate. The Recreational Facilities are on my right hand and its opposite is the Student Centre (Q11). No questions? Good. Pretty easy, right?
+OK, did everyone eat breakfast at the Student Food Service this morning? Was the food good? Yes, yes. I am joking. I've eaten there, too.
+So after a meal like that, you must be eager to go to a doctor. Right?
+Well, I have good news for you: the Student Health Centre is located about half a kilometre straight north of here (Q12). Look on your maps. You see the street on the east side of this building? Ned Kelly Avenue?
+Just follow that about 500 metres, and the Health Centre will be on your left at the third cross street. (Q12)
+Now, I know you all just got here. So you must be wondering how to tell your folks you've arrived safely, how much you miss the dog, and how you already need more money. If you don't have an Iphone, you probably are wondering where to find a computer. Well, I have good news. If you go straight out of its door and walk down the Garden Street, you'll see the Internet Unit on your left side, just next to the Gym (Q13). The hours are posted on the door, and the computers are free, but you must bring your student ID card with you. Like I tell everyone, if you need help with anything, you can probably find it right here in the Student Centre.
+Do you see the four buildings there between the Student Centre and the library? Those are the dormitories. The men's dorms are the two on the south; the women's the two on the north.
+OK, I'm sorry to have to tell you, but the university has been doing a lot of repairs and remodelling, and it's not all done yet. So there may be some small problems with your dorm rooms. Maybe the window doesn't open. Maybe an air conditioner is missing or does not work. If there are any problems, you can go to the Complaint Office, which is right beside the Teaching Building between the Parker Street and the Crammer Street (Q14). Just tell them your problem and they should have it fixed by the time you graduate in four years. I'm joking, but please be patient. There are a lot of little things they need to take care of.
+Tired of the school food? No? Give it a week. Or maybe you just need a place to get coffee in the wee hours of the night during one of those marathon study sessions. Either way, you definitely have to check out the little Cafe just past the women's dormitories (Q15). They've got free Wi-Fi, so a lot of students saddle up with coffee and a bagel for hours on end to get work done.
+As for the dorm rooms, I have some bad news and some good news.
+The bad news is the rooms are small and you'll probably be sharing space with at least three other students. The good news is that each room has its own bathroom (Q16). What's good about sharing a bathroom with three strangers? Hmmm… good question. OK, call it bad news and worse news.
+Hey, maybe try this for good news: each dorm has a kitchen. If you want to make snacks or meals, you can do it there. You can buy food containers (Q17) at any campus convenience store, so you can store your food in the kitchen. But a word of warning: you should definitely write your name on your food containers. Sad to say, there are food thieves among your fellow students. Speaking of thieves, a word about security. I mean this is Australia and we do get drunken bushrangers wandering onto campus. Each of you will be given a key for your dorm room. Don't lose it. You have to pay for any replacement and fill out a bunch of papers, too. Red tape, huh? Your key does not work for the front door of your dorm, however. To the right of each door, there is a keypad with numbers. When you move in, they will tell you the code (Q18) you use to enter the door. Please do not tell the code to people who do not live in the dorm.
+Let's see. Have I forgotten anything? Oh, yes. Most of you are not rich, correct? So when your clothes get dirty, you can't just throw them away and buy new ones. That means you have to learn to do laundry. Or, men, that means you have to hurry up and get married.
+If you decide to wash those clothes and not get married, there are laundries in each dorm. Where? Oh, I almost forgot to tell you. The laundry for each dorm is in the basement (Q19). Some real good news this time: if you are a student, it is free. You do have to buy your own soap, however. The laundry closes, by the by, at 11:30.
+And, now that I've mentioned 11:30, please remember the dorm doors are locked at Q20 11:30 p.m. Your code will not work. If you want to get in, you'll have to call the night watchman. Don't worry, you can get that number at the Dorm Office. Yes, the Dorm Office and the Complaint Office are the same office. All right, then. Before we continue, are there any questions?
         </div>
         <div data-part="3"><strong>SECTION 3</strong>
 
-Jim:        Jane, what did you think of Professor Morgan's lecture? I don't know about you, but I find it incredibly difficult to believe that light influences the environment as much as he says. I've never seen any journal articles, websites or anything that verifies his argument. It's stupid.
-Jane:     On the contrary, I've seen a great deal of research supporting his argument from a wide range of renowned scientists. Have you looked at the recommended textbook listed on the course outline given to us at the beginning of the semester? All the information is in there, perhaps you've just been looking in the wrong places.
-Jim:        I never look at the course outlines, I have so many loose sheets of paper I tend to lose anything I'm given by the end of the day. What's the textbook they recommend, and where can I get it from? I should probably go buy it soon; I'm already behind in the course.
-Jane:     Yeah, you definitely should buy it, and our grades are more important this year! It's called 'The Influence of Light on the Environment'. You should be able to find it in the bookshop on campus. If not, they'll order it within two weeks. In the meantime, you should read up on Ken Simpson's work, he argues that in order to protect natural habitats, governments should endeavor to turn off lights in cities at night. (Q21)
-Jim:        Well that's controversial; I doubt any government would be willing to do that any time soon. I imagine roads would become quite dangerous without street lighting. For this issue, Dave Kepler suggests they could just replace the existing lights with more environmentally friendly bulbs (Q22). They could even install solar-powered lights; that way, roads will be more eco-friendly while maintaining safety. Although I guess they wouldn't be particularly effective in colder countries, especially during the winter.
-Jane:     That's quite a good idea actually. The price of solar power is supposed to be on par with electricity within the next few decades, and it was on the news this morning. I've also heard that, according to Sharon Grey, in countries with more sunlight, insect-eating animals tend to be smaller in size (Q23). Since there are fewer insects, and the remaining insects produced a smaller number of eggs.
-Jim:        Yeah, I think I read somewhere that sunlight also has a negative effect on the quality of water, but I'm not sure I believe it. In many hot countries, particularly developing countries, there is a lot of water pollution caused by factories rather than sunlight. Nevertheless, Maria Jackson says that in direct sunlight, the surface of the water becomes more translucent, therefore it affects the amount of sunlight that aquatic insects can absorb (Q24). Not much research has been undertaken to prove Jackson's theory, but it seems to have been widely accepted anyway.
-Jane:     I've never heard of that. I'll have to look it up on Google. The only other theory I've studied is Barbara Swallow's study on how declined insect population adversely affects the frog population (Q25). Not that I'm complaining… I hate insects, especially spiders.
-Jim:        You have arachnophobia? I never would have guessed. Didn't your brother have a pet black widow spider?
-Jane:     Yes, he did, and I hated it. It escaped from its cage once and we never found it. I had nightmares for months.
-Jane:     Okay, now I'm getting goose bumps, let's change the subject. What's your stance on natural and artificial light?
-Jim:        Honestly, I'm not sure it makes much difference which one you use; species will die out either way (Q26). I think the real argument we should consider is global warming and protection or replacement of finite fuels. Solar power provides us with an incredible opportunity to replace electricity, and governments should definitely increase spending on research in this field. The theories discussed in our lectures, like Simpson's and Grey's, are so vague and lack proof, so I don't understand why we even study them. (Q27)
-Jane:     I see what you mean. I don't like learning unsupported theories for exams, and I'd rather spend my time learning something else. For example, I'd be much more interested in studying the animals in safari parks than researching migratory birds, particularly the effect of tourists on the quality of life of animals (Q28). As we know, every year thousands of visitors will drive in their own vehicles or ride in vehicles provided by the facility to observe freely roaming animals.
-Jim:        Yeah, that would be really interesting! Especially those animals living in more tropical countries, like Borneo (Q29). Following on from that, I want to study how bringing animals over from foreign countries to put in our zoos affects their life expectancy (Q30). For example, do you remember when China sent pandas to Edinburgh Zoo? Apparently one of the pandas became depressed, but it was never explained why. To me, obviously, you can't take an animal out of its natural habitat and put it in a cage on the other side of the world. It just doesn't work… [fade out]
-                </div>
+Carlos:                 OK, everyone. Let's look at what presentation tips we have come up with for our next seminar. Melissa?
+Melissa:               OK, here's my first tip. Show up early (Q21). Some experience presenters say that something good is bound to happen! I'm not sure about that, but…
+David:                  Well, … you may have a chance to head off some technical problem. Also, at the beginning, before you actually begin your presentation, people filter in slowly. It's a great time to introduce yourself.
+Melissa:               Can't argue with that! Simona had some ideas about opening.
+Simona:               Have a strong opening. I picked up a few ideas for structuring your opening. First, never apologize (Q22). If you're worried the presentation won't go well, keep it to yourself and give it your best shot. Besides, people are usually too preoccupied with their own problems to notice yours.
+Carlos:                 I like that!
+Simona:               Open by addressing the following three questions: What's the problem? Who cares? What's your solution?
+Carlos:                 Excellent suggestion! David? You've gone quiet!
+David:                  Well, my next suggestion is PGP. That means that with every subtopic, you should move from the Particular to the General and back to the Particular (Q23). Even though the purpose of a subtopic is to convey the general information, bracing it with particulars is a good way to draw attention and promote retention. (Q24)
+Melissa:               I've got another one. This might not be a tip so much as a law. Give everyone at least one piece of paper. A piece of paper is a record from your presentation. People can use that to help recall the details of the presentation, or better yet to tell others about it.
+Carlos:                 The next tip that I have is know your audience (Q25). This is, of course, a general piece of advice for public speaking. See if you can find out what styles of information presentation they are most familiar and comfortable with. Adapting your presentation to those styles will leave fewer barriers to the direct communication of your material.
+Simona:               I like that idea. We mentioned possible technical problems before. My next point is that maybe speakers should rethink the overhead projector. Is one really necessary?
+David:                  I think that often it is. but I agree with your basic point (Q26), Simona. Don't use one just because it's there. Maybe a good tip is to consider carefully what you are putting on your slides.
+Simona:               Yes, David, that's a very good point to make. Slide content is … well, you don't want too much … too little. Carlos?
+Carlos:                 Good points, both of you. Another point I have is to respect the audience. Don't condescend by "dumbing down" your lecture. Show them respect by saying what you believe and what you know to be the whole story.
+Melissa:               I also have a point about humor. I think that humour is generally good, but be careful with it. Humour in a presentation works best (Q27) when it actually drives the presentation forward. If you find you're using canned jokes that don't depend on the context, of the presentation, eliminate them David?
+David:                  Maybe, Melissa, but always be very careful about jokes that. put. down a class of people. If you're going to alienate your audience, do it on the merits of your content.
+Simona:               Also, avoid masculine-or even feminine pronouns as universal. It can be a nuisance to half the audience. As universal, use the plural "they". The Oxford English Dictionary has allowed "they" as a gender neutral singular pronoun for years.
+Carlos:                 Thanks, Simona. Thinking towards the end. Take care with questions (Q28). Many people judge the quality of your talk not by the twenty minutes of presentation, but on the thirty seconds you spend answering their question (Q28). Be sure to allow long pauses for questions. Ten seconds may seem like a long pause when you're at the front of the room, but. it flows naturally from the audience's point of view.
+Simona:               Let people know you believe your material. Speak with conviction. Believing your subject, matter is one of the best ways to speak more effectively!
+Melissa:               Finish early, and something good is almost bound to happen (Q29). If nothing else, people will be able to leave early, and suddenly they'll have an extra couple of minutes to do things they didn't think they'd get to. People will really like you if you do that.
+David:                  I think we have missed a key point. Practice! Practice over and over and over. If you can, record your presentation. Play it back and watch yourself. You'll discover a thousand horrible things you never knew about yourself. Now watch it again without the sound. Why are your hands flying around like that? Now listen to it without the picture. Get rid of those urns! Now watch it at twice the normal speed. This emphasizes low frequency cycles in your gestures.
+Carlos:                 David, those were excellent points! I have one more. Something quite simple, but often overlooked. I read that the two most dehydrating things you can do in modern civilization are live presentations and air travel. I don't know if it's really true, but the message is that, the way to stay sharp is to drink lots of water (Q30). Take care of your body, especially your voice. If possible, avoid alcohol too.
+Melissa:               So, we've got to organise these points now…
+        </div>
         <div data-part="4"><strong>SECTION 4</strong>
-
-Great Britain is often hailed as the home of football, with talented players travelling from far and wide to play for teams in the English Premier League – one of the most popular football leagues on the planet. Today we are going to take a look back to the 19th century Great Britain in an attempt to trace the evolution of 'the beautiful game' as it is now known.
-Prior to the 19th century, the game featured a wide variety of local and regional adaptations, which were later smartened up and made more uniform to create our modern-day sports of association football, rugby football, and Ireland's Gaelic football. Even up to the mid-19th century, Shrovetide football or 'mob football' was still widely practiced. According to the rules of mob football, there were no rules… a player could legally use any means whatsoever to obtain the ball, such as kicking, punching, biting and gouging, with the only exceptions being murder and manslaughter. These games may be regarded as the ancestors of modem codes of football, and by comparison with later models of football, they were chaotic and had few cooperation. Towards the latter end of the 19th century and moving into the early part of the 20th century, however, there appeared a new found emphasis on moral values in football (Q31). Perhaps a more modern example of this can be seen in John Terry's suspension as England captain following reports of his infidelity to his wife. Furthermore, as mob football died away, there grew a greater concern for players' health and general well-being, with many clubs affording their top players access to frequent medical check-ups and treatment (Q32). Despite the presence of Great Britain's unique state-funded National Health Service, football clubs are still seen today providing team members with State-of-the-art healthcare facilities, with the top clubs even housing their own specialist doctors and physicians.
-Today, football is a key feature of school children's day-to-day education, particularly for boys. With the help of football associations, all schools in the UK are boasting their own football teams. This mainly comes as a result of pressure put on schools and the government by concerned parents (Q33), who felt that football education taught their children valuable lessons and indeed vital life skills, such as teamwork and the drive to succeed. Nowadays, many of the UK's top football clubs provide training facilities and outreach programmes in an attempt to educate the nation's aspiring youths.
-As I previously mentioned, it was only during the 19th century that football in its uniform concept truly began to emerge, with footballers previously playing according to their own versions (Q34) of the rules. However, it was not until the early 20th century that different players actually began to play according to these standardised rules. Prior to the 19th century, football was played by all the major English public schools including the likes of Eton College, Winchester College, and Harrow. In 1848 there was a meeting at Cambridge University in an attempt to lay down the laws of football. Present at the meeting were representatives of each of these major public schools, whom each brought a copy of the rules enforced by their own individual school's rules of football. The result of the meeting was what is now known as the 'Cambridge Rules', thereby uniting the rules from across the country (Q35) into one simple document. However, the Cambridge Rules were not liked by all, and a new set of rules, 'Thring's Rules' compounded in the book 'The Simplest Game' became common place among dissenters.
-Across the country, improvements in infrastructure and public transport (Q36) had a knock on effect of dramatically increasing attendance to football games. Football quickly became a social (Q37) event where spectators would meet friends, drink tea and chat about the good old days. As football became more and more popular, it was decided that more money should be invested in maintaining the quality of pitches amongst other things, and there was even talk of installing seating for spectators. However, the question of who was to foot the bill quickly became a divisive issue, with many believing that the government should fund football's development as a national sport. But in the end, the onus fell upon Britain's local and regional football clubs for the funding (Q38) and development of the football association. They became responsible for the upkeep of football grounds, began to pay their best players a small salary, and organised competitions (Q39) against other local and regional teams. And there began England's Football Association, or the FA, as we know it in its current form, the governing body of football in England. As the FA continued to grow and accumulate greater wealth, it was able to attract more and more talented young men from across the country, before finally accepting professional (Q40) talent in the early 20th century. Today, football is played at a professional level all over the world. Millions of people regularly go to football stadiums to follow their favourite teams, while billions more watch the game on television or on the Internet, [fade out]
+<br><br>
+Tutor: Hello, everyone. I have an exciting announcement to make. The university has decided to enter an international driverless vehicle competition next year, and we are going to need some enthusiastic undergraduates to help us with the project.
+<br><br>
+Student: What kind of competition is it?
+<br><br>
+Tutor: The competition is to make an automated vehicle, a kind of robot that will be able to move quickly and accurately on its own. All the vehicles will then enter a race which will take place here in the U.S.
+<br><br>
+Student: Which departments are involved?
+<br><br>
+Tutor: So, the engineering school will be collaborating with the <strong>computer science</strong> department (Q31) and possibly the Automotive Design Department, although that's yet to be confirmed.
+<br><br>
+Student: Is it a difficult race?
+<br><br>
+Tutor: To give you an idea of how tough this race is, one vehicle last year only managed 12 kilometers of the 280-kilometer stretch of California desert that forms the racetrack. The vehicles in the race must cover the whole distance without a human driver, and quite autonomously identify and steer around corners, and avoid unexpected hazards. Things like <strong>rocks</strong> (Q32), for example. It's a challenging task because there are lots of obstacles of this kind along the route.
+<br><br>
+Student: What kind of technology do they use?
+<br><br>
+Tutor: In the race held earlier this year, there was one design which we will be analyzing carefully in seminars. Its strength was in its onboard technology. That particular vehicle built a three-dimensional picture of its surroundings using <strong>video cameras</strong> (Q33), lasers, and laptops. It was equipped with seven laptop computers, which analyze the incoming information ten times a second.
+<br><br>
+Student: Why do they hold this race?
+<br><br>
+Tutor: The competition is open to all universities and there's a prize of $2 million for the winner. But it's really about more than that. The sponsors are hoping to see innovative design ideas that they can transfer into commercial production. So, primarily, it's to find <strong>useful new design features</strong> (Q34).
+<br><br>
+Student: What determines the winner?
+<br><br>
+Tutor: The tutor says success will depend on the <strong>software design</strong> (Q35). It's not just about speed or ruggedness; it's about the intelligence of the system.
+<br><br>
+Student: How did the teams feel about their performance last year?
+<br><br>
+Tutor: Even though no vehicle completed the entire course in the earlier event, this year's competitors were surprised that the vehicles <strong>were as successful as they were</strong> (Q36). They didn't expect to get as far as they did.
+<br><br>
+Student: What's the timeline for the project?
+<br><br>
+Tutor: Okay, let's look at the schedule. In Early May, there will be an introductory <strong>seminar</strong> (Q37) about the project. All interested students should attend.
+<br><br>
+Student: And after that?
+<br><br>
+Tutor: In Late May, you'll need to submit an essay giving information about your relevant experience and skills. Then in June, we will pay a visit to a factory to see some real-world applications.
+<br><br>
+Student: Is there anything in the summer?
+<br><br>
+Tutor: Yes, in <strong>July</strong> (Q38), there will be a Workshop. This is crucial for getting hands-on practice.
+<br><br>
+Student: And when do we start the design?
+<br><br>
+Tutor: In September, we will meet to discuss <strong>ideas</strong> (Q39) and learn to use the design package. By December, we expect the submission of initial designs.
+<br><br>
+Student: When is the final team chosen?
+<br><br>
+Tutor: Finally, in January, there will be the selection of the <strong>team</strong> (Q40) that will build and race the vehicle.
         </div>
     </div>
 
     <!-- Answer Key -->
     <div id="answer-key" style="display:none;">
         <h3>Correct Answers:</h3>
-        <p><strong>Part 1 (Questions 1-10):</strong></p>
-        <p>1. July<br>2. 3/three days<br>3. test driving<br>4. camera<br>5. 110<br>6. Edgeworth<br>7. Summer<br>8. city centre/ center<br>9. directions<br>10. enquiring online/online</p>
+        <p><strong>Part 1:</strong></p>
+        <p>1. keogh<br>2. 15<br>3. garden<br>4. music<br>5. story<br>6. 470<br>7. farm<br>8. toy<br>9. pillow<br>10. 0914638520</p>
         
-        <p><strong>Part 2 (Questions 11-20):</strong></p>
-        <p>11. B<br>12. A<br>13. B<br>14. C<br>15. A<br>16. F<br>17. H<br>18. B<br>19. D<br>20. C</p>
+        <p><strong>Part 2:</strong></p>
+        <p>11. overseas<br>12. WOODSIDE<br>13. 8<br>14. tuesday<br>15. website<br>16. C<br>17. C<br>18. B<br>19. A<br>20. C</p>
         
-        <p><strong>Part 3 (Questions 21-30):</strong></p>
-        <p>21. A<br>22. B<br>23. F<br>24. G<br>25. D<br>26. A<br>27. C<br>28-30. B, E, F</p>
+        <p><strong>Part 3:</strong></p>
+        <p>21. C<br>22. B<br>23. A<br>24. C<br>25. C<br>26. B<br>27-28. D, E<br>29-30. B, C</p>
         
-        <p><strong>Part 4 (Questions 31-40):</strong></p>
-        <p>31-32. C, D<br>33. parents<br>34. versions<br>35. country<br>36. transport<br>37. social<br>38. funding<br>39. competitions<br>40. professional</p>
+        <p><strong>Part 4:</strong></p>
+        <p>31. computer science<br>32. rocks<br>33. video cameras<br>34. C<br>35. A<br>36. B<br>37. seminar<br>38. skills<br>39. ideas<br>40. team</p>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2455,6 +2648,164 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
         </div>
     </div>
 
+    <!-- Hidden Transcription Data -->
+    <div id="transcription-data" style="display: none;">
+        <div data-part="1">
+You will hear a number of different recordings, and you will have to answer questions on what you hear. There will be time for you to read the instructions and questions, and you will have a chance to check your work. All the recordings will be played once only.
+
+The test is in four sections. Write all your answers in the Listening Question Booklet. At the end of the test, you will be given ten minutes to transfer your answers to an answer sheet.
+
+Now turn to section 1 on page 2 of your question booklet. Section 1 You will hear a man phoning to ask about a festival in a town called Beechin. First you have some time to look at questions 1 to 6 on page 2. You will see that there is an example that has been done for you.
+
+On this occasion only, the conversation relating to this will be played first. Beechin Festival Office Oh, hello. I want to check some details about the festival.
+
+I know tickets are running out fast, and I haven't got access to the internet at present, my computer's down. OK. Well, the first activity is on June the 19th at 7pm, and it's a concert with local musicians performing.
+
+Oh, lovely. The activity on June the 19th is a concert, so concert has been written in the space. Now we shall begin.
+
+You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 6. Beechin Festival Office Oh, hello. I want to check some details about the festival.
+
+I know tickets are running out fast, and I haven't got access to the internet at present, my computer's down. OK. Well, the first activity is on June the 19th at 7pm, and it's a concert with local musicians performing.
+
+Oh, lovely. Is it in the theatre, like last year? Yes, that's right. And for the next activity, on the 20th, the times changed.
+
+Is that the tour? Yes. Now, it does say on the tickets that it's a 3.40 start, but that's an error. There wasn't time to update them, unfortunately, so it should say 4.30 instead.
+
+The correct time is on the website, though. Oh, right. Because one of my friends wants to go on that, to see Beechin with an expert and find out about the town and its history.
+
+Does she need to get a ticket in advance? No, just turn up at the station where the guide will be waiting. They'll start from there, and I think the plan is to stop for a break in the park. And there's no charge for the tour.
+
+And the tour will finish with a visit to the 16th century mill where they used to make flour. It's recently been restored. Fine.
+
+And then on the 21st, there's an all-day event for children. Oh, that could be good for my visitors. They're bringing theirs, you see.
+
+Right. Well, the plan was to have a painting competition for the kids, but it's now going to be cooking instead. And there'll be prizes for all the different age groups.
+
+Oh, great. And it's in Beechin Community Centre. Oh, yes, I know where that is.
+
+They don't need to bring any ingredients, but they'll need to have a plate to put whatever they've made on so they can display it and then take it home. Sounds good. And are they going ahead with the fireworks in the evening, or is that cancelled? There was an article in the paper after last year's display which suggested it might not be happening again.
+
+That's right. No, that's still on. It's getting more popular each year, and having it in the town square was starting to be a bit difficult because of the numbers, which is why it's next to the river this time.
+
+It'll be easy for large numbers of people to get to. Yes, of course. I'm sure there's lots to look forward to.
+
+Before you hear the rest of the conversation, you have some time to look at questions 7 to 10 on page 2. Now listen and answer questions 7 to 10. OK, now I just want to check how it's going to impact on me as a local resident. I mean, some people last year thought it was too noisy at night.
+
+Yes, I know. And that's why this year evening events won't go on beyond 11.15. I know previously some activities lasted until 11.45, and the new time applies now to all the events, every evening. OK.
+
+And another change, perhaps you know about this already, is that because of high visitor numbers, parking in the town centre isn't going to be allowed. It'll be outside town. Oh, yes, to keep the streets clear, I suppose, for all the visitors.
+
+I did know, actually, and it's not really going to be a problem for me. Right. I mean, I can just walk into town from my home.
+
+OK. Well, anyway, if you want to check any more details about the festival, once you're back online, you can look at www.events.com and you'll be able to comment on what activities you enjoyed and that kind of thing. This will help the organisers would be if people could use the website to give feedback about what they enjoyed and that kind of thing. This will help them plan for next year.
+
+That's probably a good idea. And with pricing, I know... That is the end of Section 1. You now have half a minute to check your answers.
+        </div>
+        <div data-part="2">
+Now turn to Section 2 on page 3. Section 2 You will hear a tour guide talking to some tourists who are going on a walking holiday in Spain.
+
+First you have some time to look at questions 11 to 14 on page 3. Now listen carefully and answer questions 11 to 14. Well, good evening, everyone. My name's Gary Payne and I'll be the leader for your walking holiday in Spain.
+
+And the purpose of this evening's meeting is for us all to get to know each other in advance and for you to ask any questions you may have about the holiday. So I'll begin by telling you a little bit about what to expect. Now, the ferry crossing from England to Santander in Spain takes about 24 hours.
+
+We'll be sailing on the Prince Regent, which was first launched in the 1980s. As well as the crew of 160, it can accommodate about 2,000 people and 600 cars. And it sails at an average speed of 37 km an hour.
+
+There'll be an on-board map on one of the decks, which charts the ship's progress during the voyage. Although our minibus will be on one of the vehicle decks in the boat, access to these decks is prohibited during the crossing, so when you leave our bus, you'll have to take everything that you're likely to need with you, like toiletries or books and magazines. In fact, it's probably a good idea to put these things in a separate bag beforehand.
+
+You shouldn't need snacks on board as meals are provided and they're quite substantial. And if you don't feel well or get a headache, you can get tablets from me. I always carry an adequate supply.
+
+Now, once we're in Spain, we'll be based at a hostel in a small village called La Vega de Libana, about 120 km from Santander. It's a very picturesque area that's retained a lot of its traditional industry and culture. The hostel accommodation's fairly simple.
+
+There are bunk beds and each room holds four to eight people. But the bathrooms and showers are of a high standard. The hostel residents have the use of tennis courts nearby, if you feel like a game.
+
+We'll be given breakfast and an evening meal at the hostel. In general, the hostel is relaxed, but there are a few rules which the owners enforce strictly. Smoking is not allowed anywhere inside the building and food and drink is banned in the dormitories.
+
+Any chairs or tables which you take outside into the gardens must be returned every evening to their original place. And finally, the doors are locked after midnight out of consideration for other guests who are trying to sleep. Before you hear the rest of the talk, you have some time to look at questions 15 to 20 on page 4. Now listen and answer questions 15 to 20.
+
+Now, that's enough about travel and accommodation. But before I move on, I should say something briefly about equipment. There's a list in the guidebook you've been sent, but I'll just elaborate on one or two items.
+
+First, boots. Make sure that the ones you bring have thick soles. That's the most important thing.
+
+Don't bring trainers for walking in. Apart from anything else, they're dangerous because they slip. It's important to bring spare socks.
+
+Then, about waterproofs. I'd strongly advise you not to come with anything heavy, you know, with a thick lining. The ideal things are those lightweight ones, because they fold up small, and although they do keep the wind out, they don't make you too hot.
+
+Right? Next, sun cream. This is absolutely essential. And regarding the strength, make sure you get what's known as total block.
+
+Even factor 25 isn't good enough for those latitudes in July. Then, let's see. Bring a folder to keep your map and other papers in, you know, one of those plastic ones.
+
+It's not very likely to rain, but if it does, you'll find it soaks everything. So, that's the practicalities over. Now let me tell you a little bit about the area in Spain where we'll be walking, the Picos de Europa.
+
+It's a very popular area for tourists because of its spectacular peaks. Although they're only 25 kilometres from the sea, the highest peaks are more than 2,600 metres high and have year-round snow caps. On the highest peaks, you've got alpine plants that are only free of their snow cover for a few months a year.
+
+Then you've got meadows that are full of wildflowers at certain times of the year. Then the northern slopes are covered by woodlands, giving homes to rare species such as wolves and bears. And because of the variety of plant life, which survives in that part of Europe due to the traditional way of life there... That is the end of Section 2. You now have half a minute to check your answers.
+        </div>
+        <div data-part="3">
+Now turn to Section 3 on page 5. Section 3 You will hear two students called Sally and Steve discussing Sally's project on peer assessment, a system where students mark each other's work. First you have some time to look at questions 21 to 24 on page 5. Now listen carefully and answer questions 21 to 24. I can't believe you're still in the library, Sally.
+
+You've been here all day. Are you still working on your peer assessment project? Hi, Steve. Yes, I'm still here and I'm nowhere near finished.
+
+I'm still processing the reading I've done on peer assessment. I'm interested to see if students marking each other's work is beneficial. I know a lot of the other students are pretty sceptical about its value as a way of assessing their performance.
+
+They think the tutors are in favour of it because they don't have to spend so long marking. But I disagree. I think we can learn a great deal from it.
+
+Yes, I can see one advantage being that it saves time spent going over things in class. Well, initially it doesn't seem to work that way and it can be quite a time-consuming business because sometimes things have to be marked again if the tutor thinks the student's assessments aren't reliable. The real gain is the fact that the students learn to stand back and assess their own assignments objectively because they're much more familiar with the marking system.
+
+Yes, I can see that. It gives them an opportunity to reflect on their own performance. And how do they feel about having another student mark their work? Is that good for rapport? In some cases yes, in some cases no.
+
+I think more research is needed to answer that question. What happens if a tutor notices that the marks for a particular assignment seem wrong? Should the students mark them again? That might not make any difference. So in that case the tutor would have to remark all those assignments and then go through the marking criteria really carefully with the students on the next assignment with some sample answers.
+
+I've been reading about a research project on peer assessment. The researchers invited a group of students from two different universities to attend a one-day conference. They also invited some university lecturers to attend.
+
+Each student gave a short presentation on a project of their choice. Each of these presentations was assessed individually by all the participants, both students and lecturers. To support their marking, they used a set of assessment guidelines that had been prepared the day before by a random selection of students.
+
+Before you hear the rest of the discussion, you have some time to look at questions 25 to 30 on page 6. Now listen and answer questions 25 to 30. So were the student markers reliable? Well, comparisons were made between certain categories of student markers and the group as a whole, including the lecturers. The findings showed that there were some variations in the way different groups marked.
+
+Gender did come into play, for example. I expect the male students were more generous when marking female presenters, were they? Quite the reverse, actually. They were harder on the female presenters than on the males, which wasn't what I'd expected either.
+
+Did female students show any bias towards male presenters? Interestingly not. So does that suggest women are fairer and more reliable markers than men? Well, I wouldn't go that far. It's only a small sample.
+
+But significantly, the results showed that when women marked other women, this didn't affect the grades they gave. What about age? Were you able to come to any conclusions about that? Yes, because we had some mature students presenting and we found the marks awarded to them by their younger peers were rather more generous. I wonder why that is.
+
+Now, you said there were groups of students from two universities. Did they tend to favour students making presentations from their own universities? It didn't seem to influence marking one way or the other, which is quite encouraging. We'd been interested to see if students' personal relationships affected their objectivity.
+
+One striking variation, though, was in the students who'd been asked to help devise the criteria for the marking scheme. They were actually the toughest markers of all, marking consistently below the tutors. Really? Well, it sounds as if it's generated lots of useful data.
+
+I expect you'll be here for... That is the end of section 3. You now have half a minute to check your answers.
+        </div>
+        <div data-part="4">
+Now turn to section 4 on page 7. Section 4 You will hear part of a linguistics lecture about a language called Bishlama that is spoken in the Pacific Islands. First, you have some time to look at questions 31-40 on page 7. Now listen carefully and answer questions 31-40.
+
+Good morning and welcome back to this series of linguistics lectures. Today I will be talking about the language Bishlama, which is a form of pidgin English. Linguists use the term pidgin to describe new languages that are created by combining two or more existing languages, often in a simplified form.
+
+The study of pidgin languages is important because it provides us with information about language change and modification. The pidgin English known as Bishlama is used in the South Pacific nation of Vanuatu, a group of islands where 81 first languages are still regularly used by the local people. There are a further 17 local languages that are in danger of dying out and 8 that have been identified as extinct.
+
+This gives a total of 106 first languages in all, a very high number for a small country with a population of just 200,000 people. Then thinking about foreign languages, English is the most important and has official status largely because it is the medium for all education purposes. However, it is Bishlama that is the most widely spoken language in the country, used regularly by more than 90% of the population.
+
+We should note here that in earlier times some people had negative feelings towards the language. In fact, for many years it was commonly referred to as a broken language and its use was discouraged. But attitudes have changed dramatically and today the people of Vanuatu are very proud of this unique language.
+
+It is only when we understand the historical context that we can comprehend just why Bishlama developed in Vanuatu. The first form of Pidgin English in this region can be traced to around 1800 when foreign traders arrived and local people were recruited to work as sailors. On board multilingual ships there was an obvious need for a common tongue and Pidgin English was born.
+
+This early form of Bishlama continued to spread as trade in the Pacific developed in sandalwood and other local commodities. Then from about 1860 a lot of people from Vanuatu travelled to Australia to work on the new plantations as labourers. Again, because of the multilingual nature of these workplaces it was very important to have a common language.
+
+Finally, in modern times there have been other pressures that have maintained the need for a common language. Like many other parts of the world from about the 1950s Vanuatu experienced a significant migration of its people from small villages into the city and it has been here that Bishlama has really established itself as the country's first language. So then, how can we describe the language itself? In general terms Pidgin languages can be defined as extremely simple versions of the original language.
+
+However, this is not a satisfactory definition in this case and linguists prefer to describe Bishlama as a developed pidgin because it has more rules and ideas than most simple pidgin languages found in other parts of the world. Let's think first about the vocabulary. Because Britain was the colonial power the majority of Bishlama's vocabulary is derived from English.
+
+However, some care needs to be taken here. For example, the word from in Bishlama can also mean because of so we need to be aware that words can have a wider range of meanings in Bishlama. Indeed, there are numerous other potentially misleading terms and English is not the only contributor to the vocabulary.
+
+Again, because of the region's history there are some words, around 5-10% that are derived from French. Then, a relatively small number of words have been taken from local, Pacific languages. Usually, this is the case where there is no English equivalent for naturally occurring phenomena or to describe some aspect of the culture that is unique to the country.
+
+Finally, a word about grammar. Although the vocabulary is based largely on English it's important to note that the grammatical structure of Bishlama is derived from patterns common in the local languages of Vanuatu. So, for example, there are two distinct pronouns meaning we, one means I and you and another means I and some others but not you.
+
+Sounds confusing in English but in the local languages such distinctions are common. A different example concerns the word long. It is almost the only preposition in Bishlama and may be used in place of a whole range of English words such as at, to, with, on, in and so on.
+
+Well, that is the end of the formal part of the lecture. If you have any questions now, I'll be most happy to answer them. That is the end of section four.
+
+You now have half a minute to check your answers. That is the end of the listening test. You now have ten minutes to transfer your answers to the listening answer sheet.
+        </div>
+    </div>
+
     <script>
         let currentPart = 1;
         let currentQuestion = 1;
@@ -2483,29 +2834,15 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                 const dropZone = document.querySelector(`.drop-zone[data-question-id="${qNum}"]`);
                 const clickableCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
 
-                // Check for checkbox questions with multiple answer requirements
-                if (qNum === 28) {
-                    const checkboxes = document.querySelectorAll('input[name="q28-30"]:checked');
-                    if (checkboxes.length >= 1) { isAnswered = true; }
-                } else if (qNum === 29) {
-                    const checkboxes = document.querySelectorAll('input[name="q28-30"]:checked');
-                    if (checkboxes.length >= 2) { isAnswered = true; }
-                } else if (qNum === 30) {
-                    const checkboxes = document.querySelectorAll('input[name="q28-30"]:checked');
-                    if (checkboxes.length >= 3) { isAnswered = true; }
-                } else if (qNum === 31) {
-                    const checkboxes = document.querySelectorAll('input[name="q31-32"]:checked');
-                    if (checkboxes.length >= 1) { isAnswered = true; }
-                } else if (qNum === 32) {
-                    const checkboxes = document.querySelectorAll('input[name="q31-32"]:checked');
-                    if (checkboxes.length >= 2) { isAnswered = true; }
-                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
+                // Check for radio button questions first (questions 15-16, 17-20, etc.)
+                if (radioInput) {
                     isAnswered = true;
-                } else if (radioInput) {
-                    isAnswered = true;
-                    if (qNum >= 17 && qNum <= 20) {
+                    if (qNum >= 15 && qNum <= 20) {
                         console.log(`Question ${qNum} radio detected as answered: ${radioInput.value}`);
                     }
+                // Check for checkbox questions with multiple answer requirements
+                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
+                    isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
                     isAnswered = true;
                 } else if (clickableCell) {
@@ -2538,71 +2875,16 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia600906.us.archive.org/28/items/mix-30m-10s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_30m10s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia601706.us.archive.org/4/items/mix-29m-15s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-c/mix_29m15s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
         audioPlayer.src = audioSource;
 
-        const correctAnswers = {
-            /* --- Part 1 --- */
-            'q1': ['July'],
-            'q2': ['3 days', 'three days'],
-            'q3': ['test driving'],
-            'q4': ['camera'],
-            'q5': ['110'],
-            'q6': ['Edgeworth'],
-            'q7': ['Summer'],
-            'q8': ['city centre', 'city center'],
-            'q9': ['directions'],
-            'q10': ['enquiring online', 'online'],
 
-            /* --- Part 2 --- */
-            'q11': 'B',
-            'q12': 'A',
-            'q13': 'B',
-            'q14': 'C',
-            'q15': 'A',
-            'q16': 'F',
-            'q17': 'H',
-            'q18': 'B',
-            'q19': 'D',
-            'q20': 'C',
 
-            /* --- Part 3 --- */
-            'q21': 'A',
-            'q22': 'B',
-            'q23': 'F',
-            'q24': 'G',
-            'q25': 'D',
-            'q26': 'A',
-            'q27': 'C',
-            'q28-30': ['B', 'E', 'F'],
-            
-
-            /* --- Part 4 --- */
-            'q31-32': ['C', 'D'],
-            'q33': ['parents'],
-            'q34': ['versions'],
-            'q35': ['country'],
-            'q36': ['transport'],
-            'q37': ['social'],
-            'q38': ['funding'],
-            'q39': ['competitions'],
-            'q40': ['professional']
-        };
-
-        const questionTypes = {
-            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text', 'q5': 'text',
-            'q6': 'text', 'q7': 'text', 'q8': 'text', 'q9': 'text', 'q10': 'text',
-            'q11': 'mcq', 'q12': 'mcq', 'q13': 'mcq', 'q14': 'mcq', 'q15': 'mcq', 'q16': 'mcq', 'q17': 'mcq',
-            'q18': 'mcq', 'q19': 'mcq', 'q20': 'mcq',
-            'q21': 'dragdrop', 'q22': 'dragdrop', 'q23': 'dragdrop', 'q24': 'dragdrop', 'q25': 'dragdrop', 'q26': 'mcq', 'q27': 'mcq',
-            'q28-30': 'checkbox', 'q31-32': 'checkbox',
-            'q33': 'text', 'q34': 'text', 'q35': 'text', 'q36': 'text', 'q37': 'text', 'q38': 'text', 'q39': 'text', 'q40': 'text'
-        };
-
-                    function setupCheckboxLimits() {
+                function setupCheckboxLimits() {
                 const groupsWithLimits = [
-                    { name: 'q28-30', max: 3 }, // Questions 28-30: choose THREE
-                    { name: 'q31-32', max: 2 }, // Questions 31-32: choose TWO
+                    { name: 'q18-20', max: 3},
+                    { name: 'q27-28', max: 2},
+                    { name: 'q29-30', max: 2}
                 ];
 
             groupsWithLimits.forEach(({ name, max }) => {
@@ -2641,58 +2923,33 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             cells.forEach((cell, index) => {
                 const question = cell.getAttribute('data-question');
                 const value = cell.getAttribute('data-value');
-                const onclick = cell.getAttribute('onclick');
-                console.log(`Cell ${index}: question=${question}, value=${value}, onclick=${onclick}`);
+                console.log(`Cell ${index}: question=${question}, value=${value}`);
             });
         }
         
         function selectCell(cell, questionNumber, value) {
-            try {
-                console.log(`selectCell called: question ${questionNumber}, value ${value}`);
-                console.log('Cell element:', cell);
-                console.log('Cell classes:', cell.className);
-                console.log('Cell data-question:', cell.getAttribute('data-question'));
-                console.log('Cell data-value:', cell.getAttribute('data-value'));
-                
-                // Remove previous selection for this question
-                const row = cell.closest('tr');
-                if (!row) {
-                    console.error('Could not find row for cell');
-                    return;
-                }
-                
-                const cells = row.querySelectorAll('.clickable-cell');
-                console.log(`Found ${cells.length} clickable cells in row`);
-                cells.forEach(c => {
-                    c.classList.remove('selected');
-                    console.log(`Removed 'selected' class from cell with value: ${c.getAttribute('data-value')}`);
-                });
-                
-                // Select the clicked cell
-                cell.classList.add('selected');
-                console.log(`Added 'selected' class to cell with value: ${value}`);
-                console.log('Cell classes after selection:', cell.className);
-                
-                // Store the answer in the hidden input
-                const hiddenInput = document.getElementById(`q${questionNumber}`);
-                if (hiddenInput) {
-                    hiddenInput.value = value;
-                    console.log(`Hidden input q${questionNumber} value set to: ${value}`);
-                } else {
-                    console.error(`Hidden input q${questionNumber} not found`);
-                }
-
-                // Update answered indicators
-                updateAnsweredIndicators();
-                
-                // Force a visual update
-                cell.style.display = 'none';
-                cell.offsetHeight; // Force reflow
-                cell.style.display = '';
-                
-            } catch (error) {
-                console.error('Error in selectCell:', error);
+            // Remove previous selection for this question
+            const questionRow = cell.closest('tr');
+            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
+            cellsInRow.forEach(cell => {
+                cell.classList.remove('selected');
+                cell.style.backgroundColor = '#f8f9fa';
+                cell.style.color = 'black';
+            });
+            
+            // Select the clicked cell
+            cell.classList.add('selected');
+            cell.style.backgroundColor = '#4a90e2';
+            cell.style.color = 'white';
+            
+            // Persist selection in hidden input (for answered state and grading if needed)
+            const hiddenInput = document.getElementById(`q${questionNumber}`);
+            if (hiddenInput) {
+                hiddenInput.value = value;
             }
+            
+            // Update answered indicators
+            updateAnsweredIndicators();
         }
 
         function switchToPart(partNumber, andPlay = false) {
@@ -3017,12 +3274,10 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             const answeredGroups = {};
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
-                    if (input.name === 'q11-12') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q11-12"]:checked').length;
-                        // Represent q11 and q12 as two separate questions in the footer count
-                        // Count 1 if at least one selected, and +1 again if two selected
-                        const keyFirst = 'q11-12-first';
-                        const keySecond = 'q11-12-second';
+                    if (input.name === 'q27-28') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q27-28"]:checked').length;
+                        const keyFirst = 'q27-28-first';
+                        const keySecond = 'q27-28-second';
                         if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
                             answeredCount++;
                             answeredGroups[keyFirst] = true;
@@ -3031,12 +3286,10 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                             answeredCount++;
                             answeredGroups[keySecond] = true;
                         }
-                    } else if (input.name === 'q13-14') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q13-14"]:checked').length;
-                        // Represent q13 and q14 as two separate questions in the footer count
-                        // Count 1 if at least one selected, and +1 again if two selected
-                        const keyFirst = 'q13-14-first';
-                        const keySecond = 'q13-14-second';
+                    } else if (input.name === 'q29-30') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q29-30"]:checked').length;
+                        const keyFirst = 'q29-30-first';
+                        const keySecond = 'q29-30-second';
                         if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
                             answeredCount++;
                             answeredGroups[keyFirst] = true;
@@ -3044,24 +3297,6 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                         if (checkedCount >= 2 && !answeredGroups[keySecond]) {
                             answeredCount++;
                             answeredGroups[keySecond] = true;
-                        }
-                    } else if (input.name === 'q28-30') {
-                        const checkedCount = partContainer.querySelectorAll('input[name="q28-30"]:checked').length;
-                        // Represent q28, q29, and q30 as three separate questions in the footer count
-                        const keyFirst = 'q28-30-first';
-                        const keySecond = 'q28-30-second';
-                        const keyThird = 'q28-30-third';
-                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
-                            answeredCount++;
-                            answeredGroups[keyFirst] = true;
-                        }
-                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
-                            answeredCount++;
-                            answeredGroups[keySecond] = true;
-                        }
-                        if (checkedCount >= 3 && !answeredGroups[keyThird]) {
-                            answeredCount++;
-                            answeredGroups[keyThird] = true;
                         }
                     } else if (input.name === 'q31-32') {
                         const checkedCount = partContainer.querySelectorAll('input[name="q31-32"]:checked').length;
@@ -3092,7 +3327,7 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                 }
             });
             
-            // Include clickable cells as answered
+            // Include clickable cells as answered (includes Questions 26-30)
             const clickableCells = partContainer.querySelectorAll('.clickable-cell.selected');
             clickableCells.forEach(cell => {
                 const questionNum = cell.getAttribute('data-question');
@@ -3102,8 +3337,8 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                 }
             });
             
-            // Include map questions (15-20) as answered if they have a selection
-            for (let i = 15; i <= 20; i++) {
+            // Include map questions (11-15) as answered if they have a selection
+            for (let i = 11; i <= 15; i++) {
                 const selectElement = partContainer.querySelector(`#q${i}`);
                 if (selectElement && selectElement.value && selectElement.value !== '' && !answeredGroups[`map-${i}`]) {
                     answeredCount++;
@@ -3113,6 +3348,67 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             const countDisplay = document.querySelector(`.footer__questionWrapper___1tZ46:nth-child(${partNumber}) .attemptedCount`);
             if (countDisplay) countDisplay.textContent = `${answeredCount} of 10`;
         }
+
+        // === Answer key and question type mapping ===
+        const correctAnswers = {
+            // Part 1
+            q1: 'keogh',
+            q2: '15',
+            q3: 'garden',
+            q4: 'music',
+            q5: 'story',
+            q6: '470',
+            q7: 'farm',
+            q8: 'toy',
+            q9: 'pillow',
+            q10: '0914638520',
+            // Part 2
+            q11: 'overseas',
+            q12: 'WOODSIDE',
+            q13: '8',
+            q14: 'tuesday',
+            q15: 'website',
+            q16: 'C',
+            q17: 'C',
+            q18: 'B',
+            q19: 'A',
+            q20: 'C',
+            // Part 3 MCQ
+            q21: 'C',
+            q22: 'B',
+            q23: 'A',
+            q24: 'C',
+            q25: 'C',
+            q26: 'B',
+            // Part 3 Checkbox
+            'q27-28': ['D', 'E'],
+            'q29-30': ['B', 'C'],
+            // Part 4 text
+            q31: 'computer science',
+            q32: 'rocks',
+            q33: 'video cameras',
+            q34: 'C',
+            q35: 'A',
+            q36: 'B',
+            q37: 'seminar',
+            q38: 'skills',
+            q39: 'ideas',
+            q40: 'team'
+        };
+
+        const questionTypes = {
+            // Part 1
+            q1: 'text', q2: 'text', q3: 'text', q4: 'text', q5: 'text',
+            q6: 'text', q7: 'text', q8: 'text', q9: 'text', q10: 'text',
+            // Part 2
+            q11: 'text', q12: 'text', q13: 'text', q14: 'text', q15: 'text',
+            q16: 'mcq', q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
+            // Part 3
+            q21: 'mcq', q22: 'mcq', q23: 'mcq', q24: 'mcq', q25: 'mcq', q26: 'mcq',
+            'q27-28': 'checkbox', 'q29-30': 'checkbox',
+            // Part 4
+            q31: 'text', q32: 'text', q33: 'text', q34: 'mcq', q35: 'mcq', q36: 'mcq', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
+        };
 
         function checkAnswers() {
             let score = 0;
@@ -3223,8 +3519,8 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                            }
                            break;
                         case 'mcq':
-                            // For map questions (15-20), use the select dropdown selection instead of radios
-                            if (qNum >= 15 && qNum <= 20) {
+                            // For map questions (11-20), use the select dropdown selection instead of radios
+                            if (qNum >= 11 && qNum <= 20) {
                                 const selectElement = document.getElementById(key);
                                 if (selectElement) {
                                     userAnswer = (selectElement.value || '').trim();
@@ -3286,13 +3582,9 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                             }
                             break; }
                        case 'clickable':
-                           console.log(`Checking clickable question ${qNum}, correct answer: ${correctAnswer}`);
                            const selectedCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
-                           console.log(`Selected cell for question ${qNum}:`, selectedCell);
                            userAnswer = selectedCell ? selectedCell.getAttribute('data-value') : 'No Answer';
-                           console.log(`User answer for question ${qNum}: ${userAnswer}`);
                            isCorrect = userAnswer === correctAnswer;
-                           console.log(`Question ${qNum} is correct: ${isCorrect}`);
                            
                            // Mark cells as correct/incorrect
                            const allCells = document.querySelectorAll(`.clickable-cell[data-question="${qNum}"]`);
@@ -4120,8 +4412,8 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             // Initialize clickable cells for questions 27-31
             initClickableCells();
             
-            // Add event listeners for map questions (15-20)
-            for (let i = 15; i <= 20; i++) {
+            // Add event listeners for map questions (11-15)
+            for (let i = 11; i <= 15; i++) {
                 const selectElement = document.getElementById(`q${i}`);
                 if (selectElement) {
                     selectElement.addEventListener('change', updateAnsweredIndicators);
@@ -4140,31 +4432,9 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             });
         }
 
-        function selectCell(clickedCell, questionNumber, value) {
-            // Remove previous selection for this question
-            const questionRow = clickedCell.closest('tr');
-            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
-            cellsInRow.forEach(cell => {
-                cell.classList.remove('selected');
-                cell.style.backgroundColor = '';
-            });
-            
-            // Select the clicked cell
-            clickedCell.classList.add('selected');
-            clickedCell.style.backgroundColor = '#4a90e2';
-            clickedCell.style.color = 'white';
-            // Persist selection in hidden input (for answered state and grading if needed)
-            const hiddenInput = document.getElementById(`q${questionNumber}`);
-            if (hiddenInput) {
-                hiddenInput.value = value;
-            }
-            
-            // Update answered indicators
-            updateAnsweredIndicators();
-        }
 
         function ensureClickableHiddenInputs() {
-            for (let q = 27; q <= 30; q++) {
+            for (let q = 26; q <= 30; q++) {
                 if (!document.getElementById(`q${q}`)) {
                     const input = document.createElement('input');
                     input.type = 'hidden';
@@ -4173,6 +4443,11 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
                 }
             }
         }
+
+        // Initialize matching cells when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is now handled by initClickableCells() which is called in initAllDragAndDrop()
+        });
 
         function findParentOptionsList(element) {
             // Specific for map
@@ -4247,7 +4522,8 @@ Across the country, improvements in infrastructure and public transport (Q36) ha
             document.getElementById('contextMenu').style.display = 'none';
             contextElement = null;
         }
-        // ========== SIMPLE AUTOSAVE ==========
+        
+// ========== SIMPLE AUTOSAVE ==========
 (function() {
     console.log('🔄 Autosave initialized');
     
