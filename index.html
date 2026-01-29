@@ -10,12 +10,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-        #deliver-button {
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
 
         body {
             font-family: Arial, sans-serif;
@@ -23,6 +17,23 @@
             line-height: 1.4;
             font-size: 16px;
             padding-bottom: 90px; /* nav-row height (80px) + some extra spacing */
+        }
+
+        /* Page watermark */
+        body::after {
+            content: "Juned academy";
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-20deg);
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #000000;
+            opacity: 0.02; /* subtle */
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
         }
 
         .header {
@@ -70,6 +81,9 @@
             gap: 10px;
             align-items: center;
         }
+
+
+       
 
         #volume-slider {
             -webkit-appearance: none;
@@ -165,7 +179,7 @@
         }
 
         #transcription-text {
-            white-space: pre-wrap;
+            white-space: pre-wrap; /* preserve line breaks from source */
             font-family: inherit;
             font-size: 15px;
             line-height: 1.7;
@@ -246,6 +260,25 @@
             padding: 8px 10px;
             border: 1px solid #ddd;
         }
+        #part-4 .questions-container {
+            width: 80%;
+        }
+
+        /* Matching cell styling */
+        .matching-cell {
+            transition: all 0.2s ease;
+        }
+        
+        .matching-cell:hover {
+            background-color: #e3f2fd !important;
+            transform: scale(1.02);
+        }
+        
+        .matching-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+            font-weight: bold;
+        }
 
         #part-1 table td {
             line-height: 1.8;
@@ -259,7 +292,7 @@
         #part-4 table td div { margin: 8px 0; }
         /* Increase line height for Part 3 table (Questions 24-30) */
         #part-3 table td {
-            line-height: 3.0;
+            line-height: 2.0;
             padding-top: 10px;
             padding-bottom: 10px;
             vertical-align: top;
@@ -355,7 +388,8 @@
             margin: 20px auto;
             width: 100%;
             max-width: 600px;
-            display: block;
+            /* display: block; */
+            /* display: flex; */
         }
         .map-container img {
             width: 100%;
@@ -590,6 +624,30 @@
             border-color: #28a745;
         }
 
+        /* Clickable cell styles for Questions 26-30 */
+        .clickable-cell {
+            transition: all 0.2s ease;
+        }
+
+        .clickable-cell:hover {
+            background-color: #e9ecef !important;
+        }
+
+        .clickable-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+
+        .clickable-cell.incorrect {
+            background-color: #dc3545 !important;
+            color: white !important;
+        }
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -775,6 +833,7 @@
     z-index: 10;
     position: relative;
     pointer-events: auto;
+    font-weight: 600;
 }
         .drag-drop-container {
             display: flex;
@@ -787,25 +846,18 @@
             flex-direction: column;
             gap: 8px;
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
             min-height: 200px;
         }
         .drag-item {
             background: white;
-            border: 1px solid #ddd;
-            padding: 6px 8px;
+    border: 1px solid #9c9c9c;
+    font-weight: 600;
+    padding: 0px 5px;
             border-radius: 4px;
             cursor: move;
             font-size: 16px;
             transition: all 0.2s;
             user-select: none;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            line-height: 1.2;
-            max-width: 100%;
-            box-sizing: border-box;
         }
         .drag-item:hover {
             background: #e9ecef;
@@ -815,26 +867,40 @@
             transform: rotate(2deg);
         }
         .drop-zone {
-            border: 1px dashed #ccc;
+            border: 2px dashed #aaa;
             border-radius: 4px;
-            min-height: 40px;
-            height: auto;
-            max-width: 120px;
-            min-width: 100px;
+            height: 25px;
+            margin-top: 19px;
+            margin-bottom: 5px;
             transition: background-color 0.2s, border-color 0.2s;
-            padding: 5px;
+            padding: 0.5px 5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            word-break: break-word;
-            overflow-wrap: break-word;
-            text-align: center;
-            line-height: 1.2;
+            position: relative;
+            color: #b3b3b3;
+            font-weight: 600;
+            min-width: 200px;
+            width: auto;
         }
         .drop-zone.drag-over {
             background-color: #e6f4ff;
             border-color: #4a90e2;
+        }
+        /* Letter pill displayed inside drop-zones */
+        .drop-letter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 20px;
+            padding: 0 6px;
+            border: 1px solid #4a90e2;
+            color: #0f5bd7;
+            background: #eef5ff;
+            border-radius: 9999px;
+            font-weight: 700;
+            cursor: move;
+            user-select: none;
         }
         .drop-zone.correct {
             background-color: #e9f7ef;
@@ -892,12 +958,15 @@
         }
 
         .example-box {
-            border: 1px solid #ddd;
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
             margin: 20px 0;
         }
+        
+#deliver-button {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 
         .timer-container {
             display: none; /* Timer hidden */
@@ -1030,6 +1099,10 @@
         .modal-close-btn:hover {
             color: #333;
         }
+
+        #part-2 .questions-container {
+width: 75%;
+        }
         #score-summary {
             font-size: 18px;
             font-weight: bold;
@@ -1102,23 +1175,25 @@
             font-weight: 600;
         }
         .matching-table .drop-zone {
-            min-height: 35px;
-            height: 35px;
+            /* Unify with global drop-zone styling */
+            border: 2px dashed #aaa;
+            border-radius: 4px;
+            height: 25px;
             width: 100%;
             max-width: none;
             min-width: 200px;
-            padding: 8px 12px;
+            padding: 0.5px 5px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             flex-wrap: nowrap;
-            background-color: #fff;
-            border: 1px dashed #ccc;
-            border-radius: 4px;
+            background-color: transparent;
             word-break: break-word;
             overflow-wrap: break-word;
             text-align: left;
             line-height: 1.2;
+            color: #b3b3b3;
+            font-weight: 600;
         }
         .matching-table .drop-zone .drag-item {
             width: auto;
@@ -1166,16 +1241,7 @@
             background-color: #f8f9fa;
             margin: 2px;
         }
-        .clickable-cell::before {
-            content: "•";
-            color: #999;
-            font-size: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            opacity: 0.3;
-        }
+       
         .clickable-cell:hover {
             background-color: #e6f4ff;
             border-color: #4a90e2;
@@ -1183,18 +1249,8 @@
         .clickable-cell.selected {
             background-color: #75a8e4 !important;
             color: white !important;
-            border-color: #2c5aa0;
-            box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
         }
-        .clickable-cell.selected::after {
-            content: "✓";
-            font-weight: bold;
-            font-size: 18px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+       
         .clickable-cell.correct {
             background-color: #28a745 !important;
             color: white !important;
@@ -1210,6 +1266,38 @@
         .clickable-cell.incorrect::after {
             content: "✗";
             font-weight: bold;
+        }
+        
+        /* Clickable cell styles for questions 27-30 */
+        .clickable-cell {
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+            min-width: 50px;
+            min-height: 50px;
+            border: 2px solid #e0e0e0;
+            position: relative;
+            background-color: #f8f9fa;
+            margin: 2px;
+        }
+       
+        .clickable-cell:hover {
+            background-color: #e6f4ff;
+            border-color: #4a90e2;
+        }
+        .clickable-cell.selected {
+            background-color: #4a90e2 !important;
+            color: white !important;
+        }
+        
+        .clickable-cell.correct {
+            background-color: #28a745 !important;
+            color: white !important;
+        }
+        
+        .clickable-cell.incorrect {
+            background-color: #dc3545 !important;
+            color: white !important;
         }
         
 
@@ -1712,10 +1800,69 @@
         .multi-choice-option label { display: flex; align-items: center; cursor: pointer; font-size: 16px; }
         .multi-choice-option input[type="checkbox"], .multi-choice-option input[type="radio"] { margin-right: 12px; transform: scale(1.3); accent-color: #4a90e2; }
 
+        /* Checkbox TWO-answers block (match screenshot) */
+        .checkbox-question .question-prompt p > strong:first-child {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+           
+            background: #fff;
+        }
+        .checkbox-group { display: flex; flex-direction: column;  }
+        .checkbox-group label { display: flex; align-items: center; padding: 10px 12px; border: 1px solid transparent; background: #fff; transition: background-color 0.2s, border-color 0.2s; }
+        .checkbox-group label:hover { background: #f1f7ff; border-color: #c6dcfb; }
+        .checkbox-group label:has(input[type="checkbox"]:checked) { background: #cfe3f9; }
+        .checkbox-group input[type="checkbox"] { margin-right: 10px; transform: scale(1.2); }
+        .checkbox-group label.correct { background-color: #d4edda !important; }
+        .checkbox-group label.incorrect { background-color: #f8d7da !important;  }
+        .checkbox-group label.correct::before { content: '✔ '; color: #28a745; font-weight: 600; margin-right: 6px; }
+        .checkbox-group label.incorrect::before { content: '✖ '; color: #dc3545; font-weight: 600; margin-right: 6px; }
+
         /* Drag & Drop enhancements */
-        /* Filled zone should look like an input with blue border */
-        .drop-zone.filled { background-color: #ffffff; border: 2px solid #2c6bed !important; outline: none !important; box-shadow: none !important; padding: 6px 10px; border-radius: 4px; }
-        .drop-zone.filled .drag-item { width: auto; height: auto; display: inline-block; border: none; border-radius: 0; padding: 0; font-weight: 500; background: transparent; box-shadow: none; white-space: nowrap; }
+        /* When filled, hide zone border and show a blue outlined pill around the dropped option */
+        .drop-zone.filled { 
+            background: transparent; 
+            border: none !important; 
+            padding: 0; 
+            justify-content: flex-start; 
+            width: auto;
+            min-width: fit-content;
+        }
+        .drop-zone.filled .drag-item { 
+            width: auto; 
+            height: auto; 
+            display: inline-block; 
+            white-space: nowrap; 
+            border: 1px solid #2c6bed; 
+            border-radius: 4px; 
+            padding: 2px 6px; 
+            font-weight: 600; 
+            background: #fff; 
+            color: #222; 
+        }
+
+        /* ===== Results Modal UI ===== */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); display: flex; align-items: center; justify-content: center; z-index: 3000; padding: 20px; }
+        .modal-content { background: #ffffff; width: 100%; max-width: 900px; max-height: 85vh; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); overflow: hidden; display: flex; flex-direction: column; }
+        .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid #e5e7eb; background: #f8fafc; position: sticky; top: 0; z-index: 1; }
+        .modal-header h2 { margin: 0; font-size: 20px; font-weight: 700; color: #111827; }
+        .modal-close-btn { background: transparent; border: none; font-size: 26px; line-height: 1; cursor: pointer; color: #6b7280; }
+        .modal-close-btn:hover { color: #111827; }
+        .modal-body { padding: 16px 18px; overflow: auto; }
+        #score-summary { font-size: 16px; font-weight: 600; color: #111827; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 8px; display: inline-block; }
+        .result-controls { display: flex; align-items: center; gap: 12px; margin: 12px 0; }
+        .result-controls .spacer { flex: 1; }
+        .result-controls label { display: inline-flex; align-items: center; gap: 6px; color: #374151; }
+        .btn-secondary { padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; background: #ffffff; color: #111827; cursor: pointer; }
+        .btn-secondary:hover { background: #f8fafc; }
+        #result-details { overflow: auto; }
+        #result-details table { width: 100%; border-collapse: collapse; border: 1px solid #e5e7eb; }
+        #result-details th, #result-details td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; font-size: 14px; }
+        #result-details thead th { position: sticky; top: 0; background: #f1f5f9; z-index: 1; }
+        #result-details tr:nth-child(even) td { background: #fafafa; }
+        #result-details td.result-correct { color: #0f5132; font-weight: 600; }
+        #result-details td.result-incorrect { color: #842029; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -1723,7 +1870,9 @@
         <div class="timer-container">
             <span class="timer-display">60:00</span>
         </div>
-        <h2>JUNED ACADEMY</h2>
+        <a target="_blank" class="telegram-link">
+            <b>Juned Academy</b> 
+        </a>
         <div class="header-icons">
         
         </div>
@@ -1773,77 +1922,24 @@
                         <div class="question-prompt">
                             <p><strong>Questions 1-10</strong></p>
                             <p>Complete the notes below.</p>
-                            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p>Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
                         </div>
                         
-                        <div style="border:1px solid #ccc; padding:15px; margin-top:20px;">
-                            <p class="centered-title"><strong>Tourism Survey</strong></p>
-
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Name:</span>
-                                <span >Robert Goddard</span>
-                            </div>
+                        <div style="margin-top: 20px;">
+                            <p class="centered-title"><strong>Enquiries on Hot Air Balloon Trip</strong></p>
                             
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Destination:</span>
-                                <span >Melbourne</span>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">First time visited Melbourne?</span>
-                                <input type="text" id="q1" class="answer-input" placeholder="1" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Best thing about the city:</span>
-                                <input type="text" id="q2" class="answer-input" placeholder="2" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Favourite attraction:</span>
-                                <input type="text" id="q3" class="answer-input" placeholder="3" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Best thing about the destination's dining options:</span>
-                                <input type="text" id="q4" class="answer-input" placeholder="4" style="margin-left: 10px;"> of food
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Method of transport to destination:</span>
-                                by <input type="text" id="q5" class="answer-input" placeholder="5" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Age group:</span>
-                                <input type="text" id="q6" class="answer-input" placeholder="6" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Income level:</span>
-                                <input type="text" id="q7" class="answer-input" placeholder="7" style="margin-left: 10px;">
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Purpose of visit:</span>
-                                <ul style="margin: 5px 0 5px 20px; list-style-type: disc;">
-                                    <li>on business</li>
-                                    <li><input type="text" id="q8" class="answer-input" placeholder="8"></li>
-                                </ul>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Occupation:</span>
-                                <ul style="margin: 5px 0 5px 20px; list-style-type: disc;">
-                                    <li><input type="text" id="q9" class="answer-input" placeholder="9"></li>
-                                    <li>writer for a travel magazine</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                                <span style="font-weight: bold; margin-right: 10px;">Opinion about accommodation:</span>
-                                <input type="text" id="q10" class="answer-input" placeholder="10" style="margin-left: 10px;">
-                            </div>
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-top: 20px;">
+                                <li style="margin-bottom: 15px;">The lowest price: £ <input type="text" id="q1" class="answer-input" placeholder="1" autocomplete="off"> per person</li>
+                                <li style="margin-bottom: 15px;">Each participant will be given a free <input type="text" id="q2" class="answer-input" placeholder="2" autocomplete="off"> at the end of the flight</li>
+                                <li style="margin-bottom: 15px;">The exact date can only be booked <input type="text" id="q3" class="answer-input" placeholder="3" autocomplete="off"></li>
+                                <li style="margin-bottom: 15px;">The balloon can fly a maximum height of <input type="text" id="q4" class="answer-input" placeholder="4" autocomplete="off"> metres</li>
+                                <li style="margin-bottom: 15px;">There are no flights at <input type="text" id="q5" class="answer-input" placeholder="5" autocomplete="off"></li>
+                                <li style="margin-bottom: 15px;">The best time of year to go is in <input type="text" id="q6" class="answer-input" placeholder="6" autocomplete="off"></li>
+                                <li style="margin-bottom: 15px;">Flights may be cancelled because of bad weather, e.g., <input type="text" id="q7" class="answer-input" placeholder="7" autocomplete="off"></li>
+                                <li style="margin-bottom: 15px;">It is advised to wear a jacket and a <input type="text" id="q8" class="answer-input" placeholder="8" autocomplete="off"></li>
+                                <li style="margin-bottom: 15px;">There is no <input type="text" id="q9" class="answer-input" placeholder="9" autocomplete="off"> restriction for adults</li>
+                                <li style="margin-bottom: 15px;">Participants must be able to <input type="text" id="q10" class="answer-input" placeholder="10" autocomplete="off"> throughout the flight</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1858,131 +1954,174 @@
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 11-14</strong></p>
-                            <p>Choose the correct answer.</p>
+                            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+                            <p><strong>Rivermead School: facilities open to the public</strong></p>
                         </div>
                         
-                        <div style="margin-bottom: 30px;">
-                            <p><strong>11</strong>&nbsp;&nbsp;What is the project that Mark and Gina want to start?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q11" value="A">
-                                        <span>business school requirements</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q11" value="B">
-                                        <span>directions to the business school</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q11" value="C">
-                                        <span>explaining the business school experience</span>
-                                    </label>
+                        <div style="margin-top: 20px;">
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>11</strong>&nbsp;&nbsp;What is the main aim of the school’s new theatre?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q11" value="A"> to gain an international reputation</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q11" value="B"> to give local people access to good performances</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q11" value="C"> to provide support for talented amateur actors</label></div>
                                 </div>
                             </div>
-
-                            <p><strong>12</strong>&nbsp;&nbsp;Who is the target audience?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q12" value="A">
-                                        <span>business students</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q12" value="B">
-                                        <span>business school applicants</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q12" value="C">
-                                        <span>summer school attendees</span>
-                                    </label>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>12</strong>&nbsp;&nbsp;The first season’s theatre programme will include</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q12" value="A"> plays by modern writers</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q12" value="B"> displays by Chinese acrobats</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q12" value="C"> concerts performed by schoolchildren</label></div>
                                 </div>
                             </div>
-
-                            <p><strong>13</strong>&nbsp;&nbsp;How will they convey the information?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q13" value="A">
-                                        <span>summer course lecture</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q13" value="B">
-                                        <span>informational video</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q13" value="C">
-                                        <span>pamphlet in the mail</span>
-                                    </label>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>13</strong>&nbsp;&nbsp;Most of theatre's funding will come from</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q13" value="A"> sponsors</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q13" value="B"> government grants</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q13" value="C"> ticket sales</label></div>
                                 </div>
                             </div>
-
-                            <p><strong>14</strong>&nbsp;&nbsp;They want to do this project because</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q14" value="A">
-                                        <span>students worry about their studies.</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q14" value="B">
-                                        <span>they want to obtain a good grade.</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q14" value="C">
-                                        <span>they want to attract future business school applicants.</span>
-                                    </label>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>14</strong>&nbsp;&nbsp;Which facility at the school is open to the public on a limited basis only?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="A"> the sports hall</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="B"> the museum</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q14" value="C"> the cafeteria</label></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="question">
                         <div class="question-prompt" style="margin-top: 40px;">
                             <p><strong>Questions 15-20</strong></p>
-                            <p>Complete the table below.</p>
-                            <p>Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+                            <p>Label the map below.</p>
+                            <p>Write the correct letter, <strong>A-J</strong>, next to questions 15-20.</p>
                         </div>
                         
-                        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                            <thead>
-                                <tr>
-                                    <th style="padding:16px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Topic</th>
-                                    <th style="padding:16px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Time</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding:16px; border:1px solid #ddd; font-weight: bold; line-height: 2.0;">&bull;&nbsp;&nbsp;Academics<br>&bull;&nbsp;&nbsp;<input type="text" id="q15" class="answer-input" placeholder="15" style="width: 120px;"></td>
-                                    <td style="padding:16px; border:1px solid #ddd; line-height: 2.0;">7 minutes</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:16px; border:1px solid #ddd; font-weight: bold; line-height: 2.0;">&bull;&nbsp;&nbsp;<input type="text" id="q16" class="answer-input" placeholder="16" style="width: 120px;"><br>&bull;&nbsp;&nbsp;Cafeteria<br>&bull;&nbsp;&nbsp;<input type="text" id="q17" class="answer-input" placeholder="17" style="width: 120px;"></td>
-                                    <td style="padding:16px; border:1px solid #ddd; line-height: 2.0;">6 minutes</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:16px; border:1px solid #ddd; font-weight: bold; line-height: 2.0;">&bull;&nbsp;&nbsp;Social activity <br>&bull;&nbsp;&nbsp;<input type="text" id="q18" class="answer-input" placeholder="18" style="width: 120px;"><br>&bull;&nbsp;&nbsp;<input type="text" id="q19" class="answer-input" placeholder="19" style="width: 120px;"></td>
-                                    <td style="padding:16px; border:1px solid #ddd; line-height: 2.0;">8 minutes</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:16px; border:1px solid #ddd; font-weight: bold; line-height: 2.0;">&bull;&nbsp;&nbsp;Conclusion</td>
-                                    <td style="padding:16px; border:1px solid #ddd; line-height: 2.0;">nearly <input type="text" id="q20" class="answer-input" placeholder="20" style="width: 120px;"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div style="margin-top: 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-start;">
+                            <div class="map-container" style="flex: 1; min-width: 300px;">
+                                <img src="https://custom-images.strikinglycdn.com/res/hrscywv4p/image/upload/c_limit,fl_lossy,h_9000,w_1200,f_auto,q_auto/2747037/338375_2141.jpeg" alt="Map of Rivermead School" style="width: 100%; border: 1px solid #ddd; border-radius: 4px;">
+                            </div>
+                            <div style="flex: 1; min-width: 250px;">
+                                
+                                <table style="border-collapse: collapse; width: 100%; max-width: 400px; margin: 0 auto;">
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>15</strong> Theatre</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q15" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>16</strong> New car park</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q16" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>17</strong> Bus stop</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q17" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>18</strong> Sports hall</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q18" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>19</strong> Cafeteria</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q19" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px;"><strong>20</strong> Museum</td>
+                                        <td style="padding: 10px;">
+                                            <select id="q20" class="answer-input" style="width: 100px;">
+                                                <option value="" disabled selected>Select</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="E">E</option>
+                                                <option value="F">F</option>
+                                                <option value="G">G</option>
+                                                <option value="H">H</option>
+                                                <option value="I">I</option>
+                                                <option value="J">J</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1996,83 +2135,111 @@
                     <div class="question">
                         <div class="question-prompt">
                             <p><strong>Questions 21-26</strong></p>
-                            <p>Complete the table.</p>
-                            <p>Write <strong>NO MORE THAN TWO WORDS</strong> for each answer.</p>
+                            <p>Who agrees with the following statement in Professor Smith's article?</p>
+                            <p>Write the correct letter, <strong>A</strong>, <strong>B</strong>, or <strong>C</strong>, next to questions 21-26.</p>
+                            <div style="margin: 15px 0; padding: 10px; background-color: #f9f9f9; border: 1px solid #eee;">
+                                <p><strong>A</strong> Peter</p>
+                                <p><strong>B</strong> Lynne</p>
+                                <p><strong>C</strong> Both Peter and Lynne</p>
+                            </div>
                         </div>
                         
-                        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                            <thead>
-                                <tr>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Subject</th>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Textbook Used</th>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Criticism of this book</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd; font-weight: bold;">Social History</td>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q21" class="answer-input" placeholder="21"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">It is <input type="text" id="q22" class="answer-input" placeholder="22"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd; font-weight: bold;">Cultural Studies</td>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q23" class="answer-input" placeholder="23"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">It <input type="text" id="q24" class="answer-input" placeholder="24"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd; font-weight: bold;"><input type="text" id="q25" class="answer-input" placeholder="25"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">Government in Action</td>
-                                    <td style="padding:12px; border:1px solid #ddd;">It is <input type="text" id="q26" class="answer-input" placeholder="26"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="question-prompt" style="margin-top:40px;">
-                            <p><strong>Questions 27-30</strong></p>
-                            <p>Choose the correct letter, <strong>S</strong>, <strong>C</strong>, or <strong>P</strong>.</p>
-                            <p><strong>NB</strong> You may use a letter more than once.</p>
-                            <p><strong>S</strong> Social History</p>
-                            <p><strong>C</strong> Cultural Studies</p>
-                            <p><strong>P</strong> Political Theory</p>
-                            <p><em>What are the speakers’ favorite subjects?</em></p>
+                        <div style="margin-top: 20px;">
+                            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; margin-top: 15px;">
+                                <thead>
+                                    <tr style="background-color: #4a90e2; color: white;">
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left; font-weight: bold;">Statements</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">A</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">B</th>
+                                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">C</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>21</strong> It brings teaching problems when based on old methods.</td>
+                                        <td class="clickable-cell" data-question="21" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="21" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="21" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>22</strong> Students should be cautious about applying for an online course.</td>
+                                        <td class="clickable-cell" data-question="22" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="22" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="22" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>23</strong> Computer can be applied to certain courses.</td>
+                                        <td class="clickable-cell" data-question="23" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="23" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="23" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>24</strong> The opinion about personal contact is not helpful.</td>
+                                        <td class="clickable-cell" data-question="24" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="24" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="24" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>25</strong> Online course comes with technological development.</td>
+                                        <td class="clickable-cell" data-question="25" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="25" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="25" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 12px;"><strong>26</strong> Online course should have more time flexibility.</td>
+                                        <td class="clickable-cell" data-question="26" data-value="A" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="26" data-value="B" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                        <td class="clickable-cell" data-question="26" data-value="C" style="border: 1px solid #ddd; padding: 12px; text-align: center; cursor: pointer; background-color: #f8f9fa;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
 
-                        <table class="matching-table" style="margin-top: 12px;">
-                            <thead>
-                                <tr>
-                                    <th>Speakers</th>
-                                    <th>S</th>
-                                    <th>C</th>
-                                    <th>P</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>27.</strong> Steve</td>
-                                    <td class="clickable-cell" data-question="27" data-value="S"></td>
-                                    <td class="clickable-cell" data-question="27" data-value="C"></td>
-                                    <td class="clickable-cell" data-question="27" data-value="P"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>28.</strong> David</td>
-                                    <td class="clickable-cell" data-question="28" data-value="S"></td>
-                                    <td class="clickable-cell" data-question="28" data-value="C"></td>
-                                    <td class="clickable-cell" data-question="28" data-value="P"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>29.</strong> Susan</td>
-                                    <td class="clickable-cell" data-question="29" data-value="S"></td>
-                                    <td class="clickable-cell" data-question="29" data-value="C"></td>
-                                    <td class="clickable-cell" data-question="29" data-value="P"></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>30.</strong> Olive</td>
-                                    <td class="clickable-cell" data-question="30" data-value="S"></td>
-                                    <td class="clickable-cell" data-question="30" data-value="C"></td>
-                                    <td class="clickable-cell" data-question="30" data-value="P"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="question">
+                        <div class="question-prompt" style="margin-top: 40px;">
+                            <p><strong>Questions 27-30</strong></p>
+                            <p>Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>27</strong>&nbsp;&nbsp;What does Professor Smith think of the usage of the Internet on campus?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="A"> The students depend heavily on the internet.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="B"> Schools could make better use of computer.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q27" value="C"> Teachers should encourage students to use computers.</label></div>
+                                </div>
+                            </div>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>28</strong>&nbsp;&nbsp;What's the meaning of Professor Smith's term "divided"?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="A"> Students tend to avoid using the computer.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="B"> Students don't have access to the computer.</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q28" value="C"> Students are encouraged to use other useful resources.</label></div>
+                                </div>
+                            </div>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>29</strong>&nbsp;&nbsp;What kind of help does Professor Smith think students should get?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="A"> classmates' help</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="B"> online help</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q29" value="C"> teachers' help</label></div>
+                                </div>
+                            </div>
+    
+                            <div class="mcq-item" style="margin-bottom: 20px;">
+                                <p><strong>30</strong>&nbsp;&nbsp;What is Professor Smith's view on the purpose of introducing the computers in school?</p>
+                                <div class="options" style="margin-left: 20px;">
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="A"> for computer companies selling computers more easily</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="B"> for cutting other fees</label></div>
+                                    <div class="multi-choice-option"><label><input type="radio" name="q30" value="C"> a simple way to make profit</label></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2085,301 +2252,83 @@
                 <div class="questions-container">
                     <div class="question">
                         <div class="question-prompt">
-                            <p><strong>Questions 31-35</strong></p>
-                            <p>Choose the correct answer.</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 30px;">
-                            <p><strong>31</strong>&nbsp;&nbsp;Why did the lecturer choose to focus on the Pleasanton Town Market?</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q31" value="A">
-                                        <span>It was the first ever Town Market.</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q31" value="B">
-                                        <span>It has been covered extensively in local history classes.</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q31" value="C">
-                                        <span>It is often mentioned in some literature of the library.</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <p><strong>32</strong>&nbsp;&nbsp;The Town Market originally made a large profit selling</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q32" value="A">
-                                        <span>handcrafts</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q32" value="B">
-                                        <span>vegetables</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q32" value="C">
-                                        <span>animals</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <p><strong>33</strong>&nbsp;&nbsp;The money that the marketers made contributes to local</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q33" value="A">
-                                        <span>reconstruction</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q33" value="B">
-                                        <span>development</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q33" value="C">
-                                        <span>defense</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <p><strong>34</strong>&nbsp;&nbsp;Market sales plummeted due to a lack of viable</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q34" value="A">
-                                        <span>A. agriculture</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q34" value="B">
-                                        <span>B. transport</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q34" value="C">
-                                        <span>C. city planning.</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <p><strong>35</strong>&nbsp;&nbsp;Mayor John C. Wiley decided the Clock tower would be used as a ………….. in the early stages of the uprising</p>
-                            <div class="multi-choice-question">
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q35" value="A">
-                                        <span>clock</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q35" value="B">
-                                        <span>grounds for battle</span>
-                                    </label>
-                                </div>
-                                <div class="multi-choice-option">
-                                    <label>
-                                        <input type="radio" name="q35" value="C">
-                                        <span>jail</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="question-prompt" style="margin-top: 40px;">
-                            <p><strong>Questions 36-40</strong></p>
-                            <p>Complete the table below.</p>
+                            <p><strong>Questions 31-40</strong></p>
+                            <p>Complete the notes below.</p>
                             <p>Write <strong>ONE WORD ONLY</strong> for each answer.</p>
                         </div>
                         
-                        <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
-                            <thead>
-                                <tr>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Research Methods</th>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Objects</th>
-                                    <th style="padding:12px; border:1px solid #ddd; text-align:left; background-color: #f8f9fa; font-weight: bold;">Problems</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd;">reference section</td>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q36" class="answer-input" placeholder="36" style="width: 120px;"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">there is too much information</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q37" class="answer-input" placeholder="37" style="width: 120px;"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">Rebellion</td>
-                                    <td style="padding:12px; border:1px solid #ddd;">bias makes it <input type="text" id="q38" class="answer-input" placeholder="38" style="width: 120px;"></td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q39" class="answer-input" placeholder="39" style="width: 120px;"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">Jim Wiley</td>
-                                    <td style="padding:12px; border:1px solid #ddd;">the information is insufficient</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding:12px; border:1px solid #ddd;">newspaper archives</td>
-                                    <td style="padding:12px; border:1px solid #ddd;"><input type="text" id="q40" class="answer-input" placeholder="40" style="width: 120px;"></td>
-                                    <td style="padding:12px; border:1px solid #ddd;">more detail is needed</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div style="margin-top: 20px;">
+                            <p class="centered-title"><strong>Technology and Education</strong></p>
+                            
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px;">
+                                <li style="margin-bottom: 20px;">Some people believed <input type="text" id="q31" class="answer-input" placeholder="31" autocomplete="off"> failed to help students interact with teachers</li>
+                                <li style="margin-bottom: 20px;">IT in education develops a tight <input type="text" id="q32" class="answer-input" placeholder="32" autocomplete="off"> with local economy</li>
+                                <li style="margin-bottom: 20px;">Computers are commonly used to develop teaching <input type="text" id="q33" class="answer-input" placeholder="33" autocomplete="off"></li>
+                            </ul>
+                            
+                            <p><strong>The new mode in the IT school of Westbrook University</strong></p>
+                            <ul style="list-style-type: disc; padding-left: 20px; margin-bottom: 20px;">
+                                <li style="margin-bottom: 20px;">Students enjoy the <input type="text" id="q34" class="answer-input" placeholder="34" autocomplete="off"> with teachers.</li>
+                                <li style="margin-bottom: 20px;">New technology builds up greater <input type="text" id="q35" class="answer-input" placeholder="35" autocomplete="off"> for students</li>
+                                <li style="margin-bottom: 20px;">Compared with traditional teaching, the new way is more <input type="text" id="q36" class="answer-input" placeholder="36" autocomplete="off"></li>
+                                <li style="margin-bottom: 20px;">It offers students quality <input type="text" id="q37" class="answer-input" placeholder="37" autocomplete="off"></li>
+                                <li style="margin-bottom: 20px;">It is seen as new solutions to new <input type="text" id="q38" class="answer-input" placeholder="38" autocomplete="off"></li>
+                                <li style="margin-bottom: 20px;">It nurtures <input type="text" id="q39" class="answer-input" placeholder="39" autocomplete="off"> management skills</li>
+                                <li style="margin-bottom: 20px;">It also provides students a source of <input type="text" id="q40" class="answer-input" placeholder="40" autocomplete="off"></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         <!-- Right Panel -->
-        <div class="right-panel">
-            <div id="transcription-container">
-                <h2>Transcription</h2>
-                <pre id="transcription-text"></pre>
-            </div>
+    </div>
+    <div class="right-panel">
+        <div id="transcription-container">
+            <h2>Transcription</h2>
+            <div id="transcription-text"></div>
         </div>
     </div>
 
     <div id="transcription-data" style="display:none;">
         <div data-part="1"><strong>SECTION 1</strong>
 
-MAN: Hello?
-WOMAN: Hi, good morning, this is Talia from Parrot Bay Travel Agency. Is Robert Goddard (Example) there?
-MAN: Yes, speaking.
-WOMAN: I’m so sorry that I made such an early phone call, and I’m calling to ask a few questions about your most recent vacation – could I have five minutes of your time?
-MAN: Sure thing.
-WOMAN: Great, thanks. Now, I see here that you visited Melbourne. Was this your first visit to Melbourne?
-MAN: No (Q1), I have actually been there twice before.
-WOMAN: I see. Now, what would you say was your favorite part about Melbourne?
-MAN: Well, I did like seeing the exotic wildlife, and there are great sites to see, but I have to say I was most impressed by the amazing weather (Q2).
-WOMAN: Yeah, the weather there is amazing. Which of the sites listed as part of our official tour did you see, and of those, which was your favorite?
-MAN: First I saw the theatre, which was beautifully designed. It was not nearly as cool as the Town Hall (Q3)  though – the building is a huge part of Melbourne’s history. Definitely my favourite. I saw the aquarium too, but wasn’t too impressed.
-WOMAN: I see. Yes, people often have great reviews of Town Hall. Now I would like to ask you about your dining experience. Did you enjoy the food there?
-MAN: Absolutely -I loved it!
-WOMAN: I’m glad to hear it. Could you tell me a little bit about what you most enjoyed about the food?
-MAN: Being such an international city, I loved the variety (Q4) – I could find any type of food I wanted. Whether I wanted seafood, burgers, or anything else, you name it and they had it.
-WOMAN: Did you drive to Melbourne?
-MAN: No, I flew. I thought about going by train, but in the interest of time I decided to go by plane (Q5).
-WOMAN: Right, I see.
-WOMAN: And would you mind telling me whether you are under 20, between the ages of 20 and 40, or older than 40?
-MAN: Er, it would be nice if I were still under 20. My vacation probably would have been quite different. Actually though, I just turned 41 last week (Q6).
-WOMAN: Oh, happy birthday! So did you treat yourself and fly first class?
-MAN: Ha! No way. I would love to have a budget that high. I’m more in the mid-range (Q7) income level. I wasn’t always though – I spent much of my life in a low-income household.
-WOMAN: I see. That answers my next question then, of income level. And what was the purpose of this visit?
-MAN: I had to go there on business a lot before and decided I would go there for tourism (Q8) this time.
-WOMAN: I see. And what is your occupation?
-MAN: I am mainly a computer programmer (Q9). I also write for a travel magazine on the side, which is why I visited Melbourne before, but it’s not my main source of income.
-WOMAN: I see. Wow, it sounds like you work a lot!
-MAN: Yes, I am very busy, which is exactly why I took a nice week-long vacation to Melbourne.
-WOMAN: I completely agree. Would you care to comment on your accommodation?
-MAN: My hotel was good value (Q10). Staying in the city can get really expensive, so it was nice to find such a good price for the location and quality. I’m glad I didn’t end up in some cheap motel in the middle of nowhere.
-WOMAN: I’m glad you didn’t either. Well, thank you for taking part in our survey, and I’m glad you enjoyed your vacation!
-MAN: No problem. Take care!
+Good morning, Smart Travel, Jason speaking. Hi, good morning. I saw your advert in today's paper about hot air balloon trips. It sounds pretty exciting, and I wonder how much it costs. Well, the price may vary depending on the location, number of participants, and add-ons. A single ride may cost you up to £280 per person, but if you choose group booking, there is a discount, and the cheapest flight is £125 (Q1) each for a group booking of at least 10 people. Oh, that's not too bad. What do you mean by add-ons? They are optional items, like taking photos for you during the ride, champagne, and sit-down breakfast after the flight. Upon completing the trip, we will provide each participant with a certificate (Q2), and that is entirely free of charge. Can I book a ride over the phone? Yes, that's an option. Reservations can be made one year ahead of your trip by telephone, but to pick a specific date, you must book online (Q3). A confirmation email will be sent to you right afterwards. How high can the balloons go? A hot air balloon's height is limited by the temperature of the air and how much fuel it can carry, and the highest altitude ever recorded for a ride is 1,800 (Q4) metres, but most rides stay below 300 metres. Oh boy, that's impressive. How long is a single ride? The average hot air balloon ride lasts about an hour. The entire ballooning experience, which includes ground preparation, flight and post-flight packing up, and celebration, may take two to three hours. And what time are the flights? Our flights generally meet about an hour before sunrise on the day. You will be notified of the exact meeting time the evening before your flight. Night (Q5) flights are avoided due to weather conditions. Fair enough. Which month do you recommend for a hot air balloon trip? Autumn (Q6) is the best time of year to take the trip. Not only can you see the changing hues of the trees from above, but it is a great way to spend time with the whole family before it gets too cold. I see. But please note that our flight may be cancelled and you will be notified by phone the day before. Why is that? It can be quite dangerous to fly under bad weather conditions, like a thunderstorm (Q7). So our experienced pilots will not go under such conditions. What should I wear for the ride? We suggest wearing comfortable clothing, like a jacket. Multiple layers are always better. Wearing a helmet (Q8) for safety concerns is also a good idea. Sandals are not permitted. Can children or older people participate? All children must be above the minimum age (Q9) of nine years old and they have to be accompanied by at least a parent or guardian. However, an adult has no age limit as long as they meet the health requirements. What exactly are the health requirements? Participants must at least be in fair physical condition. For example, they shall have no significant knee, hip or back problems and no recent surgeries or broken bones. They must also stand (Q10) unassisted for an hour during the flight. It is the required position during the whole flight. As the balloon comes to land, all passengers will need to adopt the landing position with knees bent in front of them. Are those rides safe? Hot air balloon companies are required to have a commercial balloon pilot license and all our pilots go through rigorous training before they are allowed to fly. It is a relatively gentle activity. However, the impact of a balloon landing can vary drastically depending on factors like wind speed. Sometimes it is similar to the momentum of jumping off a small chair. If you cannot jump off a small chair, speaking to your doctor before booking a balloon flight is best. Thank you very much. I think that's all I need to know. Thanks for calling. Goodbye.
         </div>
         <div data-part="2"><strong>SECTION 2</strong>
 
-TUTOR: Hi, Mark. Hi, Gina. What can I help you with?
-MARK: So we were hoping you could help us with this extracurricular project.
-TUTOR: Sure – what is the topic?
-GINA: Attending business school.
-TUTOR: This sounds like a great idea. So you’re going to explain the requirements for getting into business school?
-MARK: Not exactly. It will be more broadly about the experience – the academics, accommodation, and social experience that comes with being a part of the business school (Q11).
-TUTOR: I see. So would your audience be the general public?
-GINA: Well, we would probably want more to focus on members of the institution – we would especially like to reach individual applicants to the business school (Q12).
-TUTOR: I see. Now what form will this information be? You could give a talk to all the summer courses – all you would need is permission from the course director. Or you could pass out information outside the student union.
-MARK: Those are both good ideas. What about sending out pamphlets in the mail?
-TUTOR: Most college students never check their mail. Maybe you could make a video and show it on campus?
-GINA: That’s a great idea. We’ll do the video (Q13).
-TUTOR: Great. And as members of the business school, do you have an incentive to attract new students? If so, this idea is a great way to do that.
-MARK: No, the idea actually came about because of how much students like us worry about their studies (Q14).
-GINA: Yeah – when I got into business school, there were a lot of things I had not prepared for, so the video would cover a lot of things Mark and I wish we had known upon entering business school.
-TUTOR: Right.
-TUTOR: What would you talk about first?
-MARK: The first and probably most important section would be academics.
-TUTOR: Good idea. So would you provide guidance on what courses to take?
-GINA: We want to focus especially on the approaches professors take – their teaching methods (Q15). It is far different than what students are used to in high school, and even in liberal arts college.
-TUTOR: Good idea. And how long do you think you would spend explaining academics?
-MARK: We’ll probably spend 7 minutes on it.
-GINA: We also have some ideas for talking about housing, food options, and stuff like that. We’re not really sure how to tie it all together though.
-TUTOR: I think it would be suitable to title that section accommodation (Q16) – what do you think?
-MARK: That could work. We’ll definitely describe the different dining options at the cafeteria, and then walk students through flats and the grueling process of finding one near the business school campus.
-GINA: Okay – so we would cover specifics on the cafeteria, as well as flats (Q17)?
-MARK: I think those are both helpful. We could spend about 6 minutes on accommodation, and be sure to touch on those specifically.
-TUTOR: Great. Is there anything else you would talk about?
-GINA: We definitely want to go over the social aspect of attending school here.
-TUTOR: Of course. I think it’s good to have a little fun once in a while when you’re working so hard in school.
-MARK: I think we are going to introduce new students to the disco (Q18) that so many upperclassmen know and love. Maybe we’ll include a few other places too, but that’s the main one.
-GINA: We’re also going to invite students to the international evening (Q19) taking place in the first week of school as a great chance for our large international student population to meet a lot of other new students.
-TUTOR: It can definitely be hard to meet people as an international student. I think that is a great idea. You may want to spend slightly longer on this section than the other two.
-MARK: Hm… How about 8 minutes?
-GINA: That sounds reasonable. So overall, the introduction should take 3 minutes, and then the conclusion should take 4, giving us a total of 28 minutes.
-TUTOR: I wouldn’t rush your introduction. Maybe give it between 4 and 6 minutes. The conclusion, though, can be shorter since it’s just a quick refresher of each of the topics. Give that not more than 2 minutes (Q20).
-MARK: Okay. So in total the video should take about the same time, just more intro and less conclusion?
-TUTOR: Precisely.
-GINA: Alright – we are going to get to work on our video. Thanks for your help!
+What I'd like to do at this meeting is to tell you a bit about the facilities that Rivermead School offers people in the community. I'd like to start by talking about the new theatre that we've just opened in our school. Its mission is to maximise opportunities for local audiences to experience productions of the highest quality. Amongst other things, this will involve offering a place where professional drama companies in the area can perform. But there'll also be opportunities to host national and international companies, both those which are up and coming and those which have already established a reputation (Q11-B). Details of our first season's theatre programme are already online. I hope you'll agree that it looks very exciting. As well as music and dance, there'll be drama from modern writers, and there'll also be a high proportion of shows aimed at children and families. You'll notice that there is one empty space in November. That's because the Chinese state acrobatic troop have had to cancel their visit, but hopefully we'll be able to announce a replacement very soon. Now, we're often asked about the theatre's sources of funding. Well, a limited amount of money will come from various government subsidies, but the bulk of the revenue will be generated by the sale of tickets (Q12-A), which is one reason why we'd be grateful for your help in promoting the work of the theatre. In addition, there are opportunities for individuals to support the theatre on a regular basis through its sponsorship scheme. The benefits to donors include access to rehearsals and to show previews. But the new theatre isn't the only facility which is open to everyone. The school also has a small museum (Q13-C). This holds various objects that were found when the ground was excavated to lay the foundations for the building, as well as other historical objects. Entrance to this is free. We also have a state of the art sports hall. This is reserved for our students during term time, but anyone can use it in the school holidays (Q14-A). And our cafeteria is worth a visit. It has a varied menu and it's open all day to visitors, as well as staff and students.
+
+Right, I'll just point out some things on the map of the school campus I've given you. First of all, the theatre. That's opposite car park P2, on the south side (Q15-C). You're not allowed to park anywhere except in the car parks. There are two marked on your map, P1 and P2, but there's a new car park which has only just been completed, and that's at the most northern end of the campus (Q16-E). Some people might want to consider coming by bus. There's a good service from the city centre to the school, and the bus stops at the roundabout (Q17-G). That's where it turns round to go back, so you have to get off there. It doesn't go up as far as Park Road. Then, to get to the sports hall, you take the right fork after the main entrance, and just keep going past the classroom block. You have to go straight across the roundabout, and it's further on, on the right-hand side of that road (Q18-H). Then there's the cafeteria. There are various ways to get there, because it's at the junction of Park Road and Rennies Drive, on the north side of Park Road (Q19-I). In nice weather, you can sit outside to eat and admire the view. Then the museum is fairly central. Just go left after the main entrance, take the first turning on the right, and when you reach a junction, the museum is facing you (Q20-B).
         </div>
         <div data-part="3"><strong>SECTION 3</strong>
 
-You will hear three students, Steve, David, and Susan, discussing the different courses they attend.
-Susan: Well gentlemen, we’ve almost finished our second semester at this university. What do you think of all the courses we attend?
-David: On the whole, I’d say they’re quite good, apart from Social History, which I find to be a little too inexact.
-Steve: Yes, the lecturer’s style is also very very dull.
-Susan: I certainly agree with you there, although I would say that the textbook is more interesting. ‘Welfare State (Q21)’. The subtitle says, ‘An examination of social development in the 20th century.’
-David: Yes, ‘Welfare State’ is a good book, but look how many pages it has. 458!
-Steve: I agree. It’s just too long to be easily read. Far too long (Q22), although it’s certainly well written in parts.
-David: Yes, and if you compare it to the textbook for Cultural Studies—what’s it called?
-Susan: ‘Inner Views’, I think.
-David: No, that’s the book for Media Studies, and we finished that subject last semester. The book you’re thinking of is ‘In Perspective’ (Q23).
-Susan: Sorry, you’re right. ‘In Perspective’. And the subtitle says, ‘A comparison of social groups.’ Somewhat interesting, wouldn’t you say?
-David: Well, mildly so, as is the subject, dealing as it does with such a wide variety of issues, but the book itself certainly oversimplifies (Q24) a very complex subject.
-Steve: I agree. I also got annoyed at its constant oversimplification. Life is more complicated than what it suggests.
-Susan: Yes, but what you call ‘oversimplifying’ may well be considered ‘clarifying’. Look at this other textbook, ‘Government in Action’. Some may say that it also oversimplifies, but it must do so in order to present a coherent picture of an equally complex subject.
-David: ‘Government in Action’? Which subject…?
-Susan: It’s the textbook for ‘Political Theory’ (Q25).
-Steve: Oh, I hate politics. That’s why I don’t like the ‘Active Leadership’ subject, either. And most of the stuff in that ‘Political Theory’ textbook is based on the American system. You see, it’s written by Americans, so it’s not even relevant (Q26) to us here.
-David: I’d agree with you there — it’s not relevant to us at all, since our government uses the Westminster system.
-Susan: Yes, I suppose that is a problem.
-Susan: Well, it seems we all have certain criticisms about the textbooks we’re using, but at the same time, we all like some elements, at least, of the subjects we’re studying. What’s your favourite subject, David?
-David: I’m not sure. I like Political Theory, but…
-Steve: Cultural Studies is by far the best (Q27), even better than Political
-Theory, which I also like, but just not as much.
-David: Why do you say that, Steve? I was thinking, perhaps, Social History is worth considering as best.
-Steve: Social History is good, but I made my choice because the subject is relevant to this modern society.
-David: But so is Social History, and I like the historical element, which the other subjects lack (Q28). Even Political Theory examines history only briefly, and in a very narrow way, so I’d say Social History is the most rewarding for me. What about you, Susan?
-Susan: I think Social History is certainly very good, but Political Theory is, in fact, the best (Q29), since basically, every human system boils down to politics. So, despite a certain irrelevancy in the details, the basic message remains as relevant as ever.
-David: Oh Susan, you can’t be serious. Let’s ask Olive, again. She’s over there.
-Olive! Which subject do you think is the best?
-Olive: Ah, a difficult question. I’m very interested in culture, so Cultural Studies is certainly my cup of tea, but I’m politically active also, and hope to pursue this as a career, so Political Theory would be the one I’d pick (Q30).
-David: I don’t believe it. Even with that irrelevant textbook?
-Susan: Don’t listen to him, Olive; you have a right to your own opinion.
+Lynn, I just finished reading Professor Smith's article about the benefits of online courses. What are your thoughts on the article? Hi Peter. When I read that article, it was clear to me that Professor Smith does not favour the traditional methods of classroom teaching. Although I can certainly acknowledge that there are some advantages to online course, I would say that internet courses are not always the best means for teaching and learning (Q21-A). I think it's about time to revolutionise the old teaching style though. But I would hope that students consider the negatives of online learning before enrolling in online courses (Q22-B). This shouldn't be a big issue since online courses are so common these days. At least, I won't struggle so much. And Professor Smith points out that computer learning is well suited for some courses, especially the technical courses (Q23-A). Unfortunately, that theory doesn't work for me. What a shame. I got an A for that online computing course last year. Anyway, next part is personal interaction. I think the personal interaction offered by traditional teaching is overrated in the article and doesn't have much value (Q24-A). I think it's a distraction and that time could be better spent on the subject matter of the course. Oh, I disagree. Strongly, Peter. You're dismissing the benefits of face-to-face interaction between students and teachers in traditional classroom settings. The article says that learning is a two-way street and it's much easier for students to learn if they can ask questions and have discussions with their teachers. I'm still not sure about that. But online courses can foster students' technological skills. In learning the subject matter online, students will gain the technical know-how they'll need in their future endeavours (Q25-C). I can't agree more. What do you think Professor Smith means when he says online courses should be flexible in time? That's essential. The point of learning online is to allow those who can't attend courses at fixed time (Q26-C). I agree.
+
+The second part of the article shares some thoughts about the use of internet on campus. I'm kind of lost in that part. Well, I think what he's trying to say is that students are already accustomed to doing their research on the internet (Q27-A), although some people say computers could be better used for other purposes. He emphasises that many teachers are already instructing students to use the computer as a research tool. Thanks for clarifying that. What about the next part saying that students are divided? Do you know what that means? Well, it's certainly not that some students are afraid to use computers. They're already well accustomed to that. You're right about that. Most students already use the internet as their primary source for news and information. Professor Smith probably intends to say that computers are not easily accessible and available to all students (Q28-B). Yes, not all students can afford computers. And as Professor Smith note, with online courses, the student support system is already in place. Instead of asking fellow students or the professor for assistance, students would be able to get any information they need online (Q29-B). And this assistance would be available immediately. So, why do you think Professor Smith is recommending the use of computers as the school's main means of educating students? Do you think he is interested in reducing some of the fees associated with traditional classroom courses? I think it's all about the money. He is promoting online courses simply because he thinks it will enable the school to make more money (Q30-C). I never thought of it that way. Many schools already have limited space for classrooms. If the school board wants to enroll more students, they can do that through distance learning mode. Instead of recruiting more teachers, the same course resources can be sold to both online and offline students. Plus, some computer companies are willing to financially support the schools that promote this type of learning. I see. This is profitable in every sense. Alright, now we'll have something to write about in the research paper.
         </div>
         <div data-part="4"><strong>SECTION 4</strong>
 
-Good afternoon. In the last few lectures we’ve been covering the social and political pressures that influenced the rise of the rebellion of 1679. Today I would like to focus on the Pleasanton Town Market.
-Now, why are we talking all about some market? It’s not like it was the first market ever, or even a particularly large market. The Pleasanton Town Market is important because it is often mentioned in the literature found in the library (Q31). If you have ever been there, you have probably seen all of the handcrafted items sold there now. But what was originally bought and sold in the town market?
-In the beginning, the market sold products such as meats, furs, and simple tools. Over time, though, it became known as the place to find quality livestock (Q32). People came from all over the world to find the biggest and best cows, pigs, and chickens. In fact, the profits from the Town Market became the savior of a plummeting economy during a time of much turmoil. Not to be confused with the reconstruction era, a period of rapid development came about in the 1660s as a result of the market’s vendors contributing their profits to building up much needed public facilities and defense (Q33), which would later make a huge impact on the outcome of the war.
-For many years, the market flourished and began to draw in large tourism crowds in addition to the throngs of livestock customers. However, as revolutions in farming came about, more people moved to farms far from the city centre. Customers grew more and more reluctant to travel all the way to the town centre for their meats when they could easily choose to buy from local farmers near them for a fraction of the price (Q34).
-With such a fall in the profits of the town’s major profit generator, some quality town planning was needed. In the mayoral election of 1668, a young man of little fame just barely claimed the popular vote – none other than the now legendary John C. Wiley.
-Wiley’s first decision as mayor of Pleasanton was to deal with the quickly failing Town Market. The building with the large clock was a landmark that had symbolised growth in Pleasanton for a generation. Wiley decided to use the notoriety of the Town Market to set an example. During the historical Rotterdam Rebellion, Wiley gave all those involved lifetime prison sentences in the very same building (Q35). It stayed a prison for about 50 more years until they transported all remaining prisoners to other facilities and turned it into the historical monument today.
-Now that you know the basics of the history of the Pleasanton Town Market, I will introduce your next group project. I want you, to make a short film based on the real historical events that occurred in Pleasanton before and during the uprising.
-I will give you some class time to look through the library’s reference section, but you will be responsible for conducting further research outside of class. I suggest starting by looking for information on the market (Q36) itself. You’ll find plenty of information – in fact, some students complain that there is actually too much information on it.
-On your own time, you could find family members of old war veterans to conduct interviews (Q37). Sometimes they provide wonderful insight that you wouldn’t find in proper history books, but be careful – an interview that is riddled with bias is useless (Q38).
-I myself have some very old photographs (Q39) here that you are welcome to take a look at for some inspiration. I’m lucky enough to own this one of Jim Wiley himself! Very interesting to see, but does not provide enough information to add much to your film.
-Feel free to take this film into whatever direction you choose; You could even do a crime (Q40) thriller based on real outlaws. All you would have to do is look through the newspaper archives in the crime section during that time period. Try to get as much detail as you can, but you may end up having to draw your own conclusions.
-Okay, that’s enough from me, so let’s go on to…
+Hello and welcome to today's seminar about education. Education is a lifelong process. There is no limit on when to start and stop, and we have been using technology so much these days in each and every sector of our lives, including education. Have we ever taken out a second to wonder if it's leaving a positive impact on our work, or it's just that we have been relying on it so much that we've become used to it? Earlier, there was a lot of debate about technology in education amongst the faculty at our school. Everyone had their own views. At first, some believed that the use of email (Q31) between students and teachers made them interact with each other less, and this was not a good thing. But gradually, as technology was embraced by more educational institutes, they realised the importance of technology in education. Technology and education are a great combination if used together with a right reason and vision. Moreover, there is a strong relationship (Q32) with the local economy when it comes to the effectiveness of the use of IT in education. In the more developed areas, the schools and institutions have better access to more advanced technology, and the teachers are better trained to use the technology to improve the quality of their classes. In contrast, in some less developed regions and remote areas where technology is not so common, the effectiveness can't be guaranteed. However, wherever they are, the most common example for teachers using technology in education is the usage of computers in their teaching methods (Q33). In most classrooms, you can see teachers using computers to present teaching notes and other materials.
+
+This year, the IT School of Westbrook University has implemented a brand new education mode. Since its implementation, both teachers and students have been praising this new mode. It involves a kind of software which allows students, as well as teachers, to talk and discuss with each other more easily, and they said they enjoy this way of communication (Q34). Once more, the mode offers students a channel to post any work that they are proud of, whether it's a nice photograph that they take, a case study they do, a song they record, or even just a great idea they have. So it gives them a chance to showcase their strength and build up their confidence (Q35). Many students use this feature to show the best of themselves. It also provides students an opportunity to choose what they learn on the internet, so they no longer have to sit in the classroom listening to something they are bored with. And they don't have to wait all night trying to register for their favourite elective courses. Compared with the traditional platform, it is more flexible (Q36). The open source which the new mode provides is free for students to use when they are trying to look up for online materials (Q37) for their papers or researches. And the data will not easily be found on the internet because only registered users have access to the database. By the way, all the materials are original works of teachers or scholars, so there is no need to worry about the quality of the content. And with the overwhelming amount of unwanted information on the internet, this mode gives students a new search engine they can use on campus. So information like advertisements and sceptical sources will be filtered easily. This is a perfect example of new solutions to new problems (Q38). Apart from that, students can arrange their daily activities and improve their time (Q39) management skills by simply ticking the boxes in the timetable online. They can set up their own starting time and their deadline for each assignment. Based on statistics, the use of this function has a positive effect on the students who constantly procrastinate. By the end of the first term, the number of students who asked for extension for their papers had decreased by 10%, which was quite an achievement. Another feature that seems very creative to me is that students can help people who have questions or problems relating to their field of studies on a special platform. They can even have some income (Q40) by providing people with good solutions. So this new mode is making the most of the IT.
         </div>
+    </div>
+
+    <!-- Answer Key -->
+    <div id="answer-key" style="display:none;">
+        <h3>Correct Answers:</h3>
+        <p><strong>Part 1 (Questions 1-10):</strong></p>
+        <p>1. theather<br>2. 4.30<br>3. Station<br>4. cooking<br>5. plate<br>6. river<br>7. 11.15<br>8. parking<br>9. events<br>10. feedback</p>
+        
+        <p><strong>Part 2 (Questions 11-20):</strong></p>
+        <p>11. C<br>12. B<br>13. A<br>14. B<br>15. socks<br>16. total block<br>17. plastic<br>18. A<br>19. F<br>20. G</p>
+        
+        <p><strong>Part 3 (Questions 21-30):</strong></p>
+        <p>21. A<br>22. B<br>23. B<br>24. A<br>25. B<br>26. C<br>27. C<br>28. A<br>29. C<br>30. B</p>
+        
+        <p><strong>Part 4 (Questions 31-40):</strong></p>
+        <p>31. extinct<br>32. education<br>33. broken<br>34. plantation<br>35. city<br>36. developed<br>37. meanings<br>38. French<br>39. culture<br>40. preposition</p>
     </div>
 
     <audio id="global-audio-player" class="hidden"></audio>
@@ -2561,6 +2510,164 @@ Okay, that’s enough from me, so let’s go on to…
         </div>
     </div>
 
+    <!-- Hidden Transcription Data -->
+    <div id="transcription-data" style="display: none;">
+        <div data-part="1">
+You will hear a number of different recordings, and you will have to answer questions on what you hear. There will be time for you to read the instructions and questions, and you will have a chance to check your work. All the recordings will be played once only.
+
+The test is in four sections. Write all your answers in the Listening Question Booklet. At the end of the test, you will be given ten minutes to transfer your answers to an answer sheet.
+
+Now turn to section 1 on page 2 of your question booklet. Section 1 You will hear a man phoning to ask about a festival in a town called Beechin. First you have some time to look at questions 1 to 6 on page 2. You will see that there is an example that has been done for you.
+
+On this occasion only, the conversation relating to this will be played first. Beechin Festival Office Oh, hello. I want to check some details about the festival.
+
+I know tickets are running out fast, and I haven't got access to the internet at present, my computer's down. OK. Well, the first activity is on June the 19th at 7pm, and it's a concert with local musicians performing.
+
+Oh, lovely. The activity on June the 19th is a concert, so concert has been written in the space. Now we shall begin.
+
+You should answer the questions as you listen, because you will not hear the recording a second time. Listen carefully and answer questions 1 to 6. Beechin Festival Office Oh, hello. I want to check some details about the festival.
+
+I know tickets are running out fast, and I haven't got access to the internet at present, my computer's down. OK. Well, the first activity is on June the 19th at 7pm, and it's a concert with local musicians performing.
+
+Oh, lovely. Is it in the theatre, like last year? Yes, that's right. And for the next activity, on the 20th, the times changed.
+
+Is that the tour? Yes. Now, it does say on the tickets that it's a 3.40 start, but that's an error. There wasn't time to update them, unfortunately, so it should say 4.30 instead.
+
+The correct time is on the website, though. Oh, right. Because one of my friends wants to go on that, to see Beechin with an expert and find out about the town and its history.
+
+Does she need to get a ticket in advance? No, just turn up at the station where the guide will be waiting. They'll start from there, and I think the plan is to stop for a break in the park. And there's no charge for the tour.
+
+And the tour will finish with a visit to the 16th century mill where they used to make flour. It's recently been restored. Fine.
+
+And then on the 21st, there's an all-day event for children. Oh, that could be good for my visitors. They're bringing theirs, you see.
+
+Right. Well, the plan was to have a painting competition for the kids, but it's now going to be cooking instead. And there'll be prizes for all the different age groups.
+
+Oh, great. And it's in Beechin Community Centre. Oh, yes, I know where that is.
+
+They don't need to bring any ingredients, but they'll need to have a plate to put whatever they've made on so they can display it and then take it home. Sounds good. And are they going ahead with the fireworks in the evening, or is that cancelled? There was an article in the paper after last year's display which suggested it might not be happening again.
+
+That's right. No, that's still on. It's getting more popular each year, and having it in the town square was starting to be a bit difficult because of the numbers, which is why it's next to the river this time.
+
+It'll be easy for large numbers of people to get to. Yes, of course. I'm sure there's lots to look forward to.
+
+Before you hear the rest of the conversation, you have some time to look at questions 7 to 10 on page 2. Now listen and answer questions 7 to 10. OK, now I just want to check how it's going to impact on me as a local resident. I mean, some people last year thought it was too noisy at night.
+
+Yes, I know. And that's why this year evening events won't go on beyond 11.15. I know previously some activities lasted until 11.45, and the new time applies now to all the events, every evening. OK.
+
+And another change, perhaps you know about this already, is that because of high visitor numbers, parking in the town centre isn't going to be allowed. It'll be outside town. Oh, yes, to keep the streets clear, I suppose, for all the visitors.
+
+I did know, actually, and it's not really going to be a problem for me. Right. I mean, I can just walk into town from my home.
+
+OK. Well, anyway, if you want to check any more details about the festival, once you're back online, you can look at www.events.com and you'll be able to comment on what activities you enjoyed and that kind of thing. This will help the organisers would be if people could use the website to give feedback about what they enjoyed and that kind of thing. This will help them plan for next year.
+
+That's probably a good idea. And with pricing, I know... That is the end of Section 1. You now have half a minute to check your answers.
+        </div>
+        <div data-part="2">
+Now turn to Section 2 on page 3. Section 2 You will hear a tour guide talking to some tourists who are going on a walking holiday in Spain.
+
+First you have some time to look at questions 11 to 14 on page 3. Now listen carefully and answer questions 11 to 14. Well, good evening, everyone. My name's Gary Payne and I'll be the leader for your walking holiday in Spain.
+
+And the purpose of this evening's meeting is for us all to get to know each other in advance and for you to ask any questions you may have about the holiday. So I'll begin by telling you a little bit about what to expect. Now, the ferry crossing from England to Santander in Spain takes about 24 hours.
+
+We'll be sailing on the Prince Regent, which was first launched in the 1980s. As well as the crew of 160, it can accommodate about 2,000 people and 600 cars. And it sails at an average speed of 37 km an hour.
+
+There'll be an on-board map on one of the decks, which charts the ship's progress during the voyage. Although our minibus will be on one of the vehicle decks in the boat, access to these decks is prohibited during the crossing, so when you leave our bus, you'll have to take everything that you're likely to need with you, like toiletries or books and magazines. In fact, it's probably a good idea to put these things in a separate bag beforehand.
+
+You shouldn't need snacks on board as meals are provided and they're quite substantial. And if you don't feel well or get a headache, you can get tablets from me. I always carry an adequate supply.
+
+Now, once we're in Spain, we'll be based at a hostel in a small village called La Vega de Libana, about 120 km from Santander. It's a very picturesque area that's retained a lot of its traditional industry and culture. The hostel accommodation's fairly simple.
+
+There are bunk beds and each room holds four to eight people. But the bathrooms and showers are of a high standard. The hostel residents have the use of tennis courts nearby, if you feel like a game.
+
+We'll be given breakfast and an evening meal at the hostel. In general, the hostel is relaxed, but there are a few rules which the owners enforce strictly. Smoking is not allowed anywhere inside the building and food and drink is banned in the dormitories.
+
+Any chairs or tables which you take outside into the gardens must be returned every evening to their original place. And finally, the doors are locked after midnight out of consideration for other guests who are trying to sleep. Before you hear the rest of the talk, you have some time to look at questions 15 to 20 on page 4. Now listen and answer questions 15 to 20.
+
+Now, that's enough about travel and accommodation. But before I move on, I should say something briefly about equipment. There's a list in the guidebook you've been sent, but I'll just elaborate on one or two items.
+
+First, boots. Make sure that the ones you bring have thick soles. That's the most important thing.
+
+Don't bring trainers for walking in. Apart from anything else, they're dangerous because they slip. It's important to bring spare socks.
+
+Then, about waterproofs. I'd strongly advise you not to come with anything heavy, you know, with a thick lining. The ideal things are those lightweight ones, because they fold up small, and although they do keep the wind out, they don't make you too hot.
+
+Right? Next, sun cream. This is absolutely essential. And regarding the strength, make sure you get what's known as total block.
+
+Even factor 25 isn't good enough for those latitudes in July. Then, let's see. Bring a folder to keep your map and other papers in, you know, one of those plastic ones.
+
+It's not very likely to rain, but if it does, you'll find it soaks everything. So, that's the practicalities over. Now let me tell you a little bit about the area in Spain where we'll be walking, the Picos de Europa.
+
+It's a very popular area for tourists because of its spectacular peaks. Although they're only 25 kilometres from the sea, the highest peaks are more than 2,600 metres high and have year-round snow caps. On the highest peaks, you've got alpine plants that are only free of their snow cover for a few months a year.
+
+Then you've got meadows that are full of wildflowers at certain times of the year. Then the northern slopes are covered by woodlands, giving homes to rare species such as wolves and bears. And because of the variety of plant life, which survives in that part of Europe due to the traditional way of life there... That is the end of Section 2. You now have half a minute to check your answers.
+        </div>
+        <div data-part="3">
+Now turn to Section 3 on page 5. Section 3 You will hear two students called Sally and Steve discussing Sally's project on peer assessment, a system where students mark each other's work. First you have some time to look at questions 21 to 24 on page 5. Now listen carefully and answer questions 21 to 24. I can't believe you're still in the library, Sally.
+
+You've been here all day. Are you still working on your peer assessment project? Hi, Steve. Yes, I'm still here and I'm nowhere near finished.
+
+I'm still processing the reading I've done on peer assessment. I'm interested to see if students marking each other's work is beneficial. I know a lot of the other students are pretty sceptical about its value as a way of assessing their performance.
+
+They think the tutors are in favour of it because they don't have to spend so long marking. But I disagree. I think we can learn a great deal from it.
+
+Yes, I can see one advantage being that it saves time spent going over things in class. Well, initially it doesn't seem to work that way and it can be quite a time-consuming business because sometimes things have to be marked again if the tutor thinks the student's assessments aren't reliable. The real gain is the fact that the students learn to stand back and assess their own assignments objectively because they're much more familiar with the marking system.
+
+Yes, I can see that. It gives them an opportunity to reflect on their own performance. And how do they feel about having another student mark their work? Is that good for rapport? In some cases yes, in some cases no.
+
+I think more research is needed to answer that question. What happens if a tutor notices that the marks for a particular assignment seem wrong? Should the students mark them again? That might not make any difference. So in that case the tutor would have to remark all those assignments and then go through the marking criteria really carefully with the students on the next assignment with some sample answers.
+
+I've been reading about a research project on peer assessment. The researchers invited a group of students from two different universities to attend a one-day conference. They also invited some university lecturers to attend.
+
+Each student gave a short presentation on a project of their choice. Each of these presentations was assessed individually by all the participants, both students and lecturers. To support their marking, they used a set of assessment guidelines that had been prepared the day before by a random selection of students.
+
+Before you hear the rest of the discussion, you have some time to look at questions 25 to 30 on page 6. Now listen and answer questions 25 to 30. So were the student markers reliable? Well, comparisons were made between certain categories of student markers and the group as a whole, including the lecturers. The findings showed that there were some variations in the way different groups marked.
+
+Gender did come into play, for example. I expect the male students were more generous when marking female presenters, were they? Quite the reverse, actually. They were harder on the female presenters than on the males, which wasn't what I'd expected either.
+
+Did female students show any bias towards male presenters? Interestingly not. So does that suggest women are fairer and more reliable markers than men? Well, I wouldn't go that far. It's only a small sample.
+
+But significantly, the results showed that when women marked other women, this didn't affect the grades they gave. What about age? Were you able to come to any conclusions about that? Yes, because we had some mature students presenting and we found the marks awarded to them by their younger peers were rather more generous. I wonder why that is.
+
+Now, you said there were groups of students from two universities. Did they tend to favour students making presentations from their own universities? It didn't seem to influence marking one way or the other, which is quite encouraging. We'd been interested to see if students' personal relationships affected their objectivity.
+
+One striking variation, though, was in the students who'd been asked to help devise the criteria for the marking scheme. They were actually the toughest markers of all, marking consistently below the tutors. Really? Well, it sounds as if it's generated lots of useful data.
+
+I expect you'll be here for... That is the end of section 3. You now have half a minute to check your answers.
+        </div>
+        <div data-part="4">
+Now turn to section 4 on page 7. Section 4 You will hear part of a linguistics lecture about a language called Bishlama that is spoken in the Pacific Islands. First, you have some time to look at questions 31-40 on page 7. Now listen carefully and answer questions 31-40.
+
+Good morning and welcome back to this series of linguistics lectures. Today I will be talking about the language Bishlama, which is a form of pidgin English. Linguists use the term pidgin to describe new languages that are created by combining two or more existing languages, often in a simplified form.
+
+The study of pidgin languages is important because it provides us with information about language change and modification. The pidgin English known as Bishlama is used in the South Pacific nation of Vanuatu, a group of islands where 81 first languages are still regularly used by the local people. There are a further 17 local languages that are in danger of dying out and 8 that have been identified as extinct.
+
+This gives a total of 106 first languages in all, a very high number for a small country with a population of just 200,000 people. Then thinking about foreign languages, English is the most important and has official status largely because it is the medium for all education purposes. However, it is Bishlama that is the most widely spoken language in the country, used regularly by more than 90% of the population.
+
+We should note here that in earlier times some people had negative feelings towards the language. In fact, for many years it was commonly referred to as a broken language and its use was discouraged. But attitudes have changed dramatically and today the people of Vanuatu are very proud of this unique language.
+
+It is only when we understand the historical context that we can comprehend just why Bishlama developed in Vanuatu. The first form of Pidgin English in this region can be traced to around 1800 when foreign traders arrived and local people were recruited to work as sailors. On board multilingual ships there was an obvious need for a common tongue and Pidgin English was born.
+
+This early form of Bishlama continued to spread as trade in the Pacific developed in sandalwood and other local commodities. Then from about 1860 a lot of people from Vanuatu travelled to Australia to work on the new plantations as labourers. Again, because of the multilingual nature of these workplaces it was very important to have a common language.
+
+Finally, in modern times there have been other pressures that have maintained the need for a common language. Like many other parts of the world from about the 1950s Vanuatu experienced a significant migration of its people from small villages into the city and it has been here that Bishlama has really established itself as the country's first language. So then, how can we describe the language itself? In general terms Pidgin languages can be defined as extremely simple versions of the original language.
+
+However, this is not a satisfactory definition in this case and linguists prefer to describe Bishlama as a developed pidgin because it has more rules and ideas than most simple pidgin languages found in other parts of the world. Let's think first about the vocabulary. Because Britain was the colonial power the majority of Bishlama's vocabulary is derived from English.
+
+However, some care needs to be taken here. For example, the word from in Bishlama can also mean because of so we need to be aware that words can have a wider range of meanings in Bishlama. Indeed, there are numerous other potentially misleading terms and English is not the only contributor to the vocabulary.
+
+Again, because of the region's history there are some words, around 5-10% that are derived from French. Then, a relatively small number of words have been taken from local, Pacific languages. Usually, this is the case where there is no English equivalent for naturally occurring phenomena or to describe some aspect of the culture that is unique to the country.
+
+Finally, a word about grammar. Although the vocabulary is based largely on English it's important to note that the grammatical structure of Bishlama is derived from patterns common in the local languages of Vanuatu. So, for example, there are two distinct pronouns meaning we, one means I and you and another means I and some others but not you.
+
+Sounds confusing in English but in the local languages such distinctions are common. A different example concerns the word long. It is almost the only preposition in Bishlama and may be used in place of a whole range of English words such as at, to, with, on, in and so on.
+
+Well, that is the end of the formal part of the lecture. If you have any questions now, I'll be most happy to answer them. That is the end of section four.
+
+You now have half a minute to check your answers. That is the end of the listening test. You now have ten minutes to transfer your answers to the listening answer sheet.
+        </div>
+    </div>
+
     <script>
         let currentPart = 1;
         let currentQuestion = 1;
@@ -2589,27 +2696,23 @@ Okay, that’s enough from me, so let’s go on to…
                 const dropZone = document.querySelector(`.drop-zone[data-question-id="${qNum}"]`);
                 const clickableCell = document.querySelector(`.clickable-cell[data-question="${qNum}"].selected`);
 
-                if (textInput && textInput.value.trim() !== '') {
+                // Check for radio button questions first (questions 15-16, 17-20, etc.)
+                if (radioInput) {
                     isAnswered = true;
-                } else if (radioInput) {
-                    isAnswered = true;
-                    if (qNum >= 17 && qNum <= 20) {
+                    if (qNum >= 15 && qNum <= 20) {
                         console.log(`Question ${qNum} radio detected as answered: ${radioInput.value}`);
                     }
+                // Check for checkbox questions with multiple answer requirements
+                } else if (textInput && typeof textInput.value === 'string' && textInput.value.trim() !== '') {
+                    isAnswered = true;
                 } else if (dropZone && dropZone.querySelector('.drag-item')) {
                     isAnswered = true;
                 } else if (clickableCell) {
                     isAnswered = true;
-                    if (qNum >= 13 && qNum <= 16) {
+                    if (qNum >= 13 && qNum <= 16 || qNum >= 25 && qNum <= 30) {
                         console.log(`Question ${qNum} clickable cell detected as answered: ${clickableCell.getAttribute('data-value')}`);
                         console.log(`Clickable cell element:`, clickableCell);
                     }
-                } else if (qNum >= 21 && qNum <= 23) {
-                    if (document.querySelector('input[name="q21-23"]:checked')) isAnswered = true;
-                } else if (qNum >= 27 && qNum <= 28) {
-                    if (document.querySelector('input[name="q27-28"]:checked')) isAnswered = true;
-                } else if (qNum >= 29 && qNum <= 30) {
-                    if (document.querySelector('input[name="q29-30"]:checked')) isAnswered = true;
                 }
 
                 if (isAnswered) {
@@ -2634,117 +2737,44 @@ Okay, that’s enough from me, so let’s go on to…
         const speedOptions = document.getElementById('speed-options');
         const volumeBtn = document.getElementById('volume-btn');
 
-        const audioSource = 'https://ia601006.us.archive.org/14/items/mix-23m-36s-audio-joiner.com-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy-copy/mix_23m36s%20%28audio-joiner.com%29%20-%20CopyCopyCopyCopyCopyCopyCopyCopyCopyCopyCopy.mp3';
+        const audioSource = 'https://ia800706.us.archive.org/23/items/enquiries-on-hot-air-balloon-trip-hd-video-2024-mwsd-rkf-ywk/_Enquiries%20on%20hot%20air%20balloon%20trip%20_Hd%20video%202024%20%5B-MWsdRkfYWk%5D.mp3';
         audioPlayer.src = audioSource;
 
-        const correctAnswers = {
-            /* --- Part 1 --- */
-            'q1': ['no'],
-            'q2': ['amazing weather', 'weather'],
-            'q3': ['Town Hall'],
-            'q4': ['variety'],
-            'q5': ['plane'],
-            'q6': ['older than 40'],
-            'q7': ['mid-range'],
-            'q8': ['tourism'],
-            'q9': ['computer programmer'],
-            'q10': ['good value'],
-
-            /* --- Part 2 --- */
-            'q11': 'C',
-            'q12': 'B',
-            'q13': 'B',
-            'q14': 'A',
-            'q15': ['teaching methods'],
-            'q16': ['accommodation'],
-            'q17': ['flats'],
-            'q18': ['disco'],
-            'q19': ['international evening'],
-            'q20': ['2 minutes', 'two minutes'],
-
-            /* --- Part 3 --- */
-            'q21': ['Welfare State'],
-            'q22': ['too long'],
-            'q23': ['in perspective'],
-            'q24': ['oversimplifies'],
-            'q25': ['Political Theory'],
-            'q26': ['not relevant'],
-            // Part 3 (Questions 27-30) now use S/C/P selections (favorite subjects)
-            'q27': 'C',
-            'q28': 'S',
-            'q29': 'P',
-            'q30': 'P',
-
-            /* --- Part 4 --- */
-            'q31': 'C',
-            'q32': 'C',
-            'q33': 'B',
-            'q34': 'B',
-            'q35': 'C',
-            'q36': ['market'],
-            'q37': ['interviews'],
-            'q38': ['useless'],
-            'q39': ['photographs'],
-            'q40': ['crime']
-        };
-        
-        const questionTypes = {
-            'q1': 'text', 'q2': 'text', 'q3': 'text', 'q4': 'text', 'q5': 'text',
-            'q6': 'text', 'q7': 'text', 'q8': 'text', 'q9': 'text', 'q10': 'text',
-            'q11': 'mcq', 'q12': 'mcq', 'q13': 'mcq', 'q14': 'mcq', 'q15': 'text',
-            'q16': 'text', 'q17': 'text', 'q18': 'text', 'q19': 'text', 'q20': 'text',
-            'q21': 'text', 'q22': 'text', 'q23': 'text', 'q24': 'text', 'q25': 'text', 'q26': 'text', 'q27': 'clickable', 'q28': 'clickable', 'q29': 'clickable', 'q30': 'clickable',
-            'q31': 'mcq', 'q32': 'mcq', 'q33': 'mcq', 'q34': 'mcq', 'q35': 'mcq',
-            'q36': 'text', 'q37': 'text', 'q38': 'text', 'q39': 'text', 'q40': 'text'
-        };
 
 
-        function setupCheckboxLimits() {
-            const checkboxGroups = [
-                { name: 'q21-23', limit: 3 },
-                { name: 'q27-28', limit: 2 },
-                { name: 'q29-30', limit: 2 },
-            ];
+                function setupCheckboxLimits() {
+                const groupsWithLimits = [
+                    { name: 'q18-20', max: 3}
+                    // No checkbox groups with limits currently defined
+                ];
 
-            // Track selection order per group to allow robust limiting
-            const selectionQueues = {};
+            groupsWithLimits.forEach(({ name, max }) => {
+                const checkboxes = Array.from(document.querySelectorAll(`input[type="checkbox"][name="${name}"]`));
+                if (checkboxes.length === 0) return;
 
-            checkboxGroups.forEach(group => {
-                selectionQueues[group.name] = [];
-                const checkboxes = Array.from(document.querySelectorAll(`input[name="${group.name}"]`));
+                const applyLimitState = () => {
+                    const checkedCount = checkboxes.filter(c => c.checked).length;
+                    if (checkedCount >= max) {
+                        // Disable all remaining unchecked options when limit reached
+                        checkboxes.forEach(c => { if (!c.checked) c.disabled = true; });
+                    } else {
+                        // Re-enable options when below limit
+                        checkboxes.forEach(c => { c.disabled = false; });
+                    }
+                    updateAnsweredIndicators();
+                };
 
-                // Initialize queue with any pre-checked items (if any)
                 checkboxes.forEach(cb => {
-                    if (cb.checked) selectionQueues[group.name].push(cb);
+                    cb.addEventListener('change', applyLimitState);
                 });
 
-                checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', (e) => {
-                        const name = group.name;
-                        const limit = group.limit;
-
-                        // If checked, append to queue; if unchecked, remove from queue
-                        if (checkbox.checked) {
-                            // Avoid duplicates in queue
-                            selectionQueues[name] = selectionQueues[name].filter(cb => cb !== checkbox);
-                            selectionQueues[name].push(checkbox);
-                        } else {
-                            selectionQueues[name] = selectionQueues[name].filter(cb => cb !== checkbox);
-                        }
-
-                        // Enforce limit: keep the most recent 'limit' checked, uncheck older ones
-                        if (selectionQueues[name].length > limit) {
-                            const overflow = selectionQueues[name].length - limit;
-                            const toUncheck = selectionQueues[name].splice(0, overflow);
-                            toUncheck.forEach(cb => { cb.checked = false; });
-                        }
-
-                        updateAnsweredIndicators();
-                        updateAttemptedCount(3); // Part 3 affected for q21-23
-                    });
-                });
+                // Initialize on load
+                applyLimitState();
             });
         }
+
+        // Ensure checkbox limits are applied once the DOM is ready
+        document.addEventListener('DOMContentLoaded', setupCheckboxLimits);
 
         // Test function to verify clickable cells are working
         function testClickableCells() {
@@ -2754,56 +2784,33 @@ Okay, that’s enough from me, so let’s go on to…
             cells.forEach((cell, index) => {
                 const question = cell.getAttribute('data-question');
                 const value = cell.getAttribute('data-value');
-                const onclick = cell.getAttribute('onclick');
-                console.log(`Cell ${index}: question=${question}, value=${value}, onclick=${onclick}`);
+                console.log(`Cell ${index}: question=${question}, value=${value}`);
             });
         }
         
         function selectCell(cell, questionNumber, value) {
-            try {
-                console.log(`selectCell called: question ${questionNumber}, value ${value}`);
-                console.log('Cell element:', cell);
-                console.log('Cell classes:', cell.className);
-                
-                // Remove previous selection for this question
-                const row = cell.closest('tr');
-                if (!row) {
-                    console.error('Could not find row for cell');
-                    return;
-                }
-                
-                const cells = row.querySelectorAll('.clickable-cell');
-                console.log(`Found ${cells.length} clickable cells in row`);
-                cells.forEach(c => {
-                    c.classList.remove('selected');
-                    console.log(`Removed 'selected' class from cell with value: ${c.getAttribute('data-value')}`);
-                });
-                
-                // Select the clicked cell
-                cell.classList.add('selected');
-                console.log(`Added 'selected' class to cell with value: ${value}`);
-                console.log('Cell classes after selection:', cell.className);
-                
-                // Store the answer in the hidden input
-                const hiddenInput = document.getElementById(`q${questionNumber}`);
-                if (hiddenInput) {
-                    hiddenInput.value = value;
-                    console.log(`Hidden input q${questionNumber} value set to: ${value}`);
-                } else {
-                    console.error(`Hidden input q${questionNumber} not found`);
-                }
-
-                // Update answered indicators
-                updateAnsweredIndicators();
-                
-                // Force a visual update
-                cell.style.display = 'none';
-                cell.offsetHeight; // Force reflow
-                cell.style.display = '';
-                
-            } catch (error) {
-                console.error('Error in selectCell:', error);
+            // Remove previous selection for this question
+            const questionRow = cell.closest('tr');
+            const cellsInRow = questionRow.querySelectorAll('.clickable-cell');
+            cellsInRow.forEach(cell => {
+                cell.classList.remove('selected');
+                cell.style.backgroundColor = '#f8f9fa';
+                cell.style.color = 'black';
+            });
+            
+            // Select the clicked cell
+            cell.classList.add('selected');
+            cell.style.backgroundColor = '#4a90e2';
+            cell.style.color = 'white';
+            
+            // Persist selection in hidden input (for answered state and grading if needed)
+            const hiddenInput = document.getElementById(`q${questionNumber}`);
+            if (hiddenInput) {
+                hiddenInput.value = value;
             }
+            
+            // Update answered indicators
+            updateAnsweredIndicators();
         }
 
         function switchToPart(partNumber, andPlay = false) {
@@ -2867,7 +2874,8 @@ Okay, that’s enough from me, so let’s go on to…
             } else {
                 questionElement = document.getElementById(`q${questionNumber}`) || // text inputs
                                 document.querySelector(`[data-question-id="${questionNumber}"]`) || // drag-drop
-                                document.querySelector(`input[name="q${questionNumber}"]`); // radio buttons
+                                document.querySelector(`input[name="q${questionNumber}"]`) || // radio buttons
+                                document.querySelector(`.clickable-cell[data-question="${questionNumber}"]`); // clickable cells (27-30)
             }
             
             if (questionElement) {
@@ -3127,7 +3135,38 @@ Okay, that’s enough from me, so let’s go on to…
             const answeredGroups = {};
             inputs.forEach(input => {
                 if (input.type === 'radio' || input.type === 'checkbox') {
-                    if (input.checked && !answeredGroups[input.name]) {
+                    if (input.name === 'q28-30') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q28-30"]:checked').length;
+                        // Represent q28, q29, and q30 as three separate questions in the footer count
+                        const keyFirst = 'q28-30-first';
+                        const keySecond = 'q28-30-second';
+                        const keyThird = 'q28-30-third';
+                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
+                            answeredCount++;
+                            answeredGroups[keyFirst] = true;
+                        }
+                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
+                            answeredCount++;
+                            answeredGroups[keySecond] = true;
+                        }
+                        if (checkedCount >= 3 && !answeredGroups[keyThird]) {
+                            answeredCount++;
+                            answeredGroups[keyThird] = true;
+                        }
+                    } else if (input.name === 'q31-32') {
+                        const checkedCount = partContainer.querySelectorAll('input[name="q31-32"]:checked').length;
+                        // Represent q31 and q32 as two separate questions in the footer count
+                        const keyFirst = 'q31-32-first';
+                        const keySecond = 'q31-32-second';
+                        if (checkedCount >= 1 && !answeredGroups[keyFirst]) {
+                            answeredCount++;
+                            answeredGroups[keyFirst] = true;
+                        }
+                        if (checkedCount >= 2 && !answeredGroups[keySecond]) {
+                            answeredCount++;
+                            answeredGroups[keySecond] = true;
+                        }
+                    } else if (input.checked && !answeredGroups[input.name]) {
                         answeredCount++;
                         answeredGroups[input.name] = true;
                     }
@@ -3143,7 +3182,7 @@ Okay, that’s enough from me, so let’s go on to…
                 }
             });
             
-            // Include clickable cells as answered
+            // Include clickable cells as answered (includes Questions 26-30)
             const clickableCells = partContainer.querySelectorAll('.clickable-cell.selected');
             clickableCells.forEach(cell => {
                 const questionNum = cell.getAttribute('data-question');
@@ -3152,9 +3191,83 @@ Okay, that’s enough from me, so let’s go on to…
                     answeredGroups[`clickable-${questionNum}`] = true;
                 }
             });
+            
+            // Include map questions (11-15) as answered if they have a selection
+            for (let i = 11; i <= 15; i++) {
+                const selectElement = partContainer.querySelector(`#q${i}`);
+                if (selectElement && selectElement.value && selectElement.value !== '' && !answeredGroups[`map-${i}`]) {
+                    answeredCount++;
+                    answeredGroups[`map-${i}`] = true;
+                }
+            }
             const countDisplay = document.querySelector(`.footer__questionWrapper___1tZ46:nth-child(${partNumber}) .attemptedCount`);
             if (countDisplay) countDisplay.textContent = `${answeredCount} of 10`;
         }
+
+        // === Answer key and question type mapping ===
+        const correctAnswers = {
+            // Part 1
+            q1: '125',
+            q2: 'certificate',
+            q3: 'online',
+            q4: '1800',
+            q5: 'night',
+            q6: 'autumn',
+            q7: 'thunderstorm',
+            q8: 'helmet',
+            q9: 'age',
+            q10: 'stand',
+            // Part 2 MCQ
+            q11: 'B',
+            q12: 'A',
+            q13: 'C',
+            q14: 'A',
+            // Part 2 Map
+            q15: 'C',
+            q16: 'E',
+            q17: 'G',
+            q18: 'H',
+            q19: 'I',
+            q20: 'B',
+            // Part 3 Matching
+            q21: 'A',
+            q22: 'B',
+            q23: 'A',
+            q24: 'A',
+            q25: 'C',
+            q26: 'C',
+            // Part 3 MCQ
+            q27: 'A',
+            q28: 'B',
+            q29: 'B',
+            q30: 'C',
+            // Part 4 text
+            q31: 'email',
+            q32: 'relationship',
+            q33: 'methods',
+            q34: 'communication',
+            q35: 'confidence',
+            q36: 'flexible',
+            q37: 'materials',
+            q38: 'problems',
+            q39: 'time',
+            q40: 'income'
+        };
+
+        const questionTypes = {
+            // Part 1
+            q1: 'text', q2: 'text', q3: 'text', q4: 'text', q5: 'text',
+            q6: 'text', q7: 'text', q8: 'text', q9: 'text', q10: 'text',
+            // Part 2
+            // Part 2
+            q11: 'mcq', q12: 'mcq', q13: 'mcq', q14: 'mcq', 
+            q15: 'mcq', q16: 'mcq', q17: 'mcq', q18: 'mcq', q19: 'mcq', q20: 'mcq',
+            // Part 3
+            q21: 'clickable', q22: 'clickable', q23: 'clickable', q24: 'clickable', q25: 'clickable', q26: 'clickable',
+            q27: 'mcq', q28: 'mcq', q29: 'mcq', q30: 'mcq',
+            // Part 4
+            q31: 'text', q32: 'text', q33: 'text', q34: 'text', q35: 'text', q36: 'text', q37: 'text', q38: 'text', q39: 'text', q40: 'text'
+        };
 
         function checkAnswers() {
             let score = 0;
@@ -3183,7 +3296,7 @@ Okay, that’s enough from me, so let’s go on to…
                             const checkedBoxes = document.querySelectorAll(`input[name="${key}"]:checked`);
                             const userAnswers = Array.from(checkedBoxes).map(cb => cb.value).sort();
                             userAnswer = userAnswers.join(', ');
-                            const correctAnswersSorted = Array.isArray(correctAnswer) ? correctAnswer.sort() : [correctAnswer];
+                            const correctAnswersSorted = Array.isArray(correctAnswer) ? [...correctAnswer].sort() : [correctAnswer];
                             
                             // Count how many correct answers the user selected
                             const correctUserAnswers = userAnswers.filter(ans => correctAnswersSorted.includes(ans));
@@ -3237,15 +3350,15 @@ Okay, that’s enough from me, so let’s go on to…
                     });
                     
                     // For checkbox questions in multi-question keys, score was already added in switch statement
-                    // Don't add additional score here - return early to skip the final score increment
+                    // Don't add additional score here - return to next iteration of forEach
                     return;
-                } else {
+                }
+                
                    const qNum = parseInt(key.replace('q', ''));
                    const btn = document.querySelector(`.subQuestion[onclick="goToQuestion(${qNum})"]`);
                    const element = document.getElementById(key) || document.querySelector(`input[name="${key}"]`);
 
                    // Determine question type: prefer explicit mapping over DOM input type
-                   let questionType = questionTypes[key];
                    if (!questionType) {
                        if (element?.type === 'radio') questionType = 'mcq';
                        else if (element?.type === 'text') questionType = 'text';
@@ -3265,6 +3378,24 @@ Okay, that’s enough from me, so let’s go on to…
                            }
                            break;
                         case 'mcq':
+                            // For map questions (11-20), use the select dropdown selection instead of radios
+                            if (qNum >= 11 && qNum <= 20) {
+                                const selectElement = document.getElementById(key);
+                                if (selectElement) {
+                                    userAnswer = (selectElement.value || '').trim();
+                                    isCorrect = userAnswer === correctAnswer;
+                                    selectElement.classList.add(isCorrect ? 'correct' : 'incorrect');
+                                    if (!isCorrect) {
+                                        const correctAnswerSpan = document.createElement('span');
+                                        correctAnswerSpan.className = 'correct-inline';
+                                        correctAnswerSpan.textContent = String(correctAnswer);
+                                        selectElement.insertAdjacentElement('afterend', correctAnswerSpan);
+                                    }
+                                    break;
+                                }
+                            }
+
+                            // Default MCQ grading via radio inputs
                             const radioChecked = document.querySelector(`input[name="${key}"]:checked`);
                             userAnswer = radioChecked ? radioChecked.value : 'No Answer';
                             isCorrect = userAnswer === correctAnswer;
@@ -3376,11 +3507,10 @@ Okay, that’s enough from me, so let’s go on to…
                        correctAnswer: Array.isArray(correctAnswer) ? correctAnswer.join(' / ') : String(correctAnswer),
                        isCorrect: isCorrect
                    });
-               }
 
-               // For checkbox questions, score was already added in the switch statement
-               // Only add score for non-checkbox questions
-               if (questionType !== 'checkbox' && isCorrect) {
+                // For checkbox questions, score was already added in the switch statement
+                // Only add score for non-checkbox questions
+                if (questionType !== 'checkbox' && isCorrect) {
                    score++;
                }
             });
@@ -3429,7 +3559,7 @@ Okay, that’s enough from me, so let’s go on to…
             
             scoreSummary.textContent = `You scored ${score} out of 40 (Band ${band}).`;
             
-            let tableHTML = '<table><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Result</th></tr>';
+            let tableHTML = '<table><thead><tr><th>Question</th><th>Your Answer</th><th>Correct Answer</th><th>Result</th></tr></thead><tbody>';
             resultsData.sort((a,b) => parseInt(a.question, 10) - parseInt(b.question, 10)).forEach(res => {
                 tableHTML += `
                     <tr>
@@ -3442,7 +3572,59 @@ Okay, that’s enough from me, so let’s go on to…
                     </tr>
                 `;
             });
-            tableHTML += '</table>';
+            tableHTML += '</tbody></table>';
+            // Controls: filter toggles and export
+            const controls = document.createElement('div');
+            controls.className = 'result-controls';
+            controls.innerHTML = `
+                <label><input type="checkbox" id="toggle-correct" checked> Show correct</label>
+                <label><input type="checkbox" id="toggle-incorrect" checked> Show incorrect</label>
+                <span class="spacer"></span>
+                <button id="export-csv" class="btn-secondary">Export CSV</button>
+            `;
+            // Apply to modal
+            resultDetails.innerHTML = '';
+            resultDetails.appendChild(controls);
+            const tableContainer = document.createElement('div');
+            tableContainer.innerHTML = tableHTML;
+            resultDetails.appendChild(tableContainer);
+            
+            // Wire up filters
+            const toggleCorrect = controls.querySelector('#toggle-correct');
+            const toggleIncorrect = controls.querySelector('#toggle-incorrect');
+            function applyFilters(){
+                tableContainer.querySelectorAll('tbody tr').forEach(row => {
+                    const isCorrect = row.querySelector('td.result-correct') !== null;
+                    const isIncorrect = row.querySelector('td.result-incorrect') !== null;
+                    let visible = true;
+                    if (isCorrect && !toggleCorrect.checked) visible = false;
+                    if (isIncorrect && !toggleIncorrect.checked) visible = false;
+                    row.style.display = visible ? '' : 'none';
+                });
+            }
+            toggleCorrect.addEventListener('change', applyFilters);
+            toggleIncorrect.addEventListener('change', applyFilters);
+            applyFilters();
+            
+            // CSV export
+            controls.querySelector('#export-csv').addEventListener('click', () => {
+                const rows = [['Question','Your Answer','Correct Answer','Result']];
+                tableContainer.querySelectorAll('tbody tr').forEach(tr => {
+                    if (tr.style.display === 'none') return; // respect filters
+                    const tds = tr.querySelectorAll('td');
+                    const resultCell = tds[3];
+                    const resultText = resultCell.classList.contains('result-correct') ? 'Correct' : 'Incorrect';
+                    rows.push([tds[0].textContent.trim(), tds[1].textContent.trim(), tds[2].textContent.trim(), resultText]);
+                });
+                const csv = rows.map(r => r.map(v => '"' + v.replace(/"/g,'""') + '"').join(',')).join('\n');
+                const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'listening_results.csv';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
             resultDetails.innerHTML = tableHTML;
 
             // Turn the deliver button into a green "My Results" button
@@ -3552,6 +3734,117 @@ Okay, that’s enough from me, so let’s go on to…
 
         document.getElementById('deliver-button').addEventListener('click', checkAnswers);
         
+        // ===== Drag & Drop handlers for Questions 17-20 =====
+        (function initDragDrop(){
+            // make items draggable with data transfer id
+            function handleDragStart(e){
+                const id = e.target.id;
+                if (!id) {
+                    // ensure each option has an id
+                    const letter = e.target.getAttribute('data-letter') || e.target.getAttribute('data-value');
+                    e.target.id = 'opt_' + letter;
+                }
+                e.dataTransfer.setData('text/plain', e.target.id);
+            }
+            function handleDragOver(e){
+                e.preventDefault();
+                const zone = e.currentTarget;
+                zone.classList.add('drag-over');
+            }
+            function handleDragLeave(e){
+                e.currentTarget.classList.remove('drag-over');
+            }
+            function placeItemInZone(itemEl, zone){
+                // Only allow one item per zone
+                const existing = zone.querySelector('.drag-item');
+                if (existing){
+                    // move existing back to options box
+                    const partId = zone.closest('.question-part').id;
+                    const bank = partId === 'part-2' ? document.getElementById('part2-options-box') : document.getElementById('part3-options-box');
+                    if (bank) bank.appendChild(existing);
+                }
+                // ensure letter badge is visible along with text
+                // keep full item so it remains draggable and shows its letter
+                itemEl.classList.add('in-zone');
+                zone.textContent = '';
+                zone.appendChild(itemEl);
+                // sync hidden input for this question
+                const qid = zone.getAttribute('data-question-id') || zone.getAttribute('data-question');
+                const hidden = document.getElementById('q' + qid);
+                if (hidden){
+                    const letter = itemEl.getAttribute('data-letter') || itemEl.getAttribute('data-value');
+                    hidden.value = letter;
+                }
+                updateAnsweredIndicators();
+            }
+            function handleDrop(e){
+                e.preventDefault();
+                const zone = e.currentTarget;
+                zone.classList.remove('drag-over');
+                const id = e.dataTransfer.getData('text/plain');
+                const itemEl = document.getElementById(id);
+                if (!itemEl) return;
+                placeItemInZone(itemEl, zone);
+                const ph = zone.querySelector('.placeholder');
+                if (ph) ph.style.display = 'none';
+            }
+            function handleBankDrop(e){
+                e.preventDefault();
+                const bank = e.currentTarget;
+                const id = e.dataTransfer.getData('text/plain');
+                const itemEl = document.getElementById(id);
+                if (!itemEl) return;
+                // If coming from a zone, clear that zone's hidden input
+                const fromZone = itemEl.parentElement && itemEl.parentElement.classList.contains('drop-zone') ? itemEl.parentElement : null;
+                if (fromZone){
+                    const qid = fromZone.getAttribute('data-question-id') || fromZone.getAttribute('data-question');
+                    const hidden = document.getElementById('q' + qid);
+                    if (hidden) hidden.value = '';
+                    // Restore the drop zone to show placeholder
+                    fromZone.classList.remove('filled');
+                    fromZone.innerHTML = '';
+                    const placeholder = document.createElement('span');
+                    placeholder.className = 'placeholder';
+                    placeholder.innerHTML = '&nbsp;';
+                    fromZone.appendChild(placeholder);
+                }
+                itemEl.classList.remove('in-zone');
+                bank.appendChild(itemEl);
+                updateAnsweredIndicators();
+            }
+            // Attach listeners for Part 2
+            document.querySelectorAll('#part-2 .drag-item').forEach(el=>{
+                el.addEventListener('dragstart', handleDragStart);
+            });
+            document.querySelectorAll('#part-2 .drop-zone').forEach(zone=>{
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+            const bank2 = document.getElementById('part2-options-box');
+            if (bank2){
+                bank2.addEventListener('dragover', handleDragOver);
+                bank2.addEventListener('dragleave', handleDragLeave);
+                bank2.addEventListener('drop', handleBankDrop);
+            }
+            
+            // Attach listeners for Part 3
+            document.querySelectorAll('#part-3 .drag-item').forEach(el=>{
+                el.addEventListener('dragstart', handleDragStart);
+            });
+            document.querySelectorAll('#part-3 .drop-zone').forEach(zone=>{
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('dragleave', handleDragLeave);
+                zone.addEventListener('drop', handleDrop);
+            });
+            const bank3 = document.getElementById('part3-options-box');
+            if (bank3){
+                bank3.addEventListener('dragover', handleDragOver);
+                bank3.addEventListener('dragleave', handleDragLeave);
+                bank3.addEventListener('drop', handleBankDrop);
+            }
+        })();
+        
         // Go To Question Widget Logic
         const gotoWidget = document.getElementById('goto-widget');
         const gotoInput = document.getElementById('goto-input');
@@ -3603,6 +3896,10 @@ Okay, that’s enough from me, so let’s go on to…
             }
             const dz = e.target.closest('.drop-zone');
             if(dz && draggedElement){
+                // Skip if this is a Part 2 drop zone (let the Part 2 specific handler handle it)
+                if (dz.closest('#part-2')) {
+                    return;
+                }
                 // If already filled, move old back
                 const container = dz.closest('.matching-container') || dz.closest('.matching-question-container') || document;
                 const optionsList = container.querySelector('.matching-options-list') || document.querySelector('.matching-options-list');
@@ -3617,6 +3914,13 @@ Okay, that’s enough from me, so let’s go on to…
                     const qIdOld = dz.getAttribute('data-question-id');
                     const hiddenOld = document.getElementById(`q${qIdOld}`);
                     if (hiddenOld) hiddenOld.value = '';
+                    // Restore the drop zone to show placeholder
+                    dz.classList.remove('filled');
+                    dz.innerHTML = '';
+                    const placeholder = document.createElement('span');
+                    placeholder.className = 'placeholder';
+                    placeholder.innerHTML = '&nbsp;';
+                    dz.appendChild(placeholder);
                 }
                 // save full label before mutating
                 if (!draggedElement.dataset.fullLabel) {
@@ -3629,7 +3933,33 @@ Okay, that’s enough from me, so let’s go on to…
                 if (!draggedElement.dataset.letter && letter) {
                     draggedElement.dataset.letter = letter;
                 }
-                draggedElement.textContent = plain;
+                                    // Create a new element with the letter pill and plain text
+                    const newElement = document.createElement('div');
+                    newElement.className = 'drag-item';
+                    newElement.setAttribute('draggable', 'true');
+                    newElement.setAttribute('data-letter', letter);
+                    newElement.setAttribute('data-value', letter);
+                    newElement.setAttribute('data-fullLabel', full);
+                    newElement.style.width = 'auto';
+                    newElement.style.minWidth = 'fit-content';
+                    
+                    // Create the letter pill
+                    const letterPill = document.createElement('span');
+                    letterPill.className = 'drop-letter';
+                    letterPill.textContent = letter;
+                    
+                    // Create the text span
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = plain;
+                    textSpan.style.marginLeft = '8px';
+                    textSpan.style.whiteSpace = 'nowrap';
+                    
+                    newElement.appendChild(letterPill);
+                    newElement.appendChild(textSpan);
+                    
+                    // Replace the original element
+                    draggedElement.parentNode.replaceChild(newElement, draggedElement);
+                    draggedElement = newElement;
                 dz.appendChild(draggedElement);
                 draggedElement.classList.remove('selected');
                 draggedElement=null;
@@ -3732,6 +4062,13 @@ Okay, that’s enough from me, so let’s go on to…
                     return;
                 }
 
+                // Skip if this is a Part 2 drop zone (let the Part 2 specific handler handle it)
+                if (dropTarget.closest('#part-2')) {
+                    draggedElement.classList.remove('dragging');
+                    draggedElement = null;
+                    return;
+                }
+
                 document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
                 
                 const existingItem = dropTarget.matches('.drop-zone') ? dropTarget.querySelector('.drag-item') : null;
@@ -3743,13 +4080,58 @@ Okay, that’s enough from me, so let’s go on to…
                     if (existingItem.dataset && existingItem.dataset.fullLabel) {
                         existingItem.textContent = existingItem.dataset.fullLabel;
                     }
-                    originalParent.appendChild(existingItem);
-                    // If the original parent is a drop-zone and now empty, unfill it
+                    
+                    // If the original parent is a drop-zone, we need to handle it properly
                     if (originalParent.classList && originalParent.classList.contains('drop-zone')) {
-                        if (originalParent.children.length === 1 && originalParent.querySelector('.placeholder')) {
-                            originalParent.classList.remove('filled');
-                            originalParent.querySelector('.placeholder').style.display = '';
-                        }
+                        // Clear the original drop zone first
+                        originalParent.innerHTML = '';
+                        originalParent.classList.remove('filled');
+                        
+                        // Restore placeholder
+                        const placeholder = document.createElement('span');
+                        placeholder.className = 'placeholder';
+                        placeholder.innerHTML = '&nbsp;';
+                        originalParent.appendChild(placeholder);
+                        
+                        // Clear the hidden input
+                        const qId = originalParent.getAttribute('data-question-id');
+                        const hiddenInput = document.getElementById(`q${qId}`);
+                        if (hiddenInput) hiddenInput.value = '';
+                        
+                        // Now place the existing item in the original drop zone
+                        originalParent.appendChild(existingItem);
+                        
+                        // Update the original drop zone to show it's filled
+                        originalParent.classList.add('filled');
+                        if (placeholder) placeholder.style.display = 'none';
+                        
+                        // Update the hidden input for the original drop zone
+                        const existingItemValue = existingItem.getAttribute('data-value') || 
+                                               existingItem.getAttribute('data-letter') || 
+                                               (existingItem.dataset.fullLabel ? existingItem.dataset.fullLabel.trim().charAt(0).toUpperCase() : '');
+                        if (hiddenInput) hiddenInput.value = existingItemValue;
+                    } else {
+                        // If original parent is not a drop zone, just append normally
+                        originalParent.appendChild(existingItem);
+                    }
+                } else {
+                    // If there's no existing item in the target drop zone, but the dragged item is coming from a drop zone,
+                    // we need to restore the original drop zone to its empty state
+                    if (originalParent.classList && originalParent.classList.contains('drop-zone')) {
+                        // Clear the original drop zone
+                        originalParent.innerHTML = '';
+                        originalParent.classList.remove('filled');
+                        
+                        // Restore placeholder
+                        const placeholder = document.createElement('span');
+                        placeholder.className = 'placeholder';
+                        placeholder.innerHTML = '&nbsp;';
+                        originalParent.appendChild(placeholder);
+                        
+                        // Clear the hidden input
+                        const qId = originalParent.getAttribute('data-question-id');
+                        const hiddenInput = document.getElementById(`q${qId}`);
+                        if (hiddenInput) hiddenInput.value = '';
                     }
                 }
                 
@@ -3769,7 +4151,33 @@ Okay, that’s enough from me, so let’s go on to…
                     if (!draggedElement.dataset.letter && letter) {
                         draggedElement.dataset.letter = letter;
                     }
-                    draggedElement.textContent = plain;
+                    // Create a new element with the letter pill and plain text
+                    const newElement = document.createElement('div');
+                    newElement.className = 'drag-item';
+                    newElement.setAttribute('draggable', 'true');
+                    newElement.setAttribute('data-letter', letter);
+                    newElement.setAttribute('data-value', letter);
+                    newElement.setAttribute('data-fullLabel', full);
+                    newElement.style.width = 'auto';
+                    newElement.style.minWidth = 'fit-content';
+                    
+                    // Create the letter pill
+                    const letterPill = document.createElement('span');
+                    letterPill.className = 'drop-letter';
+                    letterPill.textContent = letter;
+                    
+                    // Create the text span
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = plain;
+                    textSpan.style.marginLeft = '8px';
+                    textSpan.style.whiteSpace = 'nowrap';
+                    
+                    newElement.appendChild(letterPill);
+                    newElement.appendChild(textSpan);
+                    
+                    // Replace the original element
+                    draggedElement.parentNode.replaceChild(newElement, draggedElement);
+                    draggedElement = newElement;
                     // sync hidden input (use data-letter if present, else text)
                     const qId = dropTarget.getAttribute('data-question-id');
                     const hiddenInput = document.getElementById(`q${qId}`);
@@ -3784,6 +4192,195 @@ Okay, that’s enough from me, so let’s go on to…
                 updateAnsweredIndicators();
             });
         })();
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            switchToPart(1);
+            goToQuestion(1);
+            setupCheckboxLimits();
+            
+            // Initialize drag and drop and clickable cells
+            initAllDragAndDrop();
+            ensureClickableHiddenInputs();
+            
+            // Test clickable cells after a short delay
+            setTimeout(() => {
+                testClickableCells();
+            }, 1000);
+
+            document.body.addEventListener('contextmenu', function (e) {
+                const text = window.getSelection().toString();
+                if (!text) return;
+                e.preventDefault();
+                const menu = document.getElementById('contextMenu');
+                menu.style.left = e.pageX + 'px';
+                menu.style.top = e.pageY + 'px';
+                menu.style.display = 'block';
+
+                const target = e.target;
+                const clearItem = document.getElementById('clear-item');
+                contextElement = target.closest('.highlight, .comment-highlight');
+                if(contextElement){
+                    clearItem.style.display = 'block';
+                } else {
+                    clearItem.style.display = 'none';
+                }
+            });
+            
+            document.body.addEventListener('click', function(e) {
+                if (e.target.closest('.context-menu')) return;
+                document.getElementById('contextMenu').style.display = 'none';
+            });
+        });
+
+        // Initial setup on DOM load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAnsweredIndicators();
+            ensureClickableHiddenInputs();
+            
+            // Add specific event listeners for questions 17-20 radio buttons
+            document.querySelectorAll('input[name="q17"], input[name="q18"], input[name="q19"], input[name="q20"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const questionNumber = this.name.substring(1); // Remove 'q' prefix
+                    const hiddenInput = document.getElementById(`q${questionNumber}`);
+                    if (hiddenInput) {
+                        hiddenInput.value = this.value;
+                        console.log(`Question ${questionNumber} selected: ${this.value}`);
+                    }
+                });
+            });
+        });
+
+        document.querySelectorAll('.mcq-table td').forEach(cell => {
+            cell.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT') {
+                    const radio = cell.querySelector('input[type="radio"]');
+                    if (radio && !radio.disabled) {
+                        radio.checked = true;
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"], select').forEach(input => {
+            input.addEventListener('input', updateAnsweredIndicators);
+            input.addEventListener('change', updateAnsweredIndicators);
+        });
+
+        function initAllDragAndDrop() {
+            // Initialize clickable cells for questions 27-31
+            initClickableCells();
+            
+            // Add event listeners for map questions (11-15)
+            for (let i = 11; i <= 15; i++) {
+                const selectElement = document.getElementById(`q${i}`);
+                if (selectElement) {
+                    selectElement.addEventListener('change', updateAnsweredIndicators);
+                }
+            }
+        }
+
+        function initClickableCells() {
+            const clickableCells = document.querySelectorAll('.clickable-cell');
+            clickableCells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const questionNumber = this.getAttribute('data-question');
+                    const value = this.getAttribute('data-value');
+                    selectCell(this, questionNumber, value);
+                });
+            });
+        }
+
+
+        function ensureClickableHiddenInputs() {
+            for (let q = 21; q <= 30; q++) {
+                if (!document.getElementById(`q${q}`)) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.id = `q${q}`;
+                    document.body.appendChild(input);
+                }
+            }
+        }
+
+        // Initialize matching cells when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is now handled by initClickableCells() which is called in initAllDragAndDrop()
+        });
+
+        function findParentOptionsList(element) {
+            // Specific for map
+            if (element.closest('#map-drag-container')) {
+                return document.getElementById('map-options-q11-15');
+            }
+            // Specific for Part 3
+            if (element.closest('#part-3')) {
+                return document.getElementById('part3-options-box');
+            }
+            // Generic for matching
+            const container = element.closest('.matching-container');
+            if (container) {
+                return container.querySelector('.matching-options-list');
+            }
+            return null;
+        }
+
+        let transcriptionHighlighted = false;
+        function highlightAnswersInTranscription() {
+            if (transcriptionHighlighted) return;
+
+            const highlightedTranscripts = { 1: '', 2: '', 3: '', 4: '' };
+
+            for (let i = 1; i <= 4; i++) {
+                const partElement = document.querySelector(`#transcription-data [data-part="${i}"]`);
+                if (partElement) highlightedTranscripts[i] = partElement.innerHTML;
+            }
+
+            for (const key in correctAnswers) {
+                const answers = Array.isArray(correctAnswers[key]) ? correctAnswers[key] : [correctAnswers[key]];
+                if (answers.every(answer => /^[A-G]$/.test(answer))) {
+                    continue;
+                }
+
+                const qNum = parseInt(key.match(/\d+/)[0]);
+                let partNumber = 1;
+                if (qNum > 10 && qNum <= 20) partNumber = 2;
+                else if (qNum > 20 && qNum <= 30) partNumber = 3;
+                else if (qNum > 30) partNumber = 4;
+
+                if (!highlightedTranscripts[partNumber]) continue;
+
+                let answersToHighlight = correctAnswers[key];
+                if (!Array.isArray(answersToHighlight)) {
+                    answersToHighlight = [answersToHighlight];
+                }
+
+                for (const answer of answersToHighlight) {
+                    if (/^[A-G]$/.test(answer)) continue;
+                    
+                    let searchTerm = answer.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                    searchTerm = searchTerm.replace(/\\\(s\\\)/g, '(s)?');
+                    
+                    const regex = new RegExp(`\\b(${searchTerm})\\b`, 'gi');
+                    
+                    highlightedTranscripts[partNumber] = highlightedTranscripts[partNumber].replace(
+                        regex,
+                        '<span class="highlight">$1</span>'
+                    );
+                }
+            }
+
+            for (let i = 1; i <= 4; i++) {
+                const partElement = document.querySelector(`#transcription-data [data-part="${i}"]`);
+                if(partElement) partElement.innerHTML = highlightedTranscripts[i];
+            }
+            transcriptionHighlighted = true;
+        }
+        
+        function closeContextMenu() {
+            document.getElementById('contextMenu').style.display = 'none';
+            contextElement = null;
+        }
         // ========== SIMPLE AUTOSAVE ==========
 (function() {
     console.log('🔄 Autosave initialized');
@@ -3912,254 +4509,6 @@ Okay, that’s enough from me, so let’s go on to…
     
     console.log('✅ Autosave enabled - saving every 30 seconds');
 })();
-
-
-        document.addEventListener('DOMContentLoaded', () => {
-            switchToPart(1);
-            goToQuestion(1);
-            setupCheckboxLimits();
-            
-            // Initialize drag and drop and clickable cells
-            initAllDragAndDrop();
-            
-            // Test clickable cells after a short delay
-            setTimeout(() => {
-                testClickableCells();
-            }, 1000);
-
-            document.body.addEventListener('contextmenu', function (e) {
-                const text = window.getSelection().toString();
-                if (!text) return;
-                e.preventDefault();
-                const menu = document.getElementById('contextMenu');
-                menu.style.left = e.pageX + 'px';
-                menu.style.top = e.pageY + 'px';
-                menu.style.display = 'block';
-
-                const target = e.target;
-                const clearItem = document.getElementById('clear-item');
-                contextElement = target.closest('.highlight, .comment-highlight');
-                if(contextElement){
-                    clearItem.style.display = 'block';
-                } else {
-                    clearItem.style.display = 'none';
-                }
-            });
-            
-            document.body.addEventListener('click', function(e) {
-                if (e.target.closest('.context-menu')) return;
-                document.getElementById('contextMenu').style.display = 'none';
-            });
-        });
-
-        // Initial setup on DOM load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateAnsweredIndicators();
-            
-            // Add specific event listeners for questions 17-20 radio buttons
-            document.querySelectorAll('input[name="q17"], input[name="q18"], input[name="q19"], input[name="q20"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    const questionNumber = this.name.substring(1); // Remove 'q' prefix
-                    const hiddenInput = document.getElementById(`q${questionNumber}`);
-                    if (hiddenInput) {
-                        hiddenInput.value = this.value;
-                        console.log(`Question ${questionNumber} selected: ${this.value}`);
-                    }
-                });
-            });
-        });
-
-        document.querySelectorAll('.mcq-table td').forEach(cell => {
-            cell.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'INPUT') {
-                    const radio = cell.querySelector('input[type="radio"]');
-                    if (radio && !radio.disabled) {
-                        radio.checked = true;
-                    }
-                }
-            });
-        });
-
-        document.querySelectorAll('.answer-input, input[type="radio"], input[type="checkbox"]').forEach(input => {
-            input.addEventListener('input', updateAnsweredIndicators);
-            input.addEventListener('change', updateAnsweredIndicators);
-        });
-
-        function initAllDragAndDrop() {
-            const dragItems = document.querySelectorAll('.drag-item');
-            const dropZones = document.querySelectorAll('.drop-zone');
-
-            dragItems.forEach(item => {
-                item.addEventListener('dragstart', handleDragStart);
-                item.addEventListener('dragend', handleDragEnd);
-            });
-
-            dropZones.forEach(zone => {
-                zone.addEventListener('dragover', handleDragOver);
-                zone.addEventListener('dragleave', handleDragLeave);
-                zone.addEventListener('drop', handleDrop);
-            });
-
-            // Initialize clickable cells for questions 27-31
-            initClickableCells();
-        }
-
-        function initClickableCells() {
-            const clickableCells = document.querySelectorAll('.clickable-cell');
-            clickableCells.forEach(cell => {
-                cell.addEventListener('click', function() {
-                    const questionNumber = this.getAttribute('data-question');
-                    const value = this.getAttribute('data-value');
-                    selectCell(this, questionNumber, value);
-                });
-            });
-        }
-
-            function handleDragStart(e) {
-                draggedElement = e.target;
-                setTimeout(() => e.target.classList.add('dragging'), 0);
-            }
-
-            function handleDragEnd(e) {
-                e.target.classList.remove('dragging');
-            }
-
-            function handleDragOver(e) {
-                e.preventDefault();
-                const zone = e.target.closest('.drop-zone');
-                if (zone) zone.classList.add('drag-over');
-            }
-
-            function handleDragLeave(e) {
-                const zone = e.target.closest('.drop-zone');
-                if (zone) zone.classList.remove('drag-over');
-            }
-
-            function handleDrop(e) {
-                e.preventDefault();
-                const targetZone = e.target.closest('.drop-zone');
-                if (!targetZone || !draggedElement) return;
-                
-                targetZone.classList.remove('drag-over');
-
-                const sourceContainer = draggedElement.parentNode;
-                const itemInTargetZone = targetZone.querySelector('.drag-item');
-                
-                // Prevent dropping on self or non-droppable area inside zone
-                if (e.target.classList.contains('drag-item') && e.target !== draggedElement) {
-                    return; // Or handle swap explicitly here if needed
-                }
-                
-                if (itemInTargetZone && itemInTargetZone !== draggedElement) {
-                    // If source is an options list, move the existing item back
-                    const optionsList = findParentOptionsList(targetZone);
-                    if (sourceContainer.classList.contains('matching-options-list') || sourceContainer.classList.contains('map-options-list')) {
-                    if (itemInTargetZone.dataset && itemInTargetZone.dataset.fullLabel) {
-                        itemInTargetZone.textContent = itemInTargetZone.dataset.fullLabel;
-                    }
-                    optionsList.appendChild(itemInTargetZone);
-                    } 
-                    // If source is another drop zone (swapping)
-                    else if (sourceContainer.classList.contains('drop-zone')) {
-                        if (itemInTargetZone.dataset && itemInTargetZone.dataset.fullLabel) {
-                            itemInTargetZone.textContent = itemInTargetZone.dataset.fullLabel;
-                        }
-                        sourceContainer.appendChild(itemInTargetZone);
-                    }
-                }
-
-                targetZone.appendChild(draggedElement);
-                if (targetZone.querySelector('.placeholder')) {
-                    targetZone.querySelector('.placeholder').style.display = 'none';
-                }
-                // Sync hidden input for drag/drop questions so checking works and counters update
-                const qId = targetZone.getAttribute('data-question-id');
-                const hiddenInput = document.getElementById(`q${qId}`);
-                if (hiddenInput) {
-                    // Set to letter using data-letter if available; otherwise infer from full label
-                    const letter = draggedElement.getAttribute('data-letter');
-                    if (letter) {
-                        hiddenInput.value = letter;
-                    } else if (draggedElement.dataset.fullLabel) {
-                        hiddenInput.value = draggedElement.dataset.fullLabel.trim().charAt(0).toUpperCase();
-                    } else {
-                        hiddenInput.value = draggedElement.textContent.trim();
-                    }
-                }
-                
-                updateAnsweredIndicators();
-            }
-
-            function findParentOptionsList(element) {
-                // Specific for map
-                if (element.closest('#map-drag-container')) {
-                    return document.getElementById('map-options-q11-15');
-                }
-                // Generic for matching
-                const container = element.closest('.matching-container');
-                if (container) {
-                    return container.querySelector('.matching-options-list');
-                }
-                return null;
-            }
-        
-
-        let transcriptionHighlighted = false;
-        function highlightAnswersInTranscription() {
-            if (transcriptionHighlighted) return;
-
-            const highlightedTranscripts = { 1: '', 2: '', 3: '', 4: '' };
-
-            for (let i = 1; i <= 4; i++) {
-                const partElement = document.querySelector(`#transcription-data [data-part="${i}"]`);
-                if (partElement) highlightedTranscripts[i] = partElement.innerHTML;
-            }
-
-            for (const key in correctAnswers) {
-                const answers = Array.isArray(correctAnswers[key]) ? correctAnswers[key] : [correctAnswers[key]];
-                if (answers.every(answer => /^[A-G]$/.test(answer))) {
-                    continue;
-                }
-
-                const qNum = parseInt(key.match(/\d+/)[0]);
-                let partNumber = 1;
-                if (qNum > 10 && qNum <= 20) partNumber = 2;
-                else if (qNum > 20 && qNum <= 30) partNumber = 3;
-                else if (qNum > 30) partNumber = 4;
-
-                if (!highlightedTranscripts[partNumber]) continue;
-
-                let answersToHighlight = correctAnswers[key];
-                if (!Array.isArray(answersToHighlight)) {
-                    answersToHighlight = [answersToHighlight];
-                }
-
-                for (const answer of answersToHighlight) {
-                    if (/^[A-G]$/.test(answer)) continue;
-                    
-                    let searchTerm = answer.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
-                    searchTerm = searchTerm.replace(/\\\(s\\\)/g, '(s)?');
-                    
-                    const regex = new RegExp(`\\b(${searchTerm})\\b`, 'gi');
-                    
-                    highlightedTranscripts[partNumber] = highlightedTranscripts[partNumber].replace(
-                        regex,
-                        '<span class="highlight">$1</span>'
-                    );
-                }
-            }
-
-            for (let i = 1; i <= 4; i++) {
-                const partElement = document.querySelector(`#transcription-data [data-part="${i}"]`);
-                if(partElement) partElement.innerHTML = highlightedTranscripts[i];
-            }
-            transcriptionHighlighted = true;
-        }
-        
-        function closeContextMenu() {
-            document.getElementById('contextMenu').style.display = 'none';
-            contextElement = null;
-        }
     </script>
 </body>
 </html>
